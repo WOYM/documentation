@@ -1,0 +1,388 @@
+\documentclass[fontsize=12pt,paper=a4,twoside]{scrartcl}
+
+\newcommand{\grad}{\ensuremath{^{\circ}} }
+\renewcommand{\strut}{\vrule width 0pt height5mm depth2mm}
+
+\usepackage[utf8]{inputenc}
+\usepackage[final]{pdfpages}
+% obere Seitenränder gestalten können
+\usepackage{fancyhdr}
+\usepackage{moreverb}
+% Graphiken als jpg, png etc. einbinden können
+\usepackage{graphicx}
+\usepackage{stmaryrd}
+% Floats Objekte mit [H] festsetzen
+\usepackage{float}
+% setzt URL's schön mit \url{http://bla.laber.com/~mypage}
+\usepackage{url}
+% Externe PDF's einbinden können
+\usepackage{pdflscape}
+% Verweise innerhalb des Dokuments schick mit " ... auf Seite ... "
+% automatisch versehen. Dazu \vref{labelname} benutzen
+\usepackage[ngerman]{varioref}
+\usepackage[ngerman]{babel}
+\usepackage{ngerman}
+% Bibliographie
+\usepackage{bibgerm}
+% Tabellen
+\usepackage{tabularx}
+\usepackage{supertabular}
+\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=blue,
+            citecolor=blue, urlcolor=blue, hyperfigures=true,
+            pdftex=true]{hyperref}
+\usepackage{bookmark}
+
+\newboolean{langversion} %Deklaration
+\setboolean{langversion}{true} %Zuweisung ist 'false' für Blockkurs
+\newcommand{\highlight}[1]{\textcolor{blue}{\textbf{#1}}}
+\newcommand{\nurlangversion}[0]{%
+\ifthenelse{\boolean{langversion}}{\highlight{Muss in SWP-2 ausgefüllt werden}}{\highlight{Entfällt in SWP-1}}}
+
+\newcommand{\swp}[0]{\ifthenelse{\boolean{langversion}}%
+{Software--Projekt 2}{Software--Projekt 1}}
+\newcommand{\jahr}[0]{2014}
+\newcommand{\semester}[0]{\ifthenelse{\boolean{langversion}}{WiSe}{SoSe} \jahr}
+
+% Damit Latex nicht zu lange Zeilen produziert:
+\sloppy
+%Uneinheitlicher unterer Seitenrand:
+%\raggedbottom
+
+% Kein Erstzeileneinzug beim Absatzanfang
+% Sieht aber nur gut aus, wenn man zwischen Absätzen viel Platz einbaut
+\setlength{\parindent}{0ex}
+
+% Abstand zwischen zwei Absätzen
+\setlength{\parskip}{1ex}
+
+% Seitenränder für Korrekturen verändern
+\addtolength{\evensidemargin}{-1cm}
+\addtolength{\oddsidemargin}{1cm}
+
+\bibliographystyle{gerapali}
+
+%Erhöht den Abstand zwischen den Tabellenzeilen ein wenig
+\renewcommand{\arraystretch}{1.2}
+
+% Lustige Header auf den Seiten
+  \pagestyle{fancy}
+  \setlength{\headheight}{70.55003pt}
+  \fancyhead{}
+   \fancyhead[LO,RE]{\swp\\ \semester{}
+  \\Projektplan}
+  \fancyhead[LE,RO]{Seite \thepage\\\slshape \leftmark\\\slshape \rightmark}
+
+%
+% Und jetzt geht das Dokument los....
+%
+
+\begin{document}
+
+% Lustige Header nur auf dieser Seite
+  \thispagestyle{fancy}
+  \fancyhead[LO,RE]{ }
+  \fancyhead[LE,RO]{Universität Bremen\\FB 3 -- Informatik\\
+  Prof. Dr. Rainer Koschke \\TutorIn: Euer/Eure TutorIn}
+  \fancyfoot[C]{}
+
+% Start Titelseite
+  \vspace{3cm}
+
+ \begin{minipage}[H]{\textwidth}
+  \begin{center}
+  \bf
+  \Large
+  \swp{} \jahr\\
+  \smallskip
+  \small
+  VAK 03-BA-901.02\\
+  \vspace{3cm}
+  \end{center}
+  \end{minipage}
+  \begin{minipage}[H]{\textwidth}
+  \begin{center}
+  \vspace{1cm}
+  \bf
+  {\Large Projektplan}\\
+  \vspace{3ex}
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.25\textwidth]{../woym.png}
+  \end{figure}
+  
+  \vfill
+  \end{center}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[H]{\textwidth}
+  \begin{center}
+  \sf
+  \begin{tabular}{l}
+  Tim Hansen \\
+  Joshua Hoffmann\\
+  Hassan Klait \\
+  Adrian Lück \\
+  Jurij Schmidt\\
+  Falko Schröder
+  \end{tabular}
+  \\ ~
+  \vspace{2cm}
+  \\
+  \it Version 0.9 \\ ~
+  \end{center}
+  \end{minipage}
+
+% Ende Titelseite
+
+% Start Leerseite
+
+\newpage
+
+  \thispagestyle{fancy}
+  \fancyhead{}
+  \fancyhead[LO,RE]{\swp{}\\ \semester{} 
+  \\Projektplan}
+  \fancyhead[LE,RO]{Seite \thepage\\\slshape \leftmark\\~}
+  \fancyfoot{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \tableofcontents
+
+\newpage
+
+  \fancyhead[LE,RO]{Seite \thepage\\\slshape \leftmark\\\slshape \rightmark}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Version und Änderungsgeschichte}
+
+\begin{tabular}{ccl}
+Version & Datum & Änderungen \\
+\hline
+0.9 & 24.10.2014 & Kapitel 1 bis auf 1.5 hinzugefügt. \\
+\end{tabular}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Einleitung}
+
+\subsection{Projektübersicht}
+
+\subsubsection{Ziele}
+
+Ziel des Projektes ist es, eine auf Java basierende Stundenplansoftware für die Ganztagsschule an der Oslebshauser Heerstraße in Bremen zu entwickeln, so dass diese die Stundenpläne nicht mehr per Hand anfertigen müssen. Die Software soll die Lehrer lediglich bei dem Prozess der Stundenplananfertigung unterstützen und diesen damit effektiver und effizienter machen, nicht aber die Stundenpläne automatisch erzeugen. \\
+Das System wird den Lehrern erlauben Lehrer, Klassen, Schulfächer und Räume zu erstellen, Stundenpläne für jeden Lehrer und jede Klasse anzeigen zu lassen und diesen Aktivitäten hinzuzufügen. \\
+Zu den unterstützenden Funktionen zählen z.B. Warnmeldungen, wenn das Stundenkontingent eines Lehrers überschritten wird oder ein Lehrer für denselben Zeitpunkt doppelt eingetragen werden soll. \\
+Die Software ist für die eher langfristige Planung der Stundenpläne für mehrere Monate gedacht, nicht für kurzfristige Veränderungen wie z.B. beim Entwerfen von Vertretungsplänen.
+
+\subsubsection{Hauptarbeitsaktivitäten und --produkte}
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline \textbf{Aktivität} & \textbf{Produkt}  \\ 
+\hline Erstellen des Projektplans & Projektplan \\ 
+\hline Erstellen der Anforderungsspezifikation & Anforderungsspezifikation \\
+\hline Erstellen der Architekturbeschreibung & Architekturbeschreibung \\
+\hline Erstellen des Testplans und der Blackboxtests & Testplan und Blackboxtests \\
+\hline Implementierung & Die Software gemäß der zuvor entworfenen Dokumente. \\
+\hline 
+\end{tabularx} 
+
+\clearpage
+\subsubsection{Haupt--Meilensteine und grober Zeitplan}
+
+\begin{tabularx}{\textwidth}{|p{5cm}|p{2cm}|X|}
+\hline \textbf{Meilenstein} & \textbf{Datum} & \textbf{Kriterien zur Erfüllung} \\
+\hline Projektplan fertiggestellt & 29.10.2014 & Alle Kapitel sind vollständig. \\
+\hline Anforderungsspezifikation fertiggestellt & 05.11.2014 & Die Anforderungsspezifikation enthält alle wichtigen im Kundengespräch erfahrenen Anforderungen. Die Anforderungsspezifikation ist inhaltlich zutreffend, vollständig, neutral und widerspruchsfrei, sowie leicht verständlich und präzise.\\
+\hline Architekturbeschreibung fertiggestellt & 12.10.2014 & Es wurde eine globale Analyse nach Hofmeister durchgeführt. Die Architektur ist gründlich und präzise dargelegt und aus konzeptioneller, Modul-, Daten- und Ausführungssicht dargestellt.   \\
+\hline Testplan und Blackboxtests fertiggestellt & 19.10.2014 & Der Testplan sowie alle darin aufgeführten Blackboxtests sind fertiggestellt.\\
+\hline Programmiertechnische Fertigstellung des Projektes & 25.01.2015 & Das Projekt erfüllt alle Mindestanforderungen, ist lauffähig und erreicht die im Testplan spezifizierten Testabdeckungen.\\
+\hline Endgültige Abgabe des Projektes & 08.02.2015 & Benutzerhandbuch, Architekturbeschreibung, Testprotokoll und kommentierter Quelltext mit maven-Build-Skript werden abgegeben. \\
+\hline
+\end{tabularx}
+
+\subsubsection{Kontaktdaten des Kunden}
+GTS Oslebshauser Heerstraße \\
+Oslebshauser Heerstraße 115\\
+28239 Bremen \\
+
+
+\subsection{Auszuliefernde Produkte}
+Die Software wird auf einem USB-Stick oder einer CD-Rom inkl. Installationsskript und Handbuch ausgeliefert. Das Handbuch wird dem Kunden zusätzlich in ausgedruckter Form übergeben. 
+
+\subsection{Evolution des Plans}
+Der Plan wird verändert und angepasst, wenn neue Risiken das Projekt bedrohen oder Probleme mit der Zeitplanung vorhanden sind, also beispielsweise ein Termin nicht eingehalten werden kann.
+
+\subsection{Referenzen}
+% mit \nocite kann man Literatur auflisten, die im Text nicht explizit
+% erwähnt ist. \nocite{*} zitiert dann das ganze .bib-File
+%
+% Die Bibliographie erzeugt man indem man erst
+%
+% pdflatex bericht.tex
+% bibtex bericht
+% pdflatex bericht.tex
+% pdflatex bericht.tex
+%
+% benutzt
+%\nocite{Knudsen1}
+%\nocite{*}
+%\bibliography{literatur}
+
+% Das renewcommand verhindert dass für die Literatur eine section* angelegt wird.
+% auftaucht
+{\renewcommand\section[2]{}
+\bibliography{referenzen}
+}
+
+\subsection{Definitionen und Akronyme}
+
+
+\section{Projektorganisation}
+\nurlangversion
+
+\subsection{Prozessmodell}
+\nurlangversion
+
+\subsection{Organisationsstruktur}
+\nurlangversion
+
+{\em Genaue Beschreibung der Rollen, Rechte und Pflichten!}
+
+{\em z.B. auch regelmäßiges Treffen im Chat, Einrichtung einer
+  Groupware oder eines Forums, o.ä. \dots}
+
+\subsection{Organisationsgrenzen und --schnittstellen}
+\nurlangversion
+
+{\em Hierher gehören auch evtl. Kontaktpersonen für Fremdbibliotheken u.ä.}
+
+\subsection{Verantwortlichkeiten}
+\nurlangversion
+
+\section{Managementprozess}
+
+\subsection{Managementprozess und --prioritäten}
+
+\subsection{Annahmen, Abhängigkeiten und Einschränkungen}
+
+\subsection{Risikomanagement}\label{riskmanagement}
+
+{\em Wenn Ihr Euch entschieden habt, bestimmte vorbeugende Maßnahmen 
+     durchzuführen, solltet Ihr dies deutlich kennzeichnen. Hoffentlich
+     haben diese Maßnahmen dann einen Einfluss auf Eintrittswahrscheinlichkeit oder Schadenshöhe (zum Beispiel
+     ist die Eintrittswahrscheinlichkeit von komplettem Datenverlust durch regelmäßige Backups deutlich 
+     geringer). Daher solltet Ihr für diese Fälle dann die verringerten Werte für Eintrittswahrscheinlichkeit, 
+     Schadenshöhe und Risikopotential zusätzlich angeben. }
+
+{\em Wie werden neue Risiken erkannt/erfasst? Wer ist für was
+  zuständig? Wie ist der Informationsfluss? \ldots 
+
+Dieser Teil ist ein
+  wichtiger Schwerpunkt des Projektplans und sollte daher ausführlich
+  behandelt werden.}
+
+\subsection{Projektüberwachung}\label{3.4-controlling}
+{\em Wie wird der Projektstatus verfolgt? Wie stellt Ihr sicher, dass
+  der Phasenleiter jederzeit über den Stand der Entwicklung informiert
+  ist? Wie werden Probleme bzw. Verzögerungen frühzeitig erkannt und
+  angegangen?}
+
+\subsection{Mitarbeiter}
+{\em Kompetenzen der und Anforderungen an die Mitarbeiter.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Technische Prozesse}
+\nurlangversion
+\subsection{Methoden, Werkzeuge und Techniken}
+\nurlangversion
+\subsubsection{Entwicklungsplattform}
+
+\subsubsection{Entwicklungsmethode}
+{\em Ist der Einsatz spezieller Methoden vorgesehen?}
+
+\subsubsection{Programmiersprache und Bibliotheken}
+
+\subsection{Dokumentationsplan}
+\nurlangversion
+
+\subsubsection{Codingstyle}
+
+\subsubsection{Kommentarsprache}
+
+\subsubsection{JavaDoc}
+
+\subsubsection{Begleitende Dokumentation}
+
+\subsection{Unterstützende Projektfunktionen}
+\nurlangversion
+{\em Wie wird Euer Konfigurationsmanagement funktionieren? Wer ist verantwortlich? Benötigt Ihr dazu Ressourcen oder Zeit? Plant Ihr Datensicherung?}
+
+{\em Gibt es Maßnahmen zur Qualitätssicherung? Wer ist zuständig?
+  Wieviel Zeit ist dafür vorgesehen?}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Arbeitspakete, Zeitplan und Budget}
+
+{\em Dieser Teil ist ein zweiter Schwerpunkt des Projektplans. Hier sollt Ihr die nächste Phase detailliert planen (siehe Arbeitspakete). Die weiteren Phasen sollen ebenfalls wenigstens grob geplant werden. Ein Gantt-Diagramm ist zwingend! 
+
+Ihr sollt den Plan in der kommenden Phase auch tatsächlich benutzen -- und so
+  Erfahrungen sammeln, was evtl. bei der Planung unberücksichtigt
+  blieb. Bei der nächsten Zeitplanung (für die nächste Phase) bekommt
+  Ihr dann evtl.\ eine noch bessere Planung hin.}
+
+\subsection{Arbeitspakete}\label{aps}
+
+
+{\em Besonderen Wert legen wir auf die Granularität der APs. Diese
+  sollten von 1-2 Personen in max. einer Woche Zeitdauer (kalendarisch, nicht
+  Aufwand) bearbeitbar sein. Die Beschreibungen sollten so genau sein,
+  dass der Bearbeiter damit genau weiß, was zu tun ist.}
+
+\subsection{Zeitplan und Abhängigkeiten}
+
+{\em Die Abhängigkeiten zwischen Arbeitspaketen oder Meilensteinen müssen genannt werden, sowie im
+  Gantt-Diagramm eingezeichnet werden. Der kritische Pfad soll
+  angegeben und/oder eingezeichnet werden!}
+
+\subsection{Ressourcenanforderung}
+
+{\em Jedem Arbeitspaket muss mind.\ ein Bearbeiter zugeordnet
+  werden. Die Zuordnung der ganzen Gruppe sollte nur in Ausnahmefällen
+  erfolgen -- und dann vermutlich begründet werden!}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sonstige Elemente}
+\nurlangversion
+\subsection{Pläne für die Konvertierung von Daten}
+\nurlangversion
+
+\subsection{Managementpläne für Unterauftragsnehmer}
+\nurlangversion
+{\em Wenn Fremdbibliotheken benutzt werden\dots}
+
+\subsection{Ausbildungspläne}
+\nurlangversion
+{\em Hierunter fallen z.B. auch interne Schulungen, die Ihr
+  durchführen wollt.}
+
+\subsection{Raumpläne}
+\nurlangversion
+\dots
+
+\subsection{Installationspläne}
+\nurlangversion
+\dots
+
+\subsection{Pläne für die Übergabe des Systems}
+\nurlangversion
+\dots
+
+\subsection{Beschaffungspläne für Hardware}
+\nurlangversion
+\dots
+
+
+\end{document}
