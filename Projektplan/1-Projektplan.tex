@@ -31,6 +31,8 @@
             citecolor=blue, urlcolor=blue, hyperfigures=true,
             pdftex=true]{hyperref}
 \usepackage{bookmark}
+\usepackage{enumitem}
+\usepackage{pdfpages}
 
 \newboolean{langversion} %Deklaration
 \setboolean{langversion}{true} %Zuweisung ist 'false' für Blockkurs
@@ -128,7 +130,7 @@
   \\ ~
   \vspace{2cm}
   \\
-  \it Version 0.9 \\ ~
+  \it Version 0.9.1 \\ ~
   \end{center}
   \end{minipage}
 
@@ -159,6 +161,7 @@
 Version & Datum & Änderungen \\
 \hline
 0.9 & 24.10.2014 & Kapitel 1 bis auf 1.5 hinzugefügt. \\
+0.9.1 & 27.10.2014 & Kapitel 5 inkl. (vorläufigem) Gantt-Diagramm und Kap. 6 hinzugefügt.\\
 \end{tabular}
 
 
@@ -169,7 +172,7 @@ Version & Datum & Änderungen \\
 
 \subsubsection{Ziele}
 
-Ziel des Projektes ist es, eine auf Java basierende Stundenplansoftware für die Ganztagsschule an der Oslebshauser Heerstraße in Bremen zu entwickeln, so dass diese die Stundenpläne nicht mehr per Hand anfertigen müssen. Die Software soll die Lehrer lediglich bei dem Prozess der Stundenplananfertigung unterstützen und diesen damit effektiver und effizienter machen, nicht aber die Stundenpläne automatisch erzeugen. \\
+Ziel des Projektes ist es, eine auf Java basierende Stundenplansoftware als lokale Webapplikation für die Ganztagsschule an der Oslebshauser Heerstraße in Bremen zu entwickeln, so dass diese die Stundenpläne nicht mehr per Hand anfertigen müssen. Die Software soll die Lehrer lediglich bei dem Prozess der Stundenplananfertigung unterstützen und diesen damit effektiver und effizienter machen, nicht aber die Stundenpläne automatisch erzeugen. \\
 Das System wird den Lehrern erlauben Lehrer, Klassen, Schulfächer und Räume zu erstellen, Stundenpläne für jeden Lehrer und jede Klasse anzeigen zu lassen und diesen Aktivitäten hinzuzufügen. \\
 Zu den unterstützenden Funktionen zählen z.B. Warnmeldungen, wenn das Stundenkontingent eines Lehrers überschritten wird oder ein Lehrer für denselben Zeitpunkt doppelt eingetragen werden soll. \\
 Die Software ist für die eher langfristige Planung der Stundenpläne für mehrere Monate gedacht, nicht für kurzfristige Veränderungen wie z.B. beim Entwerfen von Vertretungsplänen.
@@ -192,9 +195,9 @@ Die Software ist für die eher langfristige Planung der Stundenpläne für mehre
 \hline \textbf{Meilenstein} & \textbf{Datum} & \textbf{Kriterien zur Erfüllung} \\
 \hline Projektplan fertiggestellt & 29.10.2014 & Alle Kapitel sind vollständig. \\
 \hline Anforderungsspezifikation fertiggestellt & 05.11.2014 & Die Anforderungsspezifikation enthält alle wichtigen im Kundengespräch erfahrenen Anforderungen. Die Anforderungsspezifikation ist inhaltlich zutreffend, vollständig, neutral und widerspruchsfrei, sowie leicht verständlich und präzise.\\
-\hline Architekturbeschreibung fertiggestellt & 12.10.2014 & Es wurde eine globale Analyse nach Hofmeister durchgeführt. Die Architektur ist gründlich und präzise dargelegt und aus konzeptioneller, Modul-, Daten- und Ausführungssicht dargestellt.   \\
-\hline Testplan und Blackboxtests fertiggestellt & 19.10.2014 & Der Testplan sowie alle darin aufgeführten Blackboxtests sind fertiggestellt.\\
-\hline Programmiertechnische Fertigstellung des Projektes & 25.01.2015 & Das Projekt erfüllt alle Mindestanforderungen, ist lauffähig und erreicht die im Testplan spezifizierten Testabdeckungen.\\
+\hline Architekturbeschreibung fertiggestellt & 18.11.2014 & Es wurde eine globale Analyse nach Hofmeister durchgeführt. Die Architektur ist gründlich und präzise dargelegt und aus konzeptioneller, Modul-, Daten- und Ausführungssicht dargestellt.   \\
+\hline Testplan und Blackboxtests fertiggestellt & 29.11.2014 & Der Testplan sowie alle darin aufgeführten Blackboxtests sind fertiggestellt.\\
+\hline Programmiertechnische Fertigstellung des Projektes & 23.01.2015 & Das Projekt erfüllt alle Mindestanforderungen, ist lauffähig und erreicht die im Testplan spezifizierten Testabdeckungen.\\
 \hline Endgültige Abgabe des Projektes & 08.02.2015 & Benutzerhandbuch, Architekturbeschreibung, Testprotokoll und kommentierter Quelltext mit maven-Build-Skript werden abgegeben. \\
 \hline
 \end{tabularx}
@@ -209,7 +212,7 @@ Oslebshauser Heerstraße 115\\
 Die Software wird auf einem USB-Stick oder einer CD-Rom inkl. Installationsskript und Handbuch ausgeliefert. Das Handbuch wird dem Kunden zusätzlich in ausgedruckter Form übergeben. 
 
 \subsection{Evolution des Plans}
-Der Plan wird verändert und angepasst, wenn neue Risiken das Projekt bedrohen oder Probleme mit der Zeitplanung vorhanden sind, also beispielsweise ein Termin nicht eingehalten werden kann.
+Der Plan wird verändert und angepasst, wenn neue Risiken das Projekt bedrohen oder Probleme mit der Zeitplanung vorhanden sind, also beispielsweise ein Termin nicht eingehalten werden kann. Zudem wird immer die nächste folgende Projektphase im Projektplan detaillierter aufgenommen.
 
 \subsection{Referenzen}
 % mit \nocite kann man Literatur auflisten, die im Text nicht explizit
@@ -335,54 +338,112 @@ Ihr sollt den Plan in der kommenden Phase auch tatsächlich benutzen -- und so
 \subsection{Arbeitspakete}\label{aps}
 
 
-{\em Besonderen Wert legen wir auf die Granularität der APs. Diese
-  sollten von 1-2 Personen in max. einer Woche Zeitdauer (kalendarisch, nicht
-  Aufwand) bearbeitbar sein. Die Beschreibungen sollten so genau sein,
-  dass der Bearbeiter damit genau weiß, was zu tun ist.}
+\begin{enumerate}
+\item \textbf{Anforderungsspezifikation}
+	\begin{enumerate}[label={(\arabic*)}]
+	\item Analyse der Ist- und Soll-Situation
+	\item Entwicklung eines GUI-Prototypen
+	\item (Entwicklung von Personas)
+	\item Entwicklung eines Datenmodells
+	\item Festlegung und Beschreibung der Anwendungsfälle und Aktionen
+		\begin{enumerate}[label={(\arabic*)}]
+		\item Festlegung und Beschreibung der Personal betreffenden Anwendungsfälle und Aktionen
+		\item Festlegung und Beschreibung der Klassen betreffenden Anwendungsfälle und Aktionen
+		\item Festlegung und Beschreibung der Schulfächer betreffenden Anwendungsfälle und Aktionen
+		\item Festlegung und Beschreibung der Aktivitäten betreffenden Anwendungsfälle und Aktionen
+		\item Festlegung und Beschreibung sonstiger Anwendungsfälle und Aktionen
+		\end{enumerate}
+	\item Beschreibung der Softwaresystemattribute
+	\end{enumerate}	
+\item \textbf{Architekturbeschreibung}
+	\begin{enumerate}[label={(\arabic*)}]
+	\item Durchführung einer globalen Analyse nach Hofmeister
+	\item Definition der benötigten Schnittstellen, Klassen und Methoden
+	\item Erstellung der konzeptionellen Sicht
+	\item Erstellung der Modulsicht
+	\item Erstellung der Datensicht
+	\item Erstellung der Ausführungssicht
+	\item Darstellung von Zusammenhängen zwischen Architektur und Anwendungsfällen mittels UML-Diagrammen
+	\end{enumerate}
+\item \textbf{Testplan und JUnit Tests}
+		\begin{enumerate}[label={(\arabic*)}]
+		\item Erstellen des Testplans
+			\begin{enumerate}[label={(\arabic*)}]
+			\item Einführung in den Testplan
+			\item Systemüberblick
+			\item Auflistung zu testender und nicht zu testender Merkmale
+			\item Definition der Abnahme- und Testendkriterien
+			\item Definition der Vorgehensweise bei den Tests
+			\item Aufhebung und Wiederaufnahme der Tests
+			\item Beschreibung der Hardware- und Softwareanforderungen
+			\item Auflistung der Testfälle der Komponententests
+			\item Auflistung und Beschreibung der Testfälle der Integrationstests
+			\item Auflistung und Beschreibung der Testfälle der Funktionstests
+			\item Auflistung und Beschreibung der Testfälle der Leistungstests
+			\item Aufstellung eines Testzeitplans
+			\end{enumerate}
+		\item Erstellen der JUnit Blackbox-Tests
+		\end{enumerate}
+\item \textbf{Implementierung}
+		\begin{enumerate}[label={(\arabic*)}]
+		\item Implementierung der GUI
+		\item Implementierung der Persistenzschicht
+		\item Implementierung der Logik
+		\end{enumerate}	
+\end{enumerate}
 
 \subsection{Zeitplan und Abhängigkeiten}
-
-{\em Die Abhängigkeiten zwischen Arbeitspaketen oder Meilensteinen müssen genannt werden, sowie im
-  Gantt-Diagramm eingezeichnet werden. Der kritische Pfad soll
-  angegeben und/oder eingezeichnet werden!}
+\includepdf[pages=1-12, landscape]{gantt.pdf}
 
 \subsection{Ressourcenanforderung}
 
-{\em Jedem Arbeitspaket muss mind.\ ein Bearbeiter zugeordnet
-  werden. Die Zuordnung der ganzen Gruppe sollte nur in Ausnahmefällen
-  erfolgen -- und dann vermutlich begründet werden!}
+\begin{tabularx}{\textwidth}{|p{1cm}|p{5.5cm}|p{2cm}|X|}
+\hline \textbf{Nr.} &\textbf{Bezeichnung} & \textbf{Dauer} & \textbf{Mitarbeiter} \\
+\hline 		1.1 	& Analyse		                		&	2 Tage		&  \\
+\hline 		1.2 	& GUI-Prototyp                  		&	14 Tage		&  \\
+\hline 		1.3 	& Personas	                    		&   2 Tage      &  \\
+\hline 		1.4 	& Datenmodell	                		&   1 Tag       &  \\
+\hline 		1.5.1 	& Anwendungsfälle Personal      		&   3 Tag	    &  \\
+\hline 		1.5.2 	& Anwendungsfälle Klassen       		&   2 Tage      &  \\
+\hline 		1.5.3 	& Anwendungsfälle Schulfächer			&	2 Tage		&  \\
+\hline 		1.5.4 	& Anwendungsfälle Aktivitäten			&	5 Tage		&  \\
+\hline 		1.5.5	& sonstige Anwendungsfälle      		&	2 Tage		&  \\
+\hline 		1.6 	& Softwaresystemattribute       		&	2 Tage	    &  \\
+\hline		2.1		& Globale Analyse						&	4 Tage		&  \\
+\hline 		2.2		& Schnittstellen, Klassen u. Methoden 	& 	4 Tage		&  \\
+\hline 		2.3		& Konzeptionelle Sicht					& 	2 Tage		&  \\
+\hline		2.4		& Modulsicht							&   3 Tage		&  \\
+\hline 		2.5		& Datensicht							& 	2 Tage		&  \\
+\hline 		2.6		& Ausführungssicht						& 	3 Tage		&  \\
+\hline		2.7		& Architektur -- Anwendungsfälle		&	4 Tage		&	\\
+\hline		3.1.1	& Einführung Testplan					& $\frac{1}{2}$ Tag & \\
+\hline 		3.1.2	& Systemüberblick						&   1 Tag		&  \\
+\hline 		3.1.3	& Merkmale								&	1 Tag		&	\\
+\hline 		3.1.4	& Abnahme- und Testendkriterien			&	1 Tag		&	\\
+\hline 		3.1.5	& Vorgehensweise						&	1 Tag		&	\\
+\hline 		3.1.6	& Aufhebung und Wiederaufnahme			& $\frac{1}{2}$ Tag	&	\\
+\hline 		3.1.7	& Hardware- und Softwareanforderungen	&$\frac{1}{2}$ Tag	&	\\
+\hline
+\end{tabularx}\clearpage
 
+\begin{tabularx}{\textwidth}{|p{1cm}|p{5.5cm}|p{2cm}|X|}
+\hline 		3.1.8	& Testfälle Komponententests			&	1 Tag		&	\\
+\hline 		3.1.9	& Testfälle Integrationstests			&	4 Tage		&	\\
+\hline		3.1.10  & Testfälle Funktionstests				&	4 Tage		&	\\
+\hline 		3.1.11	& Testfälle Leistungstests				&	2 Tage		&	\\
+\hline 		3.1.12	& Testzeitplan							&	2 Tage		&	\\
+\hline 		3.2		& Blackbox-Tests						&	4 Tage		&	\\
+\hline 		4.1		& Implementierung GUI					&	55 Tage		&	\\
+\hline 		4.2		& Implementierung Persistenzschicht		&	55 Tage		&	\\
+\hline 		4.3		& Implementierung Logik					&	55 Tage		&	\\	
+\hline
+\end{tabularx}
+\clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sonstige Elemente}
-\nurlangversion
-\subsection{Pläne für die Konvertierung von Daten}
-\nurlangversion
-
-\subsection{Managementpläne für Unterauftragsnehmer}
-\nurlangversion
-{\em Wenn Fremdbibliotheken benutzt werden\dots}
-
-\subsection{Ausbildungspläne}
-\nurlangversion
-{\em Hierunter fallen z.B. auch interne Schulungen, die Ihr
-  durchführen wollt.}
-
-\subsection{Raumpläne}
-\nurlangversion
-\dots
 
 \subsection{Installationspläne}
-\nurlangversion
-\dots
-
-\subsection{Pläne für die Übergabe des Systems}
-\nurlangversion
-\dots
-
-\subsection{Beschaffungspläne für Hardware}
-\nurlangversion
-\dots
-
+Die Installation erfolgt mithilfe eines Installationsskripts, welches zunächst einen Tomcat-Server auf dem System und anschließend die mit maven gebaute Webapplikation installiert. Ein Shortcut zum Aufruf dieser wird auf dem Desktop angelegt. 
 
 \end{document}
