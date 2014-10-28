@@ -240,18 +240,52 @@ Der Plan wird verändert und angepasst, wenn neue Risiken das Projekt bedrohen o
 
 
 \section{Projektorganisation}
-\nurlangversion
 
 \subsection{Prozessmodell}
-\nurlangversion
+  \begin{figure}[H]
+  	\centering
+  	\includegraphics[width=1\textwidth]{../modell.png}
+  \end{figure}
+  
+  Innerhalb der Implementierung ist das Modell zu beachten, das in der Issue-Tracker-Software definiert wurde.\\
+  Jeder Arbeitsschritt wird hierbei von einer Person bearbeitet, eine Weitere überprüft den geschriebenen Quellcode noch einmal kritisch und danach wird eine Funktionalität in die laufende Version aufgenommen.\\
+  Es wird grundsätzlich mit eigenen Kopien des Projektes gearbeitet, erst nach einem erfolgreichen Review wird eine Funktionalität eingebunden.
+  \\[1\baselineskip]
+  Bei der Implementierung wird nach dem \textit{Test-First}-Prinzip gearbeitet.
+  
 
 \subsection{Organisationsstruktur}
-\nurlangversion
 
-{\em Genaue Beschreibung der Rollen, Rechte und Pflichten!}
+\subsubsection{Teamtreffen}
 
-{\em z.B. auch regelmäßiges Treffen im Chat, Einrichtung einer
-  Groupware oder eines Forums, o.ä. \dots}
+	Regelmäßige Teamtreffen sind für wöchentlich Mittwochs, 12:00Uhr MESZ im MZH der Universität geplant.\\
+
+\subsubsection{Services}
+	\textbf{Repository}\\ 
+	Das Hauptrepository ist auf \textbf{GitHub} gehostet.\\
+	\url{https://github.com/WOYM/timetable}
+	 \\[1\baselineskip]
+	 
+ 	\textbf{Team-Kommunikation}\\ 
+	Die Kommunkation erfolgt über den Dienst \textbf{Slack}.\\
+	Der dortige Channel \#general ist für allgemeine, projektbezogene Diskussionen gedacht, in den Channel \#coderelated wird Travis-CI bei Commits und Push/Pull-Requests im Repository posten. Dies dient zur Übersicht, die Diskussion von Commits, Push/Pull-Requests und Issues erfolgt zentral über den Issuetracker.\\
+ 	\url{https://woym.slack.com}
+ 	\\[1\baselineskip]
+	  
+	\textbf{Continous Integration}\\ 
+	Das Bauen des Projektes wird von \textbf{Travis CI} übernommen.\\
+	Der Dienst wird nach jedem Push/Pull-Request das Programm auf einer Ubuntu-VM durchbauen und alle JUnit-Tests laufen lassen. Bei einem Fehlschlag wird derjenige, dessen Commit zu dem Fehlschlag geführt hat per E-Mail benachrichtigt.\\
+	\url{https://travis-ci.org/WOYM/timetable}
+	\\[1\baselineskip]
+	
+	\textbf{Issue Tracker}\\ 
+	Die Features und Fehler des Programmes werden über den Issue Tracker \textbf{Waffle} koordiniert. Dies ist die wohl wichtigste Anlaufstelle während des Projektes.\\
+	Auf diesem Issue Tracker basiert der nachfolgend beschriebene Arbeitsprozess selbst.\\
+	\url{https://waffle.io/woym/timetable}
+	\\[1\baselineskip]
+  
+	
+	\textit{\textbf{Anmerkung:} Alle der oben genannten Dienste sind (mit Ausnahme von Slack) öffentlich zugänglich und einsehbar. Private (projektintern oder auf die Person bezogen) Daten sollten nur persönlich oder über Slack weitergegeben werden. Dies gilt auch für Datenbank-Passwörter, etc. Es sind bitte immer Versionen mit Passwörtern zu commiten, die so im Live-System niemals Verwendung finden werden.}
 
 \subsection{Organisationsgrenzen und --schnittstellen}
 \nurlangversion
