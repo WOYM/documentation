@@ -1,0 +1,430 @@
+\documentclass[fontsize=12pt,paper=a4,twoside]{scrartcl}
+
+\newcommand{\grad}{\ensuremath{^{\circ}} }
+\renewcommand{\strut}{\vrule width 0pt height5mm depth2mm}
+
+\usepackage[utf8]{inputenc}
+\usepackage[final]{pdfpages}
+% obere Seitenränder gestalten können
+\usepackage{fancyhdr}
+\usepackage{moreverb}
+% Graphiken als jpg, png etc. einbinden können
+\usepackage{graphicx}
+\usepackage{stmaryrd}
+% Floats Objekte mit [H] festsetzen
+\usepackage{float}
+% setzt URL's schön mit \url{http://bla.laber.com/~mypage}
+\usepackage{url}
+% Externe PDF's einbinden können
+\usepackage{pdflscape}
+% Verweise innerhalb des Dokuments schick mit " ... auf Seite ... "
+% automatisch versehen. Dazu \vref{labelname} benutzen
+\usepackage[ngerman]{varioref}
+\usepackage[ngerman]{babel}
+\usepackage{ngerman}
+% Bibliographie
+\usepackage{bibgerm}
+% Tabellen
+\usepackage{tabularx}
+\usepackage{supertabular}
+\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=blue,
+            citecolor=blue, urlcolor=blue, hyperfigures=true,
+            pdftex=true]{hyperref}
+\usepackage{bookmark}
+
+
+\newboolean{langversion} %Deklaration
+\setboolean{langversion}{true} %Zuweisung ist 'false' für Blockkurs
+\newcommand{\highlight}[1]{\textcolor{blue}{\textbf{#1}}}
+\newcommand{\nurlangversion}[0]{%
+\ifthenelse{\boolean{langversion}}{\highlight{Muss in SWP-2 ausgefüllt werden}}{\highlight{Entfällt in SWP-1}}}
+
+\newcommand{\swp}[0]{\ifthenelse{\boolean{langversion}}%
+{Software--Projekt 2}{Software--Projekt 1}}
+\newcommand{\jahr}[0]{2014}
+\newcommand{\semester}[0]{\ifthenelse{\boolean{langversion}}{WiSe}{SoSe}}
+
+% erstes Argument: SWP-2, zweites SWP-1
+\newcommand{\variante}[2]{\ifthenelse{\boolean{langversion}}{#1}{#2}}
+
+
+% Damit Latex nicht zu lange Zeilen produziert:
+\sloppy
+%Uneinheitlicher unterer Seitenrand:
+%\raggedbottom
+
+% Kein Erstzeileneinzug beim Absatzanfang
+% Sieht aber nur gut aus, wenn man zwischen Absätzen viel Platz einbaut
+\setlength{\parindent}{0ex}
+
+% Abstand zwischen zwei Absätzen
+\setlength{\parskip}{1ex}
+
+% Seitenränder für Korrekturen verändern
+\addtolength{\evensidemargin}{-1cm}
+\addtolength{\oddsidemargin}{1cm}
+
+\bibliographystyle{gerapali}
+
+% Lustige Header auf den Seiten
+  \pagestyle{fancy}
+  \setlength{\headheight}{70.55003pt}
+  \fancyhead{}
+  \fancyhead[LO,RE]{\swp{}\\ \jahr{}
+  \\Testplan}
+  \fancyhead[LE,RO]{Seite \thepage\\\slshape \leftmark\\\slshape \rightmark}
+
+%
+% Und jetzt geht das Dokument los....
+%
+
+\begin{document}
+
+% Lustige Header nur auf dieser Seite
+  \thispagestyle{fancy}
+  \fancyhead[LO,RE]{ }
+  \fancyhead[LE,RO]{Universität Bremen\\FB 3 -- Informatik\\
+  Prof. Dr. Rainer Koschke \\TutorIn: Karsten Hölscher}
+  \fancyfoot[C]{}
+
+% Start Titelseite
+  \vspace{3cm}
+
+  \begin{minipage}[H]{\textwidth}
+  \begin{center}
+  \bf
+  \Large
+  \swp{} \jahr{}\\
+  \smallskip
+  \small
+  VAK 03-BA-901.02\\
+  \vspace{3cm}
+  \end{center}
+  \end{minipage}
+  \begin{minipage}[H]{\textwidth}
+  \begin{center}
+  \vspace{1cm}
+  \bf
+  \Large Testplan\\
+  \vspace{3ex}
+   	  \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.25\textwidth]{../woym.png}
+      \end{figure}
+  \vfill
+  \end{center}
+  \end{minipage}
+  \vfill
+  \begin{minipage}[H]{\textwidth}
+  \begin{center}
+  \sf
+  \begin{tabular}{l}
+  Tim Hansen \\
+  Joshua Hoffmann\\
+  Hassan Klait \\
+  Adrian Lück \\
+  Jurij Schmidt\\
+  Falko Schröder
+  \end{tabular}
+  \\ ~
+  \vspace{2cm}
+  \\
+  \it Version 1.1\\ ~
+  \end{center}
+  \end{minipage}
+
+% Ende Titelseite
+
+% Start Leerseite
+
+\newpage
+
+  \thispagestyle{fancy}
+  \fancyhead{}
+  \fancyhead[LO,RE]{\swp{} \\  \semester{} \jahr{}
+  \\Testplan}
+  \fancyhead[LE,RO]{Seite \thepage\\\slshape \leftmark\\~}
+  \fancyfoot{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \tableofcontents
+
+\newpage
+
+  \fancyhead[LE,RO]{Seite \thepage\\\slshape \leftmark\\\slshape \rightmark}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Version und Änderungsgeschichte}
+
+{\em Die aktuelle Versionsnummer des Dokumentes sollte eindeutig und gut zu
+identifizieren sein, hier und optimalerweise auf dem Titelblatt.}
+
+\begin{tabular}{ccl}
+Version & Datum & Änderungen \\
+\hline
+1.0 & TT.MM.JJJJ & Dokumentvorlage als initiale Fassung kopiert \\
+1.1 & TT.MM.JJJJ & .... \\
+\end{tabular}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Einführung}\label{c01}
+
+\subsection{Zweck}
+\nurlangversion
+
+  {\em Was ist der Zweck dieses Testplans? Wer sind
+  die LeserInnen?}
+
+\subsection{Umfang}
+\nurlangversion
+
+\subsection{Beziehungen zu anderen Dokumenten}
+\nurlangversion
+
+
+\subsection{Aufbau der Testbezeichner}
+\label{sec:aufb-der-testb}
+
+\emph{Jeder Testfall muss einen eindeutigen Bezeichner haben. Der könnte
+hierarchisch aufgebaut sein. Hier wird dieses Namensschema einheitlich festgelegt.}
+
+%%
+%% Dokumentation der Testergebnisse 
+%%
+\subsection{Dokumentation der Testergebnisse}
+\nurlangversion
+
+{\em In welcher Form werden die Testergebnisse dokumentiert
+($\Rightarrow$ Testprotokoll)? Wie werden gefundene Fehler dokumentiert
+(Bugtracking)?}
+
+
+%%
+%% Definitionen und Referenzen 
+%%
+\subsection{Definitionen und Akronyme}
+\label{c00b}
+
+
+\subsection{Referenzen}
+
+\bibliographystyle{plain}
+\bibliography{literatur}
+
+
+% Systemüberblick
+\section{Systemüberblick}\label{c02}
+\nurlangversion
+
+{\em Dieser Abschnitt soll einen Überblick über das System geben, und
+  zwar insbesondere hinsichtlich jener Komponenten, die durch
+  Komponententests geprüft werden sollen. Dazu ist die richtige
+  Granularität der Komponenten wichtig (einzelne Klassen, ganze Pakete
+  oder Systeme etc.). Für den Integrationstest sind die Abhängigkeiten
+  der Komponenten voneinander von besonderer Wichtigkeit.}
+
+{\em Der Überblick sollte leicht verständlich sein und sich auf die
+  wesentlichen benötigten Informationen konzentrieren. Hier sind
+  evtl.\ auch Referenzen auf die Architekturbeschreibung angebracht.}
+
+{\em Es sollten die Hofmeister-Konzepte verwendet
+  werden.\ Benutzt am besten Diagramme aus der Architekturbeschreibung.}
+
+\emph{Dieser Abschnitt ist nicht einfach nur Copy\&Paste der
+  Architekturbeschreibung. Es gilt einerseits, Redundanzen soweit wie
+  möglich zu vermeiden, und andererseits, dieses Dokument so
+  selbsterklärend wie möglich zu machen.}
+
+\subsection{Module der Anwendungsschicht und deren Funktionen}
+\label{mod-controller}
+\nurlangversion
+
+{\em Hier solltet ihr dann die einzelnen Module aus Sicht des
+Tests weiter verfeinern. Auch wäre noch eine Grafik angebracht, die
+die Abhängigkeiten der Subsysteme/Module zeigt, sowie eine kurze
+Beschreibung dazu.}
+
+
+\clearpage
+
+\section{Merkmale}
+
+{\em Hier sollen die zu testenden Merkmale, aber auch die nicht zu
+  testenden Merkmale (mit Begründung) aufgelistet werden. Welche
+  Kombinationen von Merkmalen sind relevant?}
+
+\subsection{Zu testende Merkmale}\label{c04}
+
+
+
+\subsubsection{Funktionale Anforderungen} 
+
+{\em Welche sind besonders wichtig?}
+
+\subsection{Nicht zu testende Merkmale}\label{c05}
+
+% Abnahme- und Testkriterien
+\section{Abnahme- und Testendekriterien}\label{c07}
+
+{\em Wann wird das Testen beendet? Die angegebenen Kriterien müssen
+  objektiv prüfbar sein.}
+
+
+
+% Vorgehensweise
+\section{Vorgehensweise}\label{c06}
+
+\subsection{Komponenten- und Integrationstest}
+
+
+{\em Hier findet sich das konkrete Vorgehen bei der Integration: Welche
+  Klassen werden zunächst zusammen getestet, welche kommen dann hinzu?
+ Das kann man z.B.\ geeignet in Form eines Baumes aufzeigen.}
+
+
+\subsection{Funktionstest}
+
+
+
+\section{Aufhebung und Wiederaufnahme}\label{c08}
+
+
+\section{Hardware- und Softwareanforderungen}\label{c09}
+\nurlangversion
+
+{\em Hier soll das zu prüfende Material spezifiziert werden. Auf
+  welchen Rechnern werden die Tests durchgeführt? Welche anderen
+  Hilfsmittel oder Ressourcen sind dafür nötig?}
+
+\subsection{Hardware}
+
+\nurlangversion
+
+\subsection{Software}
+\nurlangversion
+
+% Testfälle
+\section{Testfälle}\label{c10}
+
+{\em Dies ist der wichtigste (und vermutlich umfangreichste) Teil des
+  Testplans. Hier wird genau aufgelistet, {\bf was wie} und {\bf von
+  wem} getestet wird. Das spätere Testen besteht dann einfach aus
+  einer Durchführung dieser Tests.}
+
+{\em Zu jedem Testfall muss es eine {\bf Testfallspezifikation}
+  geben (außer Komponententests, siehe unten). Schwerpunkt sollen
+  hier Integrations- und Leistungstests sein. Welche Arten von
+  Integrationstests und Leistungstests seht Ihr vor und wie wollt Ihr
+  diese genau ausgestalten?}
+
+\subsection{Komponententest}\label{c10-0}
+
+{\em Auf die genaue Spezifikation der Komponententests könnt Ihr
+  verzichten -- diese werden durch die JUnit-Testfälle gegeben. Uns
+  genügt hierzu eine Beschreibung, welche Komponenten/Klassen wie,
+  wann und durch wen getestet werden sollen. Die zugehörigen
+  JUnit-Tests werden separat abgegeben (Black-Box jetzt, White-Box
+  später bei der Abgabe der Implementierung) und müssen im Testplan
+  nicht als Code aufgeführt werden.}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{3cm}|p{3cm}|l|}
+\hline
+Klasse & Implementierer & Tester & Testart \\
+\hline
+ReferenceManagement & Klaus  & Hans    & Blackbox \\
+UserManagement      & Anna   & Klaus   & Blackbox \\
+\dots               & \dots  & \dots   & \dots \\
+ReferenceTable      & Heinz  & Bert    & Whitebox \\
+\hline
+\end{tabular}
+\caption{Komponententests}
+\label{tab:komponententests}
+\end{table}
+
+{\em Achtet darauf, dass der Tester ein anderer ist als der
+  Implementierer. Jeder soll mindestens eine Klasse als Black-Box und
+  eine Klasse als White-Box testen!}
+
+{\em Hier könnten später noch die Kontrollflussdiagramme für die
+  Whiteboxtests eingefügt werden.}
+
+\clearpage
+\subsection{Integrationstest}\label{c10a}
+
+{\em Die Integrationstests werden hier genauer beschrieben: Welche
+  Klassen sind beteiligt? Wie ist der Zustand des Systems vor Beginn?
+  Welche Eingaben werden getätigt? Welche Ergebnisse/welches Verhalten
+  wird erwartet?}
+
+{\em Aufbau einer Testfallspezifikation:
+\begin{enumerate}
+\item eindeutiger Testfallbezeichner (entspricht Namenskonvention aus Abschnitt~\ref{sec:aufb-der-testb})
+\item Testobjekte: welche Komponenten werden getestet?
+\item Eingabespezifikationen (Eingaben des Testfalls)
+\item Ausgabespezifikationen (erwartete Ausgaben)
+\item Umgebungserfordernisse (notwendige Software- und
+  Hardwareplattform sowie Testtreiber und -rümpfe)
+\item besondere prozedurale Anforderungen (Einschränkungen wie
+  Zeitvorgaben, Belastung oder Eingreifen durch den Operator)
+\item Abhängigkeiten zwischen Testfällen
+\end{enumerate}
+}
+
+\subsection{Funktionstest}\label{c10b}
+\nurlangversion
+
+\variante{}{\emph{Auch wenn dieser Teil in SWP-1 nicht gefordert ist,
+    so müsst Ihr Euch dennoch über den Funktionstest Gedanken machen
+    und ihn planen. In SWP-1 ist der Plan für den Funktionstest
+    letztlich nichts anderes als das Drehbuch Eurer
+    Abschlusspräsentation, die den Akzeptanztest darstellt.}}
+
+{\em Die Funktionstests basieren auf den Anwendungsfällen. Diese
+  müssen hier nun konkretisiert werden, um einen Testfall zu
+  erhalten. Es müssen also konkrete Werte für Ein- und Ausgabe
+  festgelegt werden. Auch das Verhalten im Fehlerfall sollte getestet
+  werden.}
+
+{\em Die Anwendungsfälle müssen nicht alle wiederholt werden. Sie
+  werden schließlich in der Anforderungsspezifikation
+  spezifiziert. Hier genügt eine tabellarische Auflistung aller zu
+  testenden Anwendungsfälle, deren konkrete Ein- und Ausgaben sowie
+  die Umsetzung (automatisiert oder manuell und falls manuell, durch
+  welche Art von Benutzer?). Insbesondere müsst Ihr an dieser Stelle
+  klären, welche Varianten von Anwendungsfällen getestet werden. Falls
+  Varianten oder gar ganze Anwendungsfälle nicht getestet werden
+  sollen, dann wird hier eine plausible Begründung erwartet.}
+
+
+\subsection{Leistungstest}\label{c10c}
+\nurlangversion
+
+{\em Die Leistungstests prüfen die Leistungsanforderungen, wie z.B.\ Reaktionszeiten, 
+das Verhalten unter extremen Bedingungen, bei großen Datenmengen etc\ldots}
+
+\subsubsection{Härtetest}
+\nurlangversion
+
+
+\subsubsection{Volumentest}
+\nurlangversion
+
+
+\subsubsection{Sicherheitstest}
+\nurlangversion
+
+\subsubsection{Erholungstest}
+\nurlangversion
+
+{\em Hier wird geprüft, ob sich das System von Fehlerzuständen auch wieder erholt.
+ Es werden also gezielt Fehler provoziert, um die Korrektheit der Systemreaktion herauszufinden.}
+
+
+\section{Testzeitplan}
+\label{sec:testzeitplan}
+\nurlangversion
+
+\end{document}
