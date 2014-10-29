@@ -160,8 +160,9 @@
 \begin{tabular}{ccl}
 Version & Datum & Änderungen \\
 \hline
-0.9 & 24.10.2014 & Kapitel 1 bis auf 1.5 hinzugefügt. \\
-0.9.1 & 27.10.2014 & Kapitel 5 inkl. (vorläufigem) Gantt-Diagramm und Kap. 6 hinzugefügt.\\
+0.9 & 24.10.2014 & Kapitel 1 bis auf 1.5 hinzugefügt\\
+0.9.1 & 27.10.2014 & Kapitel 5 inkl. (vorläufigem) Gantt-Diagramm und Kap. 6 hinzugefügt\\
+0.9.2 & 29.10.2014 & Arbeitsprozess angepasst\\
 \end{tabular}
 
 
@@ -287,17 +288,35 @@ Der Plan wird verändert und angepasst, wenn neue Risiken das Projekt bedrohen o
 	
 	\textit{\textbf{Anmerkung:} Alle der oben genannten Dienste sind (mit Ausnahme von Slack) öffentlich zugänglich und einsehbar. Private (projektintern oder auf die Person bezogen) Daten sollten nur persönlich oder über Slack weitergegeben werden. Dies gilt auch für Datenbank-Passwörter, etc. Es sind bitte immer Versionen mit Passwörtern zu commiten, die so im Live-System niemals Verwendung finden werden.}
 
-\subsection{Organisationsgrenzen und --schnittstellen}
-\nurlangversion
-
-{\em Hierher gehören auch evtl. Kontaktpersonen für Fremdbibliotheken u.ä.}
-
 \subsection{Verantwortlichkeiten}
-\nurlangversion
+	
+	\textit{\textbf{Anmerkung:} Benutzernamen}\\
+	
+	\textbf{Datenbank}\\
+	alueck\\
+	hklait\\
+	
+	\textbf{GUI}\\
+	tihansen\\
+	fa\_sc\\
+	
+	\textbf{Logik}\\
+	jur\_sch\\
+	joho\\
+	
+	\textbf{Management}\\
+	Das Management wird von allen Teammitgliedern zu gleichen Teilen bestimmt
+	
 
 \section{Managementprozess}
 
 \subsection{Managementprozess und --prioritäten}
+
+	Der Managementprozess basiert zum größten Teil auf der Struktur die im \textbf{Issue-Tracker} dargestellt wurde.\\
+	Danach teilt sich der Prozess immer in die Elemente \textit{Planung}, \textit{Bearbeitung} und \textit{Review/Test} auf.\\
+	Während der wöchentlichen Teamtreffen werden wichtige Punkte diskutiert und priorisiert.\\
+	Diese Punkte werden danach für die jeweilige folgende Woche als zu bearbeitende Aufgaben festgelegt und werden nach Priorität absteigend bearbeitet.\\
+	Kommunikation zu Problemen und Fehlern findet sofort über \textbf{Slack} statt, neue Ideen oder Baustellen die sich während der Implementierung auftun werden zunächst beim jeweiligen Treffen disktutiert.\\
 
 \subsection{Annahmen, Abhängigkeiten und Einschränkungen}
 
@@ -316,6 +335,38 @@ Der Plan wird verändert und angepasst, wenn neue Risiken das Projekt bedrohen o
 Dieser Teil ist ein
   wichtiger Schwerpunkt des Projektplans und sollte daher ausführlich
   behandelt werden.}
+  
+	\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+	\hline
+	\textbf{Risiko} & Wahrscheinlichkeit & Ausmaß \\
+	\hline
+	Verzögerung in der Implementierung & Mittel & Mittel \\
+	\hline
+	\multicolumn{3}{|p{12cm}|}{\textbf{Beschreibung}} \\
+	\hline
+	\multicolumn{3}{|p{12cm}|}{Es ist möglich, dass ein Feature unbekannte Probleme oder Fehler produziert, die den Zeitplan nach hinten verschieben können.} \\
+	\hline
+	\multicolumn{3}{|p{12cm}|}{\textbf{Maßnahmen}} \\
+	\hline
+	\multicolumn{3}{|p{12cm}|}{Ein zusätzlicher Puffer von zwei Wochen zum Ende der Bearbeitungszeit wurde eingerichtet, um eventuelle Verzögerungen aufzufangen.} \\
+	\hline
+	\end{tabular}
+  
+    \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+    \hline
+    \textbf{Risiko} & Wahrscheinlichkeit & Ausmaß \\
+    \hline
+    Ausfall Mitglied & Mittel & Groß \\
+    \hline
+    \multicolumn{3}{|p{12cm}|}{\textbf{Beschreibung}} \\
+    \hline
+    \multicolumn{3}{|p{12cm}|}{Ein Gruppenmitglied fällt aus irgendeinem Grund über einen längeren Zeitraum aus.} \\
+    \hline
+    \multicolumn{3}{|p{12cm}|}{\textbf{Maßnahmen}} \\
+    \hline
+    \multicolumn{3}{|p{12cm}|}{Die Arbeit muss auf Bei einem sehr langen Ausfall ist eine Anpassung der Anforderungen möglich.} \\
+    \hline
+    \end{tabular}
 
 \subsection{Projektüberwachung}\label{3.4-controlling}
 {\em Wie wird der Projektstatus verfolgt? Wie stellt Ihr sicher, dass
@@ -334,19 +385,44 @@ Dieser Teil ist ein
 \nurlangversion
 \subsubsection{Entwicklungsplattform}
 
+	\textbf{Spring-Tool-Suite} (STS)\\
+	Zur Entwicklung mit JSF wird die STS empfohlen.\\
+	\url{http://spring.io/tools/sts/all}
+
 \subsubsection{Entwicklungsmethode}
-{\em Ist der Einsatz spezieller Methoden vorgesehen?}
+
+	Test first.\\
 
 \subsubsection{Programmiersprache und Bibliotheken}
+
+	\textbf{Programmiersprache}\\
+	Java 7\\
+	\textbf{Plattform}\\
+	Plattformunabhängig\\
+	\textbf{Bibliotheken}
+	\begin{itemize}
+		\item JavaServerFaces 2.1
+		\item PrimeFaces 5.0
+		\item Log4J2
+	\end{itemize}
+	\textbf{Laufzeitumgebung}\\
+	Tomcat 7.0.X ServletContainer\\
 
 \subsection{Dokumentationsplan}
 \nurlangversion
 
 \subsubsection{Codingstyle}
+	Checkstyle-konform.\\
+	\textit{\textbf{Anmerkung:} Checkstyle-Konventionen können bei Teambesprechungen bei Bedarf diskutiert und angepasst werden}
 
 \subsubsection{Kommentarsprache}
 
+	Deutsch.\\
+
 \subsubsection{JavaDoc}
+
+	Deutsch.\\
+	Formatiert nach JavaDoc-Vorschrift, das bedeutet, dass JavaDoc-Texte zunächst Checkstyle-konform und außerdem unter Verwendung der von JavaDoc vorgebenen Strukturelemente formatiert sein müssen.
 
 \subsubsection{Begleitende Dokumentation}
 
