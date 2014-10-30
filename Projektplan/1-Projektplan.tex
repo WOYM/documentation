@@ -130,7 +130,7 @@
   \\ ~
   \vspace{2cm}
   \\
-  \it Version 0.9.1 \\ ~
+  \it Version 1.3 \\ ~
   \end{center}
   \end{minipage}
 
@@ -160,9 +160,10 @@
 \begin{tabular}{ccl}
 Version & Datum & Änderungen \\
 \hline
-0.9 & 24.10.2014 & Kapitel 1 bis auf 1.5 hinzugefügt\\
-0.9.1 & 27.10.2014 & Kapitel 5 inkl. (vorläufigem) Gantt-Diagramm und Kap. 6 hinzugefügt\\
-0.9.2 & 29.10.2014 & Arbeitsprozess angepasst\\
+1.0 & 24.10.2014 & \LaTeX-Vorlage kopiert. Kapitel 1 bis auf 1.5 hinzugefügt\\
+1.1 & 27.10.2014 & Kapitel 5 inkl. (vorläufigem) Gantt-Diagramm und Kap. 6 hinzugefügt\\
+1.2 & 29.10.2014 & Arbeitsprozess angepasst\\
+1.3 & 30.10.2014 & Arbeitspakete für Anforderungsspezifikation erweitert 
 \end{tabular}
 
 
@@ -451,19 +452,22 @@ Ihr sollt den Plan in der kommenden Phase auch tatsächlich benutzen -- und so
 \begin{enumerate}
 \item \textbf{Anforderungsspezifikation}
 	\begin{enumerate}[label={(\arabic*)}]
-	\item Analyse der Ist- und Soll-Situation
-	\item Entwicklung eines GUI-Prototypen
+	\item Einleitung
+	\item Analyse der Ist-Situation
 	\item (Entwicklung von Personas)
+	\item Beschreibung der Produktperspektive
+	\item Einschränkungen, Annahmen und Abhängigkeiten, Ausblick
 	\item Entwicklung eines Datenmodells
 	\item Festlegung und Beschreibung der Anwendungsfälle und Aktionen
 		\begin{enumerate}[label={(\arabic*)}]
 		\item Festlegung und Beschreibung der Personal betreffenden Anwendungsfälle und Aktionen
 		\item Festlegung und Beschreibung der Klassen betreffenden Anwendungsfälle und Aktionen
-		\item Festlegung und Beschreibung der Schulfächer betreffenden Anwendungsfälle und Aktionen
+		\item Festlegung und Beschreibung der Aktivitätstypen betreffenden Anwendungsfälle und Aktionen
 		\item Festlegung und Beschreibung der Aktivitäten betreffenden Anwendungsfälle und Aktionen
 		\item Festlegung und Beschreibung sonstiger Anwendungsfälle und Aktionen
 		\end{enumerate}
-	\item Beschreibung der Softwaresystemattribute
+	\item Beschreibung der Softwaresystemattribute	
+	\item Entwicklung eines GUI-Prototypen
 	\end{enumerate}	
 \item \textbf{Architekturbeschreibung}
 	\begin{enumerate}[label={(\arabic*)}]
@@ -509,16 +513,19 @@ Ihr sollt den Plan in der kommenden Phase auch tatsächlich benutzen -- und so
 
 \begin{tabularx}{\textwidth}{|p{1cm}|p{5.5cm}|p{2cm}|X|}
 \hline \textbf{Nr.} &\textbf{Bezeichnung} & \textbf{Dauer} & \textbf{Mitarbeiter} \\
-\hline 		1.1 	& Analyse		                		&	2 Tage		&  \\
-\hline 		1.2 	& GUI-Prototyp                  		&	14 Tage		&  \\
+\hline 		1.1		& Einleitung							&	1 Tag		& \\
+\hline 		1.2 	& Analyse		                		&	2 Tage		& Joshua\\
 \hline 		1.3 	& Personas	                    		&   2 Tage      &  \\
-\hline 		1.4 	& Datenmodell	                		&   1 Tag       &  \\
-\hline 		1.5.1 	& Anwendungsfälle Personal      		&   3 Tag	    &  \\
-\hline 		1.5.2 	& Anwendungsfälle Klassen       		&   2 Tage      &  \\
-\hline 		1.5.3 	& Anwendungsfälle Schulfächer			&	2 Tage		&  \\
-\hline 		1.5.4 	& Anwendungsfälle Aktivitäten			&	5 Tage		&  \\
-\hline 		1.5.5	& sonstige Anwendungsfälle      		&	2 Tage		&  \\
-\hline 		1.6 	& Softwaresystemattribute       		&	2 Tage	    &  \\
+\hline 		1.4		& Produktperspektive					&	1 Tag		& \\
+\hline 		1.5		& Einschränkungen, Annahmen und Abhängigkeiten, Ausblick & 2 Tage &\\
+\hline 		1.6 	& Datenmodell	                		&   1 Tag       & Tim\\
+\hline 		1.7.1 	& Anwendungsfälle Personal      		&   3 Tag	    & Adrian \\
+\hline 		1.7.2 	& Anwendungsfälle Klassen       		&   2 Tage      & Adrian \\
+\hline 		1.7.3 	& Anwendungsfälle Aktivitätstypen		&	2 Tage		&  \\
+\hline 		1.7.4 	& Anwendungsfälle Aktivitäten			&	5 Tage		&  \\
+\hline 		1.7.5	& sonstige Anwendungsfälle      		&	2 Tage		&  \\
+\hline 		1.8		& Softwaresystemattribute       		&	2 Tage	    &  \\
+\hline 		1.9 	& GUI-Prototyp                  		&	14 Tage		& Falko, Tim \\
 \hline		2.1		& Globale Analyse						&	4 Tage		&  \\
 \hline 		2.2		& Schnittstellen, Klassen u. Methoden 	& 	4 Tage		&  \\
 \hline 		2.3		& Konzeptionelle Sicht					& 	2 Tage		&  \\
