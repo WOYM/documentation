@@ -31,6 +31,7 @@
             citecolor=blue, urlcolor=blue, hyperfigures=true,
             pdftex=true]{hyperref}
 \usepackage{bookmark}
+\usepackage{enumitem}
 
 \newboolean{langversion} %Deklaration
 \setboolean{langversion}{true} %Zuweisung ist 'false' für Blockkurs
@@ -68,6 +69,9 @@
   \fancyhead[LO,RE]{\swp\\ \semester{}
   \\Anforderungsspezifikation}
   \fancyhead[LE,RO]{Seite \thepage\\\slshape \leftmark\\\slshape \rightmark}
+
+%Abstände zwischen Tabellenzeilen etwas erhöhen
+\renewcommand{\arraystretch}{1.2}
 
 %
 % Und jetzt geht das Dokument los....
@@ -124,7 +128,7 @@
   \\ ~
   \vspace{2cm}
   \\
-  \it Version 1.1\\ ~
+  \it Version 1.2\\ ~
   \end{center}
   \end{minipage}
 
@@ -151,12 +155,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Version und Änderungsgeschichte}
 
-\begin{tabular}{ccl}
+\begin{tabularx}{\textwidth}{ccX}
 Version & Datum & Änderungen \\
 \hline
-1.0 & 29.10.2014 & Projektplan als \LaTeX Vorlage kopiert. \\
+1.0 & 29.10.2014 & Anforderungsspezifikation als \LaTeX Vorlage kopiert. \\
 1.1 & 31.10.2014 & Julia Meyer als Persona für Anwendungsfälle hinzugefügt\\ 
-\end{tabular}
+1.2 & 01.11.2014 & Auflistung der Verwaltung von Klassen und Personal betreffenden Anwendungsfälle. Detaillierte Beschreibung des Anwendungsfalls \ref{subsubsec:KlasseHinzufuegen} (noch ohne Aktionen).
+\end{tabularx}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -313,7 +318,36 @@ der hier angegebenen Einschätzung gekommen seid}
   {\em Auflistung und kurze Beschreibung aller relevanten
   Anwendungsfälle. Dies soll einen Überblick über alle Anwendungsfälle
   geben, die in 3.2 detailliert beschrieben werden.}
+  
+\subsubsection{Verwaltung der Klassen betreffende Anwendungsfälle}
 
+\paragraph{Mehrere Klassen hinzufügen} Die Anwenderin kann in der Verwaltungs-Ansicht einen Dialog öffnen, um mehrere Klassen hinzuzufügen, sofern noch keine Klassen existieren. Dazu muss lediglich die Anzahl der zu generierenden Klassen für die jeweiligen Jahrgänge angegeben werden. Das System generiert daraus die Klassenbezeichnungen, die aus Jahrgang und Klein- bzw. Großbuchstabe bestehen.
+
+\paragraph{Klasse hinzufügen} Die Anwenderin kann in der Verwaltungs-Ansicht einzelne Klassen hinzufügen. Dazu wählt sie im entsprechenden Dialog den Jahrgang und den Bezeichner in Form eines Klein-/Großbuchstaben aus. Es können auch die Unterrichtsbedarfe der konkreten Klassen angepasst und allgemeine Bemerkungen angegeben werden.
+
+\paragraph{Klasse bearbeiten} Die Anwenderin kann eine bestehende Klasse bearbeiten. Alle Parameter lassen sich ändern.
+
+\paragraph{Klasse(n) löschen} Die Anwenderin kann eine oder mehrere Klassen löschen.
+
+\subsubsection{Verwaltung des Personals betreffende Anwendungsfälle}
+
+\paragraph{Hinzufügen einer Lehrerin}
+
+\paragraph{Hinzufügen einer pädagogischen Mitarbeiterin}
+
+\paragraph{Bearbeiten einer Lehrerin}
+
+\paragraph{Bearbeiten einer pädagogischen Mitarbeiterin}
+
+\paragraph{Löschen einer Lehrerin}
+
+\paragraph{Löschen einer pädagogischen Mitarbeiterin}
+
+\subsubsection{Verwaltung der Aktivitätstypen betreffende Anwendungsfälle}
+
+\subsubsection{Die Stundenplan-Erstellung betreffende Anwendungsfälle}
+
+\subsubsection{Sonstige Anwendungsfälle}
 
 \subsection{Charakteristika der Benutzer}
 
@@ -494,6 +528,102 @@ Sehr wichtig ist ihr, dass die Software übersichtlich und leicht verständlich 
     auf ungültige Eingaben reagiert?
   \end{enumerate}
   }
+\label{subsubsec:KlasseHinzufuegen}
+\subsubsection{Klasse hinzufügen}
+
+\textbf{Akteurin}
+\begin{itemize}
+\item Julia Meyer
+\end{itemize}
+\vspace{5pt}
+
+
+\textbf{Vorbedingungen}
+\begin{enumerate}
+\item Die Software wurde von Frau Meyer gestartet und sie befindet sich in der Verwaltungs-Ansicht (s. Abb. 1).
+\item Es wurden bereits Schulfächer hinzugefügt.
+\item Es sind Unterrichtsbedarfe für die jeweiligen Jahrgänge vorhanden.
+\item Es wurden bereits Räume hinzugefügt.
+\end{enumerate}
+\vspace{5pt}
+
+
+\textbf{Nichterfüllung von Vorbedingungen}
+\begin{itemize}
+\item Nichterfüllung von Vorbedingung 2 und 3: Es können keine Unterrichtsbedarfe angegeben werden.
+\item Nichterfüllung von Vorbedingung 3: Es können keine dem Jahrgang entsprechenden Unterrichtsbedarfe geladen werden. Eine individuelle Angabe von Unterrichtsbedarfen ist aber möglich, wenn Vorbedingung 2 erfüllt ist.
+\item Nichterfüllung von Vorbedingung 4: Es kann kein Klassenraum angegeben werden.
+\end{itemize}
+\vspace{5pt}
+
+
+\textbf{Abbildungen}
+\begin{figure}[H]
+\caption{Verwaltungsansicht}
+\includegraphics[width=0.75\textwidth]{mainpage_idea.png}
+\end{figure}
+\vspace{5pt}
+
+
+\textbf{Regulärer Ablauf}
+\begin{enumerate}
+\item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Menüpunkt ,,Klassen''.
+\item Daraufhin werden im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Klassen, sowie Buttons für das Hinzufügen, Bearbeiten und Löschen der Klassen angezeigt.
+\item Frau Meyer klickt auf den ,,Hinzufügen''-Button.
+\item Es öffnet sich ein modaler ,,Klasse hinzufügen''-Dialog.
+\item Frau Meyer wählt in einer Liste den vierten Jahrgang aus. 
+\item In einer zweiten Liste werden alle noch verfügbaren Bezeichner für diesen Jahrgang angezeigt.
+\item Frau Meyer wählt als Bezeichner ,,A''.
+\item Das System lädt die  Unterrichtsbedarfe für den vierten Jahrgang ($\rightarrow$ \texttt{Lade Unterrichtsbedarfe}) und stellt diese im Dialog dar.
+\item Frau Meyer möchten den optional anzugebenden Klassenraum auswählen. Sie wählt aus einem Drop-Down-Menü Raum ,,101 (Standort A)'' aus.
+\item Frau Meyer möchte die Unterrichtsbedarfe nicht anpassen.
+\item Frau Meyer klickt auf den ,,OK''-Button. $\rightarrow$ \texttt{Klasse hinzufügen}
+\item Das System erstellt die Klasse. 
+\item Das Dialogfenster wird geschlossen.
+\end{enumerate}
+\vspace{5pt}
+
+
+\textbf{Varianten}
+\begin{enumerate}
+\item zu 9: Frau Meyer gibt keinen Klassenraum an (weiter zu 9). 
+\item zu 10: Frau Meyer möchte die Unterrichtsbedarfe anpassen.
+	\begin{enumerate}[label={\arabic*.}]
+	\item Frau Meyer ändert in der Auflistung der Schulfächer mit ihren Unterrichtsbedarfen den Bedarf von Deutsch auf 2 Unterrichtsstunden (weiter zu 10).
+	\end{enumerate}
+\item zu 5-11: Frau Meyer klickt auf den ,,Abbrechen''-Button $\rightarrow$ \texttt{Öffne Abbrechen Bestätigungsdialog}
+	\begin{enumerate}[label={1\alph*.}]
+	\item Frau Meyer bestätigt das Abbrechen (weiter zu 12).
+	\item Frau Meyer lehnt das Abbrechen ab (zurück zu 5).
+	\end{enumerate}
+\end{enumerate}
+\vspace{5pt}
+
+
+\textbf{Nachbedingungen}
+\begin{itemize}
+\item Nach Ablauf ohne Variante 4.1a: Die Klasse wurde erfolgreich hinzugefügt.
+\item Nach Ablauf mit Variante 4.1a: Es wurde keine neue Klasse hinzugefügt.
+\end{itemize}
+\vspace{5pt}
+
+
+\textbf{Fehler-/Ausnahmefälle}
+\begin{enumerate}
+\item zu 6: Es sind keine freien Bezeichner mehr vorhanden. 
+	\begin{enumerate}[label={\arabic*.}]
+	\item Frau Meyer wird mit einem roten Hinweistext auf diesen Umstand hingewiesen (zurück zu 5).
+	\end{enumerate}
+\item zu Variante 2: Frau Meyer gibt für den Unterrichtsbedarf einen ungültigen Wert an.
+		\begin{enumerate}[label={\arabic*.}]
+		\item Sie wird umgehend durch ein rotes Highlighting des betreffenden Textfeldes darauf aufmerksam gemacht (zurück zu Variante 2).
+		\end{enumerate}
+\item zu 8: Es sind keine zu ladenden Unterrichtsbedarfe vorhanden (weiter zu 9).
+
+\end{enumerate}
+
+
+
 
 \subsection{Aktionen}
   {\em Hier sollten die gleichen Aktionen wie in den Anwendungsfällen
