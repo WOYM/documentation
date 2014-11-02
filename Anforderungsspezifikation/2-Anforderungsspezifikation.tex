@@ -128,7 +128,7 @@
   \\ ~
   \vspace{2cm}
   \\
-  \it Version 1.2\\ ~
+  \it Version 1.3\\ ~
   \end{center}
   \end{minipage}
 
@@ -160,23 +160,18 @@ Version & Datum & Änderungen \\
 \hline
 1.0 & 29.10.2014 & Anforderungsspezifikation als \LaTeX Vorlage kopiert. \\
 1.1 & 31.10.2014 & Julia Meyer als Persona für Anwendungsfälle hinzugefügt\\ 
-1.2 & 01.11.2014 & Auflistung der Verwaltung von Klassen und Personal betreffenden Anwendungsfälle. Detaillierte Beschreibung des Anwendungsfalls \ref{subsubsec:KlasseHinzufuegen} (noch ohne Aktionen).
+1.2 & 01.11.2014 & Auflistung der Verwaltung von Klassen und Personal betreffenden
+				   Anwendungsfälle. Detaillierte Beschreibung des Anwendungsfalls \ref{subsubsec:KlasseHinzufuegen} (noch ohne Aktionen).\\
+1.3 & 02.11.2014 & Kurzbeschreibung der Personal betreffenden Anwendungsfälle. Detaillierte
+				   Beschreibung der Anwendungsfälle \ref{subsubsec:KlasseBearbeiten} und \ref{subsubsec:KlasseLoeschen} (noch ohne Aktionen).\\
 \end{tabularx}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Einleitung}
-\nurlangversion
 
-{\em Dieses Dokument dient als Vorlage für Eure
-  Anforderungsspezifikation. Die Gliederung dieses
-  Dokuments ist an die Struktur des IEEE-Standards 830.1998 angelehnt,
-  weicht jedoch an einigen Stellen davon ab. Die Abweichungen sind
-  im weiteren Verlauf dieses Dokuments dokumentiert. Weitere detaillierte
-  Hinweise finden sich im IEEE-Standard 830.1998, der in Stud.IP      
-  beziehungsweise über die Uni-Bibliothek in digitaler Form verfügbar ist
-  \footnote{Bei \url{http://ieeexplore.ieee.org} im Suchfeld 'IEEE std    
-   830-1998' eingeben. Funktioniert nur innerhalb des Uni-Netzes.}.}
+\subsection{Vorbemerkung}
+Im folgenden wird für Personen des Personals die weibliche Form benutzt, da Frauen an der Grundschule die deutliche Mehrheit bilden. In jedem Fall sind aber auch männliche Lehrer angesprochen.
 
 \subsection{Zweck}
 \nurlangversion
@@ -321,7 +316,7 @@ der hier angegebenen Einschätzung gekommen seid}
   
 \subsubsection{Verwaltung der Klassen betreffende Anwendungsfälle}
 
-\paragraph{Mehrere Klassen hinzufügen} Die Anwenderin kann in der Verwaltungs-Ansicht einen Dialog öffnen, um mehrere Klassen hinzuzufügen, sofern noch keine Klassen existieren. Dazu muss lediglich die Anzahl der zu generierenden Klassen für die jeweiligen Jahrgänge angegeben werden. Das System generiert daraus die Klassenbezeichnungen, die aus Jahrgang und Klein- bzw. Großbuchstabe bestehen.
+%\paragraph{Mehrere Klassen hinzufügen} Die Anwenderin kann in der Verwaltungs-Ansicht einen Dialog öffnen, um mehrere Klassen hinzuzufügen, sofern noch keine Klassen existieren. Dazu muss lediglich die Anzahl der zu generierenden Klassen für die jeweiligen Jahrgänge angegeben werden. Das System generiert daraus die Klassenbezeichnungen, die aus Jahrgang und Klein- bzw. Großbuchstabe bestehen.
 
 \paragraph{Klasse hinzufügen} Die Anwenderin kann in der Verwaltungs-Ansicht einzelne Klassen hinzufügen. Dazu wählt sie im entsprechenden Dialog den Jahrgang und den Bezeichner in Form eines Klein-/Großbuchstaben aus. Es können auch die Unterrichtsbedarfe der konkreten Klassen angepasst und allgemeine Bemerkungen angegeben werden.
 
@@ -331,17 +326,23 @@ der hier angegebenen Einschätzung gekommen seid}
 
 \subsubsection{Verwaltung des Personals betreffende Anwendungsfälle}
 
-\paragraph{Hinzufügen einer Lehrerin}
+\paragraph{Lehrerin hinzufügen}
+Die Anwenderin kann in der Verwaltungsansicht Lehrerinnen hinzufügen. Dazu müssen mindestens Vorname, Nachname, Kürzel und Anzahl der Wochenstunden (in Unterrichtsstunden) angegeben werden. Zusätzlich können Zeitwünsche, Bemerkungen und anrechenbare Ersatzleistungen erfasst werden.
 
-\paragraph{Hinzufügen einer pädagogischen Mitarbeiterin}
+\paragraph{Lehrerin bearbeiten}
+Die Anwenderin kann alle Parameter einer bestehenden Lehrerin ändern.
 
-\paragraph{Bearbeiten einer Lehrerin}
+\paragraph{Lehrerin löschen}
+Die Anwenderin kann eine vorhandene Lehrerin löschen.
 
-\paragraph{Bearbeiten einer pädagogischen Mitarbeiterin}
+\paragraph{Pädagogische Mitarbeiterin hinzufügen}
+Die Anwenderin kann in der Verwaltungsansicht eine pädagogische Mitarbeiterin hinzufügen. Dazu müssen wie bei der Lehrerin mindestens Vorname, Nachname, Kürzel und Anzahl der Wochenstunden in Zeitstunden angegeben werden. Auch hier können zusätzlich Zeitwünsche, Bemerkungen und anrechenbare Ersatzleistungen erfasst werden.
 
-\paragraph{Löschen einer Lehrerin}
+\paragraph{Pädagogische Mitarbeiterin bearbeiten}
+Die Anwenderin kann alle Parameter einer bestehenden pädagogischen Mitarbeiterin ändern.
 
-\paragraph{Löschen einer pädagogischen Mitarbeiterin}
+\paragraph{Pädagogische Mitarbeiterin löschen}
+Die Anwenderin kann eine bestehende pädagogische Mitarbeiterin löschen.
 
 \subsubsection{Verwaltung der Aktivitätstypen betreffende Anwendungsfälle}
 
@@ -358,7 +359,7 @@ der hier angegebenen Einschätzung gekommen seid}
 \end{tabular} \\
 
 Frau Meyer ist Grundschullehrerin und unterrichtet hauptsächlich Deutsch, Englisch, Mathe und Musik. Schon früh hat sie sich für diesen Beruf entschieden und auch wenn die Kinder gelegentlich anstrengend sind, hat sie dennoch viel Spaß an ihrer Arbeit.\\
-Sie möchte als Hauptverantwortliche die Planung mit der neuen Stundenplansoftware übernehmen, die einige Studierende im Rahmen der Veranstaltung ,,Software-Projekt 2'' für ihre Schule entwickeln sollen, da sie gerne sehen möchte, wie dies von den Studierenden umgesetzt wurde und sie sich erhofft diesen hilfreiches Feedback geben zu können. Nicht zuletzt erhofft sie sich aber auch, dass die neue Software den Planungsprozess deutlich beschleunigt und den Personalbedarf für diesen verringert, so dass sie und ihre Kolleginnen sich stärker auf die Betreuung der Kinder fokussieren können.  \\
+Sie möchte als Hauptverantwortliche die Planung mit der neuen Stundenplansoftware übernehmen, die einige Studierende im Rahmen der Veranstaltung ,,Software-Projekt 2`` für ihre Schule entwickeln sollen, da sie gerne sehen möchte, wie dies von den Studierenden umgesetzt wurde und sie sich erhofft diesen hilfreiches Feedback geben zu können. Nicht zuletzt erhofft sie sich aber auch, dass die neue Software den Planungsprozess deutlich beschleunigt und den Personalbedarf für diesen verringert, so dass sie und ihre Kolleginnen sich stärker auf die Betreuung der Kinder fokussieren können.  \\
 Sehr wichtig ist ihr, dass die Software übersichtlich und leicht verständlich ist, denn selbst wenn man wie sie im Umgang mit PCs einigermaßen fit ist, gibt es doch nichts schlimmeres als eine chaotische Software. Da sie in Zukunft hauptverantwortlich für die Planung sein wird, hofft sie auch darauf, dass sie von der Software ausreichend unterstützt wird. Sie wünscht sich z.B. gewarnt zu werden, wenn bei der Planung das Wochenstundenkontingent einer Mitarbeiterin überschritten wird, wenn sie die Zeitwünsche einer Kollegin nicht beachtet hat oder wenn sie versucht eine Kollegin zur selben Zeit für zwei verschiedene Aktivitäten zuzuordnen. \\
 
 \subsection{Einschränkungen}
@@ -471,63 +472,19 @@ Sehr wichtig ist ihr, dass die Software übersichtlich und leicht verständlich 
 
 
 \subsection{Anwendungsfälle}
-  {\em Dieser Teil enthält die \textbf{funktionalen Anforderungen} an
-  das System. Diese werden durch Anwendungsfälle beschrieben. Insofern
-  müssen die Anwendungsfälle die Funktionalität des Systems
-  vollständig abdecken. Daher müssen auch Varianten von
-  Standard\-ab\-läufen sowie das Verhalten im Fehlerfall behandelt werden.
-  
-  In den Anwendungsfällen beschreibt Ihr, wie Eure Personas mit dem
-  System interagieren, wenn sie ein bestimmtes Ziel erreichen wollen.
-  Dabei sollte der Anwendungsfall zum Profil der Persona passen, also
-  eine typische Anwendung seiner Personengruppe sein. Ihr solltet die
-  Anwendungsfälle textuell beschreiben (im unten aufgeführten Schema)
-  und im Fall von komplexen Anwendungsfällen zusätzlich
-  Sequenzdiagramme verwenden, um durch graphische Darstellung das
-  Verständnis zu erleichtern.  Stellt sicher, dass die
-  Mindestanforderungen auf jeden Fall erfasst sind.  Weiterhin sollen
-  hier noch keine Implementierungsdetails festgelegt werden, um keine
-  Entwurfsentscheidungen vorwegzunehmen.
 
-  Verwendet die Screenshots oder digitalisierten Bilder Eures
-  Papierprototypen, um die Benutzungsführung in den Anwendungsfällen
-  zu illustrieren und die konkrete Benutzer\-oberfläche, die es zu
-  implementieren gilt, zu spezifizieren. Die Bilder sollten im Text an
-  der entsprechenden Stelle referenziert werden, um das Verständnis
-  für die Abläufe zu gewährleisten. Die Beschreibung muss so genau
-  sein, dass klar ist, wie welche Aktionen ausgelöst werden und was
-  das für Folgen hat (Beispiel: {\glqq}Benutzer startet die
-  Suche{\grqq} -- wie macht er das?  {\glqq}{\ldots}durch Drücken des
-  Buttons {\glq}Suche{\grq}{\grqq}). Die Spezifikation, die die
-  Navigation zwischen Screens und Dialogen beschreibt, nennt man
-  das Navigationsmodell. Es kann zum Beispiel in der Notation eines   
-  UML-Zustandsdiagrammes ausgedrückt werden, wobei jeder Screen/Dialog als
-  Zustand aufgefasst wird, Benutzerinteraktionen und sonstige Ereignisse
-  als Transitionen dargestellt werden.
-
-  Die Struktur der textuellen Beschreibung sollte sein:
-  \begin{enumerate}
-    \item eindeutiger Name des Anwendungsfalls mit eindeutiger Nummer
-    
-    \item Akteure: welche externen Instanzen interagieren mit
-    dem System in diesem Anwendungsfall?  
-    
-    \item Vorbedingungen: Ausgangszustand, der vor Beginn des
-    Anwendungsfalls gelten muss -- hier sollte auch das Ziel des Akteurs
-    genannt werden
-    
-    \item Regulärer Ablauf: Abfolge von Aktionen der Akteure und
-    Reaktionen des Systems
-    
-    \item Varianten: mögliche Abweichungen vom regulären Ablauf, z.B.\ 
-    Auslassen oder Wiederholen von Aktionen
-    
-    \item Nachbedingung: Endzustand und dann mögliche Folgeaktionen 
+\subsubsection{Anmerkungen zur Notation}
+Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung auf erster Ebene lediglich der Unterscheidung der Varianten bzw. Fehler- und Ausnahmefällen. Eine numerische Aufzählung auf zweiter oder höherer Ebene beschreibt einen chronologischen Ablauf und eine alphabetische Aufzählung auf zweiter oder höherer Ebene stellt Subvarianten dar.
   
-    \item Fehler-/Ausnahmefälle mit deren Nachbedingung; z.B.\ wie wird
-    auf ungültige Eingaben reagiert?
-  \end{enumerate}
-  }
+\subsubsection{Abbildungen}
+
+\begin{figure}[H]
+\caption{Verwaltungsansicht}
+\includegraphics[width=0.75\textwidth]{mainpage_idea.png}
+\end{figure}
+\vspace{5pt}
+
+
 \label{subsubsec:KlasseHinzufuegen}
 \subsubsection{Klasse hinzufügen}
 
@@ -556,28 +513,19 @@ Sehr wichtig ist ihr, dass die Software übersichtlich und leicht verständlich 
 \end{itemize}
 \vspace{5pt}
 
-
-\textbf{Abbildungen}
-\begin{figure}[H]
-\caption{Verwaltungsansicht}
-\includegraphics[width=0.75\textwidth]{mainpage_idea.png}
-\end{figure}
-\vspace{5pt}
-
-
 \textbf{Regulärer Ablauf}
 \begin{enumerate}
-\item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Menüpunkt ,,Klassen''.
+\item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Menüpunkt ,,Klassen``.
 \item Daraufhin werden im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Klassen, sowie Buttons für das Hinzufügen, Bearbeiten und Löschen der Klassen angezeigt.
-\item Frau Meyer klickt auf den ,,Hinzufügen''-Button.
-\item Es öffnet sich ein modaler ,,Klasse hinzufügen''-Dialog.
+\item Frau Meyer klickt auf den ,,Hinzufügen``-Button.
+\item Es öffnet sich ein modaler ,,Klasse hinzufügen``-Dialog.
 \item Frau Meyer wählt in einer Liste den vierten Jahrgang aus. 
 \item In einer zweiten Liste werden alle noch verfügbaren Bezeichner für diesen Jahrgang angezeigt.
-\item Frau Meyer wählt als Bezeichner ,,A''.
+\item Frau Meyer wählt als Bezeichner ,,A``.
 \item Das System lädt die  Unterrichtsbedarfe für den vierten Jahrgang ($\rightarrow$ \texttt{Lade Unterrichtsbedarfe}) und stellt diese im Dialog dar.
-\item Frau Meyer möchten den optional anzugebenden Klassenraum auswählen. Sie wählt aus einem Drop-Down-Menü Raum ,,101 (Standort A)'' aus.
+\item Frau Meyer möchten den optional anzugebenden Klassenraum auswählen. Sie wählt aus einem Drop-Down-Menü Raum ,,101 (Standort A)`` aus.
 \item Frau Meyer möchte die Unterrichtsbedarfe nicht anpassen.
-\item Frau Meyer klickt auf den ,,OK''-Button. $\rightarrow$ \texttt{Klasse hinzufügen}
+\item Frau Meyer klickt auf den ,,OK``-Button $\rightarrow$ \texttt{Klasse hinzufügen}.
 \item Das System erstellt die Klasse. 
 \item Das Dialogfenster wird geschlossen.
 \end{enumerate}
@@ -591,8 +539,8 @@ Sehr wichtig ist ihr, dass die Software übersichtlich und leicht verständlich 
 	\begin{enumerate}[label={\arabic*.}]
 	\item Frau Meyer ändert in der Auflistung der Schulfächer mit ihren Unterrichtsbedarfen den Bedarf von Deutsch auf 2 Unterrichtsstunden (weiter zu 10).
 	\end{enumerate}
-\item zu 5-11: Frau Meyer klickt auf den ,,Abbrechen''-Button $\rightarrow$ \texttt{Öffne Abbrechen Bestätigungsdialog}
-	\begin{enumerate}[label={1\alph*.}]
+\item zu 5-11: Frau Meyer klickt auf den ,,Abbrechen``-Button $\rightarrow$ \texttt{Öffne Abbrechen Bestätigungsdialog}
+	\begin{enumerate}[label={\alph*.}]
 	\item Frau Meyer bestätigt das Abbrechen (weiter zu 12).
 	\item Frau Meyer lehnt das Abbrechen ab (zurück zu 5).
 	\end{enumerate}
@@ -602,8 +550,8 @@ Sehr wichtig ist ihr, dass die Software übersichtlich und leicht verständlich 
 
 \textbf{Nachbedingungen}
 \begin{itemize}
-\item Nach Ablauf ohne Variante 4.1a: Die Klasse wurde erfolgreich hinzugefügt.
-\item Nach Ablauf mit Variante 4.1a: Es wurde keine neue Klasse hinzugefügt.
+\item Nach Ablauf ohne Variante 4a: Die Klasse wurde erfolgreich hinzugefügt.
+\item Nach Ablauf mit Variante 4a: Es wurde keine neue Klasse hinzugefügt.
 \end{itemize}
 \vspace{5pt}
 
@@ -622,8 +570,154 @@ Sehr wichtig ist ihr, dass die Software übersichtlich und leicht verständlich 
 
 \end{enumerate}
 
+\label{subsubsec:KlasseBearbeiten}
+\subsubsection{Klasse bearbeiten}
+
+\textbf{Akteurin}
+\begin{itemize}
+\item Julia Meyer
+\end{itemize}
+\vspace{5pt}
 
 
+\textbf{Vorbedingungen}
+\begin{enumerate}
+\item Die Software wurde von Frau Meyer gestartet und sie befindet sich in der Verwaltungs-Ansicht (s. Abb. 1).
+\item Es existiert mindestens eine Klasse mit Klassenraum und Unterrichtsbedarfen.
+\end{enumerate}
+\vspace{5pt}
+
+
+\textbf{Regulärer Ablauf}
+\begin{enumerate}
+\item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Eintrag ,,Klassen``.
+\item Daraufhin werden im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Klassen, sowie Buttons für das Hinzufügen, Bearbeiten und Löschen der Klassen angezeigt.
+\item In der Liste der vorhandenen Klassen klickt Frau Meyer auf den Eintrag ,,3A``.
+\item Frau Meyer klickt auf den Button ,,Bearbeiten`` $\rightarrow$\texttt{Öffne ,,Klasse bearbeiten``-Dialog}.
+\item Ein ,,Klasse bearbeiten``-Dialog öffnet sich. Alle entsprechenden Felder sind mit den Daten der Klasse gefüllt.
+\item Frau Meyer möchte weder den Jahrgang noch den Bezeichner der Klasse ändern.
+\item Frau Meyer ändert den Klassenraum auf Raum ,,102 (Standort A)``.
+\item Frau Meyer ändert den Unterrichtsbedarf von Mathe auf 2 Unterrichtsstunden.
+\item Frau Meyer klickt auf den ,,OK``-Button $\rightarrow$ \texttt{Klasse bearbeiten}.
+\item Die Änderungen werden vom System geprüft und übernommen.
+\item Das Dialogfenster wird geschlossen.
+\end{enumerate}
+\vspace{5pt}
+
+
+\textbf{Varianten}
+\begin{enumerate}
+\item zu 6: Frau Meyer wählt für den Jahrgang ,,4`` und als Bezeichner ,,A``.
+	\begin{enumerate}[label=\arabic*.]
+	\item Abweichungen der Unterrichtsbedarfe der vorherigen Klasse ,,3A`` zum vierten Jahrgang werden visualisiert. 
+		\begin{enumerate}[label=\alph*.]
+		\item Frau Meyer passt die Bedarfe entsprechend an. Falls die Bedarfe im Konflikt mit dem aktuellen Stundenplan der Klasse stehen, wird die Klasse im Warnfenster aufgelistet (weiter zu 7).
+		\item Frau Meyer passt die Bedarfe nicht an. Falls die Bedarfe im Konflikt mit dem aktuellen Stundenplan der Klasse stehen, wird die Klasse im Warnfenster aufgelistet (weiter zu 7).
+		\end{enumerate}
+	\end{enumerate}
+\item zu 7: Frau Meyer wählt das leere Feld im Drop-Down-Menü für den Klassenraum (kein Klassenraum).
+\item zu 6-9: Frau Meyer klickt auf den ,,Abbrechen``-Button $\rightarrow$ \texttt{Öffne Abbrechen Bestätigungsdialog}
+	\begin{enumerate}[label={\alph*.}]
+	\item Frau Meyer bestätigt das Abbrechen (weiter zu 11).
+	\item Frau Meyer lehnt das Abbrechen ab (zurück zu 6).
+	\end{enumerate}
+\end{enumerate}
+\vspace{5pt}
+
+
+\textbf{Nachbedingungen}
+\begin{itemize}
+\item Nach Ablauf ohne Variante 3.1a: Die Klasse wurde im System erfolgreich geändert.
+\item Nach Ablauf mit Variante 3.1a: Die Klasse bleibt unverändert.
+\end{itemize}
+\vspace{5pt}
+
+
+\textbf{Fehler-/Ausnahmefälle}
+\begin{enumerate}
+\item zu 5: Beim Laden der Daten tritt ein Fehler auf.
+	\begin{enumerate}[label=\arabic*.]
+	\item Frau Meyer wird durch einen Hinweis-Dialog darauf hingewiesen, dass sie es erneut versuchen soll und die Klasse ansonsten ggf. löschen muss (zurück zu 4).
+	\end{enumerate}
+\item zu 8: Frau Meyer gibt für den Unterrichtsbedarf einen ungültigen Wert an.
+		\begin{enumerate}[label={\arabic*.}]
+		\item Sie wird umgehend durch ein rotes Highlighting des betreffenden Textfeldes darauf aufmerksam gemacht (zurück zu 8).
+		\end{enumerate}
+\end{enumerate}
+
+\label{subsubsec:KlasseLoeschen}
+\subsubsection{Klasse(n) löschen}
+
+\textbf{Akteurin}
+\begin{itemize}
+\item Julia Meyer
+\end{itemize}
+\vspace{5pt}
+
+
+\textbf{Vorbedingungen}
+\begin{enumerate}
+\item Die Software wurde von Frau Meyer gestartet und sie befindet sich in der Verwaltungs-Ansicht (s. Abb. 1).
+\item Es existiert mindestens eine Klasse.
+\end{enumerate}
+\vspace{5pt}
+
+
+\textbf{Regulärer Ablauf}
+\begin{enumerate}
+\item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Eintrag ,,Klassen``.
+\item Daraufhin werden im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Klassen, sowie Buttons für das Hinzufügen, Bearbeiten und Löschen der Klassen angezeigt.
+\item In der Liste der vorhandenen Klassen klickt Frau Meyer auf den Eintrag ,,4A``.
+\item Frau Meyer klickt auf den ,,Löschen``-Button.
+\item Ein Bestätigungsdialog fordert Frau Meyer auf, das Löschen zu bestätigen.
+\item Frau Meyer bestätigt das Löschen $\rightarrow$ \texttt{Klasse löschen}.
+\item Der Dialog wird geschlossen.
+\item Die Klasse wird gelöscht. Alle Aktivitäten an denen nur diese Klasse beteiligt war, werden ebenfalls gelöscht. Bei allen anderen Aktivitäten an denen diese Klasse teilnahm, wird sie als Teilnehmer entfernt.
+\end{enumerate}
+\vspace{5pt}
+
+
+\textbf{Varianten}
+\begin{enumerate}
+\item zu 3: Frau Meyer wählt mehrere Einträge bei gedrückter Shift- oder STRG-Taste aus (weiter zu 4).
+\item zu 4: Frau Meyer drückt die Entfernen-Taste auf der Tastatur (weiter zu 5).
+\item zu 6: Frau Meyer lehnt das Löschen ab. 
+	\begin{enumerate}[label=\arabic*.]
+	\item Der Dialog wird geschlossen, die Klasse bleibt erhalten.
+	\end{enumerate}
+\end{enumerate}
+\vspace{5pt}
+
+
+\textbf{Nachbedingungen}
+\begin{itemize}
+\item Nach Ablauf mit Variante 3: Alle gewählten Klassen bleiben unverändert.
+\item Ansonsten: Die gewählten Klassen inkl. der Aktivitäten an denen keine weitere Klasse mehr teilnehmen würden, werden gelöscht. 
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Fehler-/Ausnahmefälle}
+\begin{enumerate}
+\item zu 8: Beim Löschen der Klasse tritt ein Fehler auf.
+	\begin{enumerate}[label=\arabic*.]
+	\item Frau Meyer wird angemessen auf den Fehler und Behebungsmöglichkeiten hingewiesen.
+	\end{enumerate}
+\end{enumerate}
+
+\label{subsubsec:LehrerinHinzufuegen}
+\subsubsection{Lehrerin hinzufügen}
+
+\label{subsubsec:LehrerinBearbeiten}
+\subsubsection{Lehrerin bearbeiten}
+
+\label{subsubsec:PaedMitarbeiterinHinzufuegen}
+\subsubsection{Pädagogische Mitarbeiterin hinzufügen}
+
+\label{subsubsec:PaedMitarbeiterinBearbeiten}
+\subsubsection{Pädagogische Mitarbeiterin bearbeiten}
+
+\label{subsubsec:PaedMitarbeiterinLoeschen}
+\subsubsection{Pädagogische Mitarbeiterin löschen}
 
 \subsection{Aktionen}
   {\em Hier sollten die gleichen Aktionen wie in den Anwendungsfällen
