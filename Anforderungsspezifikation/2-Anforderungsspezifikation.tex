@@ -32,6 +32,7 @@
             pdftex=true]{hyperref}
 \usepackage{bookmark}
 \usepackage{enumitem}
+\usepackage{color}
 
 \newboolean{langversion} %Deklaration
 \setboolean{langversion}{true} %Zuweisung ist 'false' für Blockkurs
@@ -128,7 +129,7 @@
   \\ ~
   \vspace{2cm}
   \\
-  \it Version 1.3\\ ~
+  \it Version 1.4\\ ~
   \end{center}
   \end{minipage}
 
@@ -164,6 +165,7 @@ Version & Datum & Änderungen \\
 				   Anwendungsfälle. Detaillierte Beschreibung des Anwendungsfalls \ref{subsubsec:KlasseHinzufuegen} (noch ohne Aktionen).\\
 1.3 & 02.11.2014 & Kurzbeschreibung der Personal betreffenden Anwendungsfälle. Detaillierte
 				   Beschreibung der Anwendungsfälle \ref{subsubsec:KlasseBearbeiten} und \ref{subsubsec:KlasseLoeschen} (noch ohne Aktionen).\\
+1.4 & 03.11.2014 & Anwendungsfälle \ref{subsubsec:LehrerinHinzufuegen}, \ref{subsubsec:LehrerinBearbeiten}, \ref{subsubsec:LehrerinLoeschen}, \ref{subsubsec:PaedMitarbeiterinHinzufuegen}, \ref{subsubsec:PaedMitarbeiterinBearbeiten} und \ref{subsubsec:PaedMitarbeiterinLoeschen} (noch ohne Aktionen) hinzugefügt.
 \end{tabularx}
 
 
@@ -188,12 +190,14 @@ Im folgenden wird für Personen des Personals die weibliche Form benutzt, da Fra
   Software verwendet werden?  (Ziele etc.)}
 
 \subsection{Definitionen, Akronyme und Abkürzungen}
-\nurlangversion
 
-  {\em Hier geht es vor allem um Begriffe aus der Anwendungsdomäne,
-  d.h.\ aus der Welt des Kunden. Aber auch Begriffe, die dem Kunden
-  evtl.\ fremd oder unklar sind, sollten erläutert werden.}
-
+\renewcommand{\arraystretch}{2}
+\begin{tabularx}{\textwidth}{Xp{1cm}p{9.5cm}}
+\textbf{Checkbox} & \\
+\textbf{GUI} & \\
+\textbf{Spinner} & \\
+\end{tabularx}
+\renewcommand{\arraystretch}{1.2}
 
 \subsection{Referenzen}
   {\em Neben sonstigen Quellen, die Ihr verwendet habt, können dies
@@ -485,9 +489,9 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 \vspace{5pt}
 
 
-\label{subsubsec:KlasseHinzufuegen}
-\subsubsection{Klasse hinzufügen}
 
+\subsubsection{Klasse hinzufügen}
+\label{subsubsec:KlasseHinzufuegen}
 \textbf{Akteurin}
 \begin{itemize}
 \item Julia Meyer
@@ -570,8 +574,9 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 
 \end{enumerate}
 
-\label{subsubsec:KlasseBearbeiten}
+
 \subsubsection{Klasse bearbeiten}
+\label{subsubsec:KlasseBearbeiten}
 
 \textbf{Akteurin}
 \begin{itemize}
@@ -645,8 +650,9 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 		\end{enumerate}
 \end{enumerate}
 
-\label{subsubsec:KlasseLoeschen}
+
 \subsubsection{Klasse(n) löschen}
+\label{subsubsec:KlasseLoeschen}
 
 \textbf{Akteurin}
 \begin{itemize}
@@ -683,7 +689,7 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 \item zu 4: Frau Meyer drückt die Entfernen-Taste auf der Tastatur (weiter zu 5).
 \item zu 6: Frau Meyer lehnt das Löschen ab. 
 	\begin{enumerate}[label=\arabic*.]
-	\item Der Dialog wird geschlossen, die Klasse bleibt erhalten.
+	\item Der Dialog wird geschlossen, die Klasse bleibt erhalten (Ende des Anwendungsfalls).
 	\end{enumerate}
 \end{enumerate}
 \vspace{5pt}
@@ -700,24 +706,250 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 \begin{enumerate}
 \item zu 8: Beim Löschen der Klasse tritt ein Fehler auf.
 	\begin{enumerate}[label=\arabic*.]
-	\item Frau Meyer wird angemessen auf den Fehler und Behebungsmöglichkeiten hingewiesen.
+	\item Frau Meyer wird angemessen auf den Fehler und Behebungsmöglichkeiten hingewiesen (zurück zu 3).
 	\end{enumerate}
 \end{enumerate}
 
-\label{subsubsec:LehrerinHinzufuegen}
+
 \subsubsection{Lehrerin hinzufügen}
+\label{subsubsec:LehrerinHinzufuegen}
+\textbf{Akteurin}
+\begin{itemize}
+\item Julia Meyer
+\end{itemize}
+\vspace{5pt}
 
-\label{subsubsec:LehrerinBearbeiten}
+
+\textbf{Vorbedingungen}
+\begin{enumerate}
+\item Die Software wurde von Frau Meyer gestartet und sie befindet sich in der Verwaltungs-Ansicht (s. Abb. 1).
+\item Es wurden bereits Schulfächer hinzugefügt.
+\item Es wurden bereits Klassen hinzugefügt.
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Nichterfüllung von Vorbedingungen}
+\begin{itemize}
+\item Nichterfüllung von Vorbedingung 2: Es können keine möglichen Stundeninhalte angegeben werden.
+\item Nichterfüllung von Vorbedingung 3: Die Lehrerin kann keiner Klasse zugeordnet werden.
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Regulärer Ablauf}
+\begin{enumerate}
+\item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Eintrag ,,Personal``.
+\item Im aufgeklappten Menü klickt sie auf den Eintrag ,,Lehrer``.
+\item Daraufhin werden im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Lehrer, sowie Buttons für das Hinzufügen, Bearbeiten und Löschen dieser angezeigt.
+\item Frau Meyer klickt auf den ,,Hinzufügen``-Button.
+\item Ein modaler ,,Lehrerin hinzufügen``-Dialog wird geöffnet.
+\item Frau Meyer trägt als Vornamen ,,Julia`` ein.
+\item Frau Meyer trägt als Nachnamen ,,Meyer`` ein.
+\item Frau Meyer trägt als Kürzel ,,MEY`` ein.
+\item Frau Meyer wählt für die Anzahl der Wochenstunden in Unterrichtsstunden mittels des entsprechenden Spinners 28 aus.
+\item Frau Meyer ordnet sich den Klassen ,,2A`` und ,,4A``.
+\item Frau Meyer wählt aus der Liste der möglichen Stundeninhalte Deutsch, Mathe, Englisch und Musik aus.
+\item Frau Meyer klickt auf die Option ,,Zeitwunsch hinzufügen``.
+\item Es öffnet sich ein weiterer Dialog, in welchem sie ihren Zeitwunsch angeben kann.
+\item Sie gibt an, dass sie montags ab 14 Uhr frei haben möchte und klickt den ,,OK``-Button $\rightarrow$ \texttt{Zeitwunsch erfassen}.
+\item Der Zeitwunsch wird erfasst und das Dialogfenster geschlossen.
+\item Frau Meyer hat keine weiteren Zeitwünsche.
+\item Frau Meyer klickt auf ,,Anrechenbare Ersatzleistung eintragen``.
+\item Es öffnet sich ein weiterer Dialog, in welchem sie die Ersatzleistung eintragen kann.
+\item Frau Meyer wählt als anzurechnende Wochenstunden mittels des entsprechenden Spinners 1 aus.
+\item Frau Meyer trägt als Bemerkung ,,Pendel`` ein.
+\item Frau Meyer klickt auf den ,,OK``-Button des Dialogfensters $\rightarrow$ \texttt{Anrechenbare Ersatzleistung erfassen}.
+\item Die anrechenbare Ersatzleistung wird erfasst und das Dialogfenster geschlossen.
+\item Frau Meyer möchte keine weiteren anrechenbaren Ersatzleistungen eintragen.
+\item Frau Meyer klickt auf den ,,OK``-Button des ,,Lehrerin hinzufügen``-Dialogs $\rightarrow$ \texttt{Lehrerin hinzufügen}.
+\item Die Lehrerin wird hinzugefügt.
+\item Das Dialogfenster wird geschlossen.
+\end{enumerate}
+\vspace{5pt}
+
+
+\textbf{Varianten}
+\fboxrule1mm
+\definecolor{rahmen}{cmyk}{.4,1,1,0}      % hellgruener Rahmen
+\begin{enumerate}
+\item \fcolorbox{rahmen}{white}{zu 10: Frau Meyer möchte sich dem ganzen dritten Jahrgang zuordnen.} [Muss noch besprochen werden, wie dies geschehen soll.]
+\item zu 11: Frau Meyer möchte keinen Zeitwunsch hinzufügen (weiter zu 16).
+\item zu 13: Frau Meyer klickt auf den ,,Abbrechen``-Button (weiter zu 15).
+\item zu 15: Frau Meyer hat einen weiteren Zeitwunsch (zurück zu 11).
+\item zu 16: Frau Meyer möchte keine anrechenbare Ersatzleistung eintragen (weiter zu 22).
+\item zu 19: Frau Meyer klickt auf den ,,Abbrechen``-Button (weiter zu 22).
+\item zu 22: Frau Meyer möchte eine weitere anrechenbare Ersatzleistung eintragen (zurück zu 16).
+\item zu 6-11, 16, 23: Frau Meyer klickt auf den ,,Abbrechen``-Button $\rightarrow$ \texttt{Öffne Abbrechen Bestätigungsdialog}.
+	\begin{enumerate}[label={\alph*.}]
+	\item Frau Meyer bestätigt das Abbrechen (weiter zu 25).
+	\item Frau Meyer lehnt das Abbrechen ab (zurück zu 6).
+	\end{enumerate}
+\end{enumerate}
+\vspace{5pt}
+
+
+\textbf{Nachbedingungen}
+\begin{itemize}
+\item Nach Ablauf mit Variante 7a: Es wurde keine neue Lehrerin hinzugefügt.
+\item Nach Ablauf ohne Variante 7a: Es wurde eine neue Lehrerin hinzugefügt.
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Fehler-/Ausnahmefälle}
+\begin{enumerate}
+\item zu 6-8: Frau Meyer gibt in eines der Textfelder einen ungültigen Wert ein, z.B. Zahlen in die Felder für die Namen oder ein schon vorhandenes Kürzel in das Feld für das Kürzel.
+	\begin{enumerate}[label=\arabic*.]
+	\item Frau Meyer wird umgehend durch ein rotes Highlighting des betreffenden Textfeldes auf den ungültigen Eintrag hingewiesen.
+	\end{enumerate}
+\end{enumerate}
+
+
+
 \subsubsection{Lehrerin bearbeiten}
+\label{subsubsec:LehrerinBearbeiten}
+\textbf{Akteurin}
+\begin{itemize}
+\item Julia Meyer
+\end{itemize}
+\vspace{5pt}
 
-\label{subsubsec:PaedMitarbeiterinHinzufuegen}
+
+\textbf{Vorbedingungen}
+\begin{enumerate}
+\item Die Software wurde von Frau Meyer gestartet und sie befindet sich in der Verwaltungs-Ansicht (s. Abb. 1).
+\item Es existiert mindestens eine Lehrerin.
+\end{enumerate}
+\vspace{5pt}
+
+
+\textbf{Regulärer Ablauf}
+\begin{enumerate}
+\item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Eintrag ,,Personal``.
+\item Im aufgeklappten Menü klickt sie auf den Eintrag ,,Lehrer``.
+\item Daraufhin werden im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Lehrer, sowie Buttons für das Hinzufügen, Bearbeiten und Löschen dieser angezeigt.
+\item Frau Meyer wählt den Eintrag ,,Meyer, Julia (MEY)`` aus der Liste der vorhandenen Lehrer.
+\item Frau Meyer klickt auf den ,,Bearbeiten``-Button $\rightarrow$ \texttt{Öffne ,,Lehrerin bearbeiten``-Dialog}.
+\item Ein ,,Lehrerin bearbeiten``-Dialog öffnet sich. Alle entsprechenden Felder sind mit den Daten der gewählten Lehrerin gefüllt.
+\item Frau Meyer möchte den Vornamen nicht ändern.
+\item Frau Meyer möchte den Nachnamen nicht ändern.
+\item Frau Meyer möchte das Kürzel nicht änden.
+\item Frau Meyer ändert die Anzahl der Wochenstunden auf 15.
+\item Frau Meyer möchte die betreuten Klassen nicht ändern.
+\item Frau Meyer möchte die möglichen Stundeninhalte nicht ändern.
+\item Frau Meyer möchte ihren zuvor eingetragenen Zeitwunsch (s.
+		\ref{subsubsec:LehrerinHinzufuegen}) löschen.
+\item Sie wählt die Checkbox hinter dem entsprechenden Zeitwunsch aus.
+\item Der Zeitwunsch wird zum Löschen vorgemerkt.
+\item Frau Meyer möchte keinen weiteren Zeitwunsch ändern.
+\item Frau Meyer möchte keine anrechenbare Ersatzleistung hinzufügen, ändern oder löschen.
+\item Frau Meyer klickt auf den ,,OK```-Button des ,,Lehrerin bearbeiten``-Dialogs $\rightarrow$ \texttt{Lehrerin bearbeiten}.
+\item Die Änderungen werden vom System übernommen und der Zeitwunsch endgültig gelöscht.
+\item Das Dialogfenster wird geschlossen.
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Varianten}
+\begin{enumerate}
+\item zu 7: Frau Meyer möchte den Vornamen ändern. Sie trägt den neuen Namen in das Vorname-Textfeld ein (weiter zu 8).
+\item zu 8: Frau Meyer möchte den Nachnamen ändern. Sie trägt den neuen Namen in das Nachname-Textfeld ein (weiter zu 9).
+\item zu 9: Frau Meyer möchte das Kürzel ändern. Sie trägt das neue Kürzel in das Kürzel-Textfeld ein (weiter zu 10).
+\item zu 10: Frau Meyer möchte die Anzahl der Wochenstunden nicht ändern (weiter zu 11).
+\item zu 11: Frau Meyer möchte die betreuten Klassen ändern. Die Auswahl der neuen Klassen erfolgt
+	analog zu Anwendungsfall \ref{subsubsec:LehrerinHinzufuegen}.
+\item zu 12: Frau Meyer möchte die möglichen Stundeninhalte ändern. Die Auswahl erfolgt analog zu Anwendungsfall \ref{subsubsec:LehrerinHinzufuegen}.
+\item zu 13: Frau Meyer möchte keinen Zeitwunsch hinzufügen, ändern oder löschen (weiter zu 15).
+\item zu 17: Frau Meyer möchte eine anrechenbare Ersatzleistung hinzufügen, ändern oder löschen. Hinzufügen analog zu Anwendungsfall \ref{subsubsec:LehrerinHinzufuegen}. Löschen analog zum Löschen eines Zeitwunsches.
+\item zu 7-18: Frau Meyer klickt auf den ,,Abbrechen``-Button $\rightarrow$ \texttt{Öffne Abbrechen Bestätigungsdialog}.
+	\begin{enumerate}[label={\alph*.}]
+	\item Frau Meyer bestätigt das Abbrechen (weiter zu 17).
+	\item Frau Meyer lehnt das Abbrechen ab (zurück zu 7).
+	\end{enumerate}
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Nachbedingungen}
+\begin{itemize}
+\item Nach Ablauf mit Variante 9a: Die gewählte Lehrerin bleibt unverändert.
+\item Nach Ablauf ohne Variante 9a: Die Parameter der gewählten Lehrerin wurden entsprechend der gemachten Eingaben geändert.
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Fehler-/Ausnahmefälle}
+\begin{enumerate}
+\item zu 10: Die Verringerung der Anzahl der Wochenstunden führt zu einer Überbelastung der Lehrerin. 
+	\begin{enumerate}[label=\arabic*.]
+	\item Frau Meyer wird entsprechend deutlich auf diesen Umstand hingewiesen.
+	\end{enumerate}
+\item zu Variante 1-3: Frau Meyer gibt in eines der Textfelder einen ungültigen Wert ein, z.B. Zahlen in die Felder für die Namen oder ein schon vorhandenes Kürzel in das Feld für das Kürzel.
+	\begin{enumerate}[label=\arabic*.]
+	\item Frau Meyer wird umgehend durch ein rotes Highlighting des betreffenden Textfeldes auf den ungültigen Eintrag hingewiesen.
+	\end{enumerate}
+\end{enumerate}
+
+\subsubsection{Lehrerin löschen}
+\label{subsubsec:LehrerinLoeschen}
+
+\textbf{Akteurin}
+\begin{itemize}
+\item Julia Meyer
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Vorbedingungen}
+\begin{enumerate}
+\item Die Software wurde von Frau Meyer gestartet und sie befindet sich in der Verwaltungs-Ansicht (s. Abb. 1).
+\item Es existiert mindestens eine Lehrerin.
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Regulärer Ablauf}
+\begin{enumerate}
+\item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Eintrag ,,Personal``.
+\item Im aufgeklappten Menü klickt sie auf den Eintrag ,,Lehrer``.
+\item Daraufhin werden im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Lehrer, sowie Buttons für das Hinzufügen, Bearbeiten und Löschen dieser angezeigt.
+\item Frau Meyer wählt den Eintrag ,,Meyer, Julia (MEY)`` aus.
+\item Frau Meyer klickt auf den ,,Löschen``-Button.
+\item Ein Bestätigungsdialog fordert Frau Meyer auf, das Löschen zu bestätigen.
+\item Frau Meyer bestätigt das Löschen $\rightarrow$ \texttt{Lehrerin löschen}.
+\item Der Dialog wird geschlossen.
+\item Die gewählte Lehrerin wird gelöscht. Alle Aktivitäten, an denen sonst kein Personal mehr teilnimmt werden ebenfalls gelöscht, bei allen anderen Aktivitäten wird die gewählte Lehrerin als Teilnehmerin ausgetragen.
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Varianten}
+\begin{enumerate}
+\item zu 4: Frau Meyer wählt mehrere Einträge bei gedrückter Shift- oder STRG-Taste aus (weiter zu 5).
+\item zu 5: Frau Meyer drückt die Entfernen-Taste auf der Tastatur (weiter zu 6).
+\item zu 7: Frau Meyer lehnt das Löschen ab. 
+	\begin{enumerate}[label=\arabic*.]
+	\item Der Dialog wird geschlossen, die Lehrerin bleibt erhalten (Ende des Anwendungsfalls).
+	\end{enumerate}
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Nachbedingungen}
+\vspace{5pt}
+
+\textbf{Fehler-/Ausnahmefälle}
+\begin{enumerate}
+\item zu 9: Beim Löschen der Lehrerin tritt ein Fehler auf.
+	\begin{enumerate}[label=\arabic*.]
+	\item Frau Meyer wird angemessen auf den Fehler und Behebungsmöglichkeiten hingewiesen (zurück zu 4).
+	\end{enumerate}
+\end{enumerate}
+
 \subsubsection{Pädagogische Mitarbeiterin hinzufügen}
+\label{subsubsec:PaedMitarbeiterinHinzufuegen}
+Analog zu Anwendungsfall \ref{subsubsec:LehrerinHinzufuegen}, wobei der Akteur in Schritt 2 nicht auf ,,Lehrer``, sondern ,,Päd. Mitarbeiter`` klickt. Außerdem werden die Wochenstunden in Zeitstunden angegeben und mögliche Stundeninhalte sind keine Schulfächer.
 
-\label{subsubsec:PaedMitarbeiterinBearbeiten}
+
 \subsubsection{Pädagogische Mitarbeiterin bearbeiten}
+\label{subsubsec:PaedMitarbeiterinBearbeiten}
+Analog zu Anwendungsfall \ref{subsubsec:LehrerinBearbeiten} mit in \ref{subsubsec:PaedMitarbeiterinHinzufuegen} genannten Abweichungen. Vorbedingung ist allerdings nicht, dass eine Lehrerin existiert, sondern eine päd. Mitarbeiterin.
+
 
 \label{subsubsec:PaedMitarbeiterinLoeschen}
 \subsubsection{Pädagogische Mitarbeiterin löschen}
+Analog zu Anwendungsfall \ref{subsubsec:LehrerinLoeschen}, wobei der Akteur in Schritt 2 nicht auf ,,Lehrer``, sondern ,,Päd. Mitarbeiter`` klickt und dementsprechend eine Liste von allen existierenden pädagogischen Mitarbeitern sieht. Vorbedingung ist auch hier nicht, dass eine Lehrerin existiert, sondern eine päd. Mitarbeiterin.
 
 \subsection{Aktionen}
   {\em Hier sollten die gleichen Aktionen wie in den Anwendungsfällen
