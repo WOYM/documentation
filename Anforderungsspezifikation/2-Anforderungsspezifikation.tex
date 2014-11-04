@@ -129,7 +129,7 @@
   \\ ~
   \vspace{2cm}
   \\
-  \it Version 1.4\\ ~
+  \it Version 1.2.3\\ ~
   \end{center}
   \end{minipage}
 
@@ -163,9 +163,10 @@ Version & Datum & Änderungen \\
 1.1 & 31.10.2014 & Julia Meyer als Persona für Anwendungsfälle hinzugefügt\\ 
 1.2 & 01.11.2014 & Auflistung der Verwaltung von Klassen und Personal betreffenden
 				   Anwendungsfälle. Detaillierte Beschreibung des Anwendungsfalls \ref{subsubsec:KlasseHinzufuegen} (noch ohne Aktionen).\\
-1.3 & 02.11.2014 & Kurzbeschreibung der Personal betreffenden Anwendungsfälle. Detaillierte
+1.2.1 & 02.11.2014 & Kurzbeschreibung der Personal betreffenden Anwendungsfälle. Detaillierte
 				   Beschreibung der Anwendungsfälle \ref{subsubsec:KlasseBearbeiten} und \ref{subsubsec:KlasseLoeschen} (noch ohne Aktionen).\\
-1.4 & 03.11.2014 & Anwendungsfälle \ref{subsubsec:LehrerinHinzufuegen}, \ref{subsubsec:LehrerinBearbeiten}, \ref{subsubsec:LehrerinLoeschen}, \ref{subsubsec:PaedMitarbeiterinHinzufuegen}, \ref{subsubsec:PaedMitarbeiterinBearbeiten} und \ref{subsubsec:PaedMitarbeiterinLoeschen} (noch ohne Aktionen) hinzugefügt.
+1.2.2 & 03.11.2014 & Anwendungsfälle \ref{subsubsec:LehrerinHinzufuegen}, \ref{subsubsec:LehrerinBearbeiten}, \ref{subsubsec:LehrerinLoeschen}, \ref{subsubsec:PaedMitarbeiterinHinzufuegen}, \ref{subsubsec:PaedMitarbeiterinBearbeiten} und \ref{subsubsec:PaedMitarbeiterinLoeschen} (noch ohne Aktionen) hinzugefügt.\\
+1.2.3 & 04.11.2014 & Klassen und Personal betreffende Aktionen hinzugefügt. Ggf. besteht noch Überarbeitungsbedarf. 
 \end{tabularx}
 
 
@@ -337,7 +338,7 @@ Die Anwenderin kann in der Verwaltungsansicht Lehrerinnen hinzufügen. Dazu müs
 Die Anwenderin kann alle Parameter einer bestehenden Lehrerin ändern.
 
 \paragraph{Lehrerin löschen}
-Die Anwenderin kann eine vorhandene Lehrerin löschen.
+Die Anwenderin kann eine oder mehrere vorhandene Lehrerinnen löschen.
 
 \paragraph{Pädagogische Mitarbeiterin hinzufügen}
 Die Anwenderin kann in der Verwaltungsansicht eine pädagogische Mitarbeiterin hinzufügen. Dazu müssen wie bei der Lehrerin mindestens Vorname, Nachname, Kürzel und Anzahl der Wochenstunden in Zeitstunden angegeben werden. Auch hier können zusätzlich Zeitwünsche, Bemerkungen und anrechenbare Ersatzleistungen erfasst werden.
@@ -346,7 +347,7 @@ Die Anwenderin kann in der Verwaltungsansicht eine pädagogische Mitarbeiterin h
 Die Anwenderin kann alle Parameter einer bestehenden pädagogischen Mitarbeiterin ändern.
 
 \paragraph{Pädagogische Mitarbeiterin löschen}
-Die Anwenderin kann eine bestehende pädagogische Mitarbeiterin löschen.
+Die Anwenderin kann eine oder mehrere bestehende pädagogische Mitarbeiterinnen löschen.
 
 \subsubsection{Verwaltung der Aktivitätstypen betreffende Anwendungsfälle}
 
@@ -541,6 +542,8 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 \item zu 9: Frau Meyer gibt keinen Klassenraum an (weiter zu 9). 
 \item zu 10: Frau Meyer möchte die Unterrichtsbedarfe anpassen.
 	\begin{enumerate}[label={\arabic*.}]
+	\item Frau Meyer aktiviert die Checkbox ,,Unterrichtsbedarfe anpassen``.
+	\item Die Unterrichtsbedarfe sind nun anpassbar.
 	\item Frau Meyer ändert in der Auflistung der Schulfächer mit ihren Unterrichtsbedarfen den Bedarf von Deutsch auf 2 Unterrichtsstunden (weiter zu 10).
 	\end{enumerate}
 \item zu 5-11: Frau Meyer klickt auf den ,,Abbrechen``-Button $\rightarrow$ \texttt{Öffne Abbrechen Bestätigungsdialog}
@@ -676,7 +679,7 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 \item In der Liste der vorhandenen Klassen klickt Frau Meyer auf den Eintrag ,,4A``.
 \item Frau Meyer klickt auf den ,,Löschen``-Button.
 \item Ein Bestätigungsdialog fordert Frau Meyer auf, das Löschen zu bestätigen.
-\item Frau Meyer bestätigt das Löschen $\rightarrow$ \texttt{Klasse löschen}.
+\item Frau Meyer bestätigt das Löschen $\rightarrow$ \texttt{Klasse(n) löschen}.
 \item Der Dialog wird geschlossen.
 \item Die Klasse wird gelöscht. Alle Aktivitäten an denen nur diese Klasse beteiligt war, werden ebenfalls gelöscht. Bei allen anderen Aktivitäten an denen diese Klasse teilnahm, wird sie als Teilnehmer entfernt.
 \end{enumerate}
@@ -768,10 +771,8 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 
 
 \textbf{Varianten}
-\fboxrule1mm
-\definecolor{rahmen}{cmyk}{.4,1,1,0}      % hellgruener Rahmen
 \begin{enumerate}
-\item \fcolorbox{rahmen}{white}{zu 10: Frau Meyer möchte sich dem ganzen dritten Jahrgang zuordnen.} [Muss noch besprochen werden, wie dies geschehen soll.]
+\item zu 10: Frau Meyer möchte sich dem ganzen dritten Jahrgang zuordnen.
 \item zu 11: Frau Meyer möchte keinen Zeitwunsch hinzufügen (weiter zu 16).
 \item zu 13: Frau Meyer klickt auf den ,,Abbrechen``-Button (weiter zu 15).
 \item zu 15: Frau Meyer hat einen weiteren Zeitwunsch (zurück zu 11).
@@ -939,51 +940,193 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 
 \subsubsection{Pädagogische Mitarbeiterin hinzufügen}
 \label{subsubsec:PaedMitarbeiterinHinzufuegen}
-Analog zu Anwendungsfall \ref{subsubsec:LehrerinHinzufuegen}, wobei der Akteur in Schritt 2 nicht auf ,,Lehrer``, sondern ,,Päd. Mitarbeiter`` klickt. Außerdem werden die Wochenstunden in Zeitstunden angegeben und mögliche Stundeninhalte sind keine Schulfächer.
+Entspricht Anwendungsfall \ref{subsubsec:LehrerinHinzufuegen}, wenn jedes Vorkommnis des Wortes ,,Lehrerin`` durch ,,Pädagogische Mitarbeiterin`` ersetzt wird. Außerdem werden die Wochenstunden in Zeitstunden angegeben und mögliche Stundeninhalte sind keine Schulfächer.
 
 
 \subsubsection{Pädagogische Mitarbeiterin bearbeiten}
 \label{subsubsec:PaedMitarbeiterinBearbeiten}
-Analog zu Anwendungsfall \ref{subsubsec:LehrerinBearbeiten} mit in \ref{subsubsec:PaedMitarbeiterinHinzufuegen} genannten Abweichungen. Vorbedingung ist allerdings nicht, dass eine Lehrerin existiert, sondern eine päd. Mitarbeiterin.
+Entspricht Anwendungsfall \ref{subsubsec:LehrerinBearbeiten} mit in \ref{subsubsec:PaedMitarbeiterinHinzufuegen} genannten Abweichungen. 
 
 
 \label{subsubsec:PaedMitarbeiterinLoeschen}
 \subsubsection{Pädagogische Mitarbeiterin löschen}
-Analog zu Anwendungsfall \ref{subsubsec:LehrerinLoeschen}, wobei der Akteur in Schritt 2 nicht auf ,,Lehrer``, sondern ,,Päd. Mitarbeiter`` klickt und dementsprechend eine Liste von allen existierenden pädagogischen Mitarbeitern sieht. Vorbedingung ist auch hier nicht, dass eine Lehrerin existiert, sondern eine päd. Mitarbeiterin.
+Entspricht Anwendungsfall \ref{subsubsec:LehrerinLoeschen}, wenn jedes Vorkommnis des Wortes ,,Lehrerin`` durch ,,Pädagogische Mitarbeiterin`` ersetzt wird. 
 
 \subsection{Aktionen}
-  {\em Hier sollten die gleichen Aktionen wie in den Anwendungsfällen
-  genannt und genauer beschrieben werden. Mit anderen Worten: Die
-  Anwendungsfälle müssen vollständig durch Ausführung von Aktionen aus
-  dieser Liste durchführbar sein. Im Prinzip muss es z.B.\ für jeden
-  Button/Menüpunkt/Link eine Aktion geben. Dabei ist zu beachten:
-  \begin{itemize}
-    \item Die Namen sollten sinnvoll und eindeutig sein.
 
-    \item Die Parameter der Aktionen sollen angegeben werden. Hier
-    sollen sprechende Namen verwendet werden. Eventuell müssen die
-    Parameter auch genauer erläutert werden.
+\subsubsection{Verwaltung der Klassen betreffende Aktionen}
 
-    \item Es müssen maximale Ausführungszeiten für jede Operation
-    angegeben werden.
-    
-  \item Die Gruppierung und Sortierung sollte sinnvoll sein
-    (z.B. alphabetisch).
-  \end{itemize}
+\paragraph{Lade Unterrichtsbedarfe}\mbox{}\\
 
-  Wenn Ihr z.B.\ irgendwo in Eurer GUI ein Suchfeld habt, in das Ihr
-  den Namen eines Kunden eintragen könnt, und einen Button, welcher die
-  Suche startet, dann wird es vermutlich eine Aktion {\bf Kunde
-    suchen(name)} geben. Dies ist eine Funktion, die Euer System
-  bereitstellt und die durch Anklicken des Buttons ausgelöst wird. Der
-  Anwendungsfall {\bf Kunde suchen} verwendet dann diese Aktion,
-  enthält aber zusätzlich die Beschreibung der Interaktion mit dem
-  System.
-  
-  Dieser Abschnitt ist im Standard im Prinzip vorgesehen, weil hierzu
-  grundsätzlich eine Aussage gemacht werden muss. Die Aktionen sind
-  letztlich die Produktfunktionen, während die Anwendungsfälle die
-  Interaktion zwischen Akteuren und System beschreiben. }
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Klasse}
+			\end{itemize}\\
+Aktion & Lädt die Unterrichtsbedarfe der übergebenen Klasse. Hat die spezifische Klasse keine eigenen definierten Unterrichtsbedarfe, werden die vom entsprechenden Jahrgang geladen.\\
+Max. Ausführungszeit & 1 Sek. 
+\end{tabularx}\\
+
+
+\paragraph{Klasse hinzufügen}\mbox{}\\
+
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Jahrgang}
+			\item \texttt{Bezeichner}
+			\item \texttt{Raum}
+			\item \texttt{Unterrichtsbedarfe}
+			\end{itemize}\\
+Aktion & Erzeugt eine neue Schulklasse mit den übergebenen Parameterwerten. Raum und Unterrichtsbedarfe sind optional. Wird kein Raum übergeben, hat die Klasse keinen zugeordneten Klassenraum, werden keine Unterrichtsbedarfe übergeben, werden die jahrgangsweiten verwendet.\\
+Max. Ausführungszeit & 1 Sek. 
+\end{tabularx}\\
+
+
+\paragraph{Öffne ,,Klasse bearbeiten``-Dialog}\mbox{}\\
+
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Klasse}
+			\end{itemize}\\
+Aktion & Ein ,,Klasse bearbeiten``-Dialog wird erzeugt, für die entsprechenden Textfelder und anderen GUI-Elemente werden die Parameterwerte der übergebenen Klasse geladen. Der Dialog wird dem Benutzer dann angezeigt.\\
+Max. Ausführungszeit & 1 Sek. 
+\end{tabularx}\\
+
+
+\paragraph{Klasse bearbeiten}\mbox{}\\
+
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Klasse}: Die zu bearbeitende Klasse.
+			\item \texttt{Jahrgang}: Der neue Jahrgang.
+			\item \texttt{Bezeichner}: Der neue Bezeichner.
+			\item \texttt{Raum}: Der neue Raum.
+			\item \texttt{Unterrichtsbedarfe}: Die neuen Unterrichtsbedarfe.
+			\end{itemize}\\
+Aktion & Die zu bearbeitende Klasse wird entsprechend der übergebenen Parameterwerte angepasst. \\
+Max. Ausführungszeit & 1 Sek. 
+\end{tabularx}\\
+
+
+\paragraph{Klasse(n) löschen}\mbox{}\\
+
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Liste von Klassen}: Liste der zu löschenden Klassen, diese kann auch leer sein oder nur ein Element enthalten.
+			\end{itemize}\\
+Aktion & Ist die Liste von Klassen leer, geschieht nichts. Ansonsten werden alle Klassen der Liste einzeln abgearbeitet. Es werden alle Aktivitäten einer jeden Klasse durchgegangen. Bei allen Aktivitäten, wo das Entfernen der entsprechenden Klasse zur Folge hätte, dass keine Klasse mehr an der Aktivität teilnehmen würde, wird die gesamte Aktivität aus dem System und der Datenbank gelöscht. Bei allen anderen Aktivitäten wird die Klasse als Teilnehmer entfernt und die Aktivitäten in der Datenbank aktualisiert. Alle weiteren Referenzen  auf die zu löschende Klasse (etwa bei einem Lehrer, der diese Klasse primär betreut) werden aufgelöst. \\
+Max. Ausführungszeit & 3 Sek. 
+\end{tabularx}\\
+
+
+\subsubsection{Verwaltung des Personals betreffende Aktionen}
+
+Die im folgenden aufgeführten Aktionen gelten mit kleinen Abweichungen ebenso für pädagogisches Personal. Wochenstunden werden für pädagogisches Personal in Zeitstunden erfasst und mögliche Stundeninhalte sind keine Schulfächer. Ansonsten muss in der Regel nur das Wort ,,Lehrerin`` durch pädagogische Mitarbeiterin ersetzt werden.
+
+\paragraph{Zeitwunsch erfassen}\mbox{}\\
+
+
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Tag}
+			\item \texttt{Startzeit}
+			\item \texttt{Endzeit}
+			\end{itemize}\\
+Aktion &  Mindestens einer der Parameter Tag, Start- und Endzeit muss einen Wert enthalten (Java: ungleich null sein). Folgende Konstellationen sind möglich:
+\begin{enumerate}
+ \item Wird nur ein Wert für den Tag übergeben, wird als Zeitwunsch erfasst, dass dieser ganze Tag frei sein sollte. 
+ \item Wird nur ein Wert für die Startzeit übergeben, wird als Zeitwunsch für alle Tage erfasst, dass ab dieser Zeit der ganzen weitere Tag frei sein sollte.
+ \item Wird nur ein Wert für die Endzeit übergeben, wird als Zeitwunsch für alle Tage erfasst, dass von Tagesbeginn bis zu der übergebenen Endzeit frei sein sollte.
+ \item Werden eine Start- und Endzeit aber kein Tag übergeben, wird als Zeitwunsch für für alle Tage erfasst, dass von der übergebenen Start- bis zur übergebenen Endzeit frei sein sollte.
+ \item Wird ein Wert für den Tag in Kombination mit einer Startzeit übergeben, gilt 2 für den speziellen Tag.
+ \item Wird ein Wert für den Tag in Kombination mit einer Endzeit übergeben, gilt 3 für den speziellen Tag.
+ \item Werden Werte für alle Parameter übergeben, gilt 4 für den speziellen Tag.
+ \end{enumerate}  \\
+Max. Ausführungszeit & 1 Sek. 
+\end{tabularx}\\
+
+
+\paragraph{Anrechenbare Ersatzleistung erfassen}\mbox{}\\
+
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Wochenstunden}: Die anzurechnenden Wochenstunden.
+			\item \texttt{Bemerkung}: Eine Bemerkung zu der anzurechnenden Ersatzleistung.
+			\end{itemize}\\
+Aktion & Die Anzahl der Wochenstunden werden zusammen mit der Bemerkung  zwischengespeichert.\\
+Max. Ausführungszeit & 0,1 Sek. 
+\end{tabularx}\\
+
+
+\paragraph{Lehrerin hinzufügen}\mbox{}\\
+
+\hypertarget{par:LehrerinHinzufuegen}{
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Vorname}
+			\item \texttt{Nachname}
+			\item \texttt{Kürzel}
+			\item \texttt{Wochenstunden} (in Unterrichtsstunden)
+			\item \texttt{Liste von Klassen}: Optional. Primär betreute Klassen, der zu erstellenden Lehrerin.
+			\item \texttt{Liste von Jahrgängen}: Optional. Primär betreute Jahrgänge, der zu erstellenden Lehrerin.
+			\item \texttt{Liste von Zeitwünschen}: Optional.
+			\item \texttt{Liste von anrechenbaren Ersatzleistungen}: Optional.
+			\item \texttt{Liste von möglichen Stundeninhalten}: Optional. Schulfächer und Projekte.
+			\end{itemize}\\
+Aktion &  So lange mindestens Vorname, Nachname, Kürzel und Wochenstunden gültige Werte besitzen, kann eine Lehrerin erzeugt und der Datenbank hinzugefügt werden. Gültige Werte sind ungleich \textbf{null}. Für Vorname und Nachname sind eine Folge von Buchstaben und ggf. enthaltene Bindestriche gültig und für die Wochenstunden eine natürliche Zahl. Das Kürzel sollte ungleich allen vorhandenen Kürzeln sein.  Bei ungültigen Werten wird ein Fehler geworfen. Alle anderen Parameter sind optional. Es wird geprüft, ob die Liste der Zeitwünsche und die Liste der anrechenbaren Ersatzleistungen möglicherweise im Konflikt mit der Wochenstundenzahl stehen, indem sie diese auf 0 oder kleinere Werte verringern. In diesem Fall wird ein Fehler geworfen.  \\
+Max. Ausführungszeit & 1 Sek. 
+\end{tabularx}}\\
+
+
+\paragraph{Öffne ,,Lehrerin bearbeiten``-Dialog}\mbox{}\\
+
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Lehrerin}
+			\end{itemize}\\
+Aktion & Ein ,,Lehrerin bearbeiten``-Dialog wird erzeugt, für die entsprechenden Textfelder und anderen GUI-Elemente werden die Parameterwerte der übergebenen Lehrerin geladen. Der Dialog wird dem Benutzer dann angezeigt.\\
+Max. Ausführungszeit & 1 Sek.
+\end{tabularx}\\
+
+\paragraph{Lehrerin bearbeiten}\mbox{}\\
+
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Lehrerin}
+			\item \texttt{Vorname}
+			\item \texttt{Nachname}
+			\item \texttt{Kürzel}
+			\item \texttt{Wochenstunden} (in Unterrichtsstunden)
+			\item \texttt{Liste von Klassen}: Optional. 
+			\item \texttt{Liste von Jahrgängen}: Optional. 
+			\item \texttt{Liste von Zeitwünschen}: Optional.
+			\item \texttt{Liste von anrechenbaren Ersatzleistungen}: Optional.
+			\item \texttt{Liste von möglichen Stundeninhalten}: Optional. Schulfächer und Projekte.
+			\end{itemize}\\
+Aktion & Diese Aktion ist im Grunde analog zur Aktion \hyperlink{par:LehrerinHinzufuegen}{Lehrerin hinzufügen}, hier wird lediglich eine Lehrerin übergeben für die neue Parameterwerte gesetzt werden sollen. Das übergebene Kürzel darf hier gleich dem der übergebenen Lehrerin sein.\\
+Max. Ausführungszeit & 1 Sek.
+\end{tabularx}\\
+
+\paragraph{Lehrerin löschen}\mbox{}\\
+
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Liste von Lehrerinnen}: Liste der zu löschenden Lehrerinnen. Diese kann auch leer sein oder nur ein Element enthalten.
+			\end{itemize}\\
+Aktion & Ist die Liste von Lehrerinnen leer, geschieht nichts. Ansonsten werden alle Lehrerinnen der Liste einzeln abgearbeitet. Es werden alle Aktivitäten einer jeden Lehrerin durchgegangen. Bei allen Aktivitäten, wo das Entfernen der entsprechenden Lehrerin zur Folge hätte, dass keine Lehrerin mehr an der Aktivität teilnehmen würde, wird die gesamte Aktivität aus dem System und der Datenbank gelöscht. Bei allen anderen Aktivitäten wird die Lehrerin als Teilnehmerin entfernt und die Aktivitäten in der Datenbank aktualisiert. \\
+Max. Ausführungszeit & 3 Sek. 
+\end{tabularx}\\
+
+\subsubsection{Systemweite Aktionen}
+
+\paragraph{Öffne Abbrechen Bestätigungsdialog}\mbox{}\\
+
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Quelle}: Das Dialogfenster, zu welchem der Bestätigungsdialog gehört.
+			\end{itemize}\\
+Aktion & Ein Bestätigungsdialog mit einem Text, der darauf hinweist, dass durch einen Abbruch alle Änderungen verloren gehen wird geöffnet. Bestätigt der Nutzer das Abbrechen, werden der Bestätigungsdialog und das zugehörige Dialogfenster geschlossen. Lehnt der Nutzer das Abbrechen ab, wird lediglich der Bestätigungsdialog geschlossen.\\
+Max. Ausführungszeit & 0,5 Sek. 
+\end{tabularx}\\
 
   
 \subsection{Entwurfseinschränkungen}
