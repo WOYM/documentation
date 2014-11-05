@@ -109,7 +109,7 @@
   \vspace{3ex}
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.25\textwidth]{../woym.png}
+%    \includegraphics[width=0.25\textwidth]{../woym.png}
     \end{figure}
   \vfill
   \end{center}
@@ -246,34 +246,40 @@ Im folgenden wird für Personen des Personals die weibliche Form benutzt, da Fra
 {\em Falls durchgeführt}
 
 \subsection{Produktperspektive}
-\nurlangversion
+
   
 \subsubsection{Systemschnittstellen}
-\nurlangversion
 
   {\em Schnittstellen zu anderen Systemen, z.B.\ Datenimport/-export,
   Konfigurationsdateien, anzubindende externe Dienste und deren Schnittstelle,
   Anbieten der eigenen Funktionalität als API o.ä.}
+
+
+Das Programm muss mit einer Schnittstelle zu einer leichtgewichtigen Datenbank ausgerüstet werden. Der Transport von Daten findet lediglich innerhalb des Programms und der eingebetteten Datenbank statt.
   
 
 \subsubsection{Benutzerschnittstelle}
-\nurlangversion
+
 
   {\em GUI-Design-Richtlinien und Interaktionsmechanismen (nicht
   Screenshots aller Dialoge --- die werden in Kapitel 3 gezeigt --- aber
   evtl.\ ein Screenshot, der einen groben Überblick und Eindruck des
   GUI-Designs gibt).}
 
+%TODO Falko Screenshot einfügen
+
 
 \subsubsection{Hardwareschnittstellen}
-\nurlangversion
+
 
   {\em Schnittstellen zu vorgegebenen Hardwarekomponenten (Name,
   Version).}
+
+Es sind keine Hardwareschnittstellen bekannt.
  
 
 \subsubsection{Softwareschnittstellen}
-\nurlangversion
+
 
 {\em Softwarebibliotheken und --rahmenwerke (Frameworks), die benutzt
   werden sollen, mit Versionsnummer, Hersteller, Quelle etc. Dazu
@@ -281,10 +287,12 @@ Im folgenden wird für Personen des Personals die weibliche Form benutzt, da Fra
 
   \begin{tabular}{|l|l|l|l|}\hline
     \textbf{Name} & \textbf{Version} & \textbf{Hersteller} & \textbf{Quelle} \\\hline
-    Java Runtime & 6 Update 37 & Oracle & \url{http://java.com} \\\hline
-    Hibernate & 4.3.0.Beta1 Release& JBoss Community &  
-   \url{http://www.hibernate.org/}\\\hline
-    \ldots & & & \\\hline
+    %TODO Falko Updates und Versionen einfügen
+    Java Runtime & 7 Update  & Oracle & \url{http://java.com} \\\hline
+    JSF Primefaces & 5.1 & PrimeTek &  
+   \url{http://www.primefaces.org/}\\\hline
+    Datenbank(welche?) & & & \\\hline
+    Spring & & Pivotal Software & \url{spring.io}\\\hline
   \end{tabular}
 
 \subsubsection{Kommunikationsschnittstellen}
@@ -293,6 +301,8 @@ Im folgenden wird für Personen des Personals die weibliche Form benutzt, da Fra
 {\em Anforderungen an und Bandbreite von Kommunikationsnetzwerken, öffentliche
   oder auch private IP-Adressen?}
 
+Das Programm benötigt keinerlei Kommunikation zu Kommunikationsnetzwerken, lediglich die Verbindung zum lokalen Server.
+
 \subsubsection{Speicherbeschränkung}
 \nurlangversion
 
@@ -300,18 +310,38 @@ Im folgenden wird für Personen des Personals die weibliche Form benutzt, da Fra
 der hier angegebenen Einschätzung gekommen seid}
 
 \subsubsection{Operationen (Betriebsmodi)}
-\nurlangversion
 
   {\em Welche Betriebsmodi gibt es? Warum? Welche Benutzerklasse darf
   was in welchem Betriebsmodus (Rechte)? Was ist der Zusammenhang
   zwischen Betriebsmodus und Sicherung/Wiederherstellung von Daten?}
 
+Es wird den Betriebsmodus zur Einsicht in erstellte Stundepläne benötigt. Hier wird lediglich Einsicht in den bereits vorhandenen Studenplan gegeben.
+Es gibt keine Konfigurationsmöglichkeiten in diesem Modus und daher ist in diesem Modus keine Datensicherung von Nöten.
+Jede Benutzergruppe kann diesen Modus ausführen.
+
+
+Es wird der Bearbeitungsmodus zur Erstellung der verschiedenen Stundenpläbe benötigt.
+Hier wird der Stundenplan bearbeitet und initial erstellt.
+Dieser Modus deckt einen großen Teil des Programms ab und es wird mehrere Konfigurationsmöglichkeiten geben, daher werden in diesem Modus im Hintergrund laufend BackUps erstellt.
+Außerdem kann in Schritten zurückgegangen werden, um vorher bestehende Stundenplankonfigurationen wiederaufzurufen.
+Es ist also nötig von jedem gemachten Schritt ein BackUp zu erstellen und temporär zu speichern.
+
+Es wird der Konfigurationsmodus zur initialen Einstellung für die Rahmenbedingung des Stundenplans benötigt.
+Dieser Modus deckt wichtige Bestandteile der Konfiguration des Stundenplanes ab, welche bei der Erstellung nicht mehr verändert werden können.
+Es gilt zu beachten, dass diese Einstellungen erst nach Abfrage geändert werden und dann inital mit Sicherung immer vorliegen, da ohne diese die aktuelle Bearbeitung hinfällig ist und zu Fehlern führen kann.
+
+
 \subsubsection{Möglichkeiten der lokalen Anpassung}
-\nurlangversion
+
 
   {\em Was kann bei Auslieferung des Systems alles konfiguriert
   werden? Z.B. Pfade, Datenbankname, Server-IP usw. Hier ist nicht
   Internationalisierung gemeint!}
+
+Bei der Auslieferung sind grundlegende Funktionen, welche zur Erstellung des Stundenplanes wichtig sind anpassbar.
+Weiterhin ist das Verzeichnis, in welchem der Stundenplan schlussendlich gespeichert werden soll anzupassen.
+Ausdrücklich nicht anpassbar wird die Server-IP sein.
+Dies dient dem Zweck zur Vorbeugung von Fehlern.
 
 
 \subsection{Anwendungsfälle}
