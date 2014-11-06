@@ -298,11 +298,11 @@ Es sind keine Hardwareschnittstellen bekannt.
   \begin{tabular}{|l|l|l|l|}\hline
     \textbf{Name} & \textbf{Version} & \textbf{Hersteller} & \textbf{Quelle} \\\hline
     %TODO Falko Updates und Versionen einfügen
-    Java Runtime & 7 Update  & Oracle & \url{http://java.com} \\\hline
+    Java Runtime & 7 Update  & Oracle & \url{http://www.java.com} \\\hline
     JSF Primefaces & 5.1 & PrimeTek &  
-   \url{http://www.primefaces.org/}\\\hline
-    Datenbank(welche?) & & & \\\hline
-    Spring & & Pivotal Software & \url{spring.io}\\\hline
+   \url{http://www.primefaces.org}\\\hline
+    Apache Derby & Derby 10.11.1.1 & Apache & \url{http://www.apache.org} \\\hline
+    Spring & & Pivotal Software & \url{http://www.spring.io}\\\hline
   \end{tabular}
 
 \subsubsection{Kommunikationsschnittstellen}
@@ -330,7 +330,7 @@ Es gibt keine Konfigurationsmöglichkeiten in diesem Modus und daher ist in dies
 Jede Benutzergruppe kann diesen Modus ausführen.
 
 
-Es wird der Bearbeitungsmodus zur Erstellung der verschiedenen Stundenpläbe benötigt.
+Es wird der Bearbeitungsmodus zur Erstellung der verschiedenen Stundenpläne benötigt.
 Hier wird der Stundenplan bearbeitet und initial erstellt.
 Dieser Modus deckt einen großen Teil des Programms ab und es wird mehrere Konfigurationsmöglichkeiten geben, daher werden in diesem Modus im Hintergrund laufend BackUps erstellt.
 Außerdem kann in Schritten zurückgegangen werden, um vorher bestehende Stundenplankonfigurationen wiederaufzurufen.
@@ -350,8 +350,6 @@ Es gilt zu beachten, dass diese Einstellungen erst nach Abfrage geändert werden
 
 Bei der Auslieferung sind grundlegende Funktionen, welche zur Erstellung des Stundenplanes wichtig sind anpassbar.
 Weiterhin ist das Verzeichnis, in welchem der Stundenplan schlussendlich gespeichert werden soll anzupassen.
-Ausdrücklich nicht anpassbar wird die Server-IP sein.
-Dies dient dem Zweck zur Vorbeugung von Fehlern.
 
 
 \subsection{Anwendungsfälle}
@@ -367,7 +365,7 @@ Dies dient dem Zweck zur Vorbeugung von Fehlern.
 
 \paragraph{Klasse bearbeiten} Die Anwenderin kann eine bestehende Klasse bearbeiten. Alle Parameter lassen sich ändern.
 
-\paragraph{Klasse(n) löschen} Die Anwenderin kann eine oder mehrere Klassen löschen.
+\paragraph{Klasse löschen} Die Anwenderin kann eine bestehende Klasse löschen.
 
 \subsubsection{Verwaltung des Personals betreffende Anwendungsfälle}
 
@@ -378,7 +376,7 @@ Die Anwenderin kann in der Verwaltungsansicht Lehrerinnen hinzufügen. Dazu müs
 Die Anwenderin kann alle Parameter einer bestehenden Lehrerin ändern.
 
 \paragraph{Lehrerin löschen}
-Die Anwenderin kann eine oder mehrere vorhandene Lehrerinnen löschen.
+Die Anwenderin kann eine vorhandene Lehrerin löschen.
 
 \paragraph{Pädagogische Mitarbeiterin hinzufügen}
 Die Anwenderin kann in der Verwaltungsansicht eine pädagogische Mitarbeiterin hinzufügen. Dazu müssen wie bei der Lehrerin mindestens Vorname, Nachname, Kürzel und Anzahl der Wochenstunden in Zeitstunden angegeben werden. Auch hier können zusätzlich Zeitwünsche, Bemerkungen und anrechenbare Ersatzleistungen erfasst werden.
@@ -387,7 +385,7 @@ Die Anwenderin kann in der Verwaltungsansicht eine pädagogische Mitarbeiterin h
 Die Anwenderin kann alle Parameter einer bestehenden pädagogischen Mitarbeiterin ändern.
 
 \paragraph{Pädagogische Mitarbeiterin löschen}
-Die Anwenderin kann eine oder mehrere bestehende pädagogische Mitarbeiterinnen löschen.
+Die Anwenderin kann eine bestehende pädagogische Mitarbeiterin löschen.
 
 \subsubsection{Verwaltung der Aktivitätstypen betreffende Anwendungsfälle}
 
@@ -398,16 +396,7 @@ Die Anwenderin kann Unterrichtsfächer hinzufügen.
 Die Anwenderin kann alle Parameter eines bestehenden Unterrichtsfaches ändern.
 
 \paragraph{Unterrichtsfach löschen}
-Die Anwenderin kann eine oder mehrere vorhandene Unterrichtsfächer löschen.
-
-\paragraph{Pause hinzufügen}
-Die Anwenderin kann Pausen hinzufügen.
-
-\paragraph{Pause bearbeiten}
-Die Anwenderin kann alle Parameter einer bestehenden Pause ändern.
-
-\paragraph{Pause löschen}
-Die Anwenderin kann eine oder mehrere vorhandene Pausen löschen.
+Die Anwenderin kann ein vorhandenes Unterrichtsfach löschen.
 
 \paragraph{Projekt hinzufügen}
 Die Anwenderin kann Projekte hinzufügen.
@@ -416,20 +405,18 @@ Die Anwenderin kann Projekte hinzufügen.
 Die Anwenderin kann alle Parameter eines bestehenden Projekts ändern.
 
 \paragraph{Projekt löschen}
-Die Anwenderin kann eine oder mehrere vorhandene Projekte löschen.
-
-\paragraph{Freie Zeit hinzufügen}
-Die Anwenderin kann freie Zeit hinzufügen.
-
-\paragraph{Freie Zeit bearbeiten}
-Die Anwenderin kann alle Parameter freier Zeit ändern.
-
-\paragraph{Freie Zeit löschen}
-Die Anwenderin kann eine oder mehrere vorhandene \glqq freie Zeit\grqq- Blöcke löschen.
+Die Anwenderin kann ein vorhandenes Projekt löschen.
 
 \subsubsection{Die Stundenplan-Erstellung betreffende Anwendungsfälle}
 
 \subsubsection{Sonstige Anwendungsfälle}
+
+\paragraph{Backup erzeugen}
+
+\paragraph{Backup wiederherstellen}
+
+\paragraph{Backupeinstellungen \"andern}
+
 
 \subsection{Charakteristika der Benutzer}
 
@@ -561,7 +548,7 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 
 \begin{figure}[H]
 \caption{Verwaltungsansicht}
-\includegraphics[width=0.75\textwidth]{mainpage_idea.png}
+\includegraphics[width=\textwidth]{verwaltungsansicht.png}
 \end{figure}
 \vspace{5pt}
 
@@ -597,8 +584,8 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 \textbf{Regulärer Ablauf}
 \begin{enumerate}
 \item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Menüpunkt ,,Klassen``.
-\item Daraufhin werden im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Klassen, sowie Buttons für das Hinzufügen, Bearbeiten und Löschen der Klassen angezeigt.
-\item Frau Meyer klickt auf den ,,Hinzufügen``-Button.
+\item Daraufhin wird im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Klassen angezeigt.
+\item Frau Meyer klickt auf den ,,Hinzuf\"ugen``-Button.
 \item Es öffnet sich ein modaler ,,Klasse hinzufügen``-Dialog.
 \item Frau Meyer wählt in einer Liste den vierten Jahrgang aus. 
 \item In einer zweiten Liste werden alle noch verfügbaren Bezeichner für diesen Jahrgang angezeigt.
@@ -615,16 +602,16 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 
 \textbf{Varianten}
 \begin{enumerate}
-\item zu 9: Frau Meyer gibt keinen Klassenraum an (weiter zu 9). 
+\item zu 9: Frau Meyer gibt keinen Klassenraum an (weiter zu 10). 
 \item zu 10: Frau Meyer möchte die Unterrichtsbedarfe anpassen.
 	\begin{enumerate}[label={\arabic*.}]
 	\item Frau Meyer aktiviert die Checkbox ,,Unterrichtsbedarfe anpassen``.
 	\item Die Unterrichtsbedarfe sind nun anpassbar.
-	\item Frau Meyer ändert in der Auflistung der Schulfächer mit ihren Unterrichtsbedarfen den Bedarf von Deutsch auf 2 Unterrichtsstunden (weiter zu 10).
+	\item Frau Meyer ändert in der Auflistung der Schulfächer mit ihren Unterrichtsbedarfen den Bedarf von Deutsch auf 2 Unterrichtsstunden (weiter zu 11).
 	\end{enumerate}
 \item zu 5-11: Frau Meyer klickt auf den ,,Abbrechen``-Button $\rightarrow$ \texttt{Öffne Abbrechen Bestätigungsdialog}
 	\begin{enumerate}[label={\alph*.}]
-	\item Frau Meyer bestätigt das Abbrechen (weiter zu 12).
+	\item Frau Meyer bestätigt das Abbrechen (weiter zu 13).
 	\item Frau Meyer lehnt das Abbrechen ab (zurück zu 5).
 	\end{enumerate}
 \end{enumerate}
@@ -675,9 +662,10 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 \textbf{Regulärer Ablauf}
 \begin{enumerate}
 \item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Eintrag ,,Klassen``.
-\item Daraufhin werden im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Klassen, sowie Buttons für das Hinzufügen, Bearbeiten und Löschen der Klassen angezeigt.
-\item In der Liste der vorhandenen Klassen klickt Frau Meyer auf den Eintrag ,,3A``.
-\item Frau Meyer klickt auf den Button ,,Bearbeiten`` $\rightarrow$\texttt{Öffne ,,Klasse bearbeiten``-Dialog}.
+\item Daraufhin wird im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Klassen angezeigt.
+\item In der Liste der vorhandenen Klassen f\"uhrt Frau Meyer einen Rechtsklick auf den Eintrag ,,3A`` aus.
+\item Es \"offnet sich ein Kontextmen\"u mit den Eintr\"agen ,,Bearbeiten``, ,,L\"oschen`` und ,,Stundenplan anzeigen``.
+\item Frau Meyer klickt auf den Eintrag ,,Bearbeiten`` $\rightarrow$\texttt{Öffne ,,Klasse bearbeiten``-Dialog}.
 \item Ein ,,Klasse bearbeiten``-Dialog öffnet sich. Alle entsprechenden Felder sind mit den Daten der Klasse gefüllt.
 \item Frau Meyer möchte weder den Jahrgang noch den Bezeichner der Klasse ändern.
 \item Frau Meyer ändert den Klassenraum auf Raum ,,102 (Standort A)``.
@@ -730,7 +718,7 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 \end{enumerate}
 
 
-\subsubsection{Klasse(n) löschen}
+\subsubsection{Klasse löschen}
 \label{subsubsec:KlasseLoeschen}
 
 \textbf{Akteurin}
@@ -751,9 +739,10 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 \textbf{Regulärer Ablauf}
 \begin{enumerate}
 \item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Eintrag ,,Klassen``.
-\item Daraufhin werden im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Klassen, sowie Buttons für das Hinzufügen, Bearbeiten und Löschen der Klassen angezeigt.
-\item In der Liste der vorhandenen Klassen klickt Frau Meyer auf den Eintrag ,,4A``.
-\item Frau Meyer klickt auf den ,,Löschen``-Button.
+\item Daraufhin wird im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Klassen angezeigt.
+\item In der Liste der vorhandenen Klassen f\"uhrt Frau Meyer einen Rechtsklick auf den Eintrag ,,3A`` aus.
+\item Es \"offnet sich ein Kontextmen\"u mit den Eintr\"agen ,,Bearbeiten``, ,,L\"oschen`` und ,,Stundenplan anzeigen``.
+\item Frau Meyer klickt auf den Eintrag ,,Löschen``.
 \item Ein Bestätigungsdialog fordert Frau Meyer auf, das Löschen zu bestätigen.
 \item Frau Meyer bestätigt das Löschen $\rightarrow$ \texttt{Klasse(n) löschen}.
 \item Der Dialog wird geschlossen.
@@ -764,9 +753,7 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 
 \textbf{Varianten}
 \begin{enumerate}
-\item zu 3: Frau Meyer wählt mehrere Einträge bei gedrückter Shift- oder STRG-Taste aus (weiter zu 4).
-\item zu 4: Frau Meyer drückt die Entfernen-Taste auf der Tastatur (weiter zu 5).
-\item zu 6: Frau Meyer lehnt das Löschen ab. 
+\item zu 7: Frau Meyer lehnt das Löschen ab. 
 	\begin{enumerate}[label=\arabic*.]
 	\item Der Dialog wird geschlossen, die Klasse bleibt erhalten (Ende des Anwendungsfalls).
 	\end{enumerate}
@@ -776,14 +763,14 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 
 \textbf{Nachbedingungen}
 \begin{itemize}
-\item Nach Ablauf mit Variante 3: Alle gewählten Klassen bleiben unverändert.
+\item Nach Ablauf mit Variante 1: Alle gewählten Klassen bleiben unverändert.
 \item Ansonsten: Die gewählten Klassen inkl. der Aktivitäten an denen keine weitere Klasse mehr teilnehmen würden, werden gelöscht. 
 \end{itemize}
 \vspace{5pt}
 
 \textbf{Fehler-/Ausnahmefälle}
 \begin{enumerate}
-\item zu 8: Beim Löschen der Klasse tritt ein Fehler auf.
+\item zu 9: Beim Löschen der Klasse tritt ein Fehler auf.
 	\begin{enumerate}[label=\arabic*.]
 	\item Frau Meyer wird angemessen auf den Fehler und Behebungsmöglichkeiten hingewiesen (zurück zu 3).
 	\end{enumerate}
@@ -816,22 +803,16 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 
 \textbf{Regulärer Ablauf}
 \begin{enumerate}
-\item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Eintrag ,,Personal``.
-\item Im aufgeklappten Menü klickt sie auf den Eintrag ,,Lehrer``.
-\item Daraufhin werden im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Lehrer, sowie Buttons für das Hinzufügen, Bearbeiten und Löschen dieser angezeigt.
+\item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Eintrag ,,Lehrkr\"afte``.
+\item Daraufhin wird im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Lehrer angezeigt.
 \item Frau Meyer klickt auf den ,,Hinzufügen``-Button.
 \item Ein modaler ,,Lehrerin hinzufügen``-Dialog wird geöffnet.
 \item Frau Meyer trägt als Vornamen ,,Julia`` ein.
 \item Frau Meyer trägt als Nachnamen ,,Meyer`` ein.
 \item Frau Meyer trägt als Kürzel ,,MEY`` ein.
 \item Frau Meyer wählt für die Anzahl der Wochenstunden in Unterrichtsstunden mittels des entsprechenden Spinners 28 aus.
-\item Frau Meyer ordnet sich den Klassen ,,2A`` und ,,4A``.
+\item Frau Meyer ordnet sich den Klassen ,,2A`` und ,,4A`` zu.
 \item Frau Meyer wählt aus der Liste der möglichen Stundeninhalte Deutsch, Mathe, Englisch und Musik aus.
-\item Frau Meyer klickt auf die Option ,,Zeitwunsch hinzufügen``.
-\item Es öffnet sich ein weiterer Dialog, in welchem sie ihren Zeitwunsch angeben kann.
-\item Sie gibt an, dass sie montags ab 14 Uhr frei haben möchte und klickt den ,,OK``-Button $\rightarrow$ \texttt{Zeitwunsch erfassen}.
-\item Der Zeitwunsch wird erfasst und das Dialogfenster geschlossen.
-\item Frau Meyer hat keine weiteren Zeitwünsche.
 \item Frau Meyer klickt auf ,,Anrechenbare Ersatzleistung eintragen``.
 \item Es öffnet sich ein weiterer Dialog, in welchem sie die Ersatzleistung eintragen kann.
 \item Frau Meyer wählt als anzurechnende Wochenstunden mittels des entsprechenden Spinners 1 aus.
@@ -849,16 +830,13 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 \textbf{Varianten}
 \begin{enumerate}
 \item zu 10: Frau Meyer möchte sich dem ganzen dritten Jahrgang zuordnen.
-\item zu 11: Frau Meyer möchte keinen Zeitwunsch hinzufügen (weiter zu 16).
-\item zu 13: Frau Meyer klickt auf den ,,Abbrechen``-Button (weiter zu 15).
-\item zu 15: Frau Meyer hat einen weiteren Zeitwunsch (zurück zu 11).
-\item zu 16: Frau Meyer möchte keine anrechenbare Ersatzleistung eintragen (weiter zu 22).
-\item zu 19: Frau Meyer klickt auf den ,,Abbrechen``-Button (weiter zu 22).
-\item zu 22: Frau Meyer möchte eine weitere anrechenbare Ersatzleistung eintragen (zurück zu 16).
-\item zu 6-11, 16, 23: Frau Meyer klickt auf den ,,Abbrechen``-Button $\rightarrow$ \texttt{Öffne Abbrechen Bestätigungsdialog}.
+\item zu 11: Frau Meyer möchte keine anrechenbare Ersatzleistung eintragen (weiter zu 18).
+\item zu 13-15: Frau Meyer klickt auf den ,,Abbrechen``-Button (weiter zu 16).
+\item zu 17: Frau Meyer möchte eine weitere anrechenbare Ersatzleistung eintragen (zurück zu 11).
+\item zu 5-11, 17, 18: Frau Meyer klickt auf den ,,Abbrechen``-Button $\rightarrow$ \texttt{Öffne Abbrechen Bestätigungsdialog}.
 	\begin{enumerate}[label={\alph*.}]
-	\item Frau Meyer bestätigt das Abbrechen (weiter zu 25).
-	\item Frau Meyer lehnt das Abbrechen ab (zurück zu 6).
+	\item Frau Meyer bestätigt das Abbrechen (weiter zu 20).
+	\item Frau Meyer lehnt das Abbrechen ab (zurück zu 5).
 	\end{enumerate}
 \end{enumerate}
 \vspace{5pt}
@@ -866,14 +844,14 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 
 \textbf{Nachbedingungen}
 \begin{itemize}
-\item Nach Ablauf mit Variante 7a: Es wurde keine neue Lehrerin hinzugefügt.
-\item Nach Ablauf ohne Variante 7a: Es wurde eine neue Lehrerin hinzugefügt.
+\item Nach Ablauf mit Variante 5a: Es wurde keine neue Lehrerin hinzugefügt.
+\item Nach Ablauf ohne Variante 5a: Es wurde eine neue Lehrerin hinzugefügt.
 \end{itemize}
 \vspace{5pt}
 
 \textbf{Fehler-/Ausnahmefälle}
 \begin{enumerate}
-\item zu 6-8: Frau Meyer gibt in eines der Textfelder einen ungültigen Wert ein, z.B. Zahlen in die Felder für die Namen oder ein schon vorhandenes Kürzel in das Feld für das Kürzel.
+\item zu 5-7: Frau Meyer gibt in eines der Textfelder einen ungültigen Wert ein, z.B. Zahlen in die Felder für die Namen oder ein schon vorhandenes Kürzel in das Feld für das Kürzel.
 	\begin{enumerate}[label=\arabic*.]
 	\item Frau Meyer wird umgehend durch ein rotes Highlighting des betreffenden Textfeldes auf den ungültigen Eintrag hingewiesen.
 	\end{enumerate}
@@ -900,23 +878,18 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 
 \textbf{Regulärer Ablauf}
 \begin{enumerate}
-\item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Eintrag ,,Personal``.
-\item Im aufgeklappten Menü klickt sie auf den Eintrag ,,Lehrer``.
-\item Daraufhin werden im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Lehrer, sowie Buttons für das Hinzufügen, Bearbeiten und Löschen dieser angezeigt.
-\item Frau Meyer wählt den Eintrag ,,Meyer, Julia (MEY)`` aus der Liste der vorhandenen Lehrer.
-\item Frau Meyer klickt auf den ,,Bearbeiten``-Button $\rightarrow$ \texttt{Öffne ,,Lehrerin bearbeiten``-Dialog}.
-\item Ein ,,Lehrerin bearbeiten``-Dialog öffnet sich. Alle entsprechenden Felder sind mit den Daten der gewählten Lehrerin gefüllt.
+\item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Eintrag ,,Lehrkr\"afte``.
+\item Daraufhin wird im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Lehrer angezeigt.
+\item Frau Meyer f\'uhrt einen Rechtsklick auf den Eintrag ,,Meyer, Julia (MEY)`` aus.
+\item Es \"offnet sich ein Kontextmen\"u mit den Eintr\"agen ,,Bearbeiten``, ,,L\"oschen`` und ,,Stundenplan anzeigen``.
+\item Frau Meyer klickt auf Eintrag ,,Bearbeiten`` $\rightarrow$ \texttt{Öffne ,,Lehrerin bearbeiten``-Dialog}.
+\item Ein modaler ,,Lehrerin bearbeiten``-Dialog öffnet sich. Alle entsprechenden Felder sind mit den Daten der gewählten Lehrerin gefüllt.
 \item Frau Meyer möchte den Vornamen nicht ändern.
 \item Frau Meyer möchte den Nachnamen nicht ändern.
 \item Frau Meyer möchte das Kürzel nicht änden.
 \item Frau Meyer ändert die Anzahl der Wochenstunden auf 15.
 \item Frau Meyer möchte die betreuten Klassen nicht ändern.
 \item Frau Meyer möchte die möglichen Stundeninhalte nicht ändern.
-\item Frau Meyer möchte ihren zuvor eingetragenen Zeitwunsch (s.
-		\ref{subsubsec:LehrerinHinzufuegen}) löschen.
-\item Sie wählt die Checkbox hinter dem entsprechenden Zeitwunsch aus.
-\item Der Zeitwunsch wird zum Löschen vorgemerkt.
-\item Frau Meyer möchte keinen weiteren Zeitwunsch ändern.
 \item Frau Meyer möchte keine anrechenbare Ersatzleistung hinzufügen, ändern oder löschen.
 \item Frau Meyer klickt auf den ,,OK```-Button des ,,Lehrerin bearbeiten``-Dialogs $\rightarrow$ \texttt{Lehrerin bearbeiten}.
 \item Die Änderungen werden vom System übernommen und der Zeitwunsch endgültig gelöscht.
@@ -933,11 +906,10 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 \item zu 11: Frau Meyer möchte die betreuten Klassen ändern. Die Auswahl der neuen Klassen erfolgt
 	analog zu Anwendungsfall \ref{subsubsec:LehrerinHinzufuegen}.
 \item zu 12: Frau Meyer möchte die möglichen Stundeninhalte ändern. Die Auswahl erfolgt analog zu Anwendungsfall \ref{subsubsec:LehrerinHinzufuegen}.
-\item zu 13: Frau Meyer möchte keinen Zeitwunsch hinzufügen, ändern oder löschen (weiter zu 15).
-\item zu 17: Frau Meyer möchte eine anrechenbare Ersatzleistung hinzufügen, ändern oder löschen. Hinzufügen analog zu Anwendungsfall \ref{subsubsec:LehrerinHinzufuegen}. Löschen analog zum Löschen eines Zeitwunsches.
-\item zu 7-18: Frau Meyer klickt auf den ,,Abbrechen``-Button $\rightarrow$ \texttt{Öffne Abbrechen Bestätigungsdialog}.
+\item zu 13: Frau Meyer möchte eine anrechenbare Ersatzleistung hinzufügen, ändern oder löschen. Hinzufügen analog zu Anwendungsfall \ref{subsubsec:LehrerinHinzufuegen}. Löschen durch Auswahl der Checkbox hinter dem jeweiligen Eintag.
+\item zu 7-14: Frau Meyer klickt auf den ,,Abbrechen``-Button $\rightarrow$ \texttt{Öffne Abbrechen Bestätigungsdialog}.
 	\begin{enumerate}[label={\alph*.}]
-	\item Frau Meyer bestätigt das Abbrechen (weiter zu 17).
+	\item Frau Meyer bestätigt das Abbrechen (weiter zu 16).
 	\item Frau Meyer lehnt das Abbrechen ab (zurück zu 7).
 	\end{enumerate}
 \end{enumerate}
@@ -945,8 +917,8 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 
 \textbf{Nachbedingungen}
 \begin{itemize}
-\item Nach Ablauf mit Variante 9a: Die gewählte Lehrerin bleibt unverändert.
-\item Nach Ablauf ohne Variante 9a: Die Parameter der gewählten Lehrerin wurden entsprechend der gemachten Eingaben geändert.
+\item Nach Ablauf mit Variante 8a: Die gewählte Lehrerin bleibt unverändert.
+\item Nach Ablauf ohne Variante 8a: Die Parameter der gewählten Lehrerin wurden entsprechend der gemachten Eingaben geändert.
 \end{itemize}
 \vspace{5pt}
 
@@ -980,22 +952,20 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 
 \textbf{Regulärer Ablauf}
 \begin{enumerate}
-\item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Eintrag ,,Personal``.
-\item Im aufgeklappten Menü klickt sie auf den Eintrag ,,Lehrer``.
-\item Daraufhin werden im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Lehrer, sowie Buttons für das Hinzufügen, Bearbeiten und Löschen dieser angezeigt.
-\item Frau Meyer wählt den Eintrag ,,Meyer, Julia (MEY)`` aus.
-\item Frau Meyer klickt auf den ,,Löschen``-Button.
+\item Frau Meyer klickt im Navigationsmenü auf der linken Seite auf den Eintrag ,,Lehrkr\"afte``.
+\item Daraufhin wird im rechten Feld (s. Abb. 1) eine Liste der vorhandenen Lehrer angezeigt.
+\item Frau Meyer f\'uhrt einen Rechtsklick auf den Eintrag ,,Meyer, Julia (MEY)`` aus.
+\item Es \"offnet sich ein Kontextmen\"u mit den Eintr\"agen ,,Bearbeiten``, ,,L\"oschen`` und ,,Stundenplan anzeigen``.
+\item Frau Meyer klickt auf den Eintrg ,,Löschen``.
 \item Ein Bestätigungsdialog fordert Frau Meyer auf, das Löschen zu bestätigen.
 \item Frau Meyer bestätigt das Löschen $\rightarrow$ \texttt{Lehrerin löschen}.
 \item Der Dialog wird geschlossen.
-\item Die gewählte Lehrerin wird gelöscht. Alle Aktivitäten, an denen sonst kein Personal mehr teilnimmt werden ebenfalls gelöscht, bei allen anderen Aktivitäten wird die gewählte Lehrerin als Teilnehmerin ausgetragen.
+\item Die gewählte Lehrerin wird gelöscht. Alle Aktivitäten, an denen sonst kein Personal mehr teilnimmt, werden ebenfalls gelöscht, bei allen anderen Aktivitäten wird die gewählte Lehrerin als Teilnehmerin ausgetragen.
 \end{enumerate}
 \vspace{5pt}
 
 \textbf{Varianten}
 \begin{enumerate}
-\item zu 4: Frau Meyer wählt mehrere Einträge bei gedrückter Shift- oder STRG-Taste aus (weiter zu 5).
-\item zu 5: Frau Meyer drückt die Entfernen-Taste auf der Tastatur (weiter zu 6).
 \item zu 7: Frau Meyer lehnt das Löschen ab. 
 	\begin{enumerate}[label=\arabic*.]
 	\item Der Dialog wird geschlossen, die Lehrerin bleibt erhalten (Ende des Anwendungsfalls).
@@ -1004,6 +974,11 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 \vspace{5pt}
 
 \textbf{Nachbedingungen}
+\begin{itemize}
+\item Nach Ablauf mit Variante 1: Die Lehrerin wurde nicht gel\"oscht.
+\item Ansonsten: Die Lehrerin wurde gel\"oscht. Alle Aktivitäten, an denen sonst kein Personal mehr teilnimmt, wurden ebenfalls gelöscht. Bei allen anderen Aktivitäten wurde die gewählte Lehrerin als Teilnehmerin ausgetragen.
+\end{enumerate}
+\end{itemize}
 \vspace{5pt}
 
 \textbf{Fehler-/Ausnahmefälle}
