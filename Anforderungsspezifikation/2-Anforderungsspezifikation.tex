@@ -977,7 +977,6 @@ Bei Varianten und Fehler- und Ausnahmefällen dient die numerische Aufzählung a
 \begin{itemize}
 \item Nach Ablauf mit Variante 1: Die Lehrerin wurde nicht gel\"oscht.
 \item Ansonsten: Die Lehrerin wurde gel\"oscht. Alle Aktivitäten, an denen sonst kein Personal mehr teilnimmt, wurden ebenfalls gelöscht. Bei allen anderen Aktivitäten wurde die gewählte Lehrerin als Teilnehmerin ausgetragen.
-\end{enumerate}
 \end{itemize}
 \vspace{5pt}
 
@@ -1058,43 +1057,20 @@ Max. Ausführungszeit & 1 Sek.
 \end{tabularx}\\
 
 
-\paragraph{Klasse(n) löschen}\mbox{}\\
+\paragraph{Klasse löschen}\mbox{}\\
 
 \begin{tabularx}{\textwidth}{p{4cm}X}
 Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
-			\item \texttt{Liste von Klassen}: Liste der zu löschenden Klassen, diese kann auch leer sein oder nur ein Element enthalten.
+			\item \texttt{Klasse}
 			\end{itemize}\\
-Aktion & Ist die Liste von Klassen leer, geschieht nichts. Ansonsten werden alle Klassen der Liste einzeln abgearbeitet. Es werden alle Aktivitäten einer jeden Klasse durchgegangen. Bei allen Aktivitäten, wo das Entfernen der entsprechenden Klasse zur Folge hätte, dass keine Klasse mehr an der Aktivität teilnehmen würde, wird die gesamte Aktivität aus dem System und der Datenbank gelöscht. Bei allen anderen Aktivitäten wird die Klasse als Teilnehmer entfernt und die Aktivitäten in der Datenbank aktualisiert. Alle weiteren Referenzen  auf die zu löschende Klasse (etwa bei einem Lehrer, der diese Klasse primär betreut) werden aufgelöst. \\
+Aktion & Es werden alle Aktivitäten der zu löschenden Klasse durchgegangen. Bei allen Aktivitäten, wo das Entfernen der Klasse als Teilnehmer zur Folge hätte, dass keine Klasse mehr an der Aktivität teilnehmen würde, wird die gesamte Aktivität aus dem System und der Datenbank gelöscht. Bei allen anderen Aktivitäten wird die Klasse als Teilnehmer entfernt und die Aktivitäten in der Datenbank aktualisiert. Alle weiteren Referenzen  auf die zu löschende Klasse (etwa bei einem Lehrer, der diese Klasse primär betreut) werden aufgelöst. \\
 Max. Ausführungszeit & 3 Sek. 
 \end{tabularx}\\
 
 
 \subsubsection{Verwaltung des Personals betreffende Aktionen}
 
-Die im folgenden aufgeführten Aktionen gelten mit kleinen Abweichungen ebenso für pädagogisches Personal. Wochenstunden werden für pädagogisches Personal in Zeitstunden erfasst und mögliche Stundeninhalte sind keine Schulfächer. Ansonsten muss in der Regel nur das Wort ,,Lehrerin`` durch pädagogische Mitarbeiterin ersetzt werden.
-
-\paragraph{Zeitwunsch erfassen}\mbox{}\\
-
-
-\begin{tabularx}{\textwidth}{p{4cm}X}
-Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
-			\item \texttt{Tag}
-			\item \texttt{Startzeit}
-			\item \texttt{Endzeit}
-			\end{itemize}\\
-Aktion &  Mindestens einer der Parameter Tag, Start- und Endzeit muss einen Wert enthalten (Java: ungleich null sein). Folgende Konstellationen sind möglich:
-\begin{enumerate}
- \item Wird nur ein Wert für den Tag übergeben, wird als Zeitwunsch erfasst, dass dieser ganze Tag frei sein sollte. 
- \item Wird nur ein Wert für die Startzeit übergeben, wird als Zeitwunsch für alle Tage erfasst, dass ab dieser Zeit der ganzen weitere Tag frei sein sollte.
- \item Wird nur ein Wert für die Endzeit übergeben, wird als Zeitwunsch für alle Tage erfasst, dass von Tagesbeginn bis zu der übergebenen Endzeit frei sein sollte.
- \item Werden eine Start- und Endzeit aber kein Tag übergeben, wird als Zeitwunsch für für alle Tage erfasst, dass von der übergebenen Start- bis zur übergebenen Endzeit frei sein sollte.
- \item Wird ein Wert für den Tag in Kombination mit einer Startzeit übergeben, gilt 2 für den speziellen Tag.
- \item Wird ein Wert für den Tag in Kombination mit einer Endzeit übergeben, gilt 3 für den speziellen Tag.
- \item Werden Werte für alle Parameter übergeben, gilt 4 für den speziellen Tag.
- \end{enumerate}  \\
-Max. Ausführungszeit & 1 Sek. 
-\end{tabularx}\\
-
+Die im folgenden aufgeführten Aktionen gelten mit der Abweichung, dass Stundeninhalt für päd. Personal (ohne teilnehmenden Lehrer an einer Aktivität) keine Schulfächer sind. Ansonsten muss in der Regel nur das Wort ,,Lehrerin`` durch pädagogische Mitarbeiterin ersetzt werden.\\
 
 \paragraph{Anrechenbare Ersatzleistung erfassen}\mbox{}\\
 
@@ -1105,9 +1081,9 @@ Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
 			\end{itemize}\\
 Aktion & Die Anzahl der Wochenstunden werden zusammen mit der Bemerkung  zwischengespeichert.\\
 Max. Ausführungszeit & 0,1 Sek. 
-\end{tabularx}\\
+\end{tabularx}
 
-
+\clearpage
 \paragraph{Lehrerin hinzufügen}\mbox{}\\
 
 \hypertarget{par:LehrerinHinzufuegen}{
@@ -1119,11 +1095,10 @@ Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
 			\item \texttt{Wochenstunden} (in Unterrichtsstunden)
 			\item \texttt{Liste von Klassen}: Optional. Primär betreute Klassen, der zu erstellenden Lehrerin.
 			\item \texttt{Liste von Jahrgängen}: Optional. Primär betreute Jahrgänge, der zu erstellenden Lehrerin.
-			\item \texttt{Liste von Zeitwünschen}: Optional.
 			\item \texttt{Liste von anrechenbaren Ersatzleistungen}: Optional.
 			\item \texttt{Liste von möglichen Stundeninhalten}: Optional. Schulfächer und Projekte.
 			\end{itemize}\\
-Aktion &  So lange mindestens Vorname, Nachname, Kürzel und Wochenstunden gültige Werte besitzen, kann eine Lehrerin erzeugt und der Datenbank hinzugefügt werden. Gültige Werte sind ungleich \textbf{null}. Für Vorname und Nachname sind eine Folge von Buchstaben und ggf. enthaltene Bindestriche gültig und für die Wochenstunden eine natürliche Zahl. Das Kürzel sollte ungleich allen vorhandenen Kürzeln sein.  Bei ungültigen Werten wird ein Fehler geworfen. Alle anderen Parameter sind optional. Es wird geprüft, ob die Liste der Zeitwünsche und die Liste der anrechenbaren Ersatzleistungen möglicherweise im Konflikt mit der Wochenstundenzahl stehen, indem sie diese auf 0 oder kleinere Werte verringern. In diesem Fall wird ein Fehler geworfen.  \\
+Aktion &  So lange mindestens Vorname, Nachname, Kürzel und Wochenstunden gültige Werte besitzen, kann eine Lehrerin erzeugt und der Datenbank hinzugefügt werden. Gültige Werte sind ungleich \textbf{null}. Für Vorname und Nachname sind eine Folge von Buchstaben und ggf. enthaltene Bindestriche gültig und für die Wochenstunden eine natürliche Zahl. Das Kürzel sollte ungleich allen vorhandenen Kürzeln sein.  Bei ungültigen Werten wird ein Fehler geworfen. Alle anderen Parameter sind optional. Es wird geprüft, ob die Liste der anrechenbaren Ersatzleistungen möglicherweise im Konflikt mit der Wochenstundenzahl steht, indem sie diese auf 0 oder kleinere Werte verringert. In diesem Fall wird ein Fehler geworfen.  \\
 Max. Ausführungszeit & 1 Sek. 
 \end{tabularx}}\\
 
@@ -1149,7 +1124,6 @@ Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
 			\item \texttt{Wochenstunden} (in Unterrichtsstunden)
 			\item \texttt{Liste von Klassen}: Optional. 
 			\item \texttt{Liste von Jahrgängen}: Optional. 
-			\item \texttt{Liste von Zeitwünschen}: Optional.
 			\item \texttt{Liste von anrechenbaren Ersatzleistungen}: Optional.
 			\item \texttt{Liste von möglichen Stundeninhalten}: Optional. Schulfächer und Projekte.
 			\end{itemize}\\
@@ -1178,16 +1152,7 @@ Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
 Aktion & Ein Bestätigungsdialog mit einem Text, der darauf hinweist, dass durch einen Abbruch alle Änderungen verloren gehen wird geöffnet. Bestätigt der Nutzer das Abbrechen, werden der Bestätigungsdialog und das zugehörige Dialogfenster geschlossen. Lehnt der Nutzer das Abbrechen ab, wird lediglich der Bestätigungsdialog geschlossen.\\
 Max. Ausführungszeit & 0,5 Sek. 
 \end{tabularx}\\
-
   
-\subsection{Entwurfseinschränkungen}
-\nurlangversion
-
-{\em Wurde bereits in \ref{sec:Einschraenkungen} behandelt und muss
-  daher hier nicht wiederholt werden. Falls aber eine detailliertere
-  Beschreibung notwendig wäre, wäre hier der geeignete Ort.}
-  
-
 \subsection{Softwaresystemattribute}
 \label{sec:softwaresystemattribute}
 
