@@ -109,7 +109,7 @@
   \vspace{3ex}
     \begin{figure}[H]
     \centering
-%    \includegraphics[width=0.25\textwidth]{../woym.png}
+    \includegraphics[width=0.25\textwidth]{../woym.png}
     \end{figure}
   \vfill
   \end{center}
@@ -192,29 +192,31 @@ Im folgenden wird für Personen des Personals die weibliche Form benutzt, da Fra
 
 \subsection{Definitionen, Akronyme und Abkürzungen}
 
-%\renewcommand{\arraystretch}{2}
+\renewcommand{\arraystretch}{2}
+\subsubsection{Begriffe aus der Informatik}
 \begin{tabular}{p{3cm}p{9.5cm}}
 \textbf{Checkbox} & Eine Checkbox ist eine klickbare Box, welche über zwei Zustände verfügt, die sich bei Klick ändern\\
 \textbf{GUI} &  Das Graphical User Interface ist die Oberfläche, welche vom Benutzer bedient wird. Der Benutzer bedient lediglich an der GUI. Rechenprozesse o.ä. werden unter der GUI ausgeführt. \\
 \textbf{Spinner} & Ein Spinner ist ein Textfeld, in dem man durch klicken von zwei Pfeilen am Textfeld den Inhalt dieses modifiziert.\\
+\end{tabular}
 
-\textbf{Rhytmisierter Unterricht} & Als Rhytmisierten Unterricht bezeichnet man den Wechsel zwischen Lern- und Entspannungsphasen innerhalb eines Unterrichttages. Bspw. auf eine Stunde Mathe folgt eine Stunde Sport.\\
-
+\subsubsection{Begriffe aus dem Bereich des Kunden}
+\begin{tabular}{p{3cm}p{9.5cm}}
 \textbf{Lehrkraft} & Als Lehrkräfte werden Personen angesehen, welche die Bescheinigung haben zu lehren.\\
-
 \textbf{Pädagogische Mitarbeiter} & Als Pädagogische Mitarbeiter werden Personen angesehen, welche sich dem Zweck widmen Kinder zu beaufsichtigen/Aktionen durchführen  und die Lehrkraft aktiv unterstützen, allerdings nicht ohne Beisein einer Lehrkraft Unterricht zu geben.\\
-
-\textbf{Stundenplan} & Ein Stundenplan muss in einer von zwei Ausführungen vorliegen, einerseits ein Lehrerstundenplan und andererseits ein Stundenplan für ein Kind. Aus dem Stundenplan muss ersichtlich sein, wann, wo, mit welchen Materialien, und mit wem sich die betreffende Person aufzuhalten hat.\\
-
+\textbf{Rhythmisierter Unterricht} & Als Rhythmisierten Unterricht bezeichnet man den Wechsel zwischen Lern- und Entspannungsphasen innerhalb eines Unterrichttages. Bspw. auf eine Stunde Mathe folgt eine Stunde Sport.\\
+\textbf{Stundenplan} & Ein Stundenplan muss in einer von zwei Ausführungen vorliegen, einerseits ein Lehrerstundenplan und andererseits ein Stundenplan für eine Schulklasse. Aus dem Stundenplan muss ersichtlich sein, wann, wo, mit welchen Materialien, und mit wem sich die betreffende Person aufzuhalten hat.\\
 %TODO Falko weitere Anlegen
 \end{tabular}
-%\renewcommand{\arraystretch}{1.2}
+
+\subsubsection{Definitionen anderweitig verwendeter Begriffe}
+\label{subsubsec:anderweitigeBegriffe}
+\begin{tabular}{p{3cm}p{9.5cm}}
+\textbf{Aktivität} & Eine Aktivität entspricht einer Planungseinheit. Eine Planungseinheit ist ein Tupel der Aspekte Personal Klassen, Stundeninhalte, Räume und Zeiten (Anfang und Ende innerhalb des Zeitrasters). Ein Stundenplan besteht aus einer Menge von Aktivitäten.
+\end{tabular}
+\renewcommand{\arraystretch}{1.2}
 
 \subsection{Referenzen}
-  {\em Neben sonstigen Quellen, die Ihr verwendet habt, können dies
-  z.B.\ das Skript, dieses Beispieldokument, der zugrunde
-  liegende IEEE-Standard und anderes sein}
-  
 
 \subsection{Übersicht über das Dokument}
 \nurlangversion
@@ -353,9 +355,6 @@ Weiterhin ist das Verzeichnis, in welchem der Stundenplan schlussendlich gespeic
 
 
 \subsection{Anwendungsfälle}
-  {\em Auflistung und kurze Beschreibung aller relevanten
-  Anwendungsfälle. Dies soll einen Überblick über alle Anwendungsfälle
-  geben, die in 3.2 detailliert beschrieben werden.}
   
 \subsubsection{Verwaltung der Klassen betreffende Anwendungsfälle}
 
@@ -366,6 +365,9 @@ Weiterhin ist das Verzeichnis, in welchem der Stundenplan schlussendlich gespeic
 \paragraph{Klasse bearbeiten} Die Anwenderin kann eine bestehende Klasse bearbeiten. Alle Parameter lassen sich ändern.
 
 \paragraph{Klasse löschen} Die Anwenderin kann eine bestehende Klasse löschen.
+
+
+
 
 \subsubsection{Verwaltung des Personals betreffende Anwendungsfälle}
 
@@ -387,6 +389,8 @@ Die Anwenderin kann alle Parameter einer bestehenden pädagogischen Mitarbeiteri
 \paragraph{Pädagogische Mitarbeiterin löschen}
 Die Anwenderin kann eine bestehende pädagogische Mitarbeiterin löschen.
 
+
+
 \subsubsection{Verwaltung der Aktivitätstypen betreffende Anwendungsfälle}
 
 \paragraph{Unterrichtsfach hinzufügen}
@@ -407,15 +411,55 @@ Die Anwenderin kann alle Parameter eines bestehenden Projekts ändern.
 \paragraph{Projekt löschen}
 Die Anwenderin kann ein vorhandenes Projekt löschen.
 
+
+
+\subsubsection{Räume und Standorte betreffende Anwendungsfälle}
+
+\paragraph{Standort hinzufügen}
+Die Anwenderin kann einen Standort mit Namen hinzufügen.
+
+\paragraph{Standort löschen}
+Die Anwenderin kann einen Standort inklusive aller ihm zugeordneten Räume löschen.
+
+\paragraph{Raum hinzufügen}
+Die Anwenderin kann Räume mit ihrer Funktion sowie ihrem tatsächlichen Ort (Raumnummer und Standort) und ähnlichen eindeutigen Ortsbeschreibungen hinzufügen.
+
+\paragraph{Raum bearbeiten}
+Die Anwenderin kann einen bestehenden Raum bearbeiten.
+
+\paragraph{Raum löschen}
+Die Anwenderin kann einen bestehenden Raum wieder löschen.
+
+
+
 \subsubsection{Die Stundenplan-Erstellung betreffende Anwendungsfälle}
+
+\paragraph{Zeitraster für die Planung festlegen}
+Die Anwenderin kann zu verplanende Wochentage und deren Beginn und Ende, die übliche Dauer einer Planungseinheit und den zeitlichen Detaillierungsgrad einer Planungseinheit festlegen.  Diese Parameter sind während des Schuljahres veränderbar.
+
+\paragraph{Aktivität hinzufügen}
+Die Anwenderin kann einem Stundenplan eine Aktivität (s. \ref{subsubsec:anderweitigeBegriffe}) hinzufügen. Die Aktivität wird auch den Stundenplänen aller anderen Teilnehmer hinzugefügt.
+
+\paragraph{Aktivität bearbeiten}
+Die Anwenderin kann eine bestehende Aktivität bearbeiten. \\
+
+\paragraph{Aktivität löschen}
+Die Anwenderin kann eine Aktivität löschen. Dabei besteht die Auswahl die Aktivität komplett zu löschen oder nur die Person/Klasse des aktuell betrachteten Stundenplans als Teilnehmer zu entfernen.
+
+
+
+
 
 \subsubsection{Sonstige Anwendungsfälle}
 
+\paragraph{Backupeinstellungen \"andern}
+Die Anwenderin kann die Einstellungen, also die Regelmäßigkeit und den Zeitpunkt, für automatische Backups verändern.
+
 \paragraph{Backup erzeugen}
+Die Anwenderin kann manuell ein Backup der Datenbank erzeugen.
 
 \paragraph{Backup wiederherstellen}
-
-\paragraph{Backupeinstellungen \"andern}
+Die Anwenderin kann ein Backup wiederherstellen.
 
 
 \subsection{Charakteristika der Benutzer}
@@ -538,6 +582,9 @@ Sehr wichtig ist ihr, dass die Software übersichtlich und leicht verständlich 
   wichtigsten Klassen werden erwartet? Erwartet Ihr Änderungen im
   Datenvolumen in der Zukunft?}
 
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{datenmodell.png}
+\end{figure}
 
 \subsection{Anwendungsfälle}
 
@@ -998,9 +1045,191 @@ Entspricht Anwendungsfall \ref{subsubsec:LehrerinHinzufuegen}, wenn jedes Vorkom
 Entspricht Anwendungsfall \ref{subsubsec:LehrerinBearbeiten} mit in \ref{subsubsec:PaedMitarbeiterinHinzufuegen} genannten Abweichungen. 
 
 
-\label{subsubsec:PaedMitarbeiterinLoeschen}
+
 \subsubsection{Pädagogische Mitarbeiterin löschen}
+\label{subsubsec:PaedMitarbeiterinLoeschen}
 Entspricht Anwendungsfall \ref{subsubsec:LehrerinLoeschen}, wenn jedes Vorkommnis des Wortes ,,Lehrerin`` durch ,,Pädagogische Mitarbeiterin`` ersetzt wird. 
+
+\subsubsection{Unterrichtsfach hinzufügen}
+%TODO Anwendungsfall schreiben
+
+\subsubsection{Unterrichtsfach bearbeiten}
+%TODO Anwendungsfall schreiben
+
+\subsubsection{Unterrichtsfach löschen}
+%TODO Anwendungsfall schreiben
+
+\subsubsection{Projekt hinzufügen}
+%TODO Anwendungsfall schreiben
+
+\subsubsection{Projekt bearbeiten}
+%TODO Anwendungsfall schreiben
+
+\subsubsection{Projekt löschen}
+%TODO Anwendungsfall schreiben
+
+\subsubsection{Standort hinzufügen}
+%TODO Anwendungsfall schreiben
+
+\subsubsection{Standort löschen}
+%TODO Anwendungsfall schreiben
+
+\subsubsection{Raum hinzufügen}
+%TODO Anwendungsfall schreiben
+
+\subsubsection{Raum bearbeiten}
+%TODO Anwendungsfall schreiben
+
+\subsubsection{Raum löschen}
+%TODO Anwendungsfall schreiben
+
+\subsubsection{Zeitraster für die Planung festlegen}
+%TODO Anwendungsfall schreiben
+
+\subsubsection{Aktivität hinzufügen}
+%TODO Anwendungsfall schreiben
+
+\subsubsection{Aktivität bearbeiten}
+%TODO Anwendungsfall schreiben
+
+\subsubsection{Aktivität löschen}
+%TODO Anwendungsfall schreiben
+
+\subsubsection{Backupeinstellungen ändern}
+\textbf{Akteurin}
+\begin{itemize}
+\item Julia Meyer
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Vorbedingungen}
+\begin{enumerate}
+\item Die Software wurde von Frau Meyer gestartet und sie befindet sich in der Verwaltungs-Ansicht (s. Abb. 1).
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Regulärer Ablauf}
+\begin{enumerate}
+\item Frau Meyer klickt im linken Navigationsmenü auf Einstellungen.
+\item Die Einstellungsansicht öffnet sich. 
+\item Unter dem Eintrag Backups möchte Frau Meyer die Regelmäßigkeit der Backups ändern.
+\item Im entsprechenden Drop-Down-Menü hat sie zur Auswahl: täglich, jeden zweiten Tag, jeden vierten Tag, wöchentlich, monatlich und vierteljährlich.
+\item Frau Meyer wählt ,,monatlich``.
+\item Frau Meyer möchte den Zeitpunkt für die Ausführung des Backups ändern.
+\item Frau Meyer wählt den 15. des Monats als Tag für die Ausführung des Backups aus.
+\item Frau Meyer wählt 12:00 Uhr als Zeit für die Ausführung des Backups aus.
+\item Frau Meyer klickt auf ,,Übernehmen`` $\rightarrow$ \texttt{Backupeinstellungen übernehmen}.
+\item Die Einstellungen werden vom System übernommen.
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Varianten}
+\begin{enumerate}
+\item zu 5: Frau Meyer wählt ,,täglich``, ,,jeden zweiten Tag`` oder ,,jeden vierten Tag``.
+	\begin{enumerate}[label=\arabic*.]
+	\item Frau Meyer kann eine Uhrzeit für die Durchführung des Backups festlegen (weiter zu 8).
+	\end{enumerate}
+\item 4-9: Frau Meyer schließt das Einstellungsfenster. Die Änderungen werden nicht übernommen (Ende des Anwendungsfalls).
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Nachbedingungen}
+\begin{itemize}
+\item Nach Ausführung ohne Variante 2: Die Backupeinstellungen wurden erfolgreich geändert.
+\item Nach Ausführung mit Variante 2: Die Backupeinstellungen wurden nicht geändert.
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Fehler-/Ausnahmefälle}\\
+keine
+
+\subsubsection{Backup erzeugen}
+\textbf{Akteurin}
+\begin{itemize}
+\item Julia Meyer
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Vorbedingungen}
+\begin{enumerate}
+\item Die Software wurde von Frau Meyer gestartet und sie befindet sich in der Verwaltungs-Ansicht (s. Abb. 1).
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Regulärer Ablauf}
+\begin{enumerate}
+\item Frau Meyer klickt im linken Navigationsmenü auf Einstellungen.
+\item Die Einstellungsansicht öffnet sich. 
+\item Unter dem Eintrag Backups klickt Frau Meyer auf den Button ,,Manuelles Backup erzeugen`` $\rightarrow$ \texttt{Backup erzeugen}.
+\item Die Datenbank wird so lange eingefroren, bis das Backup erzeugt wurde.
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Varianten}\\
+keine
+\vspace{5pt}
+
+\textbf{Nachbedingungen}
+\begin{itemize}
+\item Es wurde erfolgreich ein Backup erzeugt.
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Fehler-/Ausnahmefälle}\\
+\begin{enumerate}
+\item zu 4: Beim Erzeugen des Backups tritt ein Fehler auf.
+	\begin{enumerate}[label=\arabic*.]
+	\item Frau Meyer wird durch einen Warndialog auf diesen Umstand hingewiesen.
+	\end{enumerate}
+\end{enumerate}
+
+\subsubsection{Backup wiederherstellen}
+\textbf{Akteurin}
+\begin{itemize}
+\item Julia Meyer
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Vorbedingungen}
+\begin{enumerate}
+\item Die Software wurde von Frau Meyer gestartet und sie befindet sich in der Verwaltungs-Ansicht (s. Abb. 1).
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Regulärer Ablauf}
+\begin{enumerate}
+\item Frau Meyer klickt im linken Navigationsmenü auf Einstellungen.
+\item Die Einstellungsansicht öffnet sich. 
+\item Unter dem Eintrag Backups befindet sich eine Liste aller vorhandenen Backups.
+\item Frau Meyer wählt das wiederherzustellende Backup aus.
+\item Frau Meyer klickt auf den Button ,,Backup wiederherstellen``.
+\item Ein Dialog der auf die Folgen der Wiederherstellung hinweist, bittet Frau Meyer um Bestätigung für die Wiederherstellung.
+\item Frau Meyer bestätigt die Wiederherstellung $\rightarrow$ \texttt{Backup wiederherstellen}.
+\item Es wird ein Backup des aktuellen Datenbankzustandes ausgeführt. Anschließend wird das gewählte Backup wiederhergestellt.
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Varianten}\\
+\begin{enumerate}
+\item zu 7: Frau Meyer bestätigt die Wiederherstellung nicht (Ende des Anwendungsfalls).
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Nachbedingungen}
+\begin{itemize}
+\item Nach Ablauf mit Variante 1: Es wurde kein Backup wiederhergestellt.
+\item Nach Ablauf ohne Variante 1: Das ausgewählte Backup wurde wiederhergestellt.
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Fehler-/Ausnahmefälle}\\
+\begin{enumerate}
+\item zu 8: Beim Erzeugen oder Wiederherstellen des Backups tritt ein Fehler auf.
+	\begin{enumerate}[label=\arabic*.]
+	\item Frau Meyer wird durch einen Warndialog auf diesen Umstand hingewiesen.
+	\end{enumerate}
+\end{enumerate}
+
 
 \subsection{Aktionen}
 
@@ -1141,6 +1370,53 @@ Aktion & Ist die Liste von Lehrerinnen leer, geschieht nichts. Ansonsten werden 
 Max. Ausführungszeit & 3 Sek. 
 \end{tabularx}\\
 
+
+\subsubsection{Verwaltung der Aktivitätstypen betreffende Aktionen}
+%TODO Aktionen schreiben
+
+\subsubsection{Räume und Standorte betreffende Aktionen}
+%TODO Aktionen schreiben
+
+\subsubsection{Die Stundenplan-Erstellung betreffende Aktionen}
+%TODO Aktionen schreiben
+
+\subsubsection{Sonstige Aktionen}
+
+\paragraph{Backupeinstellungen übernehmen}\mbox{}\\
+
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Regelmäßigkeit}
+			\item \texttt{Zeitpunkt}
+			\end{itemize}\\
+Aktion & Die übergebenen Backupeinstellungen werden direkt im System gesetzt und in die entsprechende Konfigurationsdatei geschrieben. \\
+Max. Ausführungszeit & 0,1 Sek. 
+\end{tabularx}\\
+
+
+
+\paragraph{Backup erstellen}\mbox{}\\
+
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & keine\\
+Aktion & Die Datenbank wird eingefroren und als Backup in den entsprechenden Backup-Ordner kopiert. Anschließend wird sie wieder aufgetaut, so dass wieder Einträge geschrieben werden können. \\
+Max. Ausführungszeit & je nach Größe der Datenbank, max. 10 Minuten 
+\end{tabularx}\\
+
+
+
+\paragraph{Backup wiederherstellen}\mbox{}\\
+
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}
+			\item \texttt{Pfad}: Pfad zum wiederherzustellenden Backup
+			\end{itemize}\\
+Aktion & Handelt es sich bei dem angegebenen Pfad um einen gültigen Pfad zu einem Backup, wird dieses Backup wiederhergestellt, ansonsten wird ein Fehler geworfen.\\
+Max. Ausführungszeit & je nach Größe der Datenbank, max. 10 Minuten 
+\end{tabularx}\\
+
+%TODO Aktionen schreiben
+
 \subsubsection{Systemweite Aktionen}
 
 \paragraph{Öffne Abbrechen Bestätigungsdialog}\mbox{}\\
@@ -1152,6 +1428,8 @@ Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
 Aktion & Ein Bestätigungsdialog mit einem Text, der darauf hinweist, dass durch einen Abbruch alle Änderungen verloren gehen wird geöffnet. Bestätigt der Nutzer das Abbrechen, werden der Bestätigungsdialog und das zugehörige Dialogfenster geschlossen. Lehnt der Nutzer das Abbrechen ab, wird lediglich der Bestätigungsdialog geschlossen.\\
 Max. Ausführungszeit & 0,5 Sek. 
 \end{tabularx}\\
+  
+  
   
 \subsection{Softwaresystemattribute}
 \label{sec:softwaresystemattribute}
