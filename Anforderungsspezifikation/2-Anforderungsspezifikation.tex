@@ -1069,19 +1069,275 @@ Entspricht Anwendungsfall \ref{subsubsec:LehrerinLoeschen}, wenn jedes Vorkommni
 %TODO Anwendungsfall schreiben
 
 \subsubsection{Standort hinzufügen}
-%TODO Anwendungsfall schreiben
+\textbf{Akteurin}
+\begin{itemize}
+\item Julia Meyer
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Vorbedingungen}
+\begin{enumerate}
+\item Die Software wurde von Frau Meyer gestartet und sie befindet sich in der Verwaltungs-Ansicht (s. Abb. 1).
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Regulärer Ablauf}
+\begin{enumerate}
+\item Frau Meyer klickt im linken Navigationsmenü auf den Eintrag ,,Standorte und Räume``.
+\item Die entsprechende Ansicht wird geöffnet.
+\item Frau Meyer möchte einen neuen Standort hinzufügen.
+\item Frau Meyer klickt auf den Button ,,Standort hinzufügen``.
+\item Ein ,,Standort hinzufügen``-Dialog wird geöffnet.
+\item Frau Meyer gibt einen Namen für den Standort ein.
+\item Frau Meyer klickt auf den OK-Button $\rightarrow$ \texttt{Standort hinzufügen}.
+\item Der Standort wird hinzugefügt.
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Varianten}\\
+keine
+\vspace{5pt}
+
+\textbf{Nachbedingungen}
+\begin{itemize}
+\item Ein neuer Standort wurde hinzugefügt.
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Fehler-/Ausnahmefälle}\\
+\begin{enumerate}
+\item Frau Meyer gibt als Namen einen Namen eines schon existierenden Standortes an.
+	\begin{enumerate}[label=\arabic*.]
+	\item Sie wird durch ein rotes Highlighting des Textfeldes darauf aufmerksam gemacht, dass dieser Name schon vergeben ist.
+	\end{enumerate}
+\end{enumerate}
 
 \subsubsection{Standort löschen}
-%TODO Anwendungsfall schreiben
+\textbf{Akteurin}
+\begin{itemize}
+\item Julia Meyer
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Vorbedingungen}
+\begin{enumerate}
+\item Die Software wurde von Frau Meyer gestartet und sie befindet sich in der Verwaltungs-Ansicht (s. Abb. 1).
+\item Es existiert ein Standort.
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Regulärer Ablauf}
+\begin{enumerate}
+\item Frau Meyer klickt im linken Navigationsmenü auf den Eintrag ,,Standorte und Räume``.
+\item Die entsprechende Ansicht wird geöffnet.
+\item Frau Meyer wählt mithilfe des Drop-Down-Menüs den zu löschenden Standort.
+\item Eine Liste aller Räume, die an diesem Standort liegen, wird angezeigt.
+\item Frau Meyer klickt auf den ,,Löschen``-Button.
+\item Ein Bestätigungsdialog erscheint und fordert Frau Meyer auf, das Löschen des Standortes inklusive aller dort eingetragenen Räume zu bestätigen.
+\item Frau Meyer bestätigt das Löschen $\rightarrow$ \texttt{Standort löschen}.
+\item Der Standort und alle dort eingetragenen Räume werden gelöscht.
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Varianten}
+\begin{enumerate}
+\item zu 7: Frau Meyer bestätigt das Löschen nicht (Ende des Anwendungsfalles).
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Nachbedingungen}
+\begin{itemize}
+\item Nach Ablauf mit Variante 1: Weder der Standort noch einer der dort eingetragenen Räume wurde gelöscht.
+\item Nach Ablauf ohne Variante 1: Der Standort sowie alle dort eingetragenen Räume wurde gelöscht.
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Fehler-/Ausnahmefälle}
+\begin{enumerate}
+\item zu 8: Beim Löschen tritt ein Fehler auf.
+	\begin{enumerate}[label=\arabic*.]
+	\item Frau Meyer wird durch einen Warndialog auf diesen Umstand hingewiesen.
+	\end{enumerate}
+\end{enumerate}
 
 \subsubsection{Raum hinzufügen}
-%TODO Anwendungsfall schreiben
+\textbf{Akteurin}
+\begin{itemize}
+\item Julia Meyer
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Vorbedingungen}
+\begin{enumerate}
+\item Die Software wurde von Frau Meyer gestartet und sie befindet sich in der Verwaltungs-Ansicht (s. Abb. 1).
+\item Es existiert ein Standort.
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Regulärer Ablauf}
+\begin{enumerate}
+\item Frau Meyer klickt im linken Navigationsmenü auf den Eintrag ,,Standorte und Räume``.
+\item Die entsprechende Ansicht wird geöffnet.
+\item Frau Meyer wählt mithilfe des Drop-Down-Menüs den Standort, für welchen sie einen Raum erstellen möchte.
+\item Eine Liste aller Räume, die an diesem Standort liegen, wird angezeigt.
+\item Frau Meyer klickt auf den ,,Raum hinzufügen``-Button neben dieser Liste.
+\item Ein ,,Raum hinzufügen``-Dialog wird geöffnet.
+\item Frau Meyer trägt als Namen/Raumnummer für den Raum ,,101`` ein.
+\item Frau Meyer trägt als Funktion ,,Musikzimmer`` ein.
+\item Frau Meyer möchte keinen weiteren Standortangaben eintragen.
+\item Frau Meyer klickt auf den ,,OK``-Button $\rightarrow$ \texttt{Raum hinzufügen}.
+\item Der Raum wird erstellt und in der Liste der zum Standort gehörenden Räume angezeigt.
+\item Der Dialog wird geschlossen.
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Varianten}
+\begin{enumerate}
+\item zu 8: Frau Meyer möchte keine Funktion angeben (weiter zu 9).
+\item zu 9: Frau Meyer möchte weitere Standortangaben machen. 
+	\begin{enumerate}[label=\arabic*.]
+	\item Frau Meyer trägt die Angaben in die entsprechende Textarea ein (weiter zu 10).
+	\end{enumerate}
+\item zu 7-10: Frau Meyer klickt auf den ,,Abbrechen``-Button $\rightarrow$ \texttt{Öffne Abbrechen Bestätigungsdialog}.
+	\begin{enumerate}[label={\alph*.}]
+	\item Frau Meyer bestätigt das Abbrechen (weiter zu 12).
+	\item Frau Meyer lehnt das Abbrechen ab (zurück zu 7).
+	\end{enumerate}
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Nachbedingungen}
+\begin{itemize}
+\item Nach Ablauf mit Variante 3a: Es wurde kein neuer Raum hinzugefügt.
+\item Nach Ablauf ohne Variante 3a: Es wurde ein neuer Raum hinzugefügt.
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Fehler-/Ausnahmefälle}
+\begin{enumerate}
+\item zu 7: Frau Meyer trägt als Namen/Raumnummer einen schon vorhandenen Namen/eine schon vorhandene Raumnummer ein.
+	\begin{enumerate}[label=\arabic*.]
+	\item Frau Meyer wird durch ein rotes Hightlighting des Textfeldes auf diesen Umstand hingewiesen.
+	\end{enumerate}
+\end{enumerate}
 
 \subsubsection{Raum bearbeiten}
-%TODO Anwendungsfall schreiben
+\textbf{Akteurin}
+\begin{itemize}
+\item Julia Meyer
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Vorbedingungen}
+\begin{enumerate}
+\item Die Software wurde von Frau Meyer gestartet und sie befindet sich in der Verwaltungs-Ansicht (s. Abb. 1).
+\item Es existiert ein Standort.
+\item Es existiert ein Raum.
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Regulärer Ablauf}
+\begin{enumerate}
+\item Frau Meyer klickt im linken Navigationsmenü auf den Eintrag ,,Standorte und Räume``.
+\item Die entsprechende Ansicht wird geöffnet.
+\item Frau Meyer wählt mithilfe des Drop-Down-Menüs den Standort, für welchen sie einen Raum bearbeiten möchte.
+\item Eine Liste aller Räume, die an diesem Standort liegen, wird angezeigt.
+\item Frau Meyer führt einen Rechtsklick auf den Eintrag ,,Raum 101`` aus.
+\item Ein Kontext-Menü mit den Einträgen ,,Bearbeiten`` und ,,Löschen`` erscheint.
+\item Frau Meyer klickt auf den Eintrag ,,Bearbeiten``.
+\item Ein ,,Raum bearbeiten``-Dialog wird geöffnet. Alle Textfelder und ähnlichen Komponenten sind mit den Werten des gewählten Raumes gefüllt.
+\item Frau Meyer möchte den Namen bzw. die Raumnummer nicht ändern.
+\item Frau Meyer möchte die Funktion nicht ändern.
+\item Frau Meyer trägt eine weitere Standortbeschreibung in die entsprechende Textarea ein.
+\item Frau Meyer klickt auf den ,,OK``-Button $\rightarrow$ \texttt{Raum bearbeiten}.
+\item Der Raum wird geändert.
+\item Das Dialogfenster wird geschlossen.
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Varianten}
+\begin{enumerate}
+\item zu 9: Frau Meyer möchte den Namen bzw. die Raumnummer ändern.
+	\begin{enumerate}[label={\alph*.}]
+	\item Frau Meyer trägt den entsprechenden Namen bzw. die Raumnummer ein (weiter zu 10). 
+	\end{enumerate}
+\item zu 10: Frau Meyer möchte die Funktion ändern.
+	\begin{enumerate}[label={\alph*.}]
+	\item Frau Meyer trägt trägt die entsprechende Funktion ein (weiter zu 11). 
+	\end{enumerate}
+\item zu 9-12: Frau Meyer klickt auf den ,,Abbrechen``-Button $\rightarrow$ \texttt{Öffne Abbrechen Bestätigungsdialog}.
+	\begin{enumerate}[label={\alph*.}]
+	\item Frau Meyer bestätigt das Abbrechen (weiter zu 14).
+	\item Frau Meyer lehnt das Abbrechen ab (zurück zu 9).
+	\end{enumerate}
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Nachbedingungen}
+\begin{itemize}
+\item Nach Ablauf mit Variante 1a: Der gewählte Raum wurde nicht geändert.
+\item Nach Ablauf ohne Variante 1a: Der gewählte Raum wurde geändert.
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Fehler-/Ausnahmefälle}
+\begin{enumerate}
+\item zu 13: Beim Ändern der Parameterwerte des Raumes kommt es zu einem Fehler.
+	\begin{enumerate}[label=\arabic*.]
+	\item Frau Meyer wird durch einen Warndialog darauf hingewiesen (zurück zu 9).
+	\end{enumerate}
+\end{enumerate}
 
 \subsubsection{Raum löschen}
-%TODO Anwendungsfall schreiben
+\textbf{Akteurin}
+\begin{itemize}
+\item Julia Meyer
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Vorbedingungen}
+\begin{enumerate}
+\item Die Software wurde von Frau Meyer gestartet und sie befindet sich in der Verwaltungs-Ansicht (s. Abb. 1).
+\item Es existiert ein Standort.
+\item Es existiert ein Raum.
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Regulärer Ablauf}
+\begin{enumerate}
+\item Frau Meyer klickt im linken Navigationsmenü auf den Eintrag ,,Standorte und Räume``.
+\item Die entsprechende Ansicht wird geöffnet.
+\item Frau Meyer wählt mithilfe des Drop-Down-Menüs den Standort, für welchen sie einen Raum löschen möchte.
+\item Eine Liste aller Räume, die an diesem Standort liegen, wird angezeigt.
+\item Frau Meyer führt einen Rechtsklick auf den Eintrag ,,Raum 101`` aus.
+\item Ein Kontext-Menü mit den Einträgen ,,Bearbeiten`` und ,,Löschen`` erscheint.
+\item Frau Meyer klickt auf den Eintrag ,,Löschen``.
+\item Ein Bestätigungsdialog fordert zur Bestätigung des Löschens auf.
+\item Frau Meyer bestätigt das Löschen $\rightarrow$ \texttt{Raum löschen}.
+\item Der gewählte Raum wird gelöscht.
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Varianten}
+\begin{enumerate}
+\item zu 9: Frau Meyer bestätigt das Löschen nicht (Ende des Anwendungsfalls).
+\end{enumerate}
+\vspace{5pt}
+
+\textbf{Nachbedingungen}
+\begin{itemize}
+\item Nach Ablauf mit Variante 1: Der gewählte Raum wurde nicht gelöscht.
+\item Nach Ablauf ohne Variante 1: Der gewählte Raum wurde gelöscht. Alle Referenzen wurden aufgehoben.
+\end{itemize}
+\vspace{5pt}
+
+\textbf{Fehler-/Ausnahmefälle}
+\begin{enumerate}
+\item zu 10: Beim Löschen des Raumes tritt ein Fehler auf.
+	\begin{enumerate}[label=\arabic*.]
+	\item Frau Meyer wird durch einen Warndialog auf den Fehler hingewiesen.
+	\end{enumerate}
+\end{enumerate}
 
 \subsubsection{Zeitraster für die Planung festlegen}
 %TODO Anwendungsfall schreiben
@@ -1175,7 +1431,7 @@ keine
 \end{itemize}
 \vspace{5pt}
 
-\textbf{Fehler-/Ausnahmefälle}\\
+\textbf{Fehler-/Ausnahmefälle}
 \begin{enumerate}
 \item zu 4: Beim Erzeugen des Backups tritt ein Fehler auf.
 	\begin{enumerate}[label=\arabic*.]
@@ -1209,7 +1465,7 @@ keine
 \end{enumerate}
 \vspace{5pt}
 
-\textbf{Varianten}\\
+\textbf{Varianten}
 \begin{enumerate}
 \item zu 7: Frau Meyer bestätigt die Wiederherstellung nicht (Ende des Anwendungsfalls).
 \end{enumerate}
@@ -1222,7 +1478,7 @@ keine
 \end{itemize}
 \vspace{5pt}
 
-\textbf{Fehler-/Ausnahmefälle}\\
+\textbf{Fehler-/Ausnahmefälle}
 \begin{enumerate}
 \item zu 8: Beim Erzeugen oder Wiederherstellen des Backups tritt ein Fehler auf.
 	\begin{enumerate}[label=\arabic*.]
@@ -1374,8 +1630,24 @@ Max. Ausführungszeit & 3 Sek.
 \subsubsection{Verwaltung der Aktivitätstypen betreffende Aktionen}
 %TODO Aktionen schreiben
 
+
+
 \subsubsection{Räume und Standorte betreffende Aktionen}
-%TODO Aktionen schreiben
+
+\paragraph{Standort hinzufügen}\mbox{}\\
+%TODO Aktion schreiben
+
+\paragraph{Standort löschen}\mbox{}\\
+%TODO Aktion schreiben
+
+\paragraph{Raum hinzufügen}\mbox{}\\
+%TODO Aktion schreiben
+
+\paragraph{Raum bearbeiten}\mbox{}\\
+%TODO Aktion schreiben
+
+\paragraph{Raum löschen}\mbox{}\\
+%TODO Aktion schreiben
 
 \subsubsection{Die Stundenplan-Erstellung betreffende Aktionen}
 %TODO Aktionen schreiben
@@ -1411,7 +1683,7 @@ Max. Ausführungszeit & je nach Größe der Datenbank, max. 10 Minuten
 Parameter & \begin{itemize}
 			\item \texttt{Pfad}: Pfad zum wiederherzustellenden Backup
 			\end{itemize}\\
-Aktion & Handelt es sich bei dem angegebenen Pfad um einen gültigen Pfad zu einem Backup, wird dieses Backup wiederhergestellt, ansonsten wird ein Fehler geworfen.\\
+Aktion & Handelt es sich bei dem angegebenen Pfad um einen gültigen Pfad zu einem Backup, wird dieses Backup wiederhergestellt, ansonsten wird ein Fehler geworfen. Bei der Wiederherstellung eines Backups werden auch alle aktuell im System vorhandenen verwaltbaren Objekte (Personal, Klassen, Aktivitätstypen, Aktivitäten, Räume, Standorte, etc.) aufgelöst und durch die wiederhergestellten ausgetauscht.\\
 Max. Ausführungszeit & je nach Größe der Datenbank, max. 10 Minuten 
 \end{tabularx}\\
 
