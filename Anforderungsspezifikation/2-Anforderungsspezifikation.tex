@@ -197,17 +197,20 @@ Im folgenden wird für Personen des Personals die weibliche Form benutzt, da Fra
 \begin{tabular}{p{3cm}p{9.5cm}}
 \textbf{Checkbox} & Eine Checkbox ist eine klickbare Box, welche über zwei Zustände verfügt, die sich bei Klick ändern\\
 \textbf{GUI} &  Das Graphical User Interface ist die Oberfläche, welche vom Benutzer bedient wird. Der Benutzer bedient lediglich an der GUI. Rechenprozesse o.ä. werden unter der GUI ausgeführt. \\
+\textbf{Memento} & Memento bezeichnet ein Architekturmuster in der Softwareentwicklung. Es wird dazu verwendet, den Zustand eines Objektes zu speichern, um ihn wiederherstellen zu können. Die Verwendung des Wortes Memento in den Aktionen meint immer ein Memento-Objekt.\\
 \textbf{Spinner} & Ein Spinner ist ein Textfeld, in dem man durch klicken von zwei Pfeilen am Textfeld den Inhalt dieses modifiziert.\\
-\end{tabular}
+\end{tabular}\\
+\newpage
 
 \subsubsection{Begriffe aus dem Bereich des Kunden}
 \begin{tabular}{p{3cm}p{9.5cm}}
 \textbf{Lehrkraft} & Als Lehrkräfte werden Personen angesehen, welche die Bescheinigung haben zu lehren.\\
 \textbf{Pädagogische Mitarbeiter} & Als Pädagogische Mitarbeiter werden Personen angesehen, welche sich dem Zweck widmen Kinder zu beaufsichtigen/Aktionen durchführen  und die Lehrkraft aktiv unterstützen, allerdings nicht ohne Beisein einer Lehrkraft Unterricht zu geben.\\
 \textbf{Rhythmisierter Unterricht} & Als Rhythmisierten Unterricht bezeichnet man den Wechsel zwischen Lern- und Entspannungsphasen innerhalb eines Unterrichttages. Bspw. auf eine Stunde Mathe folgt eine Stunde Sport.\\
-\textbf{Stundenplan} & Ein Stundenplan muss in einer von zwei Ausführungen vorliegen, einerseits ein Lehrerstundenplan und andererseits ein Stundenplan für eine Schulklasse. Aus dem Stundenplan muss ersichtlich sein, wann, wo, mit welchen Materialien, und mit wem sich die betreffende Person aufzuhalten hat.\\
+\textbf{Stundenplan} & Ein Stundenplan muss in einer von zwei Ausführungen vorliegen, einerseits ein Lehrerstundenplan und andererseits ein Stundenplan für eine Schulklasse. Aus dem Stundenplan muss ersichtlich sein, wann, wo, mit welchen Materialien, und mit wem sich die betreffende Person aufzuhalten hat.
 %TODO Falko weitere Anlegen
 \end{tabular}
+
 
 \subsubsection{Definitionen anderweitig verwendeter Begriffe}
 \label{subsubsec:anderweitigeBegriffe}
@@ -1506,12 +1509,9 @@ Max. Ausführungszeit & 1 Sek.
 
 \begin{tabularx}{\textwidth}{p{4cm}X}
 Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
-			\item \texttt{Jahrgang}
-			\item \texttt{Bezeichner}
-			\item \texttt{Raum}
-			\item \texttt{Unterrichtsbedarfe}
+			\item \texttt{Klasse}: Transferobjekt
 			\end{itemize}\\
-Aktion & Erzeugt eine neue Schulklasse mit den übergebenen Parameterwerten. Raum und Unterrichtsbedarfe sind optional. Wird kein Raum übergeben, hat die Klasse keinen zugeordneten Klassenraum, werden keine Unterrichtsbedarfe übergeben, werden die jahrgangsweiten verwendet.\\
+Aktion & Es wird geprüft, ob das Erzeugen einer Schulklasse, ist es möglich wird eine neue Schulklasse mit den übergebenen Parameterwerten erzeugt. Raum und Unterrichtsbedarfe sind optional. Wird kein Raum übergeben, hat die Klasse keinen zugeordneten Klassenraum, werden keine Unterrichtsbedarfe übergeben, werden die jahrgangsweiten verwendet. Die Aktion wird der Undo-Redo-Liste hinzugefügt. Ist das Erzeugen nicht möglich, wird eine entsprechende Statusmeldung zurückgegeben, die angibt, warum das Erzeugen nicht möglich ist.\\
 Max. Ausführungszeit & 1 Sek. 
 \end{tabularx}\\
 
@@ -1531,13 +1531,9 @@ Max. Ausführungszeit & 1 Sek.
 
 \begin{tabularx}{\textwidth}{p{4cm}X}
 Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
-			\item \texttt{Klasse}: Die zu bearbeitende Klasse.
-			\item \texttt{Jahrgang}: Der neue Jahrgang.
-			\item \texttt{Bezeichner}: Der neue Bezeichner.
-			\item \texttt{Raum}: Der neue Raum.
-			\item \texttt{Unterrichtsbedarfe}: Die neuen Unterrichtsbedarfe.
+			\item \texttt{Klasse}: Transferobjekt
 			\end{itemize}\\
-Aktion & Die zu bearbeitende Klasse wird entsprechend der übergebenen Parameterwerte angepasst. \\
+Aktion & Es wird geprüft, ob das Bearbeiten der Klasse mit den übergebenen Parameterwerten möglich ist. Ist dies der Fall, wird zunächst ein Memento von der zu bearbeitenden Klasse erzeugt. Anschießend wird die zu bearbeitende Klasse entsprechend der übergebenen Parameterwerte angepasst und die Aktion wird der Undo-Redo-Liste hinzugefügt. Ansonsten wird eine entsprechende Statusmeldung zurückgegeben, die angibt, warum das Bearbeiten nicht möglich ist.\\
 Max. Ausführungszeit & 1 Sek. 
 \end{tabularx}\\
 
@@ -1548,7 +1544,7 @@ Max. Ausführungszeit & 1 Sek.
 Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
 			\item \texttt{Klasse}
 			\end{itemize}\\
-Aktion & Es werden alle Aktivitäten der zu löschenden Klasse durchgegangen. Bei allen Aktivitäten, wo das Entfernen der Klasse als Teilnehmer zur Folge hätte, dass keine Klasse mehr an der Aktivität teilnehmen würde, wird die gesamte Aktivität aus dem System und der Datenbank gelöscht. Bei allen anderen Aktivitäten wird die Klasse als Teilnehmer entfernt und die Aktivitäten in der Datenbank aktualisiert. Alle weiteren Referenzen  auf die zu löschende Klasse (etwa bei einem Lehrer, der diese Klasse primär betreut) werden aufgelöst. \\
+Aktion & Es wird ein Memento der zu löschenden Klasse erzeugt. Anschließend werden alle Aktivitäten der zu löschenden Klasse durchgegangen. Bei allen Aktivitäten, wo das Entfernen der Klasse als Teilnehmer zur Folge hätte, dass keine Klasse mehr an der Aktivität teilnehmen würde, wird die gesamte Aktivität aus dem System und der Datenbank gelöscht. Bei allen anderen Aktivitäten wird die Klasse als Teilnehmer entfernt und die Aktivitäten in der Datenbank aktualisiert. Alle weiteren Referenzen  auf die zu löschende Klasse (etwa bei einem Lehrer, der diese Klasse primär betreut) werden aufgelöst. Die Aktion wird der Undo-Redo-Liste hinzugefügt.\\
 Max. Ausführungszeit & 3 Sek. 
 \end{tabularx}\\
 
@@ -1574,17 +1570,10 @@ Max. Ausführungszeit & 0,1 Sek.
 \hypertarget{par:LehrerinHinzufuegen}{
 \begin{tabularx}{\textwidth}{p{4cm}X}
 Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
-			\item \texttt{Vorname}
-			\item \texttt{Nachname}
-			\item \texttt{Kürzel}
-			\item \texttt{Wochenstunden} (in Unterrichtsstunden)
-			\item \texttt{Liste von Klassen}: Optional. Primär betreute Klassen, der zu erstellenden Lehrerin.
-			\item \texttt{Liste von Jahrgängen}: Optional. Primär betreute Jahrgänge, der zu erstellenden Lehrerin.
-			\item \texttt{Liste von anrechenbaren Ersatzleistungen}: Optional.
-			\item \texttt{Liste von möglichen Stundeninhalten}: Optional. Schulfächer und Projekte.
+			\item \texttt{Lehrer}: Transferobjekt
 			\end{itemize}\\
-Aktion &  So lange mindestens Vorname, Nachname, Kürzel und Wochenstunden gültige Werte besitzen, kann eine Lehrerin erzeugt und der Datenbank hinzugefügt werden. Gültige Werte sind ungleich \textbf{null}. Für Vorname und Nachname sind eine Folge von Buchstaben und ggf. enthaltene Bindestriche gültig und für die Wochenstunden eine natürliche Zahl. Das Kürzel sollte ungleich allen vorhandenen Kürzeln sein.  Bei ungültigen Werten wird ein Fehler geworfen. Alle anderen Parameter sind optional. Es wird geprüft, ob die Liste der anrechenbaren Ersatzleistungen möglicherweise im Konflikt mit der Wochenstundenzahl steht, indem sie diese auf 0 oder kleinere Werte verringert. In diesem Fall wird ein Fehler geworfen.  \\
-Max. Ausführungszeit & 1 Sek. 
+Aktion &  Es wird geprüft, ob das Hinzufügen der übergebenen Lehrerin möglich ist. So lange mindestens Vorname, Nachname, Kürzel und Wochenstunden gültige Werte besitzen, kann die Lehrerin hinzugefügt werden. Gültige Werte sind ungleich \textbf{null}. Für Vorname und Nachname sind eine Folge von Buchstaben und ggf. enthaltene Bindestriche gültig und für die Wochenstunden eine natürliche Zahl. Das Kürzel sollte ungleich allen vorhandenen Kürzeln sein. Alle anderen Parameter sind optional, werden aber auch auf gültige Werte geprüft. Es wird außerdem geprüft, ob die Liste der anrechenbaren Ersatzleistungen möglicherweise im Konflikt mit der Wochenstundenzahl steht, indem sie diese auf 0 oder kleinere Werte verringert. In diesem Fall oder bei einem ungültigen Parameterwert, wird eine entsprechende Statusmeldung zurückgegeben, die angibt, warum das Hinzufügen nicht möglich ist. Ansonsten wird die Lehrerin hinzugefügt und die Aktion der Undo-Redo-Liste hinzugefügt. \\
+Max. Ausführungszeit & 3 Sek. 
 \end{tabularx}}\\
 
 
@@ -1602,27 +1591,19 @@ Max. Ausführungszeit & 1 Sek.
 
 \begin{tabularx}{\textwidth}{p{4cm}X}
 Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
-			\item \texttt{Lehrerin}
-			\item \texttt{Vorname}
-			\item \texttt{Nachname}
-			\item \texttt{Kürzel}
-			\item \texttt{Wochenstunden} (in Unterrichtsstunden)
-			\item \texttt{Liste von Klassen}: Optional. 
-			\item \texttt{Liste von Jahrgängen}: Optional. 
-			\item \texttt{Liste von anrechenbaren Ersatzleistungen}: Optional.
-			\item \texttt{Liste von möglichen Stundeninhalten}: Optional. Schulfächer und Projekte.
+			\item \texttt{Lehrerin}: Transferobjekt
 			\end{itemize}\\
-Aktion & Diese Aktion ist im Grunde analog zur Aktion \hyperlink{par:LehrerinHinzufuegen}{Lehrerin hinzufügen}, hier wird lediglich eine Lehrerin übergeben für die neue Parameterwerte gesetzt werden sollen. Das übergebene Kürzel darf hier gleich dem der übergebenen Lehrerin sein.\\
-Max. Ausführungszeit & 1 Sek.
+Aktion & Es wird geprüft, ob das Bearbeiten der Lehrerin mit den übergebenen Parameterwerten möglich ist. Ist dies der Fall, wird zunächst ein Memento von der zu bearbeitenden Lehrerin erzeugt. Anschießend wird die zu bearbeitende Lehrerin entsprechend der übergebenen Parameterwerte angepasst und die Aktion wird der Undo-Redo-Liste hinzugefügt. Ansonsten wird eine entsprechende Statusmeldung zurückgegeben, die angibt, warum das Bearbeiten nicht möglich ist.\\
+Max. Ausführungszeit & 3 Sek.
 \end{tabularx}\\
 
 \paragraph{Lehrerin löschen}\mbox{}\\
 
 \begin{tabularx}{\textwidth}{p{4cm}X}
 Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
-			\item \texttt{Liste von Lehrerinnen}: Liste der zu löschenden Lehrerinnen. Diese kann auch leer sein oder nur ein Element enthalten.
+			\item \texttt{Lehrerin}
 			\end{itemize}\\
-Aktion & Ist die Liste von Lehrerinnen leer, geschieht nichts. Ansonsten werden alle Lehrerinnen der Liste einzeln abgearbeitet. Es werden alle Aktivitäten einer jeden Lehrerin durchgegangen. Bei allen Aktivitäten, wo das Entfernen der entsprechenden Lehrerin zur Folge hätte, dass keine Lehrerin mehr an der Aktivität teilnehmen würde, wird die gesamte Aktivität aus dem System und der Datenbank gelöscht. Bei allen anderen Aktivitäten wird die Lehrerin als Teilnehmerin entfernt und die Aktivitäten in der Datenbank aktualisiert. \\
+Aktion & Es wird zunächst ein Memento der zu löschenden Lehrerin erzeugt. Anschließend werden alle Aktivitäten der Lehrerin durchgegangen. Es werden alle Referenzen auf Aktivitäten, an denen die betroffene Lehrerin teilnahm aus dem System entfernt. Schließlich wird die Aktion der Undo-Redo-Liste hinzugefügt. \\
 Max. Ausführungszeit & 3 Sek. 
 \end{tabularx}\\
 
@@ -1635,19 +1616,50 @@ Max. Ausführungszeit & 3 Sek.
 \subsubsection{Räume und Standorte betreffende Aktionen}
 
 \paragraph{Standort hinzufügen}\mbox{}\\
-%TODO Aktion schreiben
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Standort}: Transferobjekt
+			\end{itemize}\\
+Aktion & Es wird geprüft, ob das Hinzufügen des übergebenen Standortes möglich ist. Ist dies der Fall, wird der neue Standort erstellt und die Aktion der Undo-Redo-Liste hinzugefügt. Ansonsten wird eine Statusmeldung zurückgegeben, die angibt, warum das Hinzufügen nicht möglich ist. \\
+Max. Ausführungszeit & 1 Sek. 
+\end{tabularx}\\
 
 \paragraph{Standort löschen}\mbox{}\\
-%TODO Aktion schreiben
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Standort}
+			\end{itemize}\\
+Aktion & Es wird ein Memento des Standortes erstellt und die Aktion der Undo-Liste hinzugefügt. Anschließend werden alle anderen Referenzen auf den Standort und den zu ihm gehörigen Räumen aufgelöst. \\
+Max. Ausführungszeit & 3 Sek. 
+\end{tabularx}\\
 
 \paragraph{Raum hinzufügen}\mbox{}\\
-%TODO Aktion schreiben
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Raum}: Transferobjekt
+			\end{itemize}\\
+Aktion & Es wird geprüft, ob das Hinzufügen des übergebenen Raumes möglich ist. Ist dies der Fall, wird der Raum hinzugefügt und die Aktion der Undo-Redo-Liste hinzugefügt. Ansonsten wird eine Statusmeldung zurückgegeben, die angibt, warum das Hinzufügen nicht möglich ist. \\
+Max. Ausführungszeit & 1 Sek. 
+\end{tabularx}\\
+
 
 \paragraph{Raum bearbeiten}\mbox{}\\
-%TODO Aktion schreiben
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Raum}: Transferobjekt
+			\end{itemize}\\
+Aktion & Es wird geprüft, ob das Bearbeiten des Raumes möglich ist. Ist dies der Fall, wird ein Memento des ursprünglichen Raumes erzeugt und anschließend die Parameterwerte des Raumes aktualisiert. Die Aktion der Undo-Redo-Liste hinzugefügt. Ansonsten wird eine Statusmeldung zurückgegeben, die angibt, warum das Bearbeiten nicht möglich ist. \\
+Max. Ausführungszeit & 1 Sek. 
+\end{tabularx}\\
 
 \paragraph{Raum löschen}\mbox{}\\
-%TODO Aktion schreiben
+\begin{tabularx}{\textwidth}{p{4cm}X}
+Parameter & \begin{itemize}[itemsep=0pt, leftmargin = 0.5cm]
+			\item \texttt{Raum}
+			\end{itemize}\\
+Aktion & Es wird ein Memento des zu löschenden Raumes angelegt. Alle Referenzen auf den Raum werden aufgelöst und die Aktion der Undo-Redo-Liste hinzugefügt. \\
+Max. Ausführungszeit & 1 Sek. 
+\end{tabularx}\\
 
 \subsubsection{Die Stundenplan-Erstellung betreffende Aktionen}
 %TODO Aktionen schreiben
