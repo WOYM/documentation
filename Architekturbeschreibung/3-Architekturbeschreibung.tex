@@ -75,6 +75,9 @@
   \\Architekturbeschreibung}
   \fancyhead[LE,RO]{Seite \thepage\\\slshape \leftmark\\\slshape \rightmark}
 
+%Etwas größere Zeilenabstände in Tabellen
+\renewcommand{\arraystretch}{1.2}
+
 %
 % Und jetzt geht das Dokument los....
 %
@@ -130,7 +133,7 @@
   \\ ~
   \vspace{2cm}
   \\
-  \it Version 1.1\\ ~
+  \it Version 1.0\\ ~
   \end{center}
   \end{minipage}
 
@@ -157,14 +160,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Version und Änderungsgeschichte}
 
-{\em Die aktuelle Versionsnummer des Dokumentes sollte eindeutig und gut zu
-identifizieren sein, hier und optimalerweise auf dem Titelblatt.}
-
 \begin{tabular}{ccl}
 Version & Datum & Änderungen \\
 \hline
-1.0 & TT.MM.JJJJ & Dokumentvorlage als initiale Fassung kopiert \\
-1.1 & TT.MM.JJJJ & .... \\
+1.0 & 29.10.2014 & Dokumentvorlage als initiale Fassung kopiert  \\
 \end{tabular}
 
 
@@ -176,6 +175,8 @@ Version & Datum & Änderungen \\
 
   {\em Was ist der Zweck dieser Architekturbeschreibung? Wer sind
   die LeserInnen?}
+  
+Die Architekturbeschreibung soll es anderen Entwicklern ermöglichen, den Aufbau der Software und Intentionen hinter bestimmten Design-Entscheidungen zu verstehen. Dadurch sollen Fremdentwickler in die Lage versetzt werden, die Software zu überarbeiten und Bugs zu beheben.
 
 \subsection{Status}
 \nurlangversion
@@ -186,6 +187,8 @@ Version & Datum & Änderungen \\
 
 
 \subsection{Referenzen}
+Die folgenden Kapitel stützen sich im Wesentlichen auf die Vorlesungsfolien ,,Software-Architektur 1`` der Veranstaltung ,,Software-Projekt 1`` im Sommersemester 2014 an der Universität Bremen von Prof. Dr. Rainer Koschke.
+
 
 \subsection{Übersicht über das Dokument}
 \nurlangversion
@@ -193,9 +196,6 @@ Version & Datum & Änderungen \\
 
 \section{Globale Analyse}
 \label{sec:globale_analyse}
-
-{\it Hier werden Einflussfaktoren aufgezählt und bewertet sowie Strategien
-zum Umgang mit interferierenden Einflussfaktoren entwickelt.}
 
 \subsection{Einflussfaktoren}
 \label{sec:einflussfaktoren}
@@ -233,6 +233,70 @@ zum Umgang mit interferierenden Einflussfaktoren entwickelt.}
 
   Verwendet eine eindeutige Nummerierung der Faktoren, um sie auf den
   Problemkarten einfach referenzieren zu können.  }
+
+\subsubsection{Organisatorische Faktoren}
+\begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|}
+\hline
+\textbf{Faktor} & \textbf{Flexibilität und Veränderlichkeit} & \textbf{Auswirkung}\\\hline
+\end{tabularx}\newline
+
+\begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|}
+\hline
+\multicolumn{3}{|l|}{\textbf{O1: Management}}\\\hline
+\multicolumn{3}{|l|}{O1.1: Zeitplan vs. Funktionsumfang}\\\hline
+Der Zeitplan ist in jedem Fall einzuhalten. Ggf. muss dafür in Kauf genommen werden, dass gewisse Funktionen fehlen. & Dieser Faktor ist nicht flexibel oder veränderlich. & Nicht alle geplanten Funktionen können implementiert werden. Zunächst Beschränkung auf die Funktionen, die notwendig sind, um die Mindestanforderungen zu erfüllen.\\\hline
+
+\multicolumn{3}{|l|}{\textbf{O2: Personal: Fähigkeiten, Interessen, Stärken, Schwächen}}\\\hline
+
+\multicolumn{3}{|l|}{\textbf{O3: Prozesse und Werkzeuge für die Entwicklungsschritte}}\\\hline
+
+\multicolumn{3}{|l|}{\textbf{O4: Entwicklungszeitplan}}\\\hline
+
+\multicolumn{3}{|l|}{\textbf{O5: Entwicklungsbudget}}\\\hline
+\multicolumn{3}{|l|}{O3.1: Anzahl der Entwickler}\\\hline
+Es sind maximal sechs Entwickler am Projekt beteiligt. & Es können keine weitere Entwickler hinzugezogen werden. Teilnehmende Entwickler können temporär oder komplett ausfallen. & \\\hline
+\end{tabularx}\\
+
+\subsubsection{Technische Faktoren}
+\begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|}
+\hline
+\textbf{Faktor} & \textbf{Flexibilität und Veränderlichkeit} & \textbf{Auswirkung}\\\hline
+\end{tabularx}\newline
+
+\begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|}
+\hline
+\multicolumn{3}{|l|}{\textbf{T1: Hardware}}\\\hline
+
+\multicolumn{3}{|l|}{\textbf{T2: Software}}\\\hline
+
+\multicolumn{3}{|l|}{\textbf{T3: Architekturtechnologie}}\\\hline
+
+\multicolumn{3}{|l|}{\textbf{T4: Standards}}\\\hline
+\multicolumn{3}{|l|}{T4.1: Datenbank}\\\hline
+Die Verwendung einer leichtgewichtigen, eingebetteten relationalen Datenbank ist vorgeschrieben. & Dieser Faktor ist nicht flexibel oder veränderlich. & \\\hline
+
+\end{tabularx}\\
+
+\subsubsection{Produktfaktoren}
+\begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|}
+\hline
+\textbf{Faktor} & \textbf{Flexibilität und Veränderlichkeit} & \textbf{Auswirkung}\\\hline
+\end{tabularx}\newline
+
+\begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|}
+\hline
+\multicolumn{3}{|l|}{\textbf{P1: Produktfunktionen}}\\\hline
+
+\multicolumn{3}{|l|}{\textbf{P2: Benutzerschnittstelle}}\\\hline
+
+\multicolumn{3}{|l|}{\textbf{P3: Performanz}}\\\hline
+
+\multicolumn{3}{|l|}{\textbf{P4: Verlässlichkeit}}\\\hline
+
+\multicolumn{3}{|l|}{\textbf{P5: Fehlererkennung, -bericht, -behandlung}}\\\hline
+
+\multicolumn{3}{|l|}{\textbf{P6: Service}}\\\hline
+\end{tabularx}\\
 
 
 \subsection{Probleme und Strategien}
@@ -388,13 +452,4 @@ Prozessen auf welchen Rechnern ausgeführt werden.}
 \dots
 
 
-\end{document}
-
-
-%%% Local Variables: 
-%%% mode: latex
-%%% mode: reftex
-%%% mode: flyspell
-%%% ispell-local-dictionary: "de_DE"
-%%% TeX-master: t
-%%% End: 
+\end{document} 
