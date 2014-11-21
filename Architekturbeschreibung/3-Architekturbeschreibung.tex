@@ -338,12 +338,14 @@ Die Verwendung einer leichtgewichtigen, eingebetteten relationalen Datenbank ist
 \section{Konzeptionelle Sicht}
 \label{sec:konzeptionell}
 
-{\it Diese Sicht beschreibt das System auf einer hohen Abstraktionsebene,
-d.h. mit sehr starkem Bezug zur Anwendungsdomäne und den geforderten
-Produktfunktionen und -attributen. Sie legt die Grobstruktur fest,
-ohne gleich in die Details von spezifischen Technologien abzugleiten. 
-Sie wird in den nachfolgenden Sichten konkretisiert und verfeinert. Die
-konzeptionelle Sicht wird mit {UML}-Komponentendiagrammen visualisiert.}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{konzept_sicht.png}
+\caption{Konzeptionelle Sicht als UML-Komponentendiagramm}
+\end{figure}
+
+Der Client besteht aus der GUI-, Model- und Persistence-Komponente. Die GUI-Komponente ist wiederum unterteilt in View und Controller. Die View-Komponente stellt Daten (in Form von Eingaben des Nutzers) für den Controller bereit. Der Controller hat die Kontrolle über die View-Komponente. Der Controller gibt die von der View-Komponente erhaltenen Daten nach ggf. ersten Validierungen in Form eines Transferobjektes an die Model-Komponenten weiter. Diese implementiert die Logik des Systems. Die Model-Komponente verarbeitet also die erhaltenen Daten, führt ggf. Berechnungen aus und gibt dem Controller in der Regel ein Status-Objekt zurück, welches den Erfolg oder Misserfolg (inkl. Gründen) einer Datenverarbeitung angibt. \\
+Auf unterster Ebene befindet sich schließlich die Persistence-Komponente. Diese hat die Kontrolle über die Datenbank und führt dementsprechend die Datenbankanfragen aus. Die Persistence-Komponente wird nur von der Model-Komponente aufgerufen, nicht von der GUI. Die Architektur folgt also dem Schichtenmodell.
 
 \section{Modulsicht}
 \label{sec:modulsicht}
@@ -394,13 +396,66 @@ die Entstehung anhand der Strategien erläutert werden.
 
 \section{Datensicht}
 \label{sec:datensicht}
+  
+\subsection{Datenmodell}
 
-{\it Hier wird das der Anwendung zugrundeliegende Datenmodell
-  beschrieben. Hierzu werden neben einem erläuternden Text auch ein
-  oder mehrere {UML}-Klassendiagramme verwendet. Das hier beschriebene
-  Datenmodell wird u.a. jenes der Anforderungsspezifikation enthalten,
-  allerdings mit implementierungsspezifischen Änderungen und
-  Erweiterungen. Siehe die gesonderten Hinweise.}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{Datenmodell.pdf}
+\caption{Datenmodell}
+\end{figure}
+Im Folgenden soll das Datenmodell beschrieben werden.\\
+
+\begin{tabularx}{\textwidth}{|p{0.6cm}|p{5cm}|X|}
+\hline
+\textbf{Nr.} & \textbf{Assoziation} & \textbf{Beschreibung} \\\hline
+1 	& \textit{Employee} -- ChargeableCompensation	& Ein Mitarbeiter kann eine beliebige Anzahl
+	an anrechenbaren Ersatzleistungen besitzen. Eine spezifische anrechenbare Ersatzleistung ist immer nur einem Mitarbeiter zugeordnet. \\\hline
+2	& \textit{Employee} -- AcademicYear 	& Einer belieben Anzahl an Mitarbeitern kann eine 
+	beliebige Anzahl an Jahrgängen zugeordnet sein. D.h. ein Mitarbeiter kann auch keinen Jahrgang betreuen und es muss nicht immer ein ganzer Jahrgang von einem Mitarbeiter betreut werden. \\\hline
+\end{tabularx}\\
+
+\begin{tabularx}{\textwidth}{|p{0.6cm}|p{5cm}|X|}
+\hline
+3	& \textit{Employee} -- Schoolclass		& Von einem bis zu einer beliebigen Anzahl Mitarbeiter 
+	ist eine beliebige Anzahl an Klassen zugeordnet. Ein Mitarbeiter muss also nicht zwangsläufig eine Klasse betreuen, aber eine Klasse hat immer mindestens einen Mitarbeiter, der sie betreut.\\\hline
+4	& \textit{Employee} -- TimePeriod		& Ein Mitarbeiter hat eine beliebige Menge von 
+	Zeiträumen als Zeitwünsche, also als Zeiten zu denen er gerne frei haben möchte. \\\hline
+4	& Teacher -- Project \newline 
+		  Teacher -- Subject 					& Einer beliebigen Anzahl von Lehrern kann eine beliebige Anzahl von Projekten oder Schulfächern als mögliche Stundeninhalte zugeordnet sein. Diese Assoziationen sind also komplett optional. \\\hline
+5	& Schoolclass -- Subject 				& Eine beliebige Anzahl an Schulklassen hat Bedarf an 
+	einer beliebigen Anzahl von Schulfächern. Die Anzahl an Schulfächern darf beliebig sein, damit eine Klasse auch erstellt werde kann, wenn noch keine Schulfächer existieren. Der Bedarf wird über die Assoziationsklasse \texttt{SubjectDemand} dargestellt.\\\hline
+6	& Activity -- TimePeriod				& Einer Aktivität steht immer genau ein
+	Zeitraum gegenüber.\\\hline
+7	& Activity -- Room						& Es findet immer genau eine Aktivität in genau einem 
+	Raum statt.\\\hline
+8	& Activity -- \textit{ActivityType} 		& Eine beliebige Anzahl Aktivitäten besitzt immer
+	einen Aktivitätstypen. Ein Aktivitätstyp kann mehreren Aktivitäten zugeordnet sein.\\\hline
+9 	& Activity -- Employee					& Eine beliebige Anzahl von Aktivitäten besitzt 
+	eine beliebige Anzahl von Personen des Personals als Teilnehmer. Die Assoziation wird mittels der Assoziationsklasse \texttt{EmployeeTimePeriods} hergestellt. Diese ordnet einem Mitarbeiter (\textit{Employee}) eine Liste von Zeiträumen (TimePeriod-Objekten) zu. \\\hline
+10	& Activity -- Schoolclass				& Eine beliebige Anzahl von Aktivitäten besitzt eine
+	beliebige Anzahl von Schulklassen als Teilnehmer. Schulklassen können die Aktivität nicht
+	frühzeitig verlassen, daher gilt für sie der für die Aktivität festgelegte Zeitraum.\\\hline
+11	& Location -- Room						& Ein Standort besteht aus beliebig vielen Räumen. 
+	Wird der Standort gelöscht, werden auch die Räume gelöscht.\\\hline
+\end{tabularx}\\
+	
+\begin{tabularx}{\textwidth}{|p{0.6cm}|p{5cm}|X|}
+\hline
+
+12	& \textit{ActivityType} -- Room					& Einem beliebigen Anzahl von Aktivitätstypen
+	kann die Ausführung in einer beliebigen Anzahl von Räumen zugeordnet sein. \\\hline
+\end{tabularx}
+
+\subsection{Datentypen und Repräsentation von Multiplizitäten}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{Datensicht.pdf}
+\caption{Übersicht über die Datenklassen}
+\end{figure}
+
+Abbildung 3 zeigt eine Übersicht über die verschiedenen Datenklassen mit ihren Attributen. 
+
+\subsection{Abbildung auf die Datenbank}
+
 
 \section{Ausführungssicht}
 \nurlangversion
