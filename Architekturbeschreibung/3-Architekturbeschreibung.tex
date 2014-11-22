@@ -421,17 +421,17 @@ Im Folgenden soll das Datenmodell beschrieben werden.\\
 4	& \textit{Employee} -- TimePeriod		& Ein Mitarbeiter hat eine beliebige Menge von 
 	Zeiträumen als Zeitwünsche, also als Zeiten zu denen er gerne frei haben möchte. \\\hline
 4	& Teacher -- Project \newline 
-		  Teacher -- Subject 					& Einer beliebigen Anzahl von Lehrern kann eine beliebige Anzahl von Projekten oder Schulfächern als mögliche Stundeninhalte zugeordnet sein. Diese Assoziationen sind also komplett optional. \\\hline
-5	& Schoolclass -- Subject 				& Eine beliebige Anzahl an Schulklassen hat Bedarf an 
-	einer beliebigen Anzahl von Schulfächern. Die Anzahl an Schulfächern darf beliebig sein, damit eine Klasse auch erstellt werde kann, wenn noch keine Schulfächer existieren. Der Bedarf wird über die Assoziationsklasse \texttt{SubjectDemand} dargestellt.\\\hline
+		  Teacher -- Subject 				& Einer beliebigen Anzahl von Lehrern kann eine beliebige Anzahl von Projekten oder Schulfächern als mögliche Stundeninhalte zugeordnet sein. Diese Assoziationen sind also komplett optional. \\\hline
+5	& Schoolclass -- Integer \newline
+	  AcademicYear -- Integer				& Eine Schulklasse und ein Jahrgang besitzen Unterrichtsbedarfe. Dies wird realisiert, dies wird durch eine Zuordnung von Integer-Werten zu Subject-Objekten realisiert. Die Subject-Objekte sind einzigartig. \\\hline
 6	& Activity -- TimePeriod				& Einer Aktivität steht immer genau ein
 	Zeitraum gegenüber.\\\hline
 7	& Activity -- Room						& Es findet immer genau eine Aktivität in genau einem 
 	Raum statt.\\\hline
-8	& Activity -- \textit{ActivityType} 		& Eine beliebige Anzahl Aktivitäten besitzt immer
+8	& Activity -- \textit{ActivityType} 	& Eine beliebige Anzahl Aktivitäten besitzt immer
 	einen Aktivitätstypen. Ein Aktivitätstyp kann mehreren Aktivitäten zugeordnet sein.\\\hline
-9 	& Activity -- Employee					& Eine beliebige Anzahl von Aktivitäten besitzt 
-	eine beliebige Anzahl von Personen des Personals als Teilnehmer. Die Assoziation wird mittels der Assoziationsklasse \texttt{EmployeeTimePeriods} hergestellt. Diese ordnet einem Mitarbeiter (\textit{Employee}) eine Liste von Zeiträumen (TimePeriod-Objekten) zu. \\\hline
+9 	& Activity -- EmployeeTimePeriods		& An einer Aktivität kann eine beliebige Anzahl an 
+	Mitarbeitern teilnehmen, da diese früher gehen oder später kommen können, werden diesen eigene Zeiträume zugeordnet. Die Mitarbeiter sind einzigartig, jedem Mitarbeiter wird maximal ein EmployeeTimePeriods-Objekt zugeordnet.\\\hline
 10	& Activity -- Schoolclass				& Eine beliebige Anzahl von Aktivitäten besitzt eine
 	beliebige Anzahl von Schulklassen als Teilnehmer. Schulklassen können die Aktivität nicht
 	frühzeitig verlassen, daher gilt für sie der für die Aktivität festgelegte Zeitraum.\\\hline
@@ -455,6 +455,7 @@ Im Folgenden soll das Datenmodell beschrieben werden.\\
 Abbildung 3 zeigt eine Übersicht über die verschiedenen Datenklassen mit ihren Attributen. 
 
 \subsection{Abbildung auf die Datenbank}
+Die Abbildung auf die Datenbank erfolgt mithilfe des JPA-Frameworks Eclipselink. Es muss lediglich darauf geachtet werden, die Annotationen korrekt zu setzen.  
 
 
 \section{Ausführungssicht}
