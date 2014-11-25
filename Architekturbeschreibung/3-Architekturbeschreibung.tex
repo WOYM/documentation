@@ -113,7 +113,7 @@
   \vspace{3ex}
    	  \begin{figure}[H]
       \centering
-      \includegraphics[width=0.25\textwidth]{../woym.png}
+      \includegraphics[width=0.25\textwidth]{../WOYM.png}
       \end{figure}
   \vfill
   \end{center}
@@ -164,6 +164,7 @@
 Version & Datum & Änderungen \\
 \hline
 1.0 & 29.10.2014 & Dokumentvorlage als initiale Fassung kopiert  \\
+1.1 & 22.11.2014 & Erste vollständige Fassung der konzeptionellen und Datensicht\\
 \end{tabular}
 
 
@@ -171,10 +172,6 @@ Version & Datum & Änderungen \\
 \section{Einführung}
 
 \subsection{Zweck}
-\nurlangversion
-
-  {\em Was ist der Zweck dieser Architekturbeschreibung? Wer sind
-  die LeserInnen?}
   
 Die Architekturbeschreibung soll es anderen Entwicklern ermöglichen, den Aufbau der Software und Intentionen hinter bestimmten Design-Entscheidungen zu verstehen. Dadurch sollen Fremdentwickler in die Lage versetzt werden, die Software zu überarbeiten und Bugs zu beheben.
 
@@ -394,13 +391,29 @@ Zweifel sollte er explizit erklärt werden. Auch für diese Sicht muss
 die Entstehung anhand der Strategien erläutert werden.
 }
 
+\subsection{Persistence}
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{persistence.pdf}
+\caption{Klassendiagramm Persistenzschicht}
+\end{figure}
+
+Die abstrakte Klasse \texttt{DataBase}, stellt die Verbindung zur Datenbank her und bietet allen Klassen des Persistence-Paketes über die statische Methode \textit{getEntityManager()} den EntityManager, der für die Transaktionen verwendet wird. Die Klasse ist ähnlich dem Singleton-Entwurfsmuster gebaut, so dass im ganzen System nur eine Instanz des EntityManagers existiert. Außerdem bietet die Klasse zwei öffentliche Methoden, die ein Backup der Datenbank bzw. die Wiederherstellung eines solchen Backups realisieren. Die beiden privaten Methoden \textit{checkZip(String)} und \textit{deleteFolder(File)} werden nur von \textit{restore(String)} und zwar in der aufgeschriebenen Reihenfolge aufgerufen.\\
+
+Die Klasse \texttt{DataBaseStartupServlet} wird lediglich verwendet, um die Datenbank mit dem Start des Containers, in welchem die Anwendung läuft, zu starten. In der Methode \textit{init(ServletConfig)} wird die Methode \textit{setUp()} der Klasse \texttt{DataBase} aufgerufen.\\
+
+Das Interface \texttt{IGenericDAO} ist eine Schnittstelle, die Methoden beschreibt, welche jedes konkrete Data Access Object implementieren muss. Die Schnittstelle wird implementiert von der Klasse \texttt{AbstractGenericDAO}. Diese bietet bereits konkrete Implementierungen für die Methoden \textit{persist(Object)}, \textit{merge(Object)} und \textit{delete(Object)}. \\
+Es existieren Interfaces für alle konkreten Data Access Objects, welche alle das Interface \texttt{GenericDAO} implementieren, jedoch nicht mehr mit generischer, sondern konkreter Klasse. \\
+Jedes dieser Interfaces wird von mindestens einer konkreten DAO-Klasse implementiert. Alle konkreten DAO-Klassen erben von \texttt{AbstractGenericDAO}.\\
+Die konkreten DAO-Klassen werden in der Model-Schicht verwendet, um dort den Datenbankzugriff zu erhalten.
+
 \section{Datensicht}
 \label{sec:datensicht}
   
 \subsection{Datenmodell}
 
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{Datenmodell.pdf}
+\includegraphics[width=\textwidth]{datenmodell.pdf}
 \caption{Datenmodell}
 \end{figure}
 Im Folgenden soll das Datenmodell beschrieben werden.\\
@@ -448,11 +461,11 @@ Im Folgenden soll das Datenmodell beschrieben werden.\\
 
 \subsection{Datentypen und Repräsentation von Multiplizitäten}
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{Datensicht.pdf}
+\includegraphics[width=\textwidth]{datensicht.pdf}
 \caption{Übersicht über die Datenklassen}
 \end{figure}
 
-Abbildung 3 zeigt eine Übersicht über die verschiedenen Datenklassen mit ihren Attributen. 
+Die Abbildung zeigt eine Übersicht über die verschiedenen Datenklassen mit ihren Attributen. 
 
 \subsection{Abbildung auf die Datenbank}
 Die Abbildung auf die Datenbank erfolgt mithilfe des JPA-Frameworks Eclipselink. Es muss lediglich darauf geachtet werden, die Annotationen korrekt zu setzen.  
