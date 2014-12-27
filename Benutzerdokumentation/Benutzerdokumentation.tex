@@ -50,7 +50,7 @@
 
 % Lustige Header auf den Seiten
   \pagestyle{fancy}
- \setlength{\headheight}{70.55003pt}
+  \setlength{\headheight}{70.55003pt}
   \fancyhead{}
   \fancyhead[LO,RE]{Benutzerhandbuch}
   \fancyhead[LE,RO]{Seite \thepage\\\slshape \leftmark\\\slshape \rightmark}
@@ -104,15 +104,15 @@
 
   \thispagestyle{fancy}
   \fancyhead{}
-  \fancyhead[LO,RE]{Benutzerhandbuch}
-  \fancyhead[LE,RO]{Seite \thepage\\\slshape \leftmark~}
+  \fancyhead[LO,RE]{Benutzerhandbuch\\ \mbox{}\\}
+  \fancyhead[LE,RO]{Seite \thepage\\\slshape \leftmark\\~}
   \fancyfoot{}
   \renewcommand{\headrulewidth}{0.4pt}
   \tableofcontents
 
 \newpage
 
-  \fancyhead[LE,RO]{Seite \thepage\\\slshape \leftmark \slshape \rightmark}
+  \fancyhead[LE,RO]{Seite \thepage\\\slshape \leftmark \\\slshape \rightmark}
 
 \section{Einleitung}
 Sehr geehrter Nutzer, sehr geehrte Nutzerin,\\
@@ -123,6 +123,50 @@ vielen Dank, dass sich für unsere Stundenplansoftware entschieden haben. Auf de
 \section{Installation und Inbetriebnahme}
 \subsection{Installation und Inbetriebnahme auf Windows Systemen}
 \subsection{Installation und Inbetriebnahme auf Linux/Mac OS Systemen}
+
+\clearpage
+
+\section{Bedienung der Software}
+
+\subsection{Die Einrichtungsseite}
+Die Einrichtungsseite dient der Vorbereitung zur Planung. Sie legen dort Standorte und Räume, Unterrichtsinhalte, Schulklassen und Personen des Personals an. Es wird empfohlen im Navigationsmenü auf der linken Seite von oben nach unten vorzugehen.
+
+\subsubsection{Hinzufügen eines Objektes am Beispiel einer Lehrkraft}
+\begin{enumerate}
+\item Klicken Sie im Menü auf der linken Seite auf den Eintrag "`Lehrkräfte"'.
+\item Sie sehen nun eine Tabelle, in welcher alle vorhandenen Lehrkräfte angezeigt werden. Klicken Sie auf den "`Hinzufügen"'-Button oben rechts.
+\item Das folgende Dialogfenster öffnet sich: \medskip\\
+	\begin{minipage}[t]{\linewidth}
+            \includegraphics[width=.8\linewidth]{images/addTeacherDialog.png}
+    \medskip\\
+    Die mit * gekennzeichneten Angaben sind Pflichtangaben. Aufklappbare Angaben sind immer optional.
+    \end{minipage}
+\clearpage
+\item Machen Sie alle gewünschten Angaben und klicken Sie anschließend auf "`Hinzufügen"'. Sie werden darüber informiert, wenn das Hinzufügen erfolgreich war: \medskip\\
+	\begin{minipage}[t]{\linewidth}
+          %TODO:Aktualisieren
+            \includegraphics[width=.8\linewidth]{images/addedTeacher.png}
+    \medskip\\
+    Das Dialogfenster bleibt geöffnet, um das Hinzufügen weiterer Lehrkräfte zu erlauben. Wenn Sie keine weitere Lehrkraft hinzufügen möchten, klicken Sie auf das X in der oberen rechten Ecke des Dialogs.
+    \end{minipage}
+\end{enumerate}
+
+\subsubsection{Aktualisieren eines Objektes am Beispiel einer Lehrkraft}
+
+\begin{enumerate}
+\item Führen Sie einen Rechtsklick auf die zu bearbeitende Lehrkraft aus und wählen sie "`Bearbeiten"': \medskip\\
+	\begin{minipage}[t]{\linewidth}
+          %TODO:Aktualisieren
+            \includegraphics[width=1\linewidth]{images/editTeacher.png}
+    \end{minipage}
+\item Im dem sich öffnenden Dialogfenster sind alle Angaben der gewählten Lehrkraft eingetragen: \medskip\\
+	\begin{minipage}[t]{\linewidth}
+          %TODO:Aktualisieren
+            \includegraphics[width=.8\linewidth]{images/editTeacherDialog.png}
+    \medskip\\ Passen Sie die Angaben nach Belieben an.
+    \end{minipage}
+\item Klicken Sie auf "`Aktualisieren"'. Bei Erfolg schließt sich das Dialogfenster und Sie werden über die erfolgreiche Aktualisierung informiert. %TODO: Erweitern
+\end{enumerate}
 
 
 
