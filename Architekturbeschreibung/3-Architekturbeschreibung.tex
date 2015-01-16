@@ -409,7 +409,7 @@ die Entstehung anhand der Strategien erläutert werden.
 Die Persistenzschicht ist für ein Single-User-System konzipiert und besteht aus drei Klassen. Die Singleton-Klasse \texttt{DataBase} stellt die unterste Ebene dar. Dort wird der EntityManager erzeugt, der für alle Datenbankanfragen von \texttt{DataAccess} verwendet wird. Außerdem bietet sie Methoden an, die ein Backup der Datenbank erzeugen bzw. ein Backup wiederherstellen. \texttt{DataBase} erweitert die Java-Klasse \texttt{Observable}, da es für die Wiederherstellung eines Backups notwendig ist, die Datenbank einmal komplett herunterzufahren und danach dementsprechend ein neuer EntityManager verwendet wird. Dies muss den beobachtenden Klassen mitgeteilt werden.\\
 Die Singleton-Klasse \texttt{DataAccess} implementiert das Java-Interface \texttt{Observer} und wird bei Erzeugung bei \texttt{DataBase} als Observer registriert. Zudem implementiert sie das Interface \texttt{IDataAccess}, welches alle notwendigen Datenzugriffsmethoden beschreibt. Die Klasse \texttt{DataAccess} stellt also die Schnittstelle zur Datenbank dar.\\
 Die letzte Klasse der Persistenzschicht ist \texttt{DataBaseStartupServlet}, welche die Java-Klasse \texttt{HttpServlet} erweitert. Sie dient dazu, die Datenbankverbindung mit dem Hochfahren des Tomcat-Servers aufzubauen. Dazu wird in der \emph{init}-Methode die Methode \emph{setUp} der Klasse \texttt{DataBase} aufgerufen.
-\includepdf[landscape]{persistenz.pdf}
+\includepdf[landscape]{persistence.pdf}
 
 
 \section{Datensicht}
