@@ -182,7 +182,7 @@ Die Architekturbeschreibung soll es anderen Entwicklern ermöglichen, den Aufbau
 
 
 \subsection{Referenzen}
-Die folgenden Kapitel stützen sich im Wesentlichen auf die Vorlesungsfolien ,,Software-Architektur 1`` der Veranstaltung ,,Software-Projekt 1`` im Sommersemester 2014 an der Universität Bremen von Prof. Dr. Rainer Koschke.
+Die folgenden Kapitel stützen sich im Wesentlichen auf die Vorlesungsfolien "`Software-Architektur 1"' der Veranstaltung "`Software-Projekt 1"' im Sommersemester 2014 an der Universität Bremen von Prof. Dr. Rainer Koschke.
 
 
 \subsection{Übersicht über das Dokument}
@@ -263,6 +263,8 @@ Es sind maximal sechs Entwickler am Projekt beteiligt. & Es können keine weiter
 \multicolumn{3}{|l|}{\textbf{T1: Hardware}}\\\hline
 
 \multicolumn{3}{|l|}{\textbf{T2: Software}}\\\hline
+\multicolumn{3}{|l|}{T2.1: Betriebssystem}\\\hline
+Die Software soll auf allen gängigen Betriebssystemen (Microsoft Windows, Linux, Mac-OS) lauffähig sein. & Dieser Faktor ist nicht flexibel, aber ggf. veränderlich, da neue Betriebssystem erscheinen können. & Bei der Entwicklung muss darauf geachtet werden, betriebssystemunabhängige Komponenten zu verwenden.\\\hline
 
 \multicolumn{3}{|l|}{\textbf{T3: Architekturtechnologie}}\\\hline
 
@@ -395,11 +397,35 @@ Im Paket \textit{org.woym.logic} befinden sich alle Klassen, die die Geschäftsl
 \end{figure}
 
 
+\subsection{Common}
+Im Paket \textit{org.woym.common} befinden sich -- wie vorher bereits angemerkt -- Klassen, welche von Klassen aus fast allen anderen Paketen verwendet werden.\\
+Das Paket \textit{org.woym.common.config} beinhaltet das \texttt{DefaultConfigEnum}, welches alle Einstellungsoptionen der Software mit ihren Standardwerten enthält. Die Klasse \texttt{Config} erzeugt eine Properties-Datei und gewährt anderen Klassen Zugriff auf dort eingetragene Werte. Bevor die anderen Methoden der Klasse aufgerufen werden können, muss mindestens einmal die Methode \textit{init()} aufgerufen werden. %TODO: Ggf. etwas erweitern/umschreiben 
+\\
+Die Klasse \texttt{ConfigServletListener} implementiert das Java-Interface \texttt{ServletContextListener} und sorgt dafür, dass mit dem Start des Servlet-Containers einmal die \textit{init()}-Methode von \texttt{Config} aufgerufen wird.\\
+
+Das Paket \textit{org.woym.common.messages} beinhaltet vier Enums mit Statusnachrichten. Die Klasse \texttt{MessageHelper} stellt Methoden bereit, welche für die Übergabe einer entsprechenden Nachricht und ggf. zusätzlichen Parametern eine \texttt{FaceMessage} zurückgibt. Die Methoden können in beliebiger Reihenfolge aufgerufen werden.\\
+
+Das Paket \textit{org.woym.common.exceptions} enthält lediglich die selbst angelegten Exceptions. \\
+
+Das Paket \textit{org.woym.common.objects} ist hier nicht vollständig dargestellt (s. Kapitel \ref{subsubsec:Objects}), da dies zu unübersichtlich wäre, stattdessen ist nur das Unterpaket \textit{org.woym.common.objects.spec} dargestellt. Dieses enthält drei Interfaces. \texttt{IMemento} dient lediglich der Vereinheitlichung aller einzelnen Memento-Klassen unter einem gemeinsamen Interface. Da die Memento-Klassen nach außen hin vollständig opak sind und keinerlei Methoden bereitstellen, können sie unter diesem Interface vereinheitlicht werden. Das Interface \texttt{IActivityObject} dient der Vereinheitlichung von Klassen, deren Objekte Teil der Klasse \texttt{Activity} sein können. \\
+Das Interface \texttt{IMementoObject} stellt Methoden für alle Klassen bereit, welche eine eigene Memento-Klasse definieren.
+
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{common.pdf}
+\end{figure}
+\newpage
+
+\subsubsection{Objects}
+\label{subsubsec:Objects}
 %TODO: Beschreiben
+\includepdf[landscape]{objects.pdf}
 
 \subsection{Logikschicht}
 \label{sec:logic}
-%TODO: Beschreibung
+Auf der Logikebene wurde das Command-Pattern verwendet, um alle Undo und Redo für alle Aktionen anbieten zu können. Die entsprechenden Klassen befinden sich im Paket \textit{org.woym.logic.command}. \\
+Das Interface \texttt{ICommand} spezifiziert die Methoden eines konkreten Commands. Implementiert wird das Interface von den Klassen \texttt{AddCommand}, \texttt{UpdateCommand}, \texttt{DeleteCommand} und \texttt{MacroCommand}.Für die Methoden gibt es eine klare Ausführungsreihenfolge. Nach Erzeugung eines ICommand-Objektes muss zunächst \textit{execute()} aufgerufen werden, danach dürfen alternierend \textit{undo()} und \textit{redo()} beliebig oft aufgerufen werden. \\
+Neben den Commands befindet sich im Paket \textit{org.woym.logic.command} auch die Singleton-Klasse \texttt{CommandCreator}, welche als einzige öffentliche Methode die Methode \textit{createDeleteCommand(Entity)} anbietet. Diese erzeugt für ein übergebenes \textit{Entity}-Objekt ein MacroCommand zum Löschen dieses Objektes, welches in der korrekten Abfolge alle Abhängigkeiten auflöst, und gibt dieses zurück. Die Methode darf beliebig aufgerufen werden. Für nähere Informationen siehe JavaDoc.
 
 \includepdf[landscape]{logic.pdf}
 
@@ -410,7 +436,10 @@ Im Paket \textit{org.woym.logic} befinden sich alle Klassen, die die Geschäftsl
 
 Die Persistenzschicht ist für ein Single-User-System konzipiert und besteht aus drei Klassen. Die Singleton-Klasse \texttt{DataBase} stellt die unterste Ebene dar. Dort wird der EntityManager erzeugt, der für alle Datenbankanfragen von \texttt{DataAccess} verwendet wird. Außerdem bietet sie Methoden an, die ein Backup der Datenbank erzeugen bzw. ein Backup wiederherstellen. \texttt{DataBase} erweitert die Java-Klasse \texttt{Observable}, da es für die Wiederherstellung eines Backups notwendig ist, die Datenbank einmal komplett herunterzufahren und danach dementsprechend ein neuer EntityManager verwendet wird. Dies muss den beobachtenden Klassen mitgeteilt werden.\\
 Die Singleton-Klasse \texttt{DataAccess} implementiert das Java-Interface \texttt{Observer} und wird bei Erzeugung bei \texttt{DataBase} als Observer registriert. Zudem implementiert sie das Interface \texttt{IDataAccess}, welches alle DAO-Interfaces implementiert und damit die notwendigen Datenzugriffsmethoden beschreibt. Die Klasse \texttt{DataAccess} stellt also für alle Klassen auf einer oberen Ebene die Schnittstelle zur Datenbank dar.\\
-Die letzte Klasse der Persistenzschicht ist \texttt{DataBaseServletListener}, welche das Java-Interface \texttt{ServletContextListener} implementiert. Sie dient dazu, die Datenbankverbindung mit dem Hochfahren des Tomcat-Servers aufzubauen.
+Die letzte Klasse der Persistenzschicht ist \texttt{DataBaseServletListener}, welche das Java-Interface \texttt{ServletContextListener} implementiert. Sie ruft mit dem Start des Servlet-Containers die \textit{setUp()}-Methode von \texttt{DataBase} auf.\\
+
+Bevor die Methoden von \texttt{DataAcess} verwendet werden können, muss mindestens einmal die Methode \textit{setUp()} der Klasse \texttt{DataBase} aufgerufen werden, da diese den von \texttt{DataAccess} benötigten EntityManager erzeugt.\\
+Die Methoden des Interfaces \texttt{IDataAccess} dürfen in beliebiger Reihenfolge aufgerufen werden. Methoden, welche als Rückgabewert eine Liste haben, geben in allen Fällen eine Liste zurück, diese kann also leer sein. Methoden, welche als Rückgabewert ein einzelnes Objekt einer Klasse besitzen, geben ein gemäß der JavaDoc-Beschreibung entsprechendes Objekt der Klasse oder \textbf{null} zurück, falls kein entsprechendes Objekt vorhanden ist. 
 
 
 \includepdf[landscape]{persistence.pdf}
