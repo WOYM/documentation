@@ -125,6 +125,7 @@ Unter Windows können Sie die Datei \textit{start.bat} verwenden, um die Softwar
 Wenn Sie wünschen, die Software vom Desktop aus starten zu können, legen Sie eine Verknüpfung zu der Datei \textit{start.bat} an.
 
 \subsection{Linux- / Mac-Betriebssysteme}
+%TODO
 
 \section{Bedienung der Software}
 
@@ -159,7 +160,7 @@ Zunächst einmal haben Sie in den Systemeinstellungen die Möglichkeit, alle Akt
 \caption{Einstellungsseite: Alle Aktivitäten löschen}
 \end{figure}
 
-Des Weiteren können Sie die allgemeinen Einstellungen der Software verändern. So haben Sie etwa die Möglichkeit die zu verplanenden Wochentage, Start- und Endzeit eines Wochentags und die Größe des Zeitrasters des Stundenplans festzulegen. Außerdem können Sie angeben, wie die zeitliche Abrechnung des Personals erfolgen soll, welche Bezeichner sie für Schulklassen wünschen und wie lang die typische Dauer einer Aktivität sein soll. Sie können hier außerdem alle Dialoge zurücksetzen, so dass diese erneut beim Löschen angezeigt werden. \\
+Des Weiteren können Sie die allgemeinen Einstellungen der Software verändern. So haben Sie etwa die Möglichkeit die zu verplanenden Wochentage, Start- und Endzeit eines Wochentags und die Größe des Zeitrasters des Stundenplans festzulegen. Außerdem können Sie angeben, wie die zeitliche Abrechnung des Personals erfolgen soll, welche Bezeichner sie für Schulklassen wünschen und wie lang die typische Dauer einer Aktivität sein soll. Sie können hier zudem alle Dialoge zurücksetzen, so dass diese erneut beim Löschen angezeigt werden. \\
 
 \fbox{\parbox{\textwidth}{\textbf{Achtung!} Wenn Sie die zu verplanenden Wochentage oder die Start- und Endzeit eines Wochentages ändern, werden alle Aktivitäten gelöscht, die an nicht mehr gewählten Wochentagen und außerhalb der neuen Start- und Endzeit liegen. Dies lässt sich \textbf{nicht} über den Rückgängig-Button rückgängig machen. Stattdessen müssten Sie ein Backup eines Zeitpunktes laden, wo sich die Aktivitäten noch im System befinden.}}
 
@@ -183,7 +184,8 @@ Schließlich können Sie auf der Einstellungsseite auch noch das Intervall für 
 In dieser Software entspricht ein Backup im Grunde einem Speicherstand des System zu einem gewissen Zeitpunkt. In einem Backup ist nicht nur der Datenbankzustand, sondern auch die Systemeinstellungen des Zeitpunktes, an welchem das Backup erstellt wurde, vorhanden. Wie aus dem vorherigen Kapitel hervorging, ist die Software in der Lage Backups automatisch im Hintergrund zu erzeugen. Zusätzlich oder wenn Sie die automatischen Backups ausgeschaltet haben, können Sie aber auch manuell Backups erzeugen. \\
 Sie haben die Auswahl, ob ein Backup einen automatisch aus dem aktuellen Datum und der Uhrzeit generierten Namen tragen soll oder ob sie es selbst benennen möchten.\\
 Die Backups werden in Ihrem Benutzer-Ordner, wo sich auch der aktuelle genutzte Datenbankzustand befindet, gespeichert. Unter Windows ist der Pfad zum Backup-Ordner \textit{C:\textbackslash{}Users\textbackslash{}Username\textbackslash{}WOYM} unter Linux/Mac-OS \textit{/home/username/WOYM}. Dort werden die Backups als ZIP-Dateien abgelegt.\\
-Die Backups werden auf der Backupverwaltung-Seite absteigend nach Erstellungsdatum sortiert.
+Die Backups werden auf der Backupverwaltung-Seite absteigend nach Erstellungsdatum sortiert.\\
+Backups werden nicht automatisch gelöscht, dies müssen sie manuell übernehmen.
 
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{images/backupManagement.png}
@@ -237,7 +239,18 @@ Die Backups werden auf der Backupverwaltung-Seite absteigend nach Erstellungsdat
 \end{enumerate}
 
 \section{Planungsseite}
+%TODO
 
 \section{Fehler und Fehlerbehandlung}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\textwidth}{|p{5cm}|X|}
+\hline
+\textbf{Fehler} & \textbf{Fehlerbeschreibung und mögliche Fehlerbehandlung}\\\hline
+Backup-Wiederherstellung fehlgeschlagen & Dieser Fehler tritt auf, wenn es nicht möglich war, den im Backup enthaltenen Datenbankzustand wiederherzustellen. Versuchen Sie ggf. noch einmal das Backup wiederherzustellen, schlägt es weiterhin fehl, ist das Backup ggf. beschädigt.\\\hline
+Datenbankfehler & Dieser Fehler tritt auf, wenn es ein internes Problem mit der Kommunikation mit der Datenbank gibt. Wenn der Fehler mehr als einmal auftritt, versuchen Sie einen Neustart der Software.\\\hline
+Fehler beim Laden der Einstellungen & Dieser Fehler tritt auf, wenn die Datei \textit{timetable.properties} ungültige Einträge besitzt. Falls Sie manuell Änderungen an der Datei vorgenommen haben, machen Sie diese rückgängig. Ansonsten können Sie die Datei auch löschen, beim nächsten Systemstart werden dann die Standardeinstellungen wiederhergestellt. Beachten Sie dabei, dass dann Aktivitäten außerhalb der standardmäßigen Start- und Endzeiten eines Wochentags liegen könnten und lediglich nicht angezeigt werden. Die Aktivitäten werde nicht automatisch gelöscht.\\\hline
+System nicht vollständig wiederhergestellt & Dieser Fehler tritt bei der Wiederherstellung auf, wenn die Datei \textit{timetable.properties} aus dem Backup nicht in das Arbeitsverzeichnis kopiert werden konnte. Kopieren Sie die Datei manuell in das Arbeitverzeichnis.\\\hline
+Ungültige Datei & Dieser Fehler tritt beim Wiederherstellen eines Backups auf, wenn eine ZIP-Datei zur Wiederherstellung gewählt wurde, welche kein Backup repräsentiert.\\\hline
+\end{tabularx}
 
 \end{document}

@@ -124,16 +124,13 @@
   \sf
   \begin{tabular}{l}
   Tim Hansen \\
-  Joshua Hoffmann\\
-  Hassan Klait \\
   Adrian Lück \\
   Jurij Schmidt\\
-  Falko Schröder
   \end{tabular}
   \\ ~
   \vspace{2cm}
   \\
-  \it Version 1.0\\ ~
+  \it Version 1.2\\ ~
   \end{center}
   \end{minipage}
 
@@ -165,6 +162,7 @@ Version & Datum & Änderungen \\
 \hline
 1.0 & 29.10.2014 & Dokumentvorlage als initiale Fassung kopiert  \\
 1.1 & 22.11.2014 & Erste vollständige Fassung der konzeptionellen und Datensicht\\
+1.2 & 17.01.2015 & Paketdiagramm hinzugefügt. Datenmodell aktualisiert. \\
 \end{tabular}
 
 
@@ -251,7 +249,7 @@ Der Zeitplan ist in jedem Fall einzuhalten. Ggf. muss dafür in Kauf genommen we
 
 \multicolumn{3}{|l|}{\textbf{O5: Entwicklungsbudget}}\\\hline
 \multicolumn{3}{|l|}{O3.1: Anzahl der Entwickler}\\\hline
-Es sind maximal sechs Entwickler am Projekt beteiligt. & Es können keine weitere Entwickler hinzugezogen werden. Teilnehmende Entwickler können temporär oder komplett ausfallen. & \\\hline
+Es sind maximal sechs Entwickler am Projekt beteiligt. & Es können keine weitere Entwickler hinzugezogen werden. Teilnehmende Entwickler können temporär oder komplett ausfallen. & Kann den Faktor O1.1 sehr stark beeinflussen, da weniger Entwickler auch bedeuten, dass innerhalb des Zeitplans weniger Funktionen implementiert werden können.\\\hline
 \end{tabularx}\\
 
 \subsubsection{Technische Faktoren}
@@ -335,11 +333,7 @@ Die Verwendung einer leichtgewichtigen, eingebetteten relationalen Datenbank ist
 \section{Konzeptionelle Sicht}
 \label{sec:konzeptionell}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{konzept_sicht.png}
-\caption{Konzeptionelle Sicht als UML-Komponentendiagramm}
-\end{figure}
+%TODO: Diagramm und Beschreibung überarbeiten
 
 Der Client besteht aus der GUI-, Model- und Persistence-Komponente. Die GUI-Komponente ist wiederum unterteilt in View und Controller. Die View-Komponente stellt Daten (in Form von Eingaben des Nutzers) für den Controller bereit. Der Controller hat die Kontrolle über die View-Komponente. Der Controller gibt die von der View-Komponente erhaltenen Daten nach ggf. ersten Validierungen in Form eines Transferobjektes an die Model-Komponenten weiter. Diese implementiert die Logik des Systems. Die Model-Komponente verarbeitet also die erhaltenen Daten, führt ggf. Berechnungen aus und gibt dem Controller in der Regel ein Status-Objekt zurück, welches den Erfolg oder Misserfolg (inkl. Gründen) einer Datenverarbeitung angibt. \\
 Auf unterster Ebene befindet sich schließlich die Persistence-Komponente. Diese hat die Kontrolle über die Datenbank und führt dementsprechend die Datenbankanfragen aus. Die Persistence-Komponente wird nur von der Model-Komponente aufgerufen, nicht von der GUI. Die Architektur folgt also dem Schichtenmodell.
@@ -392,23 +386,33 @@ die Entstehung anhand der Strategien erläutert werden.
 }
 
 \subsection{Paketdiagramm}
+Die Software ist aufgeteilt in fünf große Pakete, die jeweils noch Unterpakte besitzen. In dem nachfolgend aufgeführten Paketdiagramm sind nur die Abhängigkeiten zwischen den großen Pakten aufgeführt, um es übersichtlicher zu halten. Im Paket \textit{org.woym.persistence} befinden sich alle Klassen die in irgendeiner Weise eine Verbindung mit der Datenbank unterhalten, im Unterpaket \textit{org.woym.persistence.spec} befinden sich die zugehörigen Interfaces (s. Kapitel \ref{sec:persistence}).\\ Im Paket \textit{org.woym.common} bzw. in den jeweiligen Unterpaketen befinden sich Klassen, welche von Klassen aus fast allen anderen Paketen verwendet werden.\\
+Das Paket \textit{org.woym.controller} enthält alle Controller, welche die Eingaben von der GUI verarbeiten. Im Paket \textit{org.woym.ui} befinden sich JSF-Validatoren und Converter. \\ 
+Im Paket \textit{org.woym.logic} befinden sich alle Klassen, die die Geschäftslogik implementieren (s. Kapitel \ref{sec:logic}).
+
+\begin{figure}[H]
 \includegraphics[width=\textwidth]{packages.pdf}
+\end{figure}
+
 
 %TODO: Beschreiben
 
 \subsection{Logikschicht}
-
+\label{sec:logic}
 %TODO: Beschreibung
 
 \includepdf[landscape]{logic.pdf}
 
 \subsection{Persistenzschicht}
+\label{sec:persistence}
 
 %TODO: Beschreibung ggf. anpassen
 
 Die Persistenzschicht ist für ein Single-User-System konzipiert und besteht aus drei Klassen. Die Singleton-Klasse \texttt{DataBase} stellt die unterste Ebene dar. Dort wird der EntityManager erzeugt, der für alle Datenbankanfragen von \texttt{DataAccess} verwendet wird. Außerdem bietet sie Methoden an, die ein Backup der Datenbank erzeugen bzw. ein Backup wiederherstellen. \texttt{DataBase} erweitert die Java-Klasse \texttt{Observable}, da es für die Wiederherstellung eines Backups notwendig ist, die Datenbank einmal komplett herunterzufahren und danach dementsprechend ein neuer EntityManager verwendet wird. Dies muss den beobachtenden Klassen mitgeteilt werden.\\
-Die Singleton-Klasse \texttt{DataAccess} implementiert das Java-Interface \texttt{Observer} und wird bei Erzeugung bei \texttt{DataBase} als Observer registriert. Zudem implementiert sie das Interface \texttt{IDataAccess}, welches alle notwendigen Datenzugriffsmethoden beschreibt. Die Klasse \texttt{DataAccess} stellt also die Schnittstelle zur Datenbank dar.\\
-Die letzte Klasse der Persistenzschicht ist \texttt{DataBaseStartupServlet}, welche die Java-Klasse \texttt{HttpServlet} erweitert. Sie dient dazu, die Datenbankverbindung mit dem Hochfahren des Tomcat-Servers aufzubauen. Dazu wird in der \emph{init}-Methode die Methode \emph{setUp} der Klasse \texttt{DataBase} aufgerufen.
+Die Singleton-Klasse \texttt{DataAccess} implementiert das Java-Interface \texttt{Observer} und wird bei Erzeugung bei \texttt{DataBase} als Observer registriert. Zudem implementiert sie das Interface \texttt{IDataAccess}, welches alle DAO-Interfaces implementiert und damit die notwendigen Datenzugriffsmethoden beschreibt. Die Klasse \texttt{DataAccess} stellt also für alle Klassen auf einer oberen Ebene die Schnittstelle zur Datenbank dar.\\
+Die letzte Klasse der Persistenzschicht ist \texttt{DataBaseServletListener}, welche das Java-Interface \texttt{ServletContextListener} implementiert. Sie dient dazu, die Datenbankverbindung mit dem Hochfahren des Tomcat-Servers aufzubauen.
+
+
 \includepdf[landscape]{persistence.pdf}
 
 
@@ -416,77 +420,79 @@ Die letzte Klasse der Persistenzschicht ist \texttt{DataBaseStartupServlet}, wel
 \label{sec:datensicht}
   
 \subsection{Datenmodell}
-
-\begin{figure}[H]
-\includegraphics[width=\textwidth]{Datenmodell.png}
-\caption{Datenmodell}
-\end{figure}
-Im Folgenden soll das Datenmodell beschrieben werden.\\
+Auf der folgenden Seite ist das Datenmodell dargestellt. Danach folgt eine Beschreibung der einzelnen Assoziationen.
+\includepdf[landscape]{datenmodell.pdf}
+Im Folgenden soll die einzelnen Assoziationen erläutert werden.\\
 
 \begin{tabularx}{\textwidth}{|p{0.6cm}|p{5cm}|X|}
 \hline
 \textbf{Nr.} & \textbf{Assoziation} & \textbf{Beschreibung} \\\hline
 1 	& \textit{Employee} -- ChargeableCompensation	& Ein Mitarbeiter kann eine beliebige Anzahl
 	an anrechenbaren Ersatzleistungen besitzen. Eine spezifische anrechenbare Ersatzleistung ist immer nur einem Mitarbeiter zugeordnet. \\\hline
-2	& \textit{Employee} -- AcademicYear 	& Einer belieben Anzahl an Mitarbeitern kann eine 
-	beliebige Anzahl an Jahrgängen zugeordnet sein. D.h. ein Mitarbeiter kann auch keinen Jahrgang betreuen und es muss nicht immer ein ganzer Jahrgang von einem Mitarbeiter betreut werden. \\\hline
-3	& \textit{Employee} -- Schoolclass		& Von einem bis zu einer beliebigen Anzahl Mitarbeiter 
-	ist eine beliebige Anzahl an Klassen zugeordnet. Ein Mitarbeiter muss also nicht zwangsläufig eine Klasse betreuen, aber eine Klasse hat immer mindestens einen Mitarbeiter, der sie betreut.\\\hline
-4	& \textit{Employee} -- TimePeriod		& Ein Mitarbeiter hat eine beliebige Menge von 
+2	& \textit{Employee} -- TimePeriod		& Ein Mitarbeiter hat eine beliebige Menge von 
 	Zeiträumen als Zeitwünsche, also als Zeiten zu denen er gerne frei haben möchte. \\\hline
-4	& \textit{Employee} -- \textit{ActivityType} & Einer beliebigen Anzahl von Mitarbeitern kann
+3	& \textit{Employee} -- \textit{ActivityType} & Einer beliebigen Anzahl von Mitarbeitern kann
 	eine beliebige Anzahl von Aktivitätstypen als mögliche Stundeninhalte zugeordnet sein. Diese Assoziationen sind also komplett optional. \\\hline
-5	& Schoolclass -- LessonType -- Integer \newline
+4	& Schoolclass -- LessonType -- Integer \newline
 	  AcademicYear -- LessonType -- Integer				& Eine Schulklasse und ein Jahrgang besitzen Unterrichtsbedarfe. Dies wird durch eine Zuordnung von Integer-Werten zu LessonType-Objekten realisiert. Jedes LessonType-Objekt darf in Kombination mit einer Klasse / einem Jahrgang nur einmal vorkommen. \\\hline
-6	& Schoolclass -- Teacher 				& Eine beliebige Anzahl an Schulklassen hat genau
+5	& Schoolclass -- Teacher 				& Eine beliebige Anzahl an Schulklassen hat genau
 	einen Klassenlehrer. Ein Lehrer kann Klassenlehrer mehrere Schulklassen sein. \\\hline
+6	& AcademicYear -- Schoolclass 			& Ein AcademicYear-Objekt besteht aus einer beliebigen 
+	Anzahl Schoolclass-Objekten. Wird das AcademicYear-Objekt gelöscht, werden auch alle dazu gehörigen Schoolclass-Objekte gelöscht.\\\hline
 7	& \textit{Activity} -- TimePeriod				& Einer Aktivität steht immer genau ein
 	Zeitraum gegenüber.\\\hline
-8	& \textit{Activity} -- Room						& Eine Aktivität kann mehreren Räumen
-	zugeordnet
-	sein.\\\hline
+8	& \textit{Activity} -- Room						& Eine Aktivität ist mindestens einem, kann 
+	aber mehreren Räumen zugeordnet sein.\\\hline
 \end{tabularx}
 
 \begin{tabularx}{\textwidth}{|p{0.6cm}|p{5cm}|X|}
 \hline
-9	& Meeting -- MeetingType 			 & Eine Aktivität vom Typ Meeting hat genau einen
-	MeetingType. Ein MeetingType kann mehreren Aktivitäten vom Typ Meeting zugeordnet sein. \\\hline
-10	& Project -- ProjectType			& Eine Aktivität vom Typ Project hat genau einen
-	ProjectType. Ein ProjectType kann mehreren Aktivitäten vom Typ Project zugeordnet sein. \\\hline
-11	& Lesson -- LessonType				& Eine Aktivität vom Typ Lesson hat genau einen
-	LessonType. Ein LessonType kann mehreren Aktivitäten vom Typ Lesson zugeordnet sein. \\\hline
-12 	& \textit{Activity} -- EmployeeTimePeriods		& An einer Aktivität kann eine beliebige
+9 	& \textit{Activity} -- EmployeeTimePeriods		& An einer Aktivität kann eine beliebige
 	Anzahl an Mitarbeitern teilnehmen, da diese früher gehen oder später kommen können, wird jedem Mitarbeiter eine eigene Liste von Zeiträumen zugeordnet. Dies wird durch die Klasse \texttt{EmployeeTimePeriods} realisiert. Einer Aktivität kann eine beliebige Zahl von EmployeeTimePeriods-Objekten zugeordnet sein, aber ein spezifisches EmployeeTimePeriod-Objekt ist immer nur genau einer Aktivität zugeordnet. \\\hline
-13 	& EmployeeTimePeriods -- Employee 				& Eine beliebige Anzahl
-	EmployeeTimePeriods-Objekte besitzt genau einen Lehrer. Ein Lehrer kann Teil einer beliebigen Anzahl von EmployeeTimePeriods-Objekten sein. \\\hline
-14	& EmployeeTimePeriods -- TimePeriod 			& Ein EmployeeTimePeriods-Objekt besitzt
-	mindestens eine bis beliebig viele TimePeriod-Objekte. Ein spezifisches TimePeriod-Objekt ist immer nur Teil von genau einem EmployeeTimePeriods-Objekt. \\\hline
-15	& \textit{Activity} -- Schoolclass				& Eine beliebige Anzahl von Aktivitäten
+10	& \textit{Activity} -- Schoolclass				& Eine beliebige Anzahl von Aktivitäten
 	besitzt eine beliebige Anzahl von Schulklassen als Teilnehmer. Schulklassen können die Aktivität nicht
 	frühzeitig verlassen, daher gilt für sie der für die Aktivität festgelegte Zeitraum.\\\hline
-16	& Location -- Room						& Ein Standort besteht aus beliebig vielen Räumen. 
-	Wird der Standort gelöscht, werden auch die Räume gelöscht.\\\hline
-17	& \textit{ActivityType} -- Room					& Einer beliebigen Anzahl von Aktivitätstypen
-	kann die Ausführung in einer beliebigen Anzahl von Räumen zugeordnet sein. \\\hline
+11	& Meeting -- MeetingType 			 & Eine Aktivität vom Typ Meeting hat genau einen
+	MeetingType. Ein MeetingType kann mehreren Aktivitäten vom Typ Meeting zugeordnet sein. \\\hline
+12	& Project -- ProjectType			& Eine Aktivität vom Typ Project hat genau einen
+	ProjectType. Ein ProjectType kann mehreren Aktivitäten vom Typ Project zugeordnet sein. \\\hline
+13	& Lesson -- LessonType				& Eine Aktivität vom Typ Lesson hat genau einen
+	LessonType. Ein LessonType kann mehreren Aktivitäten vom Typ Lesson zugeordnet sein. \\\hline
+14	& CompoundLesson -- LessonType & Eine CompoundLesson (Bandunterricht) hat mindestens ein bis 
+	beliebig viele LessonType-Objekte. \\\hline
+15 	& EmployeeTimePeriods -- Employee 				& Eine beliebige Anzahl
+	EmployeeTimePeriods-Objekte besitzt genau einen Lehrer. Ein Lehrer kann Teil einer beliebigen Anzahl von EmployeeTimePeriods-Objekten sein. \\\hline
+16	& EmployeeTimePeriods -- TimePeriod 			& Ein EmployeeTimePeriods-Objekt besitzt
+	mindestens eine bis beliebig viele TimePeriod-Objekte. Ein spezifisches TimePeriod-Objekt ist immer nur Teil von genau einem EmployeeTimePeriods-Objekt. \\\hline
 \end{tabularx}
 
 \begin{tabularx}{\textwidth}{|p{0.6cm}|p{5cm}|X|}
 \hline
-18 	& TravelTimeList -- Edge 					& Ein TravelTimeList-Objekt kann eine beliebige
+17 	& TimePeriod -- Weekday & Ein TimePeriod-Objekt hat genau einen Wochentag, ein Wochentag kann 
+	mehreren TimePeriod-Objekten zugeordnet sein.\\\hline 
+18	& Location -- Room						& Ein Standort besteht aus beliebig vielen Räumen. 
+	Wird der Standort gelöscht, werden auch die Räume gelöscht.\\\hline
+19	& \textit{ActivityType} -- Room					& Einer beliebigen Anzahl von Aktivitätstypen
+	kann die Ausführung in einer beliebigen Anzahl von Räumen zugeordnet sein. \\\hline
+20	& Classteam -- Schoolclass 					& Ein Klassenteam hat eine beliebige Anzahl 
+	Schulklassen, eine Schulklasse ist aber immer nur genau einem oder keinem Klassteam zugeordnet.\\\hline
+21	& Classteam -- Employee 					& Ein Klassteam hat mindestens einen bis zu 
+	einer beliebigen Anzahl Mitarbeiter. Wobei Klassenteams ohne mindestens eine Lehrkraft auf Logikebene verhindert werden müssen. Ein Mitarbeiter kann Teil mehrere Klassenteams sein. \\\hline
+22 	& TravelTimeList -- Edge 					& Ein TravelTimeList-Objekt kann eine beliebige
 	Anzahl von Edge-Objekten besitzen. Ein Edge-Objekt kann nur Teil eines TravelTimeList-Objektes sein. \\\hline
-19	& Edge -- Location							& Einer beliebigen Anzahl von Edge-Objekten kann 
+23	& Edge -- Location							& Einer beliebigen Anzahl von Edge-Objekten kann 
 	eine beliebige Anzahl von Location-Objekten gegenüberstehen. Ein Edge-Objekt hat aber immer zwei disjunkte Location-Objekte.\\\hline 
 \end{tabularx}
 \subsection{Datentypen und Repräsentation von Multiplizitäten}
+
+Diese Abbildung stellt eine andere Sichtweise auf das vorher gezeigte Klassendiagramm von. Es wurden alle Assoziationen weggelassen und dafür die Attribute an die entsprechenden Klassen eingetragen.
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{Datensicht.pdf}
-\caption{Übersicht über die Datenklassen}
+\includegraphics[width=\textwidth]{datensicht.pdf}
 \end{figure}
 
-Diese Abbildung stellt eine andere Sichtweise auf das Klassendiagramm von Abbildung 3 dar. Es wurden alle Assoziationen weggelassen und dafür die Attribute an die entsprechenden Klassen eingetragen.
 
 \subsection{Abbildung auf die Datenbank}
-Die Abbildung auf die Datenbank erfolgt mithilfe des JPA-Frameworks Eclipselink. Es muss lediglich darauf geachtet werden, die Annotationen korrekt zu setzen.  
+Die Abbildung auf die Datenbank erfolgt mithilfe des JPA-Frameworks Eclipselink. Damit muss lediglich darauf geachtet werden, die Attribute in den Klassen korrekt mit den One-To-Many- und Many-To-Many-Beziehungen gemäß des Datenmodells zu annotieren.
 
 
 \section{Ausführungssicht}
