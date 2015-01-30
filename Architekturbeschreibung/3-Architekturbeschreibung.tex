@@ -361,10 +361,13 @@ Die Software soll verschieden Systemeinstellungen bieten, die etwa erlauben, zu 
 \section{Konzeptionelle Sicht}
 \label{sec:konzeptionell}
 
-%TODO: Diagramm und Beschreibung überarbeiten
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.45\textwidth]{konzeptsicht.pdf}
+\end{figure}
 
-Der Client besteht aus der GUI-, Model- und Persistence-Komponente. Die GUI-Komponente ist wiederum unterteilt in View und Controller. Die View-Komponente stellt Daten (in Form von Eingaben des Nutzers) für den Controller bereit. Der Controller hat die Kontrolle über die View-Komponente. Der Controller gibt die von der View-Komponente erhaltenen Daten nach ggf. ersten Validierungen in Form eines Transferobjektes an die Model-Komponenten weiter. Diese implementiert die Logik des Systems. Die Model-Komponente verarbeitet also die erhaltenen Daten, führt ggf. Berechnungen aus und gibt dem Controller in der Regel ein Status-Objekt zurück, welches den Erfolg oder Misserfolg (inkl. Gründen) einer Datenverarbeitung angibt. \\
-Auf unterster Ebene befindet sich schließlich die Persistence-Komponente. Diese hat die Kontrolle über die Datenbank und führt dementsprechend die Datenbankanfragen aus. Die Persistence-Komponente wird nur von der Model-Komponente aufgerufen, nicht von der GUI. Die Architektur folgt also dem Schichtenmodell.
+
+Der Client besteht aus der GUI-, Model- und Persistence-Komponente. Die GUI-Komponente ist wiederum unterteilt in View und Controller. Die View-Komponente stellt Daten (in Form von Eingaben des Nutzers) für die Controller-Komponente bereit. Die Controller-Komponente kontrolliert die Darstellung der View-Komponente und nutzt durch die Model-Komponente bereitgestellte Möglichkeiten, Daten zu modifizieren oder bestimmte verarbeitete Daten zu erhalten. Auch nutzt die Controller-Komponente die von der Persistence-Komponente bereitgestellten Operationen um Daten aus der Datenbank zu lesen. Auch die Model-Komponente nutzt durch die Persistence-Komponente bereitgestellte Operationen, greift jedoch nicht nur auf lesende Operationen zu, sondern hat vollständigen Zugriff auch auf schreibende Methoden. Die Persistence-Komponente ist unabhängig von den anderen Komponenten. Die Software ist also nach einer Schichtenarchitektur aufgebaut.
 
 \section{Modulsicht}
 \label{sec:modulsicht}
@@ -414,49 +417,24 @@ die Entstehung anhand der Strategien erläutert werden.
 }
 
 \subsection{Paketdiagramm}
-Die Software ist aufgeteilt in fünf große Pakete, die jeweils noch Unterpakte besitzen. In dem nachfolgend aufgeführten Paketdiagramm sind nur die Abhängigkeiten zwischen den großen Pakten aufgeführt, um es übersichtlicher zu halten. Im Paket \textit{org.woym.persistence} befinden sich alle Klassen die in irgendeiner Weise eine Verbindung mit der Datenbank unterhalten, im Unterpaket \textit{org.woym.persistence.spec} befinden sich die zugehörigen Interfaces (s. Kapitel \ref{sec:persistence}).\\ Im Paket \textit{org.woym.common} bzw. in den jeweiligen Unterpaketen befinden sich Klassen, welche von Klassen aus fast allen anderen Paketen verwendet werden.\\
-Das Paket \textit{org.woym.controller} enthält alle Controller, welche die Eingaben von der GUI verarbeiten. Im Paket \textit{org.woym.ui} befinden sich JSF-Validatoren und Converter. \\ 
-Im Paket \textit{org.woym.logic} befinden sich alle Klassen, die die Geschäftslogik implementieren (s. Kapitel \ref{sec:logic}).
+Die Software ist aufgeteilt in fünf große Pakete, die jeweils noch Unterpakte besitzen. In dem nachfolgend aufgeführten Paketdiagramm sind nur die Abhängigkeiten zwischen den großen Pakten aufgeführt, um die Darstellung übersichtlicher zu halten.\\
+
+\begin{itemize}
+\item \textit{org.woym.persistence}: In diesem Paket befinden sich alle Klassen, die Methoden für lesenden oder schreibenden Zugriff auf der Datenbank enthalten. Im Unterpaket \textit{org.woym.persistence.spec} befinden sich die zugehörigen Interfaces (s. Kapitel \ref{subsec:persistence}).
+\item \textit{org.woym.common}: In diesem Paket  bzw. in den jeweiligen Unterpaketen befinden sich Klassen, welche von Klassen aus fast allen anderen Paketen verwendet werden (s. Kapitel \ref{subsec:Common}). 
+\item \textit{org.woym.controller}: Dieses Paket enthält alle Controller, welche die Eingaben von der GUI verarbeiten (s. Kapitel \ref{subsec:Controller}.
+\item \textit{org.woym.ui}: Dieses Paket enthält JSF-Validatoren und -Converter, sowie Hilfsklassen für bestimmte Operationen auf der GUI (s. Kapitel \ref{subsec:UI}).
+\item \textit{org.woym.logic}: In diesem Paket befinden sich alle Klassen, die die Geschäftslogik implementieren (s. Kapitel \ref{subsec:logic}).
+\end{itemize}
+ 
+
 
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{packages.pdf}
 \end{figure}
 
-
-\subsection{Common}
-Im Paket \textit{org.woym.common} befinden sich -- wie vorher bereits angemerkt -- Klassen, welche von Klassen aus fast allen anderen Paketen verwendet werden.\\
-Das Paket \textit{org.woym.common.config} beinhaltet das \texttt{DefaultConfigEnum}, welches alle Einstellungsoptionen der Software mit ihren Standardwerten enthält. Die Klasse \texttt{Config} erzeugt eine Properties-Datei und gewährt anderen Klassen Zugriff auf dort eingetragene Werte. Bevor die anderen Methoden der Klasse aufgerufen werden können, muss mindestens einmal die Methode \textit{init()} aufgerufen werden. %TODO: Ggf. etwas erweitern/umschreiben 
-\\
-Die Klasse \texttt{ConfigServletListener} implementiert das Java-Interface \texttt{ServletContextListener} und sorgt dafür, dass mit dem Start des Servlet-Containers einmal die \textit{init()}-Methode von \texttt{Config} aufgerufen wird.\\
-
-Das Paket \textit{org.woym.common.messages} beinhaltet vier Enums mit Statusnachrichten. Die Klasse \texttt{MessageHelper} stellt Methoden bereit, welche für die Übergabe einer entsprechenden Nachricht und ggf. zusätzlichen Parametern eine \texttt{FaceMessage} zurückgibt. Die Methoden können in beliebiger Reihenfolge aufgerufen werden.\\
-
-Das Paket \textit{org.woym.common.exceptions} enthält lediglich die selbst angelegten Exceptions. \\
-
-Das Paket \textit{org.woym.common.objects} ist hier nicht vollständig dargestellt (s. Kapitel \ref{subsubsec:Objects}), da dies zu unübersichtlich wäre, stattdessen ist nur das Unterpaket \textit{org.woym.common.objects.spec} dargestellt. Dieses enthält drei Interfaces. \texttt{IMemento} dient lediglich der Vereinheitlichung aller einzelnen Memento-Klassen unter einem gemeinsamen Interface. Da die Memento-Klassen nach außen hin vollständig opak sind und keinerlei Methoden bereitstellen, können sie unter diesem Interface vereinheitlicht werden. Das Interface \texttt{IActivityObject} dient der Vereinheitlichung von Klassen, deren Objekte Teil der Klasse \texttt{Activity} sein können. \\
-Das Interface \texttt{IMementoObject} stellt Methoden für alle Klassen bereit, welche eine eigene Memento-Klasse definieren.
-
-
-\begin{figure}[H]
-\includegraphics[width=\textwidth]{common.pdf}
-\end{figure}
-\newpage
-
-\subsubsection{Objects}
-\label{subsubsec:Objects}
-%TODO: Beschreiben
-\includepdf[landscape]{objects.pdf}
-
-\subsection{Logikschicht}
-\label{sec:logic}
-Auf der Logikebene wurde das Command-Pattern verwendet, um alle Undo und Redo für alle Aktionen anbieten zu können. Die entsprechenden Klassen befinden sich im Paket \textit{org.woym.logic.command}. \\
-Das Interface \texttt{ICommand} spezifiziert die Methoden eines konkreten Commands. Implementiert wird das Interface von den Klassen \texttt{AddCommand}, \texttt{UpdateCommand}, \texttt{DeleteCommand} und \texttt{MacroCommand}.Für die Methoden gibt es eine klare Ausführungsreihenfolge. Nach Erzeugung eines ICommand-Objektes muss zunächst \textit{execute()} aufgerufen werden, danach dürfen alternierend \textit{undo()} und \textit{redo()} beliebig oft aufgerufen werden. \\
-Neben den Commands befindet sich im Paket \textit{org.woym.logic.command} auch die Singleton-Klasse \texttt{CommandCreator}, welche als einzige öffentliche Methode die Methode \textit{createDeleteCommand(Entity)} anbietet. Diese erzeugt für ein übergebenes \textit{Entity}-Objekt ein MacroCommand zum Löschen dieses Objektes, welches in der korrekten Abfolge alle Abhängigkeiten auflöst, und gibt dieses zurück. Die Methode darf beliebig aufgerufen werden. Für nähere Informationen siehe JavaDoc.
-
-\includepdf[landscape]{logic.pdf}
-
-\subsection{Persistenzschicht}
-\label{sec:persistence}
+\subsection{Persistence}
+\label{subsec:persistence}
 
 %TODO: Beschreibung ggf. anpassen
 
@@ -469,6 +447,50 @@ Die Methoden des Interfaces \texttt{IDataAccess} dürfen in beliebiger Reihenfol
 
 
 \includepdf[landscape]{persistence.pdf}
+
+
+\subsection{Common}
+\label{subsec:Common}
+Im Paket \textit{org.woym.common} befinden sich -- wie vorher bereits angemerkt -- Klassen, welche von Klassen aus fast allen anderen Paketen verwendet werden.\\
+Das Paket \textit{org.woym.common.config} beinhaltet das \texttt{DefaultConfigEnum}, welches alle Einstellungsoptionen der Software mit ihren Standardwerten enthält. Die Klasse \texttt{Config} erzeugt eine Properties-Datei und gewährt anderen Klassen Zugriff auf dort eingetragene Werte. Bevor die anderen Methoden der Klasse aufgerufen werden können, muss mindestens einmal die Methode \textit{init()} aufgerufen werden. %TODO: Ggf. etwas erweitern/umschreiben 
+\\
+Die Klasse \texttt{ConfigServletListener} implementiert das Java-Interface \texttt{ServletContextListener} und sorgt dafür, dass mit dem Start des Servlet-Containers einmal die \textit{init()}-Methode von \texttt{Config} aufgerufen wird.\\
+
+Das Paket \textit{org.woym.common.messages} beinhaltet vier Enums mit Statusnachrichten. Die Klasse \texttt{MessageHelper} stellt Methoden bereit, welche für die Übergabe einer entsprechenden Nachricht und ggf. zusätzlichen Parametern eine \texttt{FaceMessage} zurückgibt. Die Methoden können in beliebiger Reihenfolge aufgerufen werden.\\
+
+Das Paket \textit{org.woym.common.exceptions} enthält lediglich die selbst angelegten Exceptions. \\
+
+Das Paket \textit{org.woym.common.objects} ist hier nicht vollständig dargestellt (s. Kapitel \ref{subsubsec:Objects}), da dies zu unübersichtlich wäre, stattdessen ist nur das Unterpaket \textit{org.woym.common.objects.spec} dargestellt. Dieses enthält drei Interfaces. \texttt{IMemento} dient lediglich der Vereinheitlichung aller einzelnen Memento-Klassen unter einem gemeinsamen Interface. Da die Memento-Klassen nach außen hin vollständig opak sind und keinerlei Methoden bereitstellen, können sie unter diesem Interface vereinheitlicht werden. Das Interface \texttt{IActivityObject} dient der Vereinheitlichung von Klassen, deren Objekte Teil der Klasse \texttt{Activity} sein können. \\
+Das Interface \texttt{IMementoObject} stellt Methoden für alle Klassen bereit, welche eine eigene Memento-Klasse definieren.\clearpage
+
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{common.pdf}
+\end{figure}
+\newpage
+
+\subsubsection{Objects}
+\label{subsubsec:Objects}
+%TODO: Beschreiben
+\includepdf[landscape]{objects.pdf}
+
+
+\subsection{Controller}
+\label{subsec:Controller}
+
+\subsection{UI}
+\label{subsec:UI}
+
+\subsection{Logic}
+\label{subsec:logic}
+Auf der Logikebene wurde das Command-Pattern verwendet, um ein Undo und Redo für alle Aktionen anbieten zu können. Die entsprechenden Klassen befinden sich im Paket \textit{org.woym.logic.command}. \\
+Das Interface \texttt{ICommand} spezifiziert die Methoden eines konkreten Commands. Implementiert wird das Interface von den Klassen \texttt{AddCommand}, \texttt{UpdateCommand}, \texttt{DeleteCommand} und \texttt{MacroCommand}.Für die Methoden gibt es eine klare Ausführungsreihenfolge. Nach Erzeugung eines ICommand-Objektes muss zunächst \textit{execute()} aufgerufen werden, danach dürfen alternierend \textit{undo()} und \textit{redo()} beliebig oft aufgerufen werden. \\
+Neben den Commands befindet sich im Paket \textit{org.woym.logic.command} auch die Singleton-Klasse \texttt{CommandCreator}, welche nach dem Factory-Entwurfsmuster eine öffentliche \textit{createDeleteCommand(Entity)} anbietet. Diese erzeugt für ein übergebenes \textit{Entity}-Objekt ein MacroCommand zum Löschen dieses Objektes, welches in der korrekten Abfolge alle Abhängigkeiten auflöst, und gibt dieses zurück. Die Methode darf beliebig aufgerufen werden. Für nähere Informationen siehe JavaDoc.
+
+\includepdf[landscape]{logic.pdf}
+
+
+
 
 
 \section{Datensicht}
