@@ -174,7 +174,7 @@ Version & Datum & Änderungen \\
 Die Architekturbeschreibung soll es anderen Entwicklern ermöglichen, den Aufbau der Software und Intentionen hinter bestimmten Design-Entscheidungen zu verstehen. Dadurch sollen Fremdentwickler in die Lage versetzt werden, die Software zu überarbeiten und Bugs zu beheben.
 
 \subsection{Status}
-\nurlangversion
+Dieses Dokument gibt die Software-Architektur des finalen Produktes wieder.
 
 
   
@@ -227,63 +227,89 @@ Die folgenden Kapitel stützen sich im Wesentlichen auf die Vorlesungsfolien "`S
   \end{itemize}
 
   Verwendet eine eindeutige Nummerierung der Faktoren, um sie auf den
-  Problemkarten einfach referenzieren zu können.  }
+  Problemkarten einfach referenzieren zu können.  }\\
 
 \subsubsection{Organisatorische Faktoren}
-\begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabularx}{\textwidth}{|X|X|X|}
 \hline
-\textbf{Faktor} & \textbf{Flexibilität und Veränderlichkeit} & \textbf{Auswirkung}\\\hline
-\end{tabularx}\newline
-
-\begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|}
+\textbf{Faktor} & \textbf{Flexibilität und Veränderlichkeit} & \textbf{Auswirkungen}\\\hline
 \hline
 \multicolumn{3}{|l|}{\textbf{O1: Management}}\\\hline
 \multicolumn{3}{|l|}{O1.1: Zeitplan vs. Funktionsumfang}\\\hline
 Der Zeitplan ist in jedem Fall einzuhalten. Ggf. muss dafür in Kauf genommen werden, dass gewisse Funktionen fehlen. & Dieser Faktor ist nicht flexibel oder veränderlich. & Nicht alle geplanten Funktionen können implementiert werden. Zunächst Beschränkung auf die Funktionen, die notwendig sind, um die Mindestanforderungen zu erfüllen.\\\hline
 
 \multicolumn{3}{|l|}{\textbf{O2: Personal: Fähigkeiten, Interessen, Stärken, Schwächen}}\\\hline
+\multicolumn{3}{|l|}{O2.1: Erstes größeres, selbständig auszuführendes Projekt}\\\hline
+Für alle beteiligten Entwickler handelt es sich um das erste größere selbstständig auszuführende Projekt. & Dieser Faktor ist nicht flexibel oder veränderlich. & %TODO 
+\\\hline
 
 \multicolumn{3}{|l|}{\textbf{O3: Prozesse und Werkzeuge für die Entwicklungsschritte}}\\\hline
 
 \multicolumn{3}{|l|}{\textbf{O4: Entwicklungszeitplan}}\\\hline
+\multicolumn{3}{|l|}{O4.1: Auslieferung der Produktfunktionen}\\\hline
+Es werden die absolut notwendigen Produktfunktionen (Mindestanforderungen) priorisiert. & Die Mindestanforderungen und damit die Prioritätensetzung können sich im Zeitverlauf verändern (inbes. abhängig von O5.1). & Kann O1.1 beeinflussen.\\\hline
 
 \multicolumn{3}{|l|}{\textbf{O5: Entwicklungsbudget}}\\\hline
-\multicolumn{3}{|l|}{O3.1: Anzahl der Entwickler}\\\hline
-Es sind maximal sechs Entwickler am Projekt beteiligt. & Es können keine weitere Entwickler hinzugezogen werden. Teilnehmende Entwickler können temporär oder komplett ausfallen. & Kann den Faktor O1.1 sehr stark beeinflussen, da weniger Entwickler auch bedeuten, dass innerhalb des Zeitplans weniger Funktionen implementiert werden können.\\\hline
+\multicolumn{3}{|l|}{O5.1: Anzahl der Entwickler}\\\hline
+Es sind maximal sechs Entwickler am Projekt beteiligt. & Es können keine weitere Entwickler hinzugezogen werden. Teilnehmende Entwickler können temporär oder komplett ausfallen. & Ein temporärer Ausfall kann Faktor 01.1 leicht beeinflussen. Bei komplettem Ausfall eines Entwicklers werden die Mindestanforderungen verändert und damit O4.1 und O1.1 beeinflusst.\\\hline
 \end{tabularx}\\
+\clearpage
 
 \subsubsection{Technische Faktoren}
-\begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|}
-\hline
-\textbf{Faktor} & \textbf{Flexibilität und Veränderlichkeit} & \textbf{Auswirkung}\\\hline
-\end{tabularx}\newline
 
-\begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|}
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+\textbf{Faktor} & \textbf{Flexibilität und Veränderlichkeit} & \textbf{Auswirkungen}\\\hline
 \hline
 \multicolumn{3}{|l|}{\textbf{T1: Hardware}}\\\hline
+\multicolumn{3}{|l|}{T1.1: Hardwarelandschaft des Kunden ist zu berücksichtigen}\\\hline
+Die Software muss auf einem Rechner mit 4 GB RAM, 70 GB Festplattenspeicher, einer Dual-Core-CPU mit 2,9 GHz Takt lauffähig sein und auf einem Monitor mit einer Auflösung von 1280 x 1024 korrekt dargestellt werden. & Dieser Faktor ist nicht flexibel. In Zukunft könnte sich die Hardwarelandschaft des Kunden jedoch verändern, wobei davon auszugehen ist, dass höchstens ein Up- und kein Downgrade stattfindet. & %TODO
+ \\\hline
 
 \multicolumn{3}{|l|}{\textbf{T2: Software}}\\\hline
 \multicolumn{3}{|l|}{T2.1: Betriebssystem}\\\hline
 Die Software soll auf allen gängigen Betriebssystemen (Microsoft Windows, Linux, Mac-OS) lauffähig sein. & Dieser Faktor ist nicht flexibel, aber ggf. veränderlich, da neue Betriebssystem erscheinen können. & Bei der Entwicklung muss darauf geachtet werden, betriebssystemunabhängige Komponenten zu verwenden.\\\hline
+\multicolumn{3}{|l|}{T2.2: Verwendung von JavaServer Faces bzw. Primefaces}\\\hline
+Für die grafische Darstellung der Software wird JavaServer Faces bzw. Primefaces verwendet. & Dieser Faktor könnte zu Beginn noch verändert werden, eine Veränderung zu einem späteren Zeitpunkt wäre eher unwahrscheinlich. & Nimmt starken Einfluss auf die Implementierung der View- und der Controller-Komponente. Alle Datenklassen benötigen außerdem Getter- und Setter-Methoden für alle ihre Attribute. \\\hline
+\end{tabularx} \clearpage
 
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+\textbf{Faktor} & \textbf{Flexibilität und Veränderlichkeit} & \textbf{Auswirkungen}\\\hline
+\hline
+\multicolumn{3}{|l|}{T2.3: Verwendung der JPA-Implementierung Eclipselink}\\\hline
+Für die Anbindung an das relationale Datenbanksystem wird das JPA-Framework Eclipselink verwendet. & Dieser Faktor ist flexibel, es könnte grundsätzlich auch jedes andere JPA-Framework gewählt werden bzw. auch gar keines solcher Frameworks. Theoretisch ist der Faktor auch veränderlich. Wenn etwa Probleme mit dem Framework auftreten könnte in Betracht gezogen werden, es durch ein anderes auszutauschen. & Dieser Faktor beeinflusst vor allem die Implementierung der Persistenz-Komponente. \\\hline
+\multicolumn{3}{|p{\dimexpr\textwidth-2\tabcolsep\relax}|}{T2.4: Verwendung des Command-Entwurfmusters in Kombination mit dem Composite- und Memento-Entwurfmuster}\\\hline
+Für die geeignete Erfüllung von Faktor P1.1 soll das Command-Entwurfsmuster in Kombination mit dem Composite- und Memento-Entwurfsmuster implementiert werden. Das Composite-Entwurfsmuster würde dann die Erstellung von Macro-Commands erlauben. Das Memento-Entwurfsmuster erlaubt die gekapselte Datenspeicherung für Update-Commands. & Dieser Faktor ist flexibel und gemäß P1.1 veränderlich. & Beeinflusst die Implementierung der Model-Komponente deutlich. Da die gesamte Logik für das Speichern, Aktualisieren und Löschen von Objekten auf Commands aufgebaut sein muss. Zudem müssen alle notwendigen Klassen eine eigene Memento-Klasse besitzen. \\\hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+\textbf{Faktor} & \textbf{Flexibilität und Veränderlichkeit} & \textbf{Auswirkungen}\\\hline
+\hline
+\multicolumn{3}{|l|}{T2.5: Verwendung des Factory-Patterns für Delete-Commands}\\\hline
+Geht aus dem Faktor T2.4 hervor. Da beim Löschen von Objekten einige Abhängigkeiten zu berücksichtigen sind, damit es in der Datenbank nicht zu Fremdschlüssel-Verletzungen kommt, bietet sich die Implementierung einer Klasse, die Macro-Delete-Commands unter Berücksichtigung der Abhängigkeiten erzeugt, nach dem Factory-Pattern an.& Dieser Faktor ist flexibel und gemäß 2.4 veränderlich. & Beeinflusst die Implementierung der Model-Komponente. \\\hline
 \multicolumn{3}{|l|}{\textbf{T3: Architekturtechnologie}}\\\hline
 
 \multicolumn{3}{|l|}{\textbf{T4: Standards}}\\\hline
-\multicolumn{3}{|l|}{T4.1: Datenbank}\\\hline
+\multicolumn{3}{|l|}{T4.1: Leichtgewichtiges eingebettetes relationales Datenbanksystem}\\\hline
 Die Verwendung einer leichtgewichtigen, eingebetteten relationalen Datenbank ist vorgeschrieben. & Dieser Faktor ist nicht flexibel oder veränderlich. & \\\hline
+\end{tabularx}
 
-\end{tabularx}\\
+\clearpage
 
 \subsubsection{Produktfaktoren}
-\begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|}
+\begin{tabularx}{\textwidth}{|X|X|X|}
 \hline
-\textbf{Faktor} & \textbf{Flexibilität und Veränderlichkeit} & \textbf{Auswirkung}\\\hline
-\end{tabularx}\newline
-
-\begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|}
+\textbf{Faktor} & \textbf{Flexibilität und Veränderlichkeit} & \textbf{Auswirkungen}\\\hline
 \hline
 \multicolumn{3}{|l|}{\textbf{P1: Produktfunktionen}}\\\hline
-
+\multicolumn{3}{|l|}{P1.1: Mehrstufiges Rückgängigmachen von Aktionen}\\\hline
+Um die Lernförderlichkeit zu unterstützen, soll es den Benutzern möglich sein, Aktionen mehrstufig rückgängig zu machen. & Dieser Faktor ist nicht flexibel, kann im Zuge von O4.1 jedoch ggf. wegfallen. & Bei der Planung und Implementierung der Geschäftslogik muss darauf geachtet werden, diesen Faktor geeignet zu berücksichtigen. Aus diesem Einflussfaktor geht T2.3 hervor.
+\\\hline
+\multicolumn{3}{|l|}{P1.2: Systemeinstellungen}\\\hline
+Die Software soll verschieden Systemeinstellungen bieten, die etwa erlauben, zu verplanende Wochentage, Start- und Ende eines Wochentages, Backup-Einstellungen usw. festzulegen. & Dieser Faktor ist nicht flexibel, kann im Zuge von O4.1 aber ggf. wegfallen. & Es muss eine Möglichkeit geben, solcherlei Einstellungen zu verändern und sie über einen Systemstart hinaus zu speichern.\\\hline
 \multicolumn{3}{|l|}{\textbf{P2: Benutzerschnittstelle}}\\\hline
 
 \multicolumn{3}{|l|}{\textbf{P3: Performanz}}\\\hline
@@ -304,7 +330,7 @@ Die Verwendung einer leichtgewichtigen, eingebetteten relationalen Datenbank ist
   z.B. aus
   \begin{itemize}
   \item Grenzen oder Einschränkungen durch Faktoren
-  \item der Notwendigkeit, die Auswirkung eines Faktors zu begrenzen
+  \item der Notwendigkeit, die Auswirkungen eines Faktors zu begrenzen
   \item der Schwierigkeit, einen Produktfaktor zu erfüllen, oder
   \item der Notwendigkeit einer allgemeinen Lösung zu globalen
     Anforderungen.
@@ -503,13 +529,15 @@ Im Folgenden soll die einzelnen Assoziationen erläutert werden.\\
 	Wird der Standort gelöscht, werden auch die Räume gelöscht.\\\hline
 19	& \textit{ActivityType} -- Room					& Einer beliebigen Anzahl von Aktivitätstypen
 	kann die Ausführung in einer beliebigen Anzahl von Räumen zugeordnet sein. \\\hline
-20	& Classteam -- Schoolclass 					& Ein Klassenteam hat eine beliebige Anzahl 
+20	& \textit{ActivityType} -- ColorEnum 		& Ein Aktivitätstyp hat genau eine Farbe oder keine 
+	Farbe. Eine Farbe kann Teil mehrere Aktivitätstypen sein.\\\hline
+21	& Classteam -- Schoolclass 					& Ein Klassenteam hat eine beliebige Anzahl 
 	Schulklassen, eine Schulklasse ist aber immer nur genau einem oder keinem Klassteam zugeordnet.\\\hline
-21	& Classteam -- Employee 					& Ein Klassteam hat mindestens einen bis zu 
+22	& Classteam -- Employee 					& Ein Klassteam hat mindestens einen bis zu 
 	einer beliebigen Anzahl Mitarbeiter. Wobei Klassenteams ohne mindestens eine Lehrkraft auf Logikebene verhindert werden müssen. Ein Mitarbeiter kann Teil mehrere Klassenteams sein. \\\hline
-22 	& TravelTimeList -- Edge 					& Ein TravelTimeList-Objekt kann eine beliebige
+23	& TravelTimeList -- Edge 					& Ein TravelTimeList-Objekt kann eine beliebige
 	Anzahl von Edge-Objekten besitzen. Ein Edge-Objekt kann nur Teil eines TravelTimeList-Objektes sein. \\\hline
-23	& Edge -- Location							& Einer beliebigen Anzahl von Edge-Objekten kann 
+24	& Edge -- Location							& Einer beliebigen Anzahl von Edge-Objekten kann 
 	eine beliebige Anzahl von Location-Objekten gegenüberstehen. Ein Edge-Objekt hat aber immer zwei disjunkte Location-Objekte.\\\hline 
 \end{tabularx}
 \subsection{Datentypen und Repräsentation von Multiplizitäten}
