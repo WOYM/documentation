@@ -130,7 +130,7 @@
   \\ ~
   \vspace{2cm}
   \\
-  \it Version 1.2\\ ~
+  \it Version 1.3\\ ~
   \end{center}
   \end{minipage}
 
@@ -162,7 +162,8 @@ Version & Datum & Änderungen \\
 \hline
 1.0 & 29.10.2014 & Dokumentvorlage als initiale Fassung kopiert  \\
 1.1 & 22.11.2014 & Erste vollständige Fassung der konzeptionellen und Datensicht\\
-1.2 & 17.01.2015 & Paketdiagramm hinzugefügt. Datenmodell aktualisiert. \\
+1.2 & 17.01.2015 & Paketdiagramm hinzugefügt. Datenmodell aktualisiert \\
+1.3 & 01.02.2015 & Kapitel 7 hinzugefügt\\
 \end{tabular}
 
 
@@ -600,15 +601,27 @@ Prozessen auf welchen Rechnern ausgeführt werden.}
 \sectionmark{Zusammenhänge AF u. Architektur}
 \label{sec:anwendungsfaelle}
 
-Das auf der folgenden Seite dargestellte Sequenzdiagramm zeigt den Ablauf des Hinzufügens eines Lesson-Objektes. Nach Aufruf von \textit{addLesson} wird zunächst die Methode \textit{validateActivity(Activity, TimePeriod)} auf dem \texttt{ActivityValidator} aufgerufen. Diese Methode prüft, ob die Aktivität den Stundenplänen von allen gewählten Teilnehmern hinzugefügt werden kann oder ob es dabei zu Überschneidungen kommt. Liegen keine Überschneidungen vor wird ein \texttt{SuccessStatus} zurückgegeben. Ist dies der Fall, wird ein neues \texttt{AddCommand} instanziiert und es der \textit{execute(ICommand)}-Methode des \texttt{CommandHandler} übergeben. Dieser ruft auf dem Command die \textit{execute}-Methode auf. Da der \texttt{CommandHandler} nicht weiß, was für ein konkretes Command er ausführt, ist der weitere Ablauf im Diagramm nicht dargestellt. In diesem Fall würde der \texttt{CommandHandler} ein \texttt{AddCommand} ausführen, welches die Methode \textit{persist(Entity)} der Klasse \texttt{DataAccess} aufruft.\\
-Wird von dem \textit{execute}-Aufruf ein \texttt{SuccessStatus} zurückgegeben, wird das Command der Undo-Liste hinzugefügt und die Redo-Liste wird komplett geleert. Das vom Aufruf der \textit{execute}-Methode auf dem Command erhaltene \texttt{IStatus}-Objekt wird an den \texttt{LessonController} zurückgegeben. \\
-Handelt es sich bei dem zurückgegebenen \texttt{IStatus}-Objekt um einen \texttt{SuccessStatus}, wird die \textit{init}-Methode des \texttt{TeacherController} aufgerufen.\\
+\subsection{Hinzufügen einer Aktivität (Unterrichtsstunde)}
+Das auf der folgenden Seite dargestellte Sequenzdiagramm zeigt den Ablauf des Hinzufügens eines Lesson-Objektes. Nach Aufruf von \textit{addLesson} wird zunächst die Methode \textit{validateActivity(Activity, TimePeriod)} auf dem \texttt{ActivityValidator} aufgerufen. Diese Methode prüft, ob die Aktivität den Stundenplänen von allen gewählten Teilnehmern hinzugefügt werden kann oder ob es dabei zu Überschneidungen kommt.\\
+Liegen keine Überschneidungen vor wird ein \texttt{SuccessStatus} zurückgegeben. In diesem Fall wird dann die Methode \textit{createEmployeeUpdateAddWorkingHours(Activity)} der Klasse \texttt{CommandCreator} aufgerufen. Diese erzeugt ein \texttt{MacroCommand}, welches allen an der Aktivität teilnehmenden Mitarbeitern die Dauer ihrer Teilnahme zu den verteilten Stunden hinzufügt, also deren Auslastung erhöht. Der Prozess der Macro-Erstellung ist im Diagramm auch aufgeführt, soll hier aber nicht näher erläutert werden. Das erzeugte \texttt{MacroCommand} wird schließlich an den \texttt{LessonController} zurückgegeben (1.2.10).\\
+Dieser ruft auf dem \texttt{MacroCommand} noch die Methode \textit{add(ICommand)} auf und fügt ihm ein neues \texttt{AddCommand} für die Aktivität hinzu. \\
+Anschließend wird die Methode \textit{execute(ICommand)} auf dem \texttt{CommandHandler} mit dem vorher erzeugten \texttt{MacroCommand} als Parameter aufgerufen. Der \texttt{CommandHandler} ruft auf dem Command die \textit{execute}-Methode auf. Da der \texttt{CommandHandler} nicht weiß, was für ein konkretes Command er ausführt, ist der weitere Ablauf im Diagramm nicht dargestellt. In diesem Fall würde der \texttt{CommandHandler} ein \texttt{MacroCommand} ausführen, welches aus einer beliebigen Zahl \texttt{UpdateCommands} und zuletzt einem \texttt{AddCommand} bestehen würde. Die Ausführung dieser Commands würde dann jeweils die Methode \textit{update(Entity)} bzw. \textit{add(Entity)} der Klasse \texttt{DataAccess} aufrufen.\\
+Wird von dem \textit{execute}-Aufruf ein \texttt{SuccessStatus} zurückgegeben, wird das Command der Undo-Liste hinzugefügt und die Redo-Liste wird komplett geleert. Das vom Aufruf der \textit{execute}-Methode auf dem Command erhaltene \texttt{IStatus}-Objekt wird an den \texttt{LessonController} zurückgegeben (1.6.5). \\
+Handelt es sich bei dem zurückgegebenen \texttt{IStatus}-Objekt um einen \texttt{SuccessStatus}, wird die \textit{init}-Methode des \texttt{LessonController} aufgerufen.\\
 Anschließend wird auf dem \texttt{ScheduleModelHolder} die Methode \textit{updateScheduleModel} aufgerufen, um den Stundenplan zu aktualisieren. Auf dem vorher erhaltenen \textit{IStatus}-Objekt wird dann die Methode \textit{report} aufgerufen, welche eine \texttt{FacesMessage} zurückgibt. Diese wird dem \texttt{FacesContext} hinzugefügt. \\
-Damit ist das Hinzufügen des \texttt{Lesson}-Objektes dann abgeschlossen.
+Damit ist das Hinzufügen des \texttt{Lesson}-Objektes abgeschlossen.
 
 \includepdf[landscape]{addLessonSequence.pdf}
 
-%TODO: Zweites Diagramm
+
+\subsection{Hinzufügen einer Lehrkraft}
+Das Sequenzdiagramm auf der nächsten Seite stellt den Ablauf des Hinzufügens einer Lehrkraft dar. Nach dem Aufruf von \textit{addTeacher} auf dem \texttt{TeacherController} wird zunächst ein neues \texttt{AddCommand} erstellt. Dieses wird als Parameter an die Methode \textit{execute(ICommand)} des \texttt{CommandHandler} übergeben. Der \texttt{CommandHandler} ruft dann die \textit{execute}-Methode auf dem Command auf. Diese ruft auf dem  enthaltenen \texttt{Entity}-Objekt die \textit{persist}-Methode auf, welche die \textit{persist(Entity)}- Methode der Klasse \texttt{DataAccess} mit dem \texttt{Entity}-Objekt selbst als Parameter aufruft. Dadurch wird dieses Objekt in der Datenbank gespeichert. Anschließend wird, wenn kein Fehler auftritt, ein neues \texttt{SuccessStatus}-Objekt erstellt und an den \texttt{CommandHandler} zurückgegeben.\\
+Der \texttt{CommandHandler} fügt dann, wenn ein \texttt{SuccessStatus} zurückgegeben wurde, das ausgeführte \texttt{AddCommand} der Undo-Liste hinzu und leert die Redo-Liste. Anschließend wird das \texttt{IStatus}-Objekt an den \texttt{TeacherController} zurückgegeben.\\
+Dort wird auf dem \texttt{IStatus}-Objekt zunächst die \textit{report}-Methode aufgerufen, welche eine \texttt{FacesMessage} zurückgibt, die über den Erfolg bzw. Misserfolg informiert. Wenn das erhaltene \texttt{IStatus}-Objekt außerdem ein Objekt vom Typ \texttt{SuccessStatus} ist, wird ein neuer Lehrer im \texttt{TeacherController} angelegt. Dies ist notwendig, damit beim nächsten Hinzufügen eines Lehrers nicht auf demselben Lehrer-Objekt gearbeitet wird.\\
+Schließlich wird die vorher erhaltene \texttt{FacesMessage} dem \texttt{FacesContext} hinzugefügt. Damit ist das Hinzufügen der Lehrkraft abgeschlossen.
+
+
+\includepdf[landscape]{addTeacherSequence.pdf}
 
 \section{Evolution}
 \nurlangversion
