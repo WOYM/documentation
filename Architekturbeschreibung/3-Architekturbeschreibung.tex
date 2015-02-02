@@ -481,19 +481,37 @@ Alle weiteren Assoziationen sollten in Kapitel \ref{sec:datensicht} erläutert w
 \subsection{Controller}
 \label{subsec:Controller}
 
+Im Paket \textit{org.woym.controller} befinden sich die Backing Beans für die verschiedenen JSF-Seiten. \\
+Die Klasse \texttt{GUIController} stellt die Undo- und Redo-Funktionalität für alle JSF-Seiten bereit und befindet sich daher im übergeordneten Paket.\\
+Im Paket \textit{org.woym.controller.manage} befinden sich die Backing Beans für die JSF-Seiten der Systemeinrichtung und im Paket \textit{org.woym.controller.planning} die Backing Beans für die JSF-Seiten der Planung. Die Zusammenhänge zwischen den JSF-Seiten und den Backing Beans sind hier nicht darstellbar. 
+
+\includepdf[landscape]{controller.pdf}
+
 \subsection{UI}
 \label{subsec:UI}
+
+Im Paket \textit{org.woym.ui.converters} befinden sich die JSF-Converter und im Paket \textit{org.woym.ui.validators} die JSF-Validatoren. Das Paket \textit{org.woym.ui.util} enthält Hilfsklassen für die Backing Beans der Planungsseite. Diese Hilfsklassen dienen im Wesentlichen der Unterstützung zur korrekten Darstellung der Elemente auf dieser Seite.\clearpage
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{ui.pdf}
+\end{figure}
 
 \subsection{Logic}
 \label{subsec:logic}
 Auf der Logikebene wurde das Command-Pattern verwendet, um ein Undo und Redo für alle Aktionen anbieten zu können. Die entsprechenden Klassen befinden sich im Paket \textit{org.woym.logic.command}. \\
 Das Interface \texttt{ICommand} spezifiziert die Methoden eines konkreten Commands. Implementiert wird das Interface von den Klassen \texttt{AddCommand}, \texttt{UpdateCommand}, \texttt{DeleteCommand} und \texttt{MacroCommand}. Wobei ein \texttt{MacroCommand} zusätzlich eine Liste von \texttt{ICommand}-Objekten enthält. Für die Methoden gibt es eine klare Ausführungsreihenfolge. Nach Erzeugung eines ICommand-Objektes muss zunächst \textit{execute()} aufgerufen werden, danach dürfen alternierend \textit{undo()} und \textit{redo()} beliebig oft aufgerufen werden. \\
-Neben den Commands befindet sich im Paket \textit{org.woym.logic.command} auch die Singleton-Klasse \texttt{CommandCreator}, welche nach dem Factory-Entwurfsmuster eine öffentliche Methode \textit{createDeleteCommand(Entity)} anbietet. Diese erzeugt für ein übergebenes \textit{Entity}-Objekt ein MacroCommand zum Löschen dieses Objektes, welches in der korrekten Abfolge alle Abhängigkeiten auflöst, und gibt dieses zurück. Die Methode darf beliebig aufgerufen werden. Für nähere Informationen siehe JavaDoc.\\
+
+Neben den Commands befindet sich im Paket \textit{org.woym.logic.command} auch die Singleton-Klasse \texttt{CommandCreator}, welche nach dem Factory-Entwurfsmuster drei öffentliche Methode \textit{createDeleteCommand(Entity)}, \textit{createEmployeeUpdateAddWorkingHours(Activity)} und \textit{createEmployeeUpdateSubtractWorkingHours(Activity)} anbietet. Die Methode \textit{createDeleteCommand(Entity)} erzeugt für ein übergebenes \textit{Entity}-Objekt ein MacroCommand zum Löschen dieses Objektes, welches in der korrekten Abfolge alle Abhängigkeiten auflöst, und gibt dieses zurück. Die Methode darf beliebig aufgerufen werden. Für nähere Informationen siehe JavaDoc.\\
+Die anderen beiden Methoden erzeugen jeweils ein \texttt{MacroCommand}, welches allen Mitarbeitern der übergebenen Aktivität entweder die Dauer ihrer Teilnahme an der Aktivität zu den verteilten Wochenstunden dazu addiert oder sie abzieht, und geben dieses zurück.\\
+
 Im Paket \textit{org.woym.logic} befindet sich dann die Klasse \texttt{CommandHandler}, diese übernimmt für die korrekte Undo-/Redo-Funktionalität die Ausführung der Commands. Für die Ausführungsreihenfolge der Methoden gilt dasselbe, wie für die \texttt{ICommand}-Implementierungen. Der \texttt{CommandHandler} besitzt zwei Listen vom Typ \texttt{ILimitedQueue}. Die eine speichert alle Commands, die rückgängig gemacht werden sollen, die andere alle Commands, die wiederholt werden sollen. Bei einem Aufruf von \textit{execute(ICommand)} wird das Command also zunächst der Undo-Liste hinzugefügt, wird dann \textit{undo} aufgerufen, wird es der Redo-Liste hinzugefügt und bei anschließendem Aufruf von \textit{redo} wieder der Undo-Liste.\\
 Im Paket \textit{org.woym.logic} befinden sich außerdem die zwei Implementierungen \texttt{SuccessStatus} und \texttt{FailureStatus} des Interfaces \textit{IStatus}. Diese repräsentieren die erfolgreiche bzw. fehlgeschlagene Ausführung einer Aktion.\\
 Zudem befindet sich in dem Paket auch die Klasse \texttt{BackupRestoreHandler}. Diese implementiert das Interface \texttt{ServletContextListener}, so dass mit dem Start des Servlet-Containers der \texttt{ScheduledExecutorService} gestartet wird, welcher die automatischen Backups des Systems übernimmt. Für die Erstellung der Backups wird die Methode \textit{backup(String)} der Klasse verwendet. Diese führt ein Datenbankbackup durch Ausführung der Methode \textit{backup(String)} der Klasse \texttt{DataBase} aus und fügt diesem zusätzlich die Properties-Datei mit den aktuellen Systemeinstellungen hinzu. Die Methode \textit{restore(String)} stellt ein Datenbank-Backup unter Verwendung der Methode \textit{restore(String)} der Klasse \texttt{DataBase} wieder her. Zusätzlich wird die in dem Backup gespeicherte Properties-Datei wiederhergestellt. \\
-Das Paket \textit{org.woym.logic.util} enthält -- abgesehen von der Klasse \texttt{LimitedQueue} -- Klassen, welche Logikoperationen unter Verwendung anderer Klasse aus dem Paket \textit{org.woym.logic} für Klassen des Paktes \textit{org.woym.controller} und dessen Subpakete bereitstellen. %TODO: Erweitern
-
+Das Paket \textit{org.woym.logic.util} enthält -- abgesehen von der Klasse \texttt{LimitedQueue} -- Klassen, welche Logikoperationen unter Verwendung anderer Klasse aus dem Paket \textit{org.woym.logic} für Klassen des Paktes \textit{org.woym.controller} und dessen Subpakete bereitstellen. Die Klasse \texttt{SchoolclassIdentifierUtil} bietet eine Methode, welche alle gemäß den Einstellungen noch verfügbaren Bezeichner für Schulklassen des übergebenen Jahrgangs zurückgibt. In die Klasse \texttt{ConfigControllerUtil} wurden einige umfangreichere Operationen ausgelagert, die vom \texttt{ConfigController} benötigt werden. Die Methoden können grundsätzlich in beliebiger Reihenfolge aufgerufen werden.\\
+Die Klasse \texttt{ActivityValidator} bietet fünf öffentliche Methoden, wobei lediglich die Methode \textit{validateActivity(Activity, TimePeriod)} vom \texttt{PlanningController} aufgerufen wird. Da diese Methode prüft, ob die übergebene Aktivität am übergebenen Zeitraum eingefügt werden kann oder ob eine Überschneidung vorliegt, wird sie vor dem finalen Hinzufügen oder Aktualisieren einer Aktivität aufgerufen.\\
+Die Klasse \texttt{ActivityParser} überführt in den Methoden \textit{getActivityModel(Teacher)}, \textit{getActivityModel(Schoolclass)}, \textit{getActivityModel(PedagogicAssistant)} und \textit{getActivityModel(Room)} alle Aktivitäten des übergebenen Objektes in ein \texttt{ScheduleModel}, so dass diese optisch dargestellt werden können. Diese Methoden können in beliebiger Reihenfolge ausgeführt werden.
+ 
 \includepdf[landscape]{logic.pdf}
 
 
@@ -504,7 +522,7 @@ Das Paket \textit{org.woym.logic.util} enthält -- abgesehen von der Klasse \tex
 \label{sec:datensicht}
   
 \subsection{Datenmodell}
-Auf der folgenden Seite ist das Datenmodell dargestellt. Danach folgt eine Beschreibung der einzelnen Assoziationen. Das Datenmodel beinhaltet noch keine implementierungsspezifischen Details. Diese sind im Klassendiagramm zu Kapitel \ref{subsubsec:Objects} zu erkennen.
+Auf der folgenden Seite ist das Datenmodell dargestellt. Danach folgt eine Beschreibung der einzelnen Assoziationen. Das Datenmodel beinhaltet keine implementierungsspezifischen Details. Diese sind im Klassendiagramm zu Kapitel \ref{subsubsec:Objects} zu erkennen.
 \includepdf[landscape]{datenmodell.pdf}
 Im Folgenden soll die einzelnen Assoziationen erläutert werden.\\
 
