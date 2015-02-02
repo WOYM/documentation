@@ -119,7 +119,10 @@ Entpacken Sie die ausgelieferte ZIP-Datei in das von Ihnen für die Software gew
 
 \subsection{Windows-Betriebssysteme}
 Unter Windows können Sie die Datei \textit{start.bat} verwenden, um die Software zu starten. Wenn Sie die Datei anklicken öffnet sich die Windows-Konsole und der für die Software benötigte Server startet. Gleichzeitig öffnet sich Ihr Browser-Fenster und lädt die Startseite der Software, sobald der Server komplett hochgefahren ist. Schließen Sie die Windows-Konsole nur, wenn Sie die Software beenden wollen. Ansonsten muss Sie für den Betrieb der Software geöffnet bleiben.\\
-Wenn Sie wünschen, die Software vom Desktop aus starten zu können, legen Sie eine Verknüpfung zu der Datei \textit{start.bat} an.
+Wenn Sie wünschen, die Software vom Desktop aus starten zu können, legen Sie eine Verknüpfung zu der Datei \textit{start.bat} an.\\
+So lange die Software in der Konsole läuft, können Sie die Startseite unter \url{http://localhost:8080/timetable} erreichen.\\
+
+Sollte ein Start mittels der \textit{start.bat} nicht funktionieren, müssen Sie ggf. Ihre Java PATH-Systemvariable setzen.
 
 \subsection{Linux- / Mac-Betriebssysteme}
 %TODO
@@ -235,8 +238,64 @@ Backups werden nicht automatisch gelöscht, dies müssen sie manuell übernehmen
     \end{minipage} 
 \end{enumerate}
 
-\section{Planungsseite}
-%TODO
+\subsection{Die Planungsseite}
+Beim Start der Software wird Ihnen immer die Planungsseite anzeigt. Auf dieser Seite können Sie die Stundenpläne des Personals und der Klassen und Raumbelegungspläne verwalten, sowie einen Wochentag- und Personaleinsatzplan einsehen.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/planningPage.png}
+%TODO: Aktualisieren
+\end{figure}
+
+Wählen Sie aus dem oben aufgeführten Menü einfach den anzuzeigenden Plan aus.
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/planningPage2.png}
+%TODO: Aktualisieren
+\end{figure}
+
+\subsection{Hinzufügen einer Aktivität}
+Um den Dialog für das Hinzufügen einer Aktivität zu öffnen, stehen Ihnen zwei Möglichkeiten bereit: 
+\begin{itemize}
+\item Verwenden Sie den "`Hinzufügen"'-Button oben rechts über dem Plan.
+\item Klicken Sie auf gewünschten Starttermin der Aktivität (Tag und Uhrzeit). Dies ist der deutliche effizientere Weg, da Tag und Zeiten nicht mehr manuell eingetragen werden müssen.
+\end{itemize}
+
+\begin{enumerate}
+\item Wählen Sie im geöffneten Dialog zunächst aus, was sie dem Plan hinzufügen möchten: \medskip\\
+	\begin{minipage}[t]{\linewidth}
+            \includegraphics[width=.8\linewidth]{images/addActivity.png}
+    \end{minipage} 
+    \medskip
+    Je nach Auswahl werden andere Eingabefelder angezeigt.
+    \clearpage
+\item Machen Sie alle weiteren Angaben. Gehen Sie möglichst von oben nach unten vor.\medskip\\
+	\begin{minipage}[t]{\linewidth}
+            \includegraphics[width=.8\linewidth]{images/addActivity2.png}
+    \end{minipage} 
+    \medskip
+\item Klicken Sie anschließend auf Hinzufügen. Wenn das Hinzufügen erfolgreich ist, wird der Dialog geschlossen und Sie erhalten eine entsprechende Nachricht. %TODO: Erweitern, aktualisieren
+\end{enumerate}
+
+\subsection{Löschen einer Aktivität}
+\begin{enumerate}
+\item Führen Sie einen Linksklick auf die zu löschende Aktivität aus.
+\item Klicken Sie im nun geöffneten Dialog auf den "`Löschen"'-Button. \medskip\\
+	\begin{minipage}[t]{\linewidth}
+            \includegraphics[width=.3\linewidth]{images/deleteActivity.png}
+            %TODO: aktualisieren
+    \end{minipage} 
+    \medskip\\
+    Die Aktivität wurde gelöscht. Sie können diese Aktion natürlich auch rückgängig machen.
+\end{enumerate}
+
+\subsection{Drag \& Drop}
+Sie können im Stundenplan Drag \& Drop nutzen um Aktivitäten an andere Tage oder Uhrzeiten zu verschieben. Klicken Sie dazu die zu verschiebende Aktivität an und halten die linke Maustaste gedrückt, ziehen Sie die Aktivität zum gewünschten Zeitraum und lassen Sie die linke Maustaste los.\\
+Des weiteren kann die Dauer einer Aktivität auf ähnliche Art und Weise verändern. Zeigen Sie mit der Maus auf den unteren Rand einer Aktivität, so dass ein nach oben und unten zeigender Pfeil erscheint, halten Sie nun die linke Maustaste gedrückt und ziehen sie das Ende der Aktivität auf den gewünschten Endzeitpunkt. Lassen Sie die Maustaste los und die Aktivität wird aktualisiert. \\
+
+\subsection{Überschneidungen}
+Beim Hinzufügen von Aktivitäten und dem Verändern via Drag \& Drop kann es natürlich immer zu Überschneidungen mit anderen Aktivitäten von einem der Teilnehmer kommen. Ist dies der Fall, erhalten Sie eine entsprechende Fehlernachricht und die Aktivität wird auf Ihren ursprünglichen Zustand zurückgesetzt.
+
 
 \section{Fehler und Fehlerbehandlung}
 \renewcommand{\arraystretch}{1.5}
