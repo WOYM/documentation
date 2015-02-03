@@ -242,22 +242,21 @@ Backups werden nicht automatisch gelöscht, dies müssen sie manuell übernehmen
 \end{enumerate}
 
 \subsection{Die Planungsseite}
-Beim Start der Software wird Ihnen immer die Planungsseite anzeigt. Auf dieser Seite können Sie die Stundenpläne des Personals und der Klassen und Raumbelegungspläne verwalten, sowie einen Wochentag- und Personaleinsatzplan einsehen.
+Beim Start der Software wird Ihnen immer die Planungsseite anzeigt. Auf dieser Seite können Sie die Stundenpläne des Personals und der Klassen und Raumbelegungspläne verwalten. Über den Button "`Alternative Anzeigen"' können Sie außerdem den Lehrkrafteinsatz- und den Wochentagplan einsehen.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{images/planningPage.png}
-%TODO: Aktualisieren
 \end{figure}
 
-Wählen Sie aus dem oben aufgeführten Menü einfach den anzuzeigenden Plan aus.
+Um einen Stundenplan anzuzeigen, klicken Sie die gewünschte Person des Personals, die Schulklasse oder den Raum an.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{images/planningPage2.png}
-%TODO: Aktualisieren
 \end{figure}
 
-\subsection{Hinzufügen einer Aktivität}
+\subsubsection{Hinzufügen einer Aktivität}
 Um den Dialog für das Hinzufügen einer Aktivität zu öffnen, stehen Ihnen zwei Möglichkeiten bereit: 
 \begin{itemize}
 \item Verwenden Sie den "`Hinzufügen"'-Button oben rechts über dem Plan.
@@ -272,32 +271,48 @@ Um den Dialog für das Hinzufügen einer Aktivität zu öffnen, stehen Ihnen zwe
     \medskip
     Je nach Auswahl werden andere Eingabefelder angezeigt.
     \clearpage
-\item Machen Sie alle weiteren Angaben. Gehen Sie möglichst von oben nach unten vor.\medskip\\
+\item Machen Sie alle weiteren Angaben.\medskip\\
 	\begin{minipage}[t]{\linewidth}
             \includegraphics[width=.8\linewidth]{images/addActivity2.png}
     \end{minipage} 
     \medskip
-\item Klicken Sie anschließend auf Hinzufügen. Wenn das Hinzufügen erfolgreich ist, wird der Dialog geschlossen und Sie erhalten eine entsprechende Nachricht. %TODO: Erweitern, aktualisieren
+\item Klicken Sie anschließend auf Hinzufügen. Wenn das Hinzufügen erfolgreich ist, wird der Dialog geschlossen.
 \end{enumerate}
 
-\subsection{Löschen einer Aktivität}
+\subsubsection{Nähere Informationen zu Aktivitäten}
+
+Wenn Sie nähere Informationen zu einer Aktivität erhalten wollen, führen Sie einen Linksklick auf diese aus. Daraufhin öffnet sich ein entsprechendes Informationsfenster.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{images/activityInfo.png}
+\end{figure}
+
+\subsubsection{Löschen einer Aktivität}
 \begin{enumerate}
 \item Führen Sie einen Linksklick auf die zu löschende Aktivität aus.
 \item Klicken Sie im nun geöffneten Dialog auf den "`Löschen"'-Button. \medskip\\
 	\begin{minipage}[t]{\linewidth}
-            \includegraphics[width=.3\linewidth]{images/deleteActivity.png}
-            %TODO: aktualisieren
+            \includegraphics[width=.5\linewidth]{images/activityInfo.png}
     \end{minipage} 
     \medskip\\
     Die Aktivität wurde gelöscht. Sie können diese Aktion natürlich auch rückgängig machen.
 \end{enumerate}
 
-\subsection{Drag \& Drop}
+\subsubsection{Drag \& Drop}
 Sie können im Stundenplan Drag \& Drop nutzen um Aktivitäten an andere Tage oder Uhrzeiten zu verschieben. Klicken Sie dazu die zu verschiebende Aktivität an und halten die linke Maustaste gedrückt, ziehen Sie die Aktivität zum gewünschten Zeitraum und lassen Sie die linke Maustaste los.\\
 Des weiteren kann die Dauer einer Aktivität auf ähnliche Art und Weise verändern. Zeigen Sie mit der Maus auf den unteren Rand einer Aktivität, so dass ein nach oben und unten zeigender Pfeil erscheint, halten Sie nun die linke Maustaste gedrückt und ziehen sie das Ende der Aktivität auf den gewünschten Endzeitpunkt. Lassen Sie die Maustaste los und die Aktivität wird aktualisiert. \\
 
-\subsection{Überschneidungen}
+\subsubsection{Überschneidungen}
 Beim Hinzufügen von Aktivitäten und dem Verändern via Drag \& Drop kann es natürlich immer zu Überschneidungen mit anderen Aktivitäten von einem der Teilnehmer kommen. Ist dies der Fall, erhalten Sie eine entsprechende Fehlernachricht und die Aktivität wird auf Ihren ursprünglichen Zustand zurückgesetzt.
+
+\subsubsection{Überschreitung des Wochenstundenkontingents}
+Sollte das Hinzufügen einer Aktivität zu einer Überschreitung des Wochenstundenkontingents bei einer der teilnehmenden Personen des Personals führen, wird das Hinzufügen der Aktivität nicht unterbunden. Sie erhalten jedoch eine Warnmeldung: 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{images/warning.png}
+\end{figure}
 
 
 \section{Fehler und Fehlerbehandlung}
