@@ -502,8 +502,8 @@ Im Folgenden soll die einzelnen Assoziationen erläutert werden.\\
 	Anzahl Schoolclass-Objekten. Wird das AcademicYear-Objekt gelöscht, werden auch alle dazu gehörigen Schoolclass-Objekte gelöscht.\\\hline
 7	& \textit{Activity} -- TimePeriod				& Einer Aktivität steht immer genau ein
 	Zeitraum gegenüber.\\\hline
-8	& \textit{Activity} -- Room						& Eine Aktivität ist mindestens einem, kann 
-	aber mehreren Räumen zugeordnet sein.\\\hline
+8	& \textit{Activity} -- Room						& Eine Aktivität ist mindestens einen Raum, 
+	kann aber auch mehreren Räumen zugeordnet sein.\\\hline
 \end{tabularx}
 
 \begin{tabularx}{\textwidth}{|p{0.6cm}|p{5cm}|X|}
@@ -543,8 +543,8 @@ Im Folgenden soll die einzelnen Assoziationen erläutert werden.\\
 	einer beliebigen Anzahl Mitarbeiter. Wobei Klassenteams ohne mindestens eine Lehrkraft auf Logikebene verhindert werden müssen. Ein Mitarbeiter kann Teil mehrere Klassenteams sein. \\\hline
 23	& TravelTimeList -- Edge 					& Ein TravelTimeList-Objekt kann eine beliebige
 	Anzahl von Edge-Objekten besitzen. Ein Edge-Objekt kann nur Teil eines TravelTimeList-Objektes sein. \\\hline
-24	& Edge -- Location							& Einer beliebigen Anzahl von Edge-Objekten kann 
-	eine beliebige Anzahl von Location-Objekten gegenüberstehen. Ein Edge-Objekt hat aber immer zwei disjunkte Location-Objekte.\\\hline 
+24	& Edge -- Location							& Einer beliebigen Anzahl von Edge-Objekten stehen 
+	immer genau zwei Location-Objekte gegenüber. Diese müssen disjunkt sein. \\\hline 
 \end{tabularx}
 \subsection{Datentypen und Repräsentation von Multiplizitäten}
 
