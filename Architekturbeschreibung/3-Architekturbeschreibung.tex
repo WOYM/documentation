@@ -172,7 +172,7 @@ Version & Datum & Änderungen \\
 
 \subsection{Zweck}
   
-Die Architekturbeschreibung soll es anderen Entwicklern ermöglichen, den Aufbau der Software und Intentionen hinter bestimmten Design-Entscheidungen zu verstehen. Dadurch sollen Fremdentwickler in die Lage versetzt werden, die Software zu überarbeiten und Bugs zu beheben.
+Diese Architekturbeschreibung soll es anderen Entwicklern ermöglichen, den Aufbau der Software und Intentionen hinter bestimmten Design-Entscheidungen zu verstehen. Dadurch sollen Fremdentwickler in die Lage versetzt werden, die Software zu überarbeiten und Bugs zu beheben.
 
 \subsection{Status}
 Dieses Dokument gibt die Software-Architektur des finalen Produktes wieder.
@@ -188,7 +188,7 @@ Die folgenden Kapitel stützen sich im Wesentlichen auf die Vorlesungsfolien "`S
 
 \subsection{Übersicht über das Dokument}
 In Kapitel \ref{sec:globale_analyse} wird zunächst eine globale Analyse durchgeführt. Dazu werden in Kapitel \ref{sec:einflussfaktoren} zuerst Einflussfaktoren identifiziert und deren Auswirkungen spezifiziert. Anschließend werden in Kapitel \ref{sec:strategien} aus den Einflussfaktoren Probleme abgeleitet und Strategien für diese entwickelt. \\
-In Kapitel \ref{sec:konzeptionell} wird der grundsätzliche Aufbau der Software in der konzeptionellen Sicht beschrieben. In Kapitel \ref{sec:modulsicht} werden die einzelnen Komponenten der konzeptionellen Sicht in ihre Module aufgeteilt und diese näher beschrieben. Kapitel \ref{sec:datensicht} zeigt das der Architekturplanung zugrunde liegende Datenmodell. %TODO: Kap. 6 
+In Kapitel \ref{sec:konzeptionell} wird der grundsätzliche Aufbau der Software in der konzeptionellen Sicht beschrieben. In Kapitel \ref{sec:modulsicht} werden die einzelnen Komponenten der konzeptionellen Sicht in ihre Module aufgeteilt und diese näher beschrieben. Kapitel \ref{sec:datensicht} zeigt das der Architekturplanung zugrunde liegende Datenmodell. Anschließend wird in Kapitel \ref{sec:ausfuehrung} die Ausführungssicht auf die Software beschrieben, also erläutert, welche Module zur Ausführung instanziiert sind. 
 \\
 In Kapitel \ref{sec:anwendungsfaelle} werden zwei Anwendungsfälle als Sequendzdiagramme dargestellt und beschrieben, um die Zusammenhänge zwischen der vorher beschriebenen Architektur und diesen Anwendungsfällen darzustellen.\\
 Schließlich wird Kapitel \ref{sec:evolution} erläutert, welche Änderungen bei Änderung der Anforderungen vorgenommen werden müssten.
@@ -376,52 +376,13 @@ Der Client besteht aus der GUI-, Model- und Persistence-Komponente. Die GUI-Komp
 \section{Modulsicht}
 \label{sec:modulsicht}
 
-{\it
-Diese Sicht beschreibt den statischen Aufbau des Systems mit Hilfe von
-Modulen, Subsystemen, Schichten und Schnittstellen. 
-Diese Sicht ist hierarchisch, d.h. Module werden in Teilmodule
-zerlegt. Die Zerlegung endet bei Modulen, die ein klar umrissenes
-Arbeitspaket für eine Person darstellen und in einer Kalenderwoche
-implementiert werden können. Die Modulbeschreibung der Blätter dieser
-Hierarchie muss genau genug und ausreichend sein, um das Modul 
-implementieren zu können.
-
-Die Modulsicht wird durch {UML}-Paket- und Klassendiagramme visualisiert.
-
-Die Module werden durch ihre Schnittstellen beschrieben. 
-Die Schnittstelle eines Moduls $M$ ist die Menge aller Annahmen, die
-andere Module über $M$ machen dürfen, bzw.\ jene Annahmen, die $M$
-über seine verwendeten Module macht (bzw. seine Umgebung, wozu auch
-Speicher, Laufzeit etc.\ gehören).
-Konkrete Implementierungen dieser Schnittstellen sind das Geheimnis des Moduls
-und können vom Programmierer festgelegt werden. Sie sollen hier
-dementsprechend nicht beschrieben werden. 
-
-Die Diagramme der Modulsicht sollten die zur Schnittstelle gehörenden Methoden
-enthalten. Die Beschreibung der einzelnen Methoden (im Sinne der Schnittstellenbeschreibung)
-geschieht allerdings per Javadoc im zugehörigen Quelltext. Das bedeutet, dass Ihr
-für alle Eure Module Klassen, Interfaces und Pakete erstellt und sie mit den Methoden der
-Schnittstellen verseht. Natürlich noch ohne Methodenrümpfe bzw.\ mit minimalen Rümpfen.
-Dieses Vorgehen vereinfacht den Schnittstellenentwurf und stellt Konsistenz sicher.
-
-Jeder Schnittstelle liegt ein
-Protokoll zugrunde. Das Protokoll beschreibt die Vor- und
-Nachbedingungen der Schnittstellenelemente. Dazu gehören die erlaubten
-Reihenfolgen, in denen Methoden der Schnittstelle aufgerufen werden
-dürfen, sowie Annahmen über Eingabeparameter und Zusicherungen über
-Ausgabeparameter. Das Protokoll von Modulen wird in der Modulsicht beschrieben.
-Dort, wo es sinnvoll ist, sollte es mit Hilfe von Zustands- oder
-Sequenzdiagrammen spezifiziert werden. Diese sind dann einzusetzen, wenn der
-Text allein kein ausreichendes Verständnis vermittelt (insbesondere
-bei komplexen oder nicht offensichtlichen Zusammenhängen).
-
-Der Bezug zur konzeptionellen Sicht muss klar ersichtlich sein. Im
-Zweifel sollte er explizit erklärt werden. Auch für diese Sicht muss
-die Entstehung anhand der Strategien erläutert werden.
-}
-
 \subsection{Paketdiagramm}
-Die Software ist aufgeteilt in fünf große Pakete, die jeweils noch Unterpakte besitzen. In dem nachfolgend aufgeführten Paketdiagramm sind nur die Abhängigkeiten zwischen den großen Pakten aufgeführt, um die Darstellung übersichtlicher zu halten.\\
+Die Software ist aufgeteilt in fünf große Pakete, die jeweils noch Unterpakte besitzen. In dem nachfolgend aufgeführten Paketdiagramm sind nur die Abhängigkeiten zwischen den großen Pakten aufgeführt, um die Darstellung übersichtlicher zu halten.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{packages.pdf}
+\end{figure}
 
 \begin{itemize}
 \item \textit{org.woym.persistence}: In diesem Paket befinden sich alle Klassen, die Methoden für lesenden oder schreibenden Zugriff auf der Datenbank enthalten. Im Unterpaket \textit{org.woym.persistence.spec} befinden sich die zugehörigen Interfaces (s. Kapitel \ref{subsec:persistence}).
@@ -430,12 +391,7 @@ Die Software ist aufgeteilt in fünf große Pakete, die jeweils noch Unterpakte 
 \item \textit{org.woym.ui}: Dieses Paket enthält JSF-Validatoren und -Converter, sowie Hilfsklassen für bestimmte Operationen auf der GUI (s. Kapitel \ref{subsec:UI}).
 \item \textit{org.woym.logic}: In diesem Paket befinden sich alle Klassen, die die Geschäftslogik implementieren (s. Kapitel \ref{subsec:logic}).
 \end{itemize}
- 
 
-
-\begin{figure}[H]
-\includegraphics[width=\textwidth]{packages.pdf}
-\end{figure}
 
 \subsection{Persistence}
 \label{subsec:persistence}
@@ -475,8 +431,8 @@ Das Interface \texttt{IMementoObject} stellt Methoden für alle Klassen bereit, 
 \label{subsubsec:Objects}
 Bei dem auf der folgenden Seite dargestellten Klassendiagramm zu den Datenobjekten ist es wichtig, dass alle Entitäten die gemeinsame abstrakte Superklasse \texttt{Entity} (oben rechts) besitzen. Die Vereinheitlichung unter dieser Klasse wird an einigen Stellen genutzt, um eine etwas allgemeinere Implementierung zu ermöglichen. Zudem stellt sie eine \textit{persist}-, \textit{update}- und \textit{delete}-Methoden für die erbenden Klassen bereit.\\
 Ansonsten sollte auch die Teil-von-Beziehung zwischen den Entitäten und den zugehörigen Memento-Klassen herauszustellen. Die Memento-Klassen sind statische innere Klassen ihrer jeweiligen Entitätenklasse und bieten einen package-private Konstruktor, so dass dieser ansonsten nicht von außen verwendet werden kann. Auch bieten die Mementos nach außen hin keine Methoden. Sie sind also für alle anderen Klassen -- außer der zugehörigen Entitätenklasse -- vollständig opak.\\
-Für die Speicherung von Wegzeiten existiert die Singleton-Klasse \texttt{TravelTimeList}, welche die statische Klasse \texttt{Edge} enthält. Eine Liste von \texttt{Edge}-Objekten in \texttt{TravelTimeList} repräsentiert die Wegzeiten zwischen je zwei Standorten. Es existiert immer nur ein \texttt{TravelTimeList}-Objekt in der Datenbank. Ist bei Aufruf von \textit{getInstance} noch keines vorhanden, wird eins angelegt.\\
-Alle weiteren Assoziationen sollten in Kapitel \ref{sec:datensicht} erläutert werden.
+Für die Speicherung von Wegzeiten existiert die Singleton-Klasse \texttt{TravelTimeList} (unten rechts), welche die statische Klasse \texttt{Edge} enthält. Eine Liste von \texttt{Edge}-Objekten in \texttt{TravelTimeList} repräsentiert die Wegzeiten zwischen je zwei Standorten. Es existiert immer nur ein \texttt{TravelTimeList}-Objekt in der Datenbank. Ist bei Aufruf von \textit{getInstance} noch keines vorhanden, wird eins angelegt.\\
+Alle weiteren Assoziationen werden in Kapitel \ref{sec:datensicht} erläutert.
 
 \includepdf[landscape]{objects.pdf}
 
@@ -599,24 +555,21 @@ Diese Abbildung stellt eine andere Sichtweise auf das vorher gezeigte Klassendia
 
 
 \subsection{Abbildung auf die Datenbank}
-Die Abbildung auf die Datenbank erfolgt mithilfe des JPA-Frameworks Eclipselink. Damit muss lediglich darauf geachtet werden, die Attribute in den Klassen korrekt mit den One-To-Many- und Many-To-Many-Beziehungen gemäß des Datenmodells zu annotieren.
+Die Abbildung auf die Datenbank erfolgt mithilfe des JPA-Frameworks Eclipselink. Damit muss lediglich darauf geachtet werden, die Attribute in den Klassen korrekt mit den One-To-Many- und Many-To-Many-Beziehungen gemäß des Datenmodells zu annotieren.\\
+
+\clearpage
 
 
 \section{Ausführungssicht}
-\nurlangversion
-
 \label{sec:ausfuehrung}
 
-{\it
-Die Ausführungssicht beschreibt das Laufzeitverhalten. Hier
-werden die Laufzeitelemente aufgeführt und beschrieben, welche Module
-sie zur Ausführung bringen. Ein Modul kann von mehreren
-Laufzeitelementen zur Laufzeit verwendet werden. Die Ausführungssicht
-beschreibt darüber hinaus, welche Laufzeitelemente spezifisch
-miteinander kommunizieren. Zudem wird bei verteilten Systemen
-(z.B. Client-Server-Systeme) dargestellt, welche Module von welchen
-Prozessen auf welchen Rechnern ausgeführt werden.}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{ausfuehrung.pdf}
+\end{figure}
 
+Im oben dargestellten Diagramm sind neben den \texttt{ServletContextListener} implementierenden Klassen (\texttt{BackupRestoreHandler}, \texttt{ConfigServletListener}, \texttt{DataBaseServletListener}) als Module alle Singleton-Klassen der Software aufgeführt, da von diesen zur Ausführung immer genau eine Instanz existiert. \\
+Aus der Controller-Komponente sind während der Ausführung jeweils nur die Controller instanziiert, welche als Backing Beans für die gerade dargestellte JSF-Seite benötigt werden.
 
 \section[Zusammenhänge zwischen Anwendungsfällen und Architektur]{Zusammenhänge zwischen Anwendungsfällen und Architektur\sectionmark{Zusammenhänge AF u. Architektur}}
 \sectionmark{Zusammenhänge AF u. Architektur}
