@@ -371,13 +371,23 @@ Die Software soll verschieden Systemeinstellungen bieten, die etwa erlauben, zu 
 \end{figure}
 
 
-Der Client besteht aus der GUI-, Model- und Persistence-Komponente. Die GUI-Komponente ist wiederum unterteilt in View und Controller. Die View-Komponente stellt Daten (in Form von Eingaben des Nutzers) für die Controller-Komponente bereit. Die Controller-Komponente kontrolliert die Darstellung der View-Komponente und nutzt durch die Model-Komponente bereitgestellte Möglichkeiten, Daten zu modifizieren oder bestimmte verarbeitete Daten zu erhalten. Auch nutzt die Controller-Komponente die von der Persistence-Komponente bereitgestellten Operationen um Daten aus der Datenbank zu lesen. Auch die Model-Komponente nutzt durch die Persistence-Komponente bereitgestellte Operationen, greift jedoch nicht nur auf lesende Operationen zu, sondern hat vollständigen Zugriff auch auf schreibende Methoden. Die Persistence-Komponente ist unabhängig von den anderen Komponenten. Die Software ist also nach einer Schichtenarchitektur aufgebaut.
+Der Client besteht aus der GUI-, Model- und Persistence-Komponente. Die GUI-Komponente ist wiederum unterteilt in View und Controller. Die View-Komponente stellt Daten (in Form von Eingaben des Nutzers) für die Controller-Komponente bereit. Die Controller-Komponente kontrolliert die Darstellung der View-Komponente und nutzt durch die Model-Komponente bereitgestellte Möglichkeiten, Daten zu modifizieren oder bestimmte verarbeitete Daten zu erhalten. Auch nutzt die Controller-Komponente die von der Persistence-Komponente bereitgestellten Operationen um Daten aus der Datenbank zu lesen. Die Model-Komponente enthält die gesamte Geschäftslogik und die Datenobjekte. Sie nutzt durch die Persistence-Komponente bereitgestellte Operationen, greift jedoch nicht nur auf lesende Operationen zu, sondern hat vollständigen Zugriff auch auf schreibende Methoden. Die Persistence-Komponente ist unabhängig von den anderen Komponenten.\\
+Die Software ist grundsätzlich nach der hier aufgeführten Schichtenarchitektur aufgebaut.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{schichten.pdf}
+\end{figure}
+
+Jede höhere Ebene greift nur auf niedriger liegende Ebenen zu. Die GUI-Schicht stellt die GUI-Komponente, die Geschäftslogik-Schicht die Model-Komponente und die Datenhaltung-Schicht die Persistence-Komponente dar.
+
+\clearpage
 
 \section{Modulsicht}
 \label{sec:modulsicht}
 
 \subsection{Paketdiagramm}
-Die Software ist aufgeteilt in fünf große Pakete, die jeweils noch Unterpakte besitzen. In dem nachfolgend aufgeführten Paketdiagramm sind nur die Abhängigkeiten zwischen den großen Pakten aufgeführt, um die Darstellung übersichtlicher zu halten.
+Die Software ist aufgeteilt in fünf große Pakete, die jeweils noch Unterpakte besitzen. Die View-Komponente wurde im nachfolgenden Diagramm nur als Paket aufgeführt, um die Abhängigkeiten aufzeigen zu können. Dies entspricht nicht der tatsächlichen Organisationsstruktur. Um das Diagramm übersichtlicher zu halten, wurden fast ausschließlich die Abhängigkeiten zwischen den großen Pakten aufgeführt. Lediglich für das Paket \textit{org.woym.ui} wurde eine etwas detaillierte Darstellung gewählt.
 
 \begin{figure}[H]
 \centering
@@ -385,13 +395,12 @@ Die Software ist aufgeteilt in fünf große Pakete, die jeweils noch Unterpakte 
 \end{figure}
 
 \begin{itemize}
-\item \textit{org.woym.persistence}: In diesem Paket befinden sich alle Klassen, die Methoden für lesenden oder schreibenden Zugriff auf der Datenbank enthalten. Im Unterpaket \textit{org.woym.persistence.spec} befinden sich die zugehörigen Interfaces (s. Kapitel \ref{subsec:persistence}).
-\item \textit{org.woym.common}: In diesem Paket  bzw. in den jeweiligen Unterpaketen befinden sich Klassen, welche von Klassen aus fast allen anderen Paketen verwendet werden (s. Kapitel \ref{subsec:Common}). 
-\item \textit{org.woym.controller}: Dieses Paket enthält alle Controller, welche die Eingaben von der GUI verarbeiten (s. Kapitel \ref{subsec:Controller}.
-\item \textit{org.woym.ui}: Dieses Paket enthält JSF-Validatoren und -Converter, sowie Hilfsklassen für bestimmte Operationen auf der GUI (s. Kapitel \ref{subsec:UI}).
-\item \textit{org.woym.logic}: In diesem Paket befinden sich alle Klassen, die die Geschäftslogik implementieren (s. Kapitel \ref{subsec:logic}).
+\item \textit{org.woym.persistence}: In diesem Paket befinden sich alle Klassen, die Methoden für lesenden oder schreibenden Zugriff auf der Datenbank enthalten. Im Unterpaket \textit{org.woym.persistence.spec} befinden sich die zugehörigen Interfaces (s. Kapitel \ref{subsec:persistence}). Dieses Paket stellt die Persistence-Komponente aus der konzeptionellen Sicht dar.
+\item \textit{org.woym.common}: In diesem Paket  bzw. in den jeweiligen Unterpaketen befinden sich Klassen, welche von Klassen aus fast allen anderen Paketen verwendet werden (s. Kapitel \ref{subsec:Common}). Eine konkrete Einordnung dieses Paketes in die konzeptionelle Sicht ist nicht möglich. 
+\item \textit{org.woym.controller}: Dieses Paket enthält alle Controller, welche die Eingaben von der GUI verarbeiten (s. Kapitel \ref{subsec:Controller}, damit entspricht dieses Paket der Controller-Komponente aus der konzeptionellen Sicht.
+\item \textit{org.woym.ui}: Dieses Paket enthält JSF-Validatoren und -Converter, sowie Hilfsklassen, welche Daten für die Controller so aufbereiten, dass Sie von der View-Komponente korrekt dargestellt werden können. (s. Kapitel \ref{subsec:UI}). Dieses Paket befindet sich grundsätzlich in der Geschäftslogik-Schicht. Die Validatoren und Converter sind jedoch nicht der Model-Komponente zuordenbar, da sie der View-Komponente direkt bekannt sind. 
+\item \textit{org.woym.logic}: In diesem Paket befinden sich alle Klassen, die die Geschäftslogik implementieren (s. Kapitel \ref{subsec:logic}). Dieses Pakte stellt die Model-Komponente aus der konzeptionellen Sicht dar.
 \end{itemize}
-
 
 \subsection{Persistence}
 \label{subsec:persistence}
@@ -441,20 +450,21 @@ Alle weiteren Assoziationen werden in Kapitel \ref{sec:datensicht} erläutert.
 \label{subsec:Controller}
 
 Im Paket \textit{org.woym.controller} befinden sich die Backing Beans für die verschiedenen JSF-Seiten. \\
-Die Klasse \texttt{GUIController} stellt die Undo- und Redo-Funktionalität für alle JSF-Seiten bereit und befindet sich daher im übergeordneten Paket.\\
-Im Paket \textit{org.woym.controller.manage} befinden sich die Backing Beans für die JSF-Seiten der Systemeinrichtung und im Paket \textit{org.woym.controller.planning} die Backing Beans für die JSF-Seiten der Planung. Die Zusammenhänge zwischen den JSF-Seiten und den Backing Beans sind hier nicht darstellbar. 
+Die Klasse \texttt{GUIController} stellt den Aufruf der Undo- und Redo-Funktionalität aus dem \texttt{CommandHandler} (s. Kapitel \ref{subsec:logic}) für alle JSF-Seiten bereit und befindet sich daher im übergeordneten Paket.\\
+Im Paket \textit{org.woym.controller.manage} befinden sich die Backing Beans für die JSF-Seiten der Systemeinrichtung und im Paket \textit{org.woym.controller.planning} die Backing Beans für die JSF-Seiten der Planung. In der Systemeinrichtung besitzt jede JSF-Seite einen eigenen Controller. Auf der Planungsseite ist der \texttt{PlanningController} für die Darstellung und Funktionalität der Seite vorhanden. Lediglich die Operationen für die Dialoge zum Hinzufüge von Aktivitäten wurden in einzelne Controller ausgelagert.\\
+Der Zusammenhang zwischen den JSF-Seiten und den Controllern ist hier nicht darstellbar.
 
 \includepdf[landscape]{controller.pdf}
+
+\includepdf{controller2.pdf}
 
 \subsection{UI}
 \label{subsec:UI}
 
 Im Paket \textit{org.woym.ui.converters} befinden sich die JSF-Converter und im Paket \textit{org.woym.ui.validators} die JSF-Validatoren. Das Paket \textit{org.woym.ui.util} enthält Hilfsklassen für die Backing Beans der Planungsseite. Diese Hilfsklassen dienen im Wesentlichen der Unterstützung zur korrekten Darstellung der Elemente auf dieser Seite.\clearpage
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{ui.pdf}
-\end{figure}
+\includepdf{ui.pdf}
+
 
 \subsection{Logic}
 \label{subsec:logic}
@@ -471,7 +481,7 @@ Das Paket \textit{org.woym.logic.util} enthält -- abgesehen von der Klasse \tex
 Die Klasse \texttt{ActivityValidator} bietet fünf öffentliche Methoden, wobei lediglich die Methode \textit{validateActivity(Activity, TimePeriod)} vom \texttt{PlanningController} aufgerufen wird. Da diese Methode prüft, ob die übergebene Aktivität am übergebenen Zeitraum eingefügt werden kann oder ob eine Überschneidung vorliegt, wird sie vor dem finalen Hinzufügen oder Aktualisieren einer Aktivität aufgerufen.\\
 Die Klasse \texttt{ActivityParser} überführt in den Methoden \textit{getActivityModel(Teacher)}, \textit{getActivityModel(Schoolclass)}, \textit{getActivityModel(PedagogicAssistant)} und \textit{getActivityModel(Room)} alle Aktivitäten des übergebenen Objektes in ein \texttt{ScheduleModel}, so dass diese optisch dargestellt werden können. Diese Methoden können in beliebiger Reihenfolge ausgeführt werden.
  
-\includepdf[landscape]{logic.pdf}
+\includepdf{logic.pdf}
 
 
 
