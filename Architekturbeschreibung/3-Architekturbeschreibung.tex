@@ -373,6 +373,21 @@ Festlegen des Zeitrasters für die Planung: Wochentage, die verplant werden soll
 \hline
 \multicolumn{3}{|l|}{P1.5: Hinzufügen, Löschen und Ändern von Planungsobjekten}\\\hline
 Planungsobjekte wie Personal, Stundeninhalte, Klassen, etc. müssen hinzugefügt, gelöscht und editiert werden können.& Dieser Faktor ist nicht flexibel, kann im Zuge von O4.1 aber ggf. wegfallen. & Dieser Faktor hat großen Einfluss auf die Geschäftslogik. Es muss sichergestellt werden das keine der drei Operationen die Konsistenz der vorhanden Daten gefährden. Weiterhin muss überprüft werden ob die Daten in sich Valide sind. Alle Ergebnisse der Vorgänge müssen dem Nutzer optisch mitgeteilt werden, was wiederum Einfluss auf die GUI hat. \\\hline
+\multicolumn{3}{|l|}{P1.6: Dokumentengenerierung}\\\hline
+Die Pläne sollen als PDF, textuell (z.B. zur Weiterverarbeitung in Textverarbeitungssystemen) sowie strukturiert in CSV exportiert werden können. & Dieser Faktor ist nicht flexibel, kann im Zuge von O4.1 aber ggf. wegfallen. & Dieser Faktor hat einen mittleren Einfluss auf die Architektur, es ist lediglich eine Erweiterung, sollte es also entfernt werden hat es kein negativen Einfluss auf das System. \\\hline
+\multicolumn{3}{|l|}{P1.7: Mehrere Personen in unterschiedlichen Zeitpunkten in ein er Planungseinheit}\\\hline
+Das Personal kann in einer Planungseinheit später dazustoßen, nachdem die Planungseinheit bereits begonnen hat, oder sie verlassen, bevor sie endet. & Dieser Faktor ist nicht flexibel, kann im Zuge von O4.1 aber ggf. wegfallen. & Dieser Faktor hat einen mittleren Einfluss auf die Architektur, dieser Faktor muss in der Geschäftslogik beachtet werden. \\\hline
+\end{tabularx} \newpage
+
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+\textbf{Faktor} & \textbf{Flexibilität und Veränderlichkeit} & \textbf{Auswirkungen}\\\hline
+\hline
+\hline
+\multicolumn{3}{|l|}{P1.8: Explizite individuelle Zeitwünsche des Personals}\\\hline
+Explizite individuelle Zeitwünsche des Personals sollen erfasst, geändert und gelöscht werden können. Sie sollen bei der Planung als weiche Kriterien dienen - also Kriterien, die nach Möglichkeit eingehalten werden sollen, jedoch im Bedarfsfall auch ignoriert werden können. Eine entsprechende Diagnose und Nachricht an die Planerinnen ist zu realisieren. & Dieser Faktor ist nicht flexibel, kann im Zuge von O4.1 aber ggf. wegfallen. & Dieser Faktor hat einen großen Einfluss auf die Architektur, dieser Faktor muss in der Geschäftslogik beachtet, sowie Möglichkeit zum setzten an der GUI erstellt werden. \\\hline
+\multicolumn{3}{|l|}{P1.9: Zeiteinheiten des Personals}\\\hline
+Eine Stunde einer Lehrerin beträgt gegenwärtig 45 Minuten und die einer pädagogischen Kraft 60 Minuten. Diese Tatsache muss im Zeitkontingent des Personals berücksichtigt werden. Diese Zeiten sollen eingestellt werden können. Die Einstellungen wirken sich nur auf die laufende Planung aus, kann aber in neue Planungen übernommen werden.& Dieser Faktor ist nicht flexibel, kann im Zuge von O4.1 aber ggf. wegfallen. & Dieser Faktor hat einen großen Einfluss auf die Architektur, dieser Faktor muss in der Geschäftslogik beachtet, sowie Möglichkeit zum setzten an der GUI erstellt werden. Es ist auch sinnvoll es in der Persistenz aufzunehmen um diese Einstellung nicht immer verändern zu müssen. \\\hline
 \multicolumn{3}{|l|}{\textbf{P2: Benutzerschnittstelle}}\\\hline
 \multicolumn{3}{|l|}{P2.1: Erstellen und Bearbeiten der Auszugebenden individuellen Pläne}\\\hline
 \begin{itemize}[topsep=0cm, leftmargin=0.5cm, itemsep=0pt]
@@ -381,6 +396,9 @@ Planungsobjekte wie Personal, Stundeninhalte, Klassen, etc. müssen hinzugefügt
 \item Belegungsplan für jeden Raum
 \item Personaleinsatzplan 
 \end{itemize} & Dieser Faktor ist nicht flexibel, kann im Zuge von O4.1 aber ggf. wegfallen. & Beeinflusst die Architektur sehr, weil es die eigentlichen Funktionalitäten der GUI definiert.
+\\\hline
+\multicolumn{3}{|l|}{P2.2: Vorwissen des Benutzers}\\\hline
+Das Programm muss von Planerinnen, die hauptberuflich Lehrerinnen und keine Informatikerinnen sind, leicht zu bedienen sein. & Dieser Faktor ist nicht flexibel, kann im Zuge von O4.1 aber ggf. wegfallen. & Beeinflusst die Architektur sehr, weil es das Aussehen und Benutzbarkeit der GUI definiert.
 \\\hline
 \end{tabularx}\\
 
