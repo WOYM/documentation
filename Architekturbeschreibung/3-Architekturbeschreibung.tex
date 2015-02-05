@@ -234,29 +234,57 @@ Schließlich wird Kapitel \ref{sec:evolution} erläutert, welche Änderungen bei
   Problemkarten einfach referenzieren zu können.  }\\
 
 \subsubsection{Organisatorische Faktoren}
-\renewcommand{\arraystretch}{1.4}
-\begin{tabularx}{\textwidth}{|X|X|X|}
+\begin{tabularx}{\textwidth}{|l|X|}
 \hline
-\textbf{Faktor} & \textbf{Flexibilität und Veränderlichkeit} & \textbf{Auswirkungen}\\\hline
+\multicolumn{2}{|l|}{\textbf{O1: Management}}\\\hline
+\multicolumn{2}{|l|}{O1.1: Zeitplan vs. Funktionsumfang}\\\hline
+ Faktor & Der Zeitplan ist in jedem Fall einzuhalten. Ggf. muss dafür in Kauf genommen werden, dass gewisse Funktionen fehlen. \\\hline
+ Flexibilität & Dieser Faktor ist nicht flexibel.\\\hline
+ Veränderlichkeit & Dieser Faktor ist nicht veränderlich.\\\hline
+ Auswirkungen & Nicht alle geplanten Funktionen können implementiert werden. Zunächst Beschränkung auf die Funktionen, die notwendig sind, um die Mindestanforderungen zu erfüllen.\\\hline
+\end{tabularx}
+
+\newpage
+
+\begin{tabularx}{\textwidth}{|l|X|}
 \hline
-\multicolumn{3}{|l|}{\textbf{O1: Management}}\\\hline
-\multicolumn{3}{|l|}{O1.1: Zeitplan vs. Funktionsumfang}\\\hline
-Der Zeitplan ist in jedem Fall einzuhalten. Ggf. muss dafür in Kauf genommen werden, dass gewisse Funktionen fehlen. & Dieser Faktor ist nicht flexibel oder veränderlich. & Nicht alle geplanten Funktionen können implementiert werden. Zunächst Beschränkung auf die Funktionen, die notwendig sind, um die Mindestanforderungen zu erfüllen.\\\hline
+\multicolumn{2}{|l|}{\textbf{O2: Personal: Fähigkeiten, Interessen, Stärken, Schwächen}}\\\hline
+\multicolumn{2}{|l|}{O2.1: Erstes größeres, selbständig auszuführendes Projekt}\\\hline
+ Faktor & Für alle beteiligten Entwickler handelt es sich um das erste größere selbstständig auszuführende Projekt.\\\hline
+ Flexibilität & Dieser Faktor ist nicht flexibel.\\\hline
+ Veränderlichkeit & Dieser Faktor ist nicht veränderlich.\\\hline
+ Auswirkungen & \begin{itemize} \item[-] Entwickler schätzen Fähigkeiten und zeitlichen Aufwand falsch ein, was zu Verzögerungen im Projektablauf \textbf{O1.1} führen kann. \item[-] Schlechtere Kommunikation in der Gruppe, es handelt sich bei den Entwicklern nicht um ein eingespieltes Team, kann zu Verzögerungen im Projektablauf \textbf{O1.1} oder fehlerhafter, bzw. unvollständiger Implementierung von Features führen.  \end{itemize}
+ \\\hline
+ 
+\multicolumn{2}{|l|}{O2.2: Unerfahrenheit mit Technologie}\\\hline
+ Faktor & Unter den Entwicklern existieren allgemein nur Grundkenntnise im Umgang mit der verwendeten Technologie.\\\hline
+ Flexibilität & Da die verwendeten Technologien bereits im Vorfeld festehen, können sich die Entwickler vor dem offiziellen Projektbeginn ihre Fähigkeiten im Umgang mit der Technologie verbesssern.\\\hline
+ Veränderlichkeit & Es können durch Unkenntnis Problemstellungen auftreten, die nur unter ernormem Aufwand oder umfangreichen Änderungen an bereits vorhandenem Quellcode gelöst werden können.\\\hline
+ Auswirkungen & \begin{itemize} \item[-] Es können Verzögerungen im Projektablauf \textbf{O1.1} durch unvorhergesehene technologische Schwierigkeiten auftreten, die bis zum Projektabbruch führen können. \item[-] Komponenten und Programmteile können durch das Verfehlen von technologischen Anforderungen unbrauchbar werden, was zu Verzögerungen im Projektablauf \textbf{O1.1} oder sogar dem Projektabbruch führen kann. \end{itemize} \\\hline
+\end{tabularx} 
 
-\multicolumn{3}{|l|}{\textbf{O2: Personal: Fähigkeiten, Interessen, Stärken, Schwächen}}\\\hline
-\multicolumn{3}{|l|}{O2.1: Erstes größeres, selbständig auszuführendes Projekt}\\\hline
-Für alle beteiligten Entwickler handelt es sich um das erste größere selbstständig auszuführende Projekt. & Dieser Faktor ist nicht flexibel oder veränderlich. & %TODO 
-\\\hline
+\newpage
 
-\multicolumn{3}{|l|}{\textbf{O3: Prozesse und Werkzeuge für die Entwicklungsschritte}}\\\hline
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\multicolumn{2}{|l|}{\textbf{O3: Prozesse und Werkzeuge für die Entwicklungsschritte}}\\\hline
 
-\multicolumn{3}{|l|}{\textbf{O4: Entwicklungszeitplan}}\\\hline
-\multicolumn{3}{|l|}{O4.1: Auslieferung der Produktfunktionen}\\\hline
-Es werden die absolut notwendigen Produktfunktionen (Mindestanforderungen) priorisiert. & Die Mindestanforderungen und damit die Prioritätensetzung können sich im Zeitverlauf verändern (inbes. abhängig von O5.1). & Kann O1.1 beeinflussen.\\\hline
+\multicolumn{2}{|l|}{\textbf{O4: Entwicklungszeitplan}}\\\hline
+\multicolumn{2}{|l|}{O4.1: Auslieferung der Produktfunktionen}\\\hline
+ Faktor & Es werden die absolut notwendigen Produktfunktionen (Mindestanforderungen) priorisiert. \\\hline
+ Flexibilität & Die Mindestanforderungen müssen zu Beginn des Projektes in Prioritätsgruppen unterteilt werden (Evolutionär) \\\hline
+ Veränderlichkeit &  Die Mindestanforderungen und damit die Prioritätensetzung können sich im Zeitverlauf verändern (inbes. abhängig von O5.1). \\\hline
+ Auswirkungen & Kann O1.1 beeinflussen.\\\hline
+\end{tabularx}
 
-\multicolumn{3}{|l|}{\textbf{O5: Entwicklungsbudget}}\\\hline
-\multicolumn{3}{|l|}{O5.1: Anzahl der Entwickler}\\\hline
-Es sind maximal sechs Entwickler am Projekt beteiligt. & Es können keine weitere Entwickler hinzugezogen werden. Teilnehmende Entwickler können temporär oder komplett ausfallen. & Ein temporärer Ausfall kann Faktor 01.1 leicht beeinflussen. Bei komplettem Ausfall eines Entwicklers werden die Mindestanforderungen verändert und damit O4.1 und O1.1 beeinflusst.\\\hline
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\multicolumn{2}{|l|}{\textbf{O5: Entwicklungsbudget}}\\\hline
+\multicolumn{2}{|l|}{O5.1: Anzahl der Entwickler}\\\hline
+ Faktor & Es sind maximal sechs Entwickler am Projekt beteiligt. \\\hline
+ Flexibilität & Es können keine weitere Entwickler hinzugezogen werden. Teilnehmende Entwickler können temporär oder komplett ausfallen. \\\hline
+ Veränderlichkeit & \\\hline
+ Auswirkungen & Ein temporärer Ausfall kann Faktor 01.1 leicht beeinflussen. Bei komplettem Ausfall eines Entwicklers werden die Mindestanforderungen verändert und damit O4.1 und O1.1 beeinflusst.\\\hline
 \end{tabularx}\\
 \clearpage
 
@@ -329,38 +357,66 @@ Die Software soll verschieden Systemeinstellungen bieten, die etwa erlauben, zu 
 \subsection{Probleme und Strategien}
 \label{sec:strategien}
 
-{\it Aus einer Menge von Faktoren ergeben sich Probleme, die nun in
-  Form von Problemkarten beschrieben werden. Diese resultieren
-  z.B. aus
-  \begin{itemize}
-  \item Grenzen oder Einschränkungen durch Faktoren
-  \item der Notwendigkeit, die Auswirkungen eines Faktors zu begrenzen
-  \item der Schwierigkeit, einen Produktfaktor zu erfüllen, oder
-  \item der Notwendigkeit einer allgemeinen Lösung zu globalen
-    Anforderungen.
-  \end{itemize}
-  Dazu entwickelt Ihr Strategien, um mit den identifizierten Problemen
-  umzugehen.
+% Problem 1 %
+\begin{tabularx}{\textwidth}{|l|X|}
+ \hline
+ \textbf{Problem} & 1 \\\hline
+ \textbf{Name} & Enger Zeitplan \\\hline 
+ \textbf{Beschreibung} & Der Abgabetermin ist fix und die Anzahl der Entwickler ist auf sechs beschränkt. Gegebenenfalls ist es nicht möglich, alle Produktfunktionen zu realisieren.\\\hline
+ \textbf{Einflussfaktoren} &
+ \begin{itemize}
+ \item[O1.1] Zeitplan vs. Funktionsumfang
+ \item[O4.1] Auslieferung der Produktfunktionen
+ \item[O5.1] Anzahl der Entwickler
+ \end{itemize}\\\hline
+\multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
+\textbf{S1.1 Schrittweiser Aufbau} & Das System wird nach Prioritäten aufgebaut. Die für die Grundfunktionalität wichtigsten Funktionen werden am Anfang die weniger wichtigen gegen Ende oder gar nicht implementiert. So ist es zwar ggf. der Fall, dass nicht alle zu Beginn des Projektes geplanten Funktionen umgesetzt werden, aber die wesentlichen und relevanten Funktionalitäten sind vorhanden. \\
 
-  Achtet auch hier darauf, dass die Probleme und Strategien wirklich
-  die Architektur betreffen und nicht etwa das Projektmanagement. Die
-  Strategien stellen im Prinzip die Designentscheidungen dar. Sie
-  sollten also die Erklärung für den konkreten Aufbau der
-  verschiedenen Sichten liefern.}
+\textbf{S1.2 Regelmäßige Reevaluierung} & In wöchentliche Treffen werden die verschiedenen Aufgaben und ihre Prioritäten besprochen und gepflegt, um einen evolutionären Prozess gemäß der momentanen Gewichtungen einhalten zu können. \\\hline
+ 
+ \multicolumn{2}{|l|}{\textbf{Verwandte Strategien}} \\\hline
+  & \\\hline
+\end{tabularx}
 
+%Problem 2%
+\begin{tabularx}{\textwidth}{|l|X|}
+ \hline
+ \textbf{Problem} & 2 \\\hline
+ \textbf{Name} & Inkonsistente Anforderungen\\\hline 
+ \textbf{Beschreibung} & Eventuell werden Anforderungen missverstanden oder falsch kommuniziert.\\\hline
+ \textbf{Einflussfaktoren} &
+ \begin{itemize}
+ \item[O2.1] Erstes größeres, selbständig auszuführendes Projekt
+ \item[O4.1] Auslieferung der Produktfunktionen
+ \end{itemize}\\\hline
+\multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
+\textbf{S2.1 Kommunikation} & Problemstellungen frühzeitig mit dem Kunden kommunizieren. \\
 
-\textit{Beschreibt möglichst mehrere Alternativen und gebt
-  an, für welche Ihr Euch letztlich aus welchem Grunde entschieden
-  habt. Natürlich müssen die genannten Strategien in den folgenden
-  Sichten auch tatsächlich umgesetzt werden!}
+\textbf{S2.2 Regelmäßige Reevaluierung} & Vorlage des aktuellen Prototypen zur Überprüfung durch Auftraggeber. \\\hline
+ 
+ \multicolumn{2}{|l|}{\textbf{Verwandte Strategien}} \\\hline
+  & \\\hline
+\end{tabularx}
 
-\textit{Ein sehr häufiger Fehler ist es, dass SWP-Gruppen
-  arbeitsteilig vorgehen: die eine Gruppe schreibt das Kapitel zur
-  Analyse von Faktoren und zu den Strategien, die andere Gruppe
-  beschreibt die diversen Sichten, ohne dass diese beiden Gruppen sich
-  abstimmen. Natürlich besteht aber ein Zusammenhang zwischen den
-  Faktoren, Strategien und Sichten. Dieser muss erkennbar sein, indem
-  sich die verschiedenen Kapitel eindeutig aufeinander beziehen.}
+%Problem 3%
+\begin{tabularx}{\textwidth}{|l|X|}
+ \hline
+ \textbf{Problem} & 3 \\\hline
+ \textbf{Name} & Technologische Anforderungen übersteigen logischen Aufwand\\\hline 
+ \textbf{Beschreibung} & Der Aufwand, das Projekt auf technologischer Basis zu realisieren wird deutlich größer, als die logischen Ansprüche an das System umzusetzen\\\hline
+ \textbf{Einflussfaktoren} &
+ \begin{itemize}
+ \item[O2.1] Erstes größeres, selbständig auszuführendes Projekt
+ \item[O2.2] Unerfahrenheit mit Technologie
+ \end{itemize}\\\hline
+\multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
+\textbf{S2.1 Vorbereitung} & Die Entwickler müssen sich bereits vor dem Projektstart mit der Thematik befassen. \\
+
+\textbf{S2.2 Regelmäßige Reevaluierung} & Vorlage des aktuellen Prototypen zur Überprüfung durch Auftraggeber. \\\hline
+ 
+ \multicolumn{2}{|l|}{\textbf{Verwandte Strategien}} \\\hline
+  & \\\hline
+\end{tabularx}
 
 \section{Konzeptionelle Sicht}
 \label{sec:konzeptionell}
@@ -550,7 +606,7 @@ Im Folgenden soll die einzelnen Assoziationen erläutert werden.\\
 
 Diese Abbildung stellt eine andere Sichtweise auf das vorher gezeigte Klassendiagramm von. Es wurden alle Assoziationen weggelassen und dafür die Attribute an die entsprechenden Klassen eingetragen.
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{datensicht.pdf}
+\includegraphics[width=\textwidth]{Datensicht.pdf}
 \end{figure}
 
 
