@@ -182,6 +182,11 @@ Dieses Dokument gibt die Software-Architektur des finalen Produktes wieder.
   
 \subsection{Definitionen, Akronyme und Abkürzungen}
 
+\renewcommand{\arraystretch}{2}
+\begin{tabularx}{\textwidth}{Xp{1cm}p{9.5cm}}
+\textbf{Bandunterricht} 	&  	& 	Ein Bandunterricht ist eine Aktivität, welche mehrere Personen des Personals, mehrere Schulklassen, mehrere Räume (alle am selben Standort) und ggf. mehrere Unterrichtsfächer umfasst. Der Bandunterricht stellt eine Art Förderunterricht dar. \\ 
+\end{tabularx} 
+\renewcommand{\arraystretch}{1.4}
 
 \subsection{Referenzen}
 Die folgenden Kapitel stützen sich im Wesentlichen auf die Vorlesungsfolien "`Software-Architektur 1"' der Veranstaltung "`Software-Projekt 1"' im Sommersemester 2014 an der Universität Bremen von Prof. Dr. Rainer Koschke.
@@ -520,10 +525,11 @@ Das Interface \texttt{IMementoObject} stellt Methoden für alle Klassen bereit, 
 
 \subsubsection{Objects}
 \label{subsubsec:Objects}
-Bei dem auf der folgenden Seite dargestellten Klassendiagramm zu den Datenobjekten ist es wichtig, dass alle Entitäten die gemeinsame abstrakte Superklasse \texttt{Entity} (oben rechts) besitzen. Die Vereinheitlichung unter dieser Klasse wird an einigen Stellen genutzt, um eine etwas allgemeinere Implementierung zu ermöglichen. Zudem stellt sie eine \textit{persist}-, \textit{update}- und \textit{delete}-Methoden für die erbenden Klassen bereit.\\
+Das auf der folgenden Seite dargestellte Klassendiagramm stellt das Paket \textit{org.woym.common.objects} dar. Es enthält im Gegensatz zu dem in Kapitel \ref{sec:datensicht} dargestellten Diagramm noch eine implementierungsspezifische Details, die nachfolgend erläutert werden sollen. Eine größere und übersichtlichere Darstellung des Diagramms war aufgrund der großen Anzahl an Kanten nicht möglich.\\
+Ein Detail, welches hervorgehoben werden sollte, ist, dass alle Entitäten die gemeinsame abstrakte Superklasse \texttt{Entity} (linke Seite, mittlere Höhe) besitzen. Die Vereinheitlichung unter dieser Klasse wird an einigen Stellen genutzt, um eine etwas allgemeinere Implementierung zu ermöglichen. Zudem stellt sie eine \textit{persist}-, \textit{update}-, \textit{delete} und \textit{refresh}-Methode für die erbenden Klassen bereit.\\
 Ansonsten sollte auch die Teil-von-Beziehung zwischen den Entitäten und den zugehörigen Memento-Klassen herauszustellen. Die Memento-Klassen sind statische innere Klassen ihrer jeweiligen Entitätenklasse und bieten einen package-private Konstruktor, so dass dieser ansonsten nicht von außen verwendet werden kann. Auch bieten die Mementos nach außen hin keine Methoden. Sie sind also für alle anderen Klassen -- außer der zugehörigen Entitätenklasse -- vollständig opak.\\
-Für die Speicherung von Wegzeiten existiert die Singleton-Klasse \texttt{TravelTimeList} (unten rechts), welche die statische Klasse \texttt{Edge} enthält. Eine Liste von \texttt{Edge}-Objekten in \texttt{TravelTimeList} repräsentiert die Wegzeiten zwischen je zwei Standorten. Es existiert immer nur ein \texttt{TravelTimeList}-Objekt in der Datenbank. Ist bei Aufruf von \textit{getInstance} noch keines vorhanden, wird eins angelegt.\\
-Alle weiteren Assoziationen werden in Kapitel \ref{sec:datensicht} erläutert.
+Für die Speicherung von Wegzeiten existiert die Singleton-Klasse \texttt{TravelTimeList} (oben links), welche die statische Klasse \texttt{Edge} enthält. Eine Liste von \texttt{Edge}-Objekten in \texttt{TravelTimeList} repräsentiert die Wegzeiten zwischen je zwei Standorten. Es existiert immer nur ein \texttt{TravelTimeList}-Objekt in der Datenbank. Ist bei Aufruf von \textit{getInstance} noch keines vorhanden, wird eins angelegt.\\
+Ein übersichtlicheres Datenmodell befindet sich in Kapitel \ref{sec:datensicht}. Dort werden auch alle weiteren Relevanten Assoziationen erläutert.
 
 \includepdf[landscape]{objects.pdf}
 
@@ -589,7 +595,7 @@ Im Folgenden soll die einzelnen Assoziationen erläutert werden.\\
 4	& Schoolclass -- LessonType -- Integer \newline
 	  AcademicYear -- LessonType -- Integer				& Eine Schulklasse und ein Jahrgang besitzen Unterrichtsbedarfe. Dies wird durch eine Zuordnung von Integer-Werten zu LessonType-Objekten realisiert. Jedes LessonType-Objekt darf in Kombination mit einer Klasse / einem Jahrgang nur einmal vorkommen. \\\hline
 5	& Schoolclass -- Teacher 				& Eine beliebige Anzahl an Schulklassen hat genau
-	einen Klassenlehrer. Ein Lehrer kann Klassenlehrer mehrere Schulklassen sein. \\\hline
+	einen Klassenlehrer. Ein Lehrer kann Klassenlehrer mehrerer Schulklassen sein. \\\hline
 6	& AcademicYear -- Schoolclass 			& Ein AcademicYear-Objekt besteht aus einer beliebigen 
 	Anzahl Schoolclass-Objekten. Wird das AcademicYear-Objekt gelöscht, werden auch alle dazu gehörigen Schoolclass-Objekte gelöscht.\\\hline
 7	& \textit{Activity} -- TimePeriod				& Einer Aktivität steht immer genau ein
@@ -601,7 +607,7 @@ Im Folgenden soll die einzelnen Assoziationen erläutert werden.\\
 \begin{tabularx}{\textwidth}{|p{0.6cm}|p{5cm}|X|}
 \hline
 9 	& \textit{Activity} -- EmployeeTimePeriods		& An einer Aktivität kann eine beliebige
-	Anzahl an Mitarbeitern teilnehmen, da diese früher gehen oder später kommen können, wird jedem Mitarbeiter eine eigene Liste von Zeiträumen zugeordnet. Dies wird durch die Klasse \texttt{EmployeeTimePeriods} realisiert. Einer Aktivität kann eine beliebige Zahl von EmployeeTimePeriods-Objekten zugeordnet sein, aber ein spezifisches EmployeeTimePeriod-Objekt ist immer nur genau einer Aktivität zugeordnet. \\\hline
+	Anzahl an Mitarbeitern teilnehmen. Um realisieren zu können, dass diese früher gehen oder später kommen können, wird jedem Mitarbeiter eine eigene Liste von Zeiträumen zugeordnet. Dies wird durch die Klasse \texttt{EmployeeTimePeriods} umgesetzt. Einer Aktivität kann eine beliebige Zahl von EmployeeTimePeriods-Objekten zugeordnet sein, aber ein spezifisches EmployeeTimePeriod-Objekt ist immer nur genau einer Aktivität zugeordnet. \\\hline
 10	& \textit{Activity} -- Schoolclass				& Eine beliebige Anzahl von Aktivitäten
 	besitzt eine beliebige Anzahl von Schulklassen als Teilnehmer. Schulklassen können die Aktivität nicht
 	frühzeitig verlassen, daher gilt für sie der für die Aktivität festgelegte Zeitraum.\\\hline
@@ -611,7 +617,7 @@ Im Folgenden soll die einzelnen Assoziationen erläutert werden.\\
 	ProjectType. Ein ProjectType kann mehreren Aktivitäten vom Typ Project zugeordnet sein. \\\hline
 13	& Lesson -- LessonType				& Eine Aktivität vom Typ Lesson hat genau einen
 	LessonType. Ein LessonType kann mehreren Aktivitäten vom Typ Lesson zugeordnet sein. \\\hline
-14	& CompoundLesson -- LessonType & Eine CompoundLesson (Bandunterricht) hat mindestens ein bis 
+14	& CompoundLesson -- LessonType & Eine CompoundLesson (Bandunterricht) hat mindestens eins bis 
 	beliebig viele LessonType-Objekte. \\\hline
 15 	& EmployeeTimePeriods -- Employee 				& Eine beliebige Anzahl
 	EmployeeTimePeriods-Objekte besitzt genau einen Lehrer. Ein Lehrer kann Teil einer beliebigen Anzahl von EmployeeTimePeriods-Objekten sein. \\\hline
@@ -627,8 +633,8 @@ Im Folgenden soll die einzelnen Assoziationen erläutert werden.\\
 	Wird der Standort gelöscht, werden auch die Räume gelöscht.\\\hline
 19	& \textit{ActivityType} -- Room					& Einer beliebigen Anzahl von Aktivitätstypen
 	kann die Ausführung in einer beliebigen Anzahl von Räumen zugeordnet sein. \\\hline
-20	& \textit{ActivityType} -- ColorEnum 		& Ein Aktivitätstyp hat genau eine Farbe oder keine 
-	Farbe. Eine Farbe kann Teil mehrere Aktivitätstypen sein.\\\hline
+20	& \textit{ActivityType} -- ColorEnum 		& Ein Aktivitätstyp hat genau eine Farbe. Eine
+	Farbe kann mehrere Aktivitätstypen zugeordnet sein.\\\hline
 21	& Classteam -- Schoolclass 					& Ein Klassenteam hat eine beliebige Anzahl 
 	Schulklassen, eine Schulklasse ist aber immer nur genau einem oder keinem Klassteam zugeordnet.\\\hline
 22	& Classteam -- Employee 					& Ein Klassteam hat mindestens einen bis zu 
@@ -668,22 +674,28 @@ Aus der Controller-Komponente sind während der Ausführung jeweils nur die Cont
 \label{sec:anwendungsfaelle}
 
 \subsection{Hinzufügen einer Aktivität (Unterrichtsstunde)}
-Das auf der folgenden Seite dargestellte Sequenzdiagramm zeigt den Ablauf des Hinzufügens eines Lesson-Objektes. Nach Aufruf von \textit{addLesson} wird zunächst die Methode \textit{validateActivity(Activity, TimePeriod)} auf dem \texttt{ActivityValidator} aufgerufen. Diese Methode prüft, ob die Aktivität den Stundenplänen von allen gewählten Teilnehmern hinzugefügt werden kann oder ob es dabei zu Überschneidungen kommt.\\
-Liegen keine Überschneidungen vor wird ein \texttt{SuccessStatus} zurückgegeben. In diesem Fall wird dann die Methode \textit{createEmployeeUpdateAddWorkingHours(Activity)} der Klasse \texttt{CommandCreator} aufgerufen. Diese erzeugt ein \texttt{MacroCommand}, welches allen an der Aktivität teilnehmenden Mitarbeitern die Dauer ihrer Teilnahme zu den verteilten Stunden hinzufügt, also deren Auslastung erhöht. Der Prozess der Macro-Erstellung ist im Diagramm auch aufgeführt, soll hier aber nicht näher erläutert werden. Das erzeugte \texttt{MacroCommand} wird schließlich an den \texttt{LessonController} zurückgegeben (1.2.10).\\
+Das auf den folgenden Seiten dargestellte Sequenzdiagramm zeigt den Ablauf des erfolgreichen Hinzufügens eines Lesson-Objektes. Das Diagramm wurde der Übersichtlichkeit halber auf mehrere Seiten verteilt. Über die jeweiligen Lebenslinien wurde noch einmal geschrieben, welches Objekt zu dieser gehört. Im vierten Teil des Diagramms wurden alle für die aufgeführten Schritte irrelevanten Lebenslinien entfernt, um es weiterhin lesbar zu behalten.\\
+Nach Aufruf von \textit{addLesson} wird zunächst die Methode \textit{validateActivity(Activity, TimePeriod)} auf dem \texttt{ActivityValidator} aufgerufen. Diese Methode prüft, ob die Aktivität den Stundenplänen von allen gewählten Teilnehmern hinzugefügt werden kann oder ob es dabei zu Überschneidungen kommt.Da ees sich hier um das erfolgreiche Hinzufügen handelt, wird von der Validierung ein \texttt{SuccessStatus} erhalten. Anschließend wird die Methode \textit{createEmployeeUpdateAddWorkingHours(Activity)} der Klasse \texttt{CommandCreator} aufgerufen. Diese erzeugt ein \texttt{MacroCommand}, welches allen an der Aktivität teilnehmenden Mitarbeitern die Dauer ihrer Teilnahme zu den verteilten Stunden hinzufügt, also deren Auslastung erhöht. Der Prozess der Macro-Erstellung ist im Diagramm auch aufgeführt, soll hier aber nicht näher erläutert werden. Das erzeugte \texttt{MacroCommand} wird schließlich an den \texttt{LessonController} zurückgegeben (1.2.14).\\
 Dieser ruft auf dem \texttt{MacroCommand} noch die Methode \textit{add(ICommand)} auf und fügt ihm ein neues \texttt{AddCommand} für die Aktivität hinzu. \\
 Anschließend wird die Methode \textit{execute(ICommand)} auf dem \texttt{CommandHandler} mit dem vorher erzeugten \texttt{MacroCommand} als Parameter aufgerufen. Der \texttt{CommandHandler} ruft auf dem Command die \textit{execute}-Methode auf. Da der \texttt{CommandHandler} nicht weiß, was für ein konkretes Command er ausführt, ist der weitere Ablauf im Diagramm nicht dargestellt. In diesem Fall würde der \texttt{CommandHandler} ein \texttt{MacroCommand} ausführen, welches aus einer beliebigen Zahl \texttt{UpdateCommands} und zuletzt einem \texttt{AddCommand} bestehen würde. Die Ausführung dieser Commands würde dann jeweils die Methode \textit{update(Entity)} bzw. \textit{add(Entity)} der Klasse \texttt{DataAccess} aufrufen.\\
-Wird von dem \textit{execute}-Aufruf ein \texttt{SuccessStatus} zurückgegeben, wird das Command der Undo-Liste hinzugefügt und die Redo-Liste wird komplett geleert. Das vom Aufruf der \textit{execute}-Methode auf dem Command erhaltene \texttt{IStatus}-Objekt wird an den \texttt{LessonController} zurückgegeben (1.6.5). \\
-Handelt es sich bei dem zurückgegebenen \texttt{IStatus}-Objekt um einen \texttt{SuccessStatus}, wird die \textit{init}-Methode des \texttt{LessonController} aufgerufen.\\
-Anschließend wird auf dem \texttt{ScheduleModelHolder} die Methode \textit{updateScheduleModel} aufgerufen, um den Stundenplan zu aktualisieren. Auf dem vorher erhaltenen \textit{IStatus}-Objekt wird dann die Methode \textit{report} aufgerufen, welche eine \texttt{FacesMessage} zurückgibt. Diese wird dem \texttt{FacesContext} hinzugefügt. \\
+Von dem \textit{execute}-Aufruf wird ein \texttt{SuccessStatus} zurückgegeben. Das Command wird der Undo-Liste hinzugefügt und die Redo-Liste wird komplett geleert. Das vom Aufruf der \textit{execute}-Methode auf dem Command erhaltene \texttt{SuccessStatus}-Objekt wird an den \texttt{LessonController} zurückgegeben (1.6.5). \\
+Daraufhin ruft der LessonController seine \textit{init}-Methode auf, damit für das nächste Hinzufügen einer Unterrichtsstunde, auf einem neuen \texttt{Lesson}-Objekt gearbeitet wird.
+Anschließend wird auf dem \texttt{ScheduleModelHolder} die Methode \textit{updateScheduleModel} aufgerufen, um den Stundenplan zu aktualisieren. Auf dem vorher erhaltenen \textit{SuccessStatus}-Objekt wird dann die Methode \textit{report} aufgerufen, welche eine \texttt{FacesMessage} zurückgibt. Diese wird dem \texttt{FacesContext} hinzugefügt. \\
 Damit ist das Hinzufügen des \texttt{Lesson}-Objektes abgeschlossen.
 
-\includepdf[landscape]{addLessonSequence.pdf}
+\includepdf[landscape]{addLessonSequence1.pdf}
 
+\includepdf[landscape]{addLessonSequence2.pdf}
+
+\includepdf[landscape]{addLessonSequence3.pdf}
+
+\includepdf[landscape]{addLessonSequence4.pdf}
 
 \subsection{Hinzufügen einer Lehrkraft}
-Das Sequenzdiagramm auf der nächsten Seite stellt den Ablauf des Hinzufügens einer Lehrkraft dar. Nach dem Aufruf von \textit{addTeacher} auf dem \texttt{TeacherController} wird zunächst ein neues \texttt{AddCommand} erstellt. Dieses wird als Parameter an die Methode \textit{execute(ICommand)} des \texttt{CommandHandler} übergeben. Der \texttt{CommandHandler} ruft dann die \textit{execute}-Methode auf dem Command auf. Diese ruft auf dem  enthaltenen \texttt{Entity}-Objekt die \textit{persist}-Methode auf, welche die \textit{persist(Entity)}- Methode der Klasse \texttt{DataAccess} mit dem \texttt{Entity}-Objekt selbst als Parameter aufruft. Dadurch wird dieses Objekt in der Datenbank gespeichert. Anschließend wird, wenn kein Fehler auftritt, ein neues \texttt{SuccessStatus}-Objekt erstellt und an den \texttt{CommandHandler} zurückgegeben.\\
-Der \texttt{CommandHandler} fügt dann, wenn ein \texttt{SuccessStatus} zurückgegeben wurde, das ausgeführte \texttt{AddCommand} der Undo-Liste hinzu und leert die Redo-Liste. Anschließend wird das \texttt{IStatus}-Objekt an den \texttt{TeacherController} zurückgegeben.\\
-Dort wird auf dem \texttt{IStatus}-Objekt zunächst die \textit{report}-Methode aufgerufen, welche eine \texttt{FacesMessage} zurückgibt, die über den Erfolg bzw. Misserfolg informiert. Wenn das erhaltene \texttt{IStatus}-Objekt außerdem ein Objekt vom Typ \texttt{SuccessStatus} ist, wird ein neuer Lehrer im \texttt{TeacherController} angelegt. Dies ist notwendig, damit beim nächsten Hinzufügen eines Lehrers nicht auf demselben Lehrer-Objekt gearbeitet wird.\\
+Das Sequenzdiagramm auf der nächsten Seite stellt den Ablauf des erfolgreichen Hinzufügens einer Lehrkraft dar.\\
+Nach dem Aufruf von \textit{addTeacher} auf dem \texttt{TeacherController} wird zunächst ein neues \texttt{AddCommand} erstellt. Dieses wird als Parameter an die Methode \textit{execute(ICommand)} des \texttt{CommandHandler} übergeben. Der \texttt{CommandHandler} ruft dann die \textit{execute}-Methode auf dem Command auf. Diese ruft auf dem  enthaltenen \texttt{Entity}-Objekt die \textit{persist}-Methode auf, welche die \textit{persist(Entity)}- Methode der Klasse \texttt{DataAccess} mit dem \texttt{Entity}-Objekt selbst als Parameter aufruft. Dadurch wird dieses Objekt in der Datenbank gespeichert. Anschließend wird ein neues \texttt{SuccessStatus}-Objekt erstellt und an den \texttt{CommandHandler} zurückgegeben.\\
+Der \texttt{CommandHandler} fügt dann das ausgeführte \texttt{AddCommand} der Undo-Liste hinzu und leert die Redo-Liste. Anschließend wird das \texttt{SuccessStatus}-Objekt an den \texttt{TeacherController} zurückgegeben.\\
+Dort wird auf dem \texttt{SuccessStatus}-Objekt zunächst die \textit{report}-Methode aufgerufen, welche eine \texttt{FacesMessage} zurückgibt, die über den Erfolg bzw. Misserfolg informiert. Außerdem wird ein neues leeres \texttt{Teacher}-Objekt erzeugt, damit beim nächsten Hinzufügen einer Lehrkraft auf einem anderen \texttt{Teacher}-Objekt gearbeitet wird.\\
 Schließlich wird die vorher erhaltene \texttt{FacesMessage} dem \texttt{FacesContext} hinzugefügt. Damit ist das Hinzufügen der Lehrkraft abgeschlossen.
 
 
