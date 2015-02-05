@@ -268,20 +268,25 @@ Es sind maximal sechs Entwickler am Projekt beteiligt. & Es können keine weiter
 \hline
 \multicolumn{3}{|l|}{\textbf{T1: Hardware}}\\\hline
 \multicolumn{3}{|l|}{T1.1: Hardwarelandschaft des Kunden ist zu berücksichtigen}\\\hline
-Die Software muss auf einem Rechner mit 4 GB RAM, 70 GB Festplattenspeicher, einer Dual-Core-CPU mit 2,9 GHz Takt lauffähig sein und auf einem Monitor mit einer Auflösung von 1280 x 1024 korrekt dargestellt werden. & Dieser Faktor ist nicht flexibel. In Zukunft könnte sich die Hardwarelandschaft des Kunden jedoch verändern, wobei davon auszugehen ist, dass höchstens ein Up- und kein Downgrade stattfindet. & %TODO
+Die Software muss auf einem Rechner mit 4 GB RAM, 70 GB Festplattenspeicher, einer Dual-Core-CPU mit 2,9 GHz Takt lauffähig sein und auf einem Monitor mit einer Auflösung von 1280 x 1024 korrekt dargestellt werden. & Dieser Faktor ist nicht flexibel. In Zukunft könnte sich die Hardwarelandschaft des Kunden jedoch verändern, wobei davon auszugehen ist, dass höchstens ein Up- und kein Downgrade stattfindet. & Gewisse Technische Standards können damit angenommen werden, was die Arbeit mit neueren Technologien ermöglicht. %TODO
  \\\hline
 
 \multicolumn{3}{|l|}{\textbf{T2: Software}}\\\hline
 \multicolumn{3}{|l|}{T2.1: Betriebssystem}\\\hline
 Die Software soll auf allen gängigen Betriebssystemen (Microsoft Windows, Linux, Mac-OS) lauffähig sein. & Dieser Faktor ist nicht flexibel, aber ggf. veränderlich, da neue Betriebssystem erscheinen können. & Bei der Entwicklung muss darauf geachtet werden, betriebssystemunabhängige Komponenten zu verwenden.\\\hline
 \multicolumn{3}{|l|}{T2.2: Verwendung von JavaServer Faces bzw. Primefaces}\\\hline
-Für die grafische Darstellung der Software wird JavaServer Faces bzw. Primefaces verwendet. & Dieser Faktor könnte zu Beginn noch verändert werden, eine Veränderung zu einem späteren Zeitpunkt wäre eher unwahrscheinlich. & Nimmt starken Einfluss auf die Implementierung der View- und der Controller-Komponente. Alle Datenklassen benötigen außerdem Getter- und Setter-Methoden für alle ihre Attribute. \\\hline
-\end{tabularx} \clearpage
+Für die grafische Darstellung der Software wird JavaServer Faces bzw. Primefaces verwendet. &
+Die Flexibilität ist zu beginn des Projekt groß bis mittel. Dieses Framework wird stetig weiterentwickelt wozu auch wir beitragen könnten um es nach unseren wünschen anzupassen.
+ Dieser Faktor könnte zu Beginn noch verändert werden, durch Mangel an Kenntnissen der Alternativen ist dem aber abzuraten. Eine Veränderung zu einem späteren Zeitpunkt wäre eher unwahrscheinlich. & Nimmt starken Einfluss auf die Implementierung der View- und der Controller-Komponente. Alle Datenklassen benötigen außerdem Getter- und Setter-Methoden für alle ihre Attribute. \\\hline
+\end{tabularx} \newpage
 
 \begin{tabularx}{\textwidth}{|X|X|X|}
 \hline
 \textbf{Faktor} & \textbf{Flexibilität und Veränderlichkeit} & \textbf{Auswirkungen}\\\hline
 \hline
+\multicolumn{3}{|l|}{T2.3: Implementierungssprachen}\\\hline
+Die Implementierungssprache ist Java 5 oder höher (weitere zulässige Sprachen in geringem Umfang sind: HTML, XML und JavaScript). & Dieser Faktor ist nicht flexibel. Die veränderung sehr unwahrscheinlich & Dieser Faktor gibt vor in welcher Sprache das System geschrieben werden darf, was sehr großen einfluss auf die Architektur hat. \\\hline
+
 \multicolumn{3}{|l|}{T2.3: Verwendung der JPA-Implementierung Eclipselink}\\\hline
 Für die Anbindung an das relationale Datenbanksystem wird das JPA-Framework Eclipselink verwendet. & Dieser Faktor ist flexibel, es könnte grundsätzlich auch jedes andere JPA-Framework gewählt werden bzw. auch gar keines solcher Frameworks. Theoretisch ist der Faktor auch veränderlich. Wenn etwa Probleme mit dem Framework auftreten könnte in Betracht gezogen werden, es durch ein anderes auszutauschen. & Dieser Faktor beeinflusst vor allem die Implementierung der Persistenz-Komponente. \\\hline
 \multicolumn{3}{|p{\dimexpr\textwidth-2\tabcolsep\relax}|}{T2.4: Verwendung des Command-Entwurfmusters in Kombination mit dem Composite- und Memento-Entwurfmuster}\\\hline
@@ -314,18 +319,38 @@ Um die Lernförderlichkeit zu unterstützen, soll es den Benutzern möglich sein
 \\\hline
 \multicolumn{3}{|l|}{P1.2: Systemeinstellungen}\\\hline
 Die Software soll verschieden Systemeinstellungen bieten, die etwa erlauben, zu verplanende Wochentage, Start- und Ende eines Wochentages, Backup-Einstellungen usw. festzulegen. & Dieser Faktor ist nicht flexibel, kann im Zuge von O4.1 aber ggf. wegfallen. & Es muss eine Möglichkeit geben, solcherlei Einstellungen zu verändern und sie über einen Systemstart hinaus zu speichern.\\\hline
+\multicolumn{3}{|l|}{P1.3: Erstellung und Wiederherstellung von Backups}\\\hline
+Das Programm muss Backups aller Daten und die Wiederherstellung dieser Backups unterstützen. Die Zeiten, zu denen ein Backup durchgeführt wird, sowie ihre Regelmäßigkeit soll einstellbar sein. & Dieser Faktor ist nicht flexibel, kann im Zuge von O4.1 aber ggf. wegfallen. & Es muss eine Möglichkeit geben, solcherlei Einstellungen in P1.2 setzen zu können, weiterhin muss bei der Erstellung der GUI Möglichkeiten eingebaut werden diese Einstellungen zu verwalten.\\\hline
+\end{tabularx} \newpage
+
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+\textbf{Faktor} & \textbf{Flexibilität und Veränderlichkeit} & \textbf{Auswirkungen}\\\hline
+\hline
+\hline
+\multicolumn{3}{|l|}{P1.4: Festlegen des Zeitrasters für die Planung}\\\hline
+Festlegen des Zeitrasters für die Planung: Wochentage, die verplant werden sollen, Beginn und Ende eines Wochentags, übliche Dauer einer Planungseinheit, Granularität des Zeitpunkts, zu dem eine Planungseinheit stattfindet - das ist der zeitliche Detaillierungsgrad einer Planungseinheit - können eingestellt und jederzeit verändert werden. Die Planung eines jeden Schulhalbjahres soll diese Parameter wieder beliebig neu setzen können. Auch eine nachträgliche Änderung dieser Parameter im laufenden Schuljahr soll möglich sein. Das Zeitraster, inklusive des Anfangs der Schulstunde, bleibt für alle Wochentage gleich. Die Start- und Endzeit einer Planungseinheit sollten an das Zeitraster angepasst sein, das heißt, eine Planungseinheit startet oder endet im Raster des Zeitrasters. & Dieser Faktor ist nicht flexibel, kann im Zuge von O4.1 aber ggf. wegfallen. & Es muss eine Möglichkeit geben, solcherlei Einstellungen in P1.2 setzen zu können, weiterhin muss bei der Erstellung der GUI Möglichkeiten eingebaut werden diese Einstellungen zu verwalten. Die Modellierung der GUI Oberfläche hängt auch stark davon ab, da es das Aussehen der GUI definiert. \\\hline
+\end{tabularx} \newpage
+
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+\textbf{Faktor} & \textbf{Flexibilität und Veränderlichkeit} & \textbf{Auswirkungen}\\\hline
+\hline
+\hline
+\multicolumn{3}{|l|}{P1.5: Hinzufügen, Löschen und Ändern von Planungsobjekten}\\\hline
+Planungsobjekte wie Personal,Stundeninhalten,Klassen, etc. müssen hinzugefügt, gelöscht und editiert werden können.& Dieser Faktor ist nicht flexibel, kann im Zuge von O4.1 aber ggf. wegfallen. & Dieser Faktor hat großen Einfluss auf die Geschäftslogik. Es muss sichergestellt werden das keine der drei Operationen die Konsistenz der vorhanden Daten gefährden. Weiterhin muss überprüft werden ob die Daten in sich Valide sind. Alle Ergebnisse der Vorgänge müssen dem Nutzer optisch mitgeteilt werden, was wiederum Einfluss auf die GUI hat. \\\hline
 \multicolumn{3}{|l|}{\textbf{P2: Benutzerschnittstelle}}\\\hline
-
-\multicolumn{3}{|l|}{\textbf{P3: Performanz}}\\\hline
-
-\multicolumn{3}{|l|}{\textbf{P4: Verlässlichkeit}}\\\hline
-
-\multicolumn{3}{|l|}{\textbf{P5: Fehlererkennung, -bericht, -behandlung}}\\\hline
-
-\multicolumn{3}{|l|}{\textbf{P6: Service}}\\\hline
+\multicolumn{3}{|l|}{P2.1: Erstellen und Bearbeiten der Auszugebenden individuellen Pläne}\\\hline
+\begin{itemize}
+\item Stundenplan für jede Klasse
+\item Stundenplan für jede Person des Personals
+\item Belegungsplan für jeden Raum
+\item Personaleinsatzplan 
+\end{itemize} & Dieser Faktor ist nicht flexibel, kann im Zuge von O4.1 aber ggf. wegfallen. & Beeinflusst die Architektur sehr, weil es die eigentlichen Funktionalitäten der GUI definiert.
+\\\hline
 \end{tabularx}\\
 
-
+\newpage
 \subsection{Probleme und Strategien}
 \label{sec:strategien}
 
