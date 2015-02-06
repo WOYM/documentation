@@ -181,7 +181,7 @@ Dieses Dokument gibt die Software-Architektur des finalen Produktes wieder.
 
   
 \subsection{Definitionen, Akronyme und Abkürzungen}
-
+\label{subsec:definitionen}
 \renewcommand{\arraystretch}{2}
 \begin{tabularx}{\textwidth}{Xp{1cm}p{9.5cm}}
 \textbf{Bandunterricht} 	&  	& 	Ein Bandunterricht ist eine Aktivität, welche mehrere Personen des Personals, mehrere Schulklassen, mehrere Räume (alle am selben Standort) und ggf. mehrere Unterrichtsfächer umfasst. Der Bandunterricht stellt eine Art Förderunterricht dar. \\ 
@@ -356,13 +356,13 @@ Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
 Veränderlichkeit & Kann im Zuge von O4.1 jedoch ggf. wegfallen. oder angepasst werden.  Wahrscheinlichkeit nicht abschätzbar \\\hline
 Auswirkungen & Dieser Faktor hat einen mittleren Einfluss auf die Architektur, es ist lediglich eine Erweiterung, sollte es also entfernt werden hat es kein negativen Einfluss auf das System. \\\hline
 % P1.7
-\multicolumn{2}{|l|}{P1.7: Mehrere Personen in unterschiedlichen Zeitpunkten in einer Planungseinheit}\\\hline
+\multicolumn{2}{|p{\dimexpr\textwidth-2\tabcolsep\relax}|}{\textbf{P1.7: Mehrere Personen in unterschiedlichen Zeitpunkten in einer Planungseinheit}}\\\hline
 Faktor & Das Personal kann in einer Planungseinheit später dazustoßen, nachdem die Planungseinheit bereits begonnen hat, oder sie verlassen, bevor sie endet. \\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
 Veränderlichkeit & Kann im Zuge von O4.1 jedoch ggf. wegfallen. oder angepasst werden.  Wahrscheinlichkeit nicht abschätzbar \\\hline
 Auswirkungen & Dieser Faktor hat einen mittleren Einfluss auf die Architektur, dieser Faktor muss in der Geschäftslogik beachtet werden. \\\hline
 % P1.8
-\multicolumn{2}{|l|}{P1.8: Explizite individuelle Zeitwünsche des Personals}\\\hline
+\multicolumn{2}{|l|}{\textbf{P1.8: Explizite individuelle Zeitwünsche des Personals}}\\\hline
 Faktor & Explizite individuelle Zeitwünsche des Personals sollen erfasst, geändert und gelöscht werden können. Sie sollen bei der Planung als weiche Kriterien dienen - also Kriterien, die nach Möglichkeit eingehalten werden sollen, jedoch im Bedarfsfall auch ignoriert werden können. Eine entsprechende Diagnose und Nachricht an die Planerinnen ist zu realisieren. \\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
 Veränderlichkeit & Kann im Zuge von O4.1 jedoch ggf. wegfallen. oder angepasst werden.  Wahrscheinlichkeit nicht abschätzbar \\\hline
@@ -375,8 +375,30 @@ Auswirkungen & Dieser Faktor hat einen großen Einfluss auf die Architektur, die
 \multicolumn{2}{|l|}{\textbf{P1.9: Zeiteinheiten des Personals}}\\\hline
 Faktor & Eine Stunde einer Lehrerin beträgt gegenwärtig 45 Minuten und die einer pädagogischen Kraft 60 Minuten. Diese Tatsache muss im Zeitkontingent des Personals berücksichtigt werden. Diese Zeiten sollen eingestellt werden können. Die Einstellungen wirken sich nur auf die laufende Planung aus, kann aber in neue Planungen übernommen werden. \\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
-Veränderlichkeit & Kann im Zuge von O4.1 jedoch ggf. wegfallen. oder angepasst werden.  Wahrscheinlichkeit nicht abschätzbar \\\hline
+Veränderlichkeit & Kann im Zuge von O4.1 jedoch ggf. wegfallen. oder angepasst werden.  Die Wahrscheinlichkeit ist nicht abschätzbar. \\\hline
 Auswirkungen & Dieser Faktor hat einen großen Einfluss auf die Architektur, dieser Faktor muss in der Geschäftslogik beachtet und es muss eine Möglichkeit zum Setzen an der GUI erstellt werden. \\\hline
+% P1.10
+\multicolumn{2}{|l|}{\textbf{P1.10: Mehrere Standorte}}\\\hline
+Faktor & Unterricht findet an zwei voneinander getrennten Standorten statt. Es ist notwendig, Wegzeiten beim Standortwechsel zu berücksichtigen.\\\hline
+Flexibilität & Dieser Faktor ist nicht flexibel.\\\hline
+Veränderlichkeit & Dieser Faktor kann im Zuge von O4.1 ggf. wegfallen oder angepasst werden. Die Wahrscheinlichkeit dafür ist nicht abschätzbar.\\\hline
+Auswirkungen & Dieser Faktor ist im Datenmodell, in der Geschäftslogik und der GUI zu berücksichtigen.\\\hline
+\multicolumn{2}{|l|}{\textbf{P1.11: Verwaltung von Lehrern und päd. Mitarbeitern}}\\\hline
+Faktor & Es sind nicht nur einfach Mitarbeiter zu verwalten, sondern es ist zwischen Lehrern und päd. Mitarbeitern zu trennen. \\\hline
+Flexibilität & Dieser Faktor ist nicht flexibel.\\\hline
+Veränderlichkeit & Dieser Faktor kann im Zuge von O4.1 ggf. wegfallen oder angepasst werden. Die Wahrscheinlichkeit dafür ist jedoch sehr gering.\\\hline
+Auswirkungen & Dieser Faktor ist im Datenmodell, in der Geschäftslogik und der GUI zu berücksichtigen.\\\hline
+\multicolumn{2}{|l|}{\textbf{P1.12: Bandunterricht}}\\\hline
+Faktor & Es soll möglich sein eine Aktivität "`Bandunterricht"' (s. \ref{subsec:definitionen}) zu verwalten.\\\hline
+Flexibilität & Dieser Faktor ist nicht flexibel.\\\hline
+Veränderlichkeit & Dieser Faktor kann im Zuge von O4.1 ggf. wegfallen oder angepasst werden. Die Wahrscheinlichkeit dafür ist nicht abschätzbar.\\\hline
+Auswirkungen & Dieser Faktor ist im Datenmodell, in der Geschäftslogik und der GUI zu berücksichtigen.\\\hline
+\end{tabularx}
+
+\newpage
+
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
 \multicolumn{2}{|l|}{\textbf{P2: Benutzerschnittstelle}}\\\hline
 \multicolumn{2}{|l|}{\textbf{P2.1: Erstellen und Bearbeiten der auszugebenden individuellen
  Pläne}}\\\hline
@@ -453,6 +475,9 @@ Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
 
 
 \subsubsection{Problem 3: Technologische Anforderungen übersteigen logischen Aufwand}
+\huge
+Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
+\normalsize
 %Problem 3%
 %TODO: Überarbeiten
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
@@ -518,15 +543,17 @@ Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
 \item[T4.1] Leichtgewichtiges eingebettetes relationales Datenbanksystem
 \item[P1.1] Mehrstufiges Rückgängigmachen von Aktionen
 \item[P1.5] Hinzufügen, Löschen und Ändern von Planungsobjekten
+\item[P1.10] Mehrere Standorte
+\item[P1.11] Verwaltung von Lehrern und päd. Mitarbeitern
+\item[P1.12] Bandunterricht
  \end{itemize}\\\hline
-\multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
-
-\textbf{S7 Command- mit Composite-Pattern} & Für das Erstellen, Editieren und Löschen von Objekten kann das Command-Enfwursmuster verwendet werden, um -- mit Voraussetzung einer gewissen Generik der Objekte -- den minimalsten Aufwand  bei der Verwaltung zu erreichen. Das mehrstufige Rückgängigmachen wird durch eine Erweiterung der Commands um eine undo- / redo-Methode erreicht. Zusätzlich wird das Composite-Pattern verwendet, um MacroCommands zu ermöglichen. Dies kann für das Löschen von Objekten Relevanz besitzen, da dort Referenzen aufzulösen sind. Das Löschen besteht also aus einer Abfolge von Aktionen.\\\hline
-
 \end{tabularx}
 
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
 \hline
+\multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
+
+\textbf{S7 Command- mit Composite-Pattern} & Für das Erstellen, Editieren und Löschen von Objekten kann das Command-Enfwursmuster verwendet werden, um -- mit Voraussetzung einer gewissen Generik der Objekte -- den minimalsten Aufwand  bei der Verwaltung zu erreichen. Das mehrstufige Rückgängigmachen wird durch eine Erweiterung der Commands um eine undo- / redo-Methode erreicht. Zusätzlich wird das Composite-Pattern verwendet, um MacroCommands zu ermöglichen. Dies kann für das Löschen von Objekten Relevanz besitzen, da dort Referenzen aufzulösen sind. Das Löschen besteht also aus einer Abfolge von Aktionen.\\\hline
 \textbf{S8 Datenkapselung} & Damit die UpdateCommands für das Rückgängigmachen des Editierens nach dem Information Hiding Principle keine Informationen über das enthaltene Objekt und veränderte Parameter besitzen, bietet sich die Verwendung des Memento-Patterns an. UpdateCommands kennen dann nur die Memento-Objekte, aber nicht deren internen Zustand.\\
 \textbf{S9 CommandHandler} & Diese Strategie ist nur in Kombination mit Strategie S7 möglich. Für die Realisierung eines mehrstufigen Undos bzw. Redos, kann ein CommandHandler verwendet werden. Dieser besitzt dieselben Methoden wie die Commands selbst und übernimmt für alle anderen Klassen die Aufrufe dieser Methoden. Die ausgeführten Commands werden bis zu einer gewissen Anzahl im CommandHandler gespeichert, so dass das Rückgängigmachen oder Wiederholen der vorher ausgeführten Operationen möglich ist.\\\hline
  
