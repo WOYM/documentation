@@ -204,45 +204,12 @@ Schließlich wird Kapitel \ref{sec:evolution} erläutert, welche Änderungen bei
 
 \subsection{Einflussfaktoren}
 \label{sec:einflussfaktoren}
-{\it Hier sind Einflussfaktoren gefragt, die sich auf die Architektur
-  beziehen. Es sind ausschließlich architekturrelevante
-  Einflussfaktoren, und nicht z.B.\ solche, die lediglich einen
-  Einfluss auf das Projektmanagement haben. Fragt Euch also bei jedem
-  Faktor: Beeinflusst er wirklich die Architektur? Macht einen
-  einfachen Test: Wie würde die Architektur aussehen, wenn ihr den
-  Einflussfaktor E berücksichtigt? Wie würde sie aussehen, wenn Ihr E nicht
-  berücksichtigt? Kommt in beiden Fällen dieselbe Architektur heraus,
-  dann kann der Einflussfaktor nicht architekturrelevant sein.
-
-  Es geht hier um Einflussfaktoren, die
-  \begin{enumerate}
-  \item sich über die Zeit ändern,
-  \item viele Komponenten betreffen,
-  \item schwer zu erfüllen sind oder
-  \item mit denen man wenig Erfahrung hat.
-  \end{enumerate}
-  Die Flexibilität und Veränderlichkeit müssen ebenfalls charakterisiert werden. 
-  \begin{enumerate}
-  \item Flexibilität: Könnt Ihr den Faktor zum jetzigen Zeitpunkt beeinflussen?
-  \item Veränderlichkeit: ändert der Faktor sich später durch äußere Einflüsse?
-\end{enumerate}
-
-  Unter Auswirkungen sollte dann beschrieben werden, {\em wie} der
-  Faktor {\em was} beeinflusst. Das können sein:
-  \begin{itemize}
-  \item andere Faktoren
-  \item Komponenten
-  \item Operationsmodi
-  \item Designentscheidungen (Strategien)
-  \end{itemize}
-
-  Verwendet eine eindeutige Nummerierung der Faktoren, um sie auf den
-  Problemkarten einfach referenzieren zu können.  }\\
 
 \subsubsection{Organisatorische Faktoren}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
 \multicolumn{2}{|l|}{\textbf{O1: Management}}\\\hline
+% O1.1
 \multicolumn{2}{|l|}{\textbf{O1.1: Zeitplan vs. Funktionsumfang}}\\\hline
  Faktor & Der Zeitplan ist in jedem Fall einzuhalten. Ggf. muss dafür in Kauf genommen werden, dass gewisse Funktionen fehlen. \\\hline
  Flexibilität & Dieser Faktor ist nicht flexibel.\\\hline
@@ -255,13 +222,14 @@ Schließlich wird Kapitel \ref{sec:evolution} erläutert, welche Änderungen bei
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
 \multicolumn{2}{|l|}{\textbf{O2: Personal: Fähigkeiten, Interessen, Stärken, Schwächen}}\\\hline
+% O2.1
 \multicolumn{2}{|l|}{\textbf{O2.1: Erstes größeres, selbständig auszuführendes Projekt}}\\\hline
  Faktor & Für alle beteiligten Entwickler handelt es sich um das erste größere selbstständig auszuführende Projekt.\\\hline
  Flexibilität & Dieser Faktor ist nicht flexibel.\\\hline
  Veränderlichkeit & Dieser Faktor ist nicht veränderlich.\\\hline
  Auswirkungen & \begin{itemize} \item[-] Entwickler schätzen Fähigkeiten und zeitlichen Aufwand falsch ein, was zu Verzögerungen im Projektablauf \textbf{O1.1} führen kann. \item[-] Schlechtere Kommunikation in der Gruppe, es handelt sich bei den Entwicklern nicht um ein eingespieltes Team, kann zu Verzögerungen im Projektablauf \textbf{O1.1} oder fehlerhafter, bzw. unvollständiger Implementierung von Features führen.  \end{itemize}
  \\\hline
- 
+% O2.2
 \multicolumn{2}{|l|}{\textbf{O2.2: Unerfahrenheit mit Technologie}}\\\hline
  Faktor & Unter den Entwicklern existieren allgemein nur Grundkenntnise im Umgang mit der verwendeten Technologie.\\\hline
  Flexibilität & Da die verwendeten Technologien bereits im Vorfeld festehen, können sich die Entwickler vor dem offiziellen Projektbeginn ihre Fähigkeiten im Umgang mit der Technologie verbesssern.\\\hline
@@ -276,21 +244,19 @@ Schließlich wird Kapitel \ref{sec:evolution} erläutert, welche Änderungen bei
 \multicolumn{2}{|l|}{\textbf{O3: Prozesse und Werkzeuge für die Entwicklungsschritte}}\\\hline
 
 \multicolumn{2}{|l|}{\textbf{O4: Entwicklungszeitplan}}\\\hline
+% O4.1
 \multicolumn{2}{|l|}{\textbf{O4.1: Auslieferung der Produktfunktionen}}\\\hline
  Faktor & Es werden die absolut notwendigen Produktfunktionen (Mindestanforderungen) priorisiert. \\\hline
  Flexibilität & Die Mindestanforderungen müssen zu Beginn des Projektes in Prioritätsgruppen unterteilt werden (Evolutionär) \\\hline
  Veränderlichkeit &  Die Mindestanforderungen und damit die Prioritätensetzung können sich im Zeitverlauf verändern (inbes. abhängig von O5.1). \\\hline
  Auswirkungen & Kann O1.1 beeinflussen.\\\hline
-\end{tabularx}
-
-\begin{tabularx}{\textwidth}{|l|X|}
-\hline
 \multicolumn{2}{|l|}{\textbf{O5: Entwicklungsbudget}}\\\hline
+% O5.1
 \multicolumn{2}{|l|}{\textbf{O5.1: Anzahl der Entwickler}}\\\hline
  Faktor & Es sind maximal sechs Entwickler am Projekt beteiligt. \\\hline
  Flexibilität & Es können keine weitere Entwickler hinzugezogen werden.  \\\hline
  Veränderlichkeit & Teilnehmende Entwickler können temporär oder komplett ausfallen.\\\hline
- Auswirkungen & Ein temporärer Ausfall kann Faktor 01.1 leicht beeinflussen. Bei komplettem Ausfall eines Entwicklers werden die Mindestanforderungen verändert und damit O4.1 und O1.1 beeinflusst.\\\hline
+ Auswirkungen & Ein temporärer Ausfall kann Faktor O1.1 leicht beeinflussen. Bei komplettem Ausfall eines Entwicklers werden die Mindestanforderungen verändert und damit O4.1 und O1.1 beeinflusst.\\\hline
 \end{tabularx}\\
 \clearpage
 
@@ -299,12 +265,14 @@ Schließlich wird Kapitel \ref{sec:evolution} erläutert, welche Änderungen bei
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
 \multicolumn{2}{|l|}{\textbf{T1: Hardware}}\\\hline
+% T1.1
 \multicolumn{2}{|l|}{\textbf{T1.1: Hardwarelandschaft des Kunden ist zu berücksichtigen}}\\\hline
 Faktor & Die Software muss auf einem Rechner mit 4 GB RAM, 70 GB Festplattenspeicher, einer Dual-Core-CPU mit 2,9 GHz Takt lauffähig sein und auf einem Monitor mit einer Auflösung von 1280 x 1024 korrekt dargestellt werden.  \\\hline
  Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
  Veränderlichkeit & In Zukunft könnte sich die Hardwarelandschaft des Kunden jedoch verändern, wobei davon auszugehen ist, dass höchstens ein Up- und kein Downgrade stattfindet. \\\hline
  Auswirkungen & Gewisse Technische Standards können damit angenommen werden, was die Arbeit mit neueren Technologien ermöglicht.\\\hline
 \multicolumn{2}{|l|}{\textbf{T2: Software}}\\\hline
+% T2.1
 \multicolumn{2}{|l|}{\textbf{T2.1: Betriebssystem}}\\\hline
 Faktor & Die Software soll auf allen gängigen Betriebssystemen (Microsoft Windows, Linux, Mac-OS) lauffähig sein.  \\\hline
  Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
@@ -314,14 +282,15 @@ Faktor & Die Software soll auf allen gängigen Betriebssystemen (Microsoft Windo
  
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
+% T2.2
 \multicolumn{2}{|l|}{\textbf{T2.2: Ausschließliche Verwendung von freien Frameworks}}\\\hline
 Faktor & Verwendete Frameworks dürfen für den Einsatz in Forschung und Lehre keine Beschränkungen (Geld, Benutzung, ...) aufweisen. \\\hline
  Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
  Veränderlichkeit & Dieser Faktor ist auch nicht veränderlich.\\\hline
  Auswirkungen & Nimmt Einfluss auf die Auswahl der verwendeten Frameworks und der daraus resultierenden Architekturveränderungen.\\\hline
-
+% T2.3
 \multicolumn{2}{|l|}{\textbf{T2.3: Implementierungssprachen}}\\\hline
-Faktor & Die Implementierungssprache ist Java 5 oder höher (weitere zulässige Sprachen in geringem Umfang sind: HTML, XML und JavaScript).. \\\hline
+Faktor & Die Implementierungssprache ist Java 5 oder höher (weitere zulässige Sprachen in geringem Umfang sind: HTML, XML und JavaScript). \\\hline
  Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
  Veränderlichkeit & Die Veränderung sehr unwahrscheinlich \\\hline
  Auswirkungen & Dieser Faktor gibt vor in welcher Sprache das System geschrieben werden darf, was sehr großen Einfluss auf die Architektur hat.\\\hline
@@ -342,16 +311,19 @@ Faktor & Die Verwendung einer leichtgewichtigen, eingebetteten relationalen Date
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
 \multicolumn{2}{|l|}{\textbf{P1: Produktfunktionen}}\\\hline
+% P1.1
 \multicolumn{2}{|l|}{\textbf{P1.1: Mehrstufiges Rückgängigmachen von Aktionen}}\\\hline
 Faktor & Um die Lernförderlichkeit zu unterstützen, soll es den Benutzern möglich sein, Aktionen mehrstufig rückgängig zu machen. \\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
 Veränderlichkeit & Kann im Zuge von O4.1 jedoch ggf. wegfallen. oder angepasst werden.  Die Wahrscheinlichkeit ist nicht abschätzbar. \\\hline
 Auswirkungen & Bei der Planung und Implementierung der Geschäftslogik muss darauf geachtet werden, diesen Faktor geeignet zu berücksichtigen. \\\hline
+% P1.2
 \multicolumn{2}{|l|}{\textbf{P1.2: Systemeinstellungen}}\\\hline
-Faktor & Die Software soll verschieden Systemeinstellungen bieten, die etwa erlauben, zu verplanende Wochentage, Start- und Ende eines Wochentages, Backup-Einstellungen usw. festzulegen.  \\\hline
+Faktor & Die Software soll verschiedene Systemeinstellungen bieten, die etwa erlauben, zu verplanende Wochentage, Start- und Ende eines Wochentages, Backup-Einstellungen usw. festzulegen.  \\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
 Veränderlichkeit & Kann im Zuge von O4.1 jedoch ggf. wegfallen. oder angepasst werden.  Die Wahrscheinlichkeit ist nicht abschätzbar. \\\hline
 Auswirkungen & Es muss eine Möglichkeit geben, solcherlei Einstellungen zu verändern und sie über einen Systemstart hinaus zu speichern. \\\hline
+% P1.3
 \multicolumn{2}{|l|}{\textbf{P1.3: Erstellung und Wiederherstellung von Backups}}\\\hline
 Faktor & Das Programm muss Backups aller Daten und die Wiederherstellung dieser Backups unterstützen. Die Zeiten, zu denen ein Backup durchgeführt wird, sowie ihre Regelmäßigkeit soll einstellbar sein. \\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
@@ -361,11 +333,13 @@ Auswirkungen &  Es muss eine Möglichkeit geben, solcherlei Einstellungen in P1.
 
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
+% P1.4
 \multicolumn{2}{|l|}{\textbf{P1.4: Festlegen des Zeitrasters für die Planung}}\\\hline
 Faktor & Festlegen des Zeitrasters für die Planung: Wochentage, die verplant werden sollen, Beginn und Ende eines Wochentags, übliche Dauer einer Planungseinheit, Granularität des Zeitpunkts, zu dem eine Planungseinheit stattfindet - das ist der zeitliche Detaillierungsgrad einer Planungseinheit - können eingestellt und jederzeit verändert werden. Die Planung eines jeden Schulhalbjahres soll diese Parameter wieder beliebig neu setzen können. Auch eine nachträgliche Änderung dieser Parameter im laufenden Schuljahr soll möglich sein. Das Zeitraster, inklusive des Anfangs der Schulstunde, bleibt für alle Wochentage gleich. Die Start- und Endzeit einer Planungseinheit sollten an das Zeitraster angepasst sein, das heißt, eine Planungseinheit startet oder endet im Raster des Zeitrasters.  \\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
 Veränderlichkeit & Kann im Zuge von O4.1 jedoch ggf. wegfallen. oder angepasst werden.  Wahrscheinlichkeit nicht abschätzbar \\\hline
 Auswirkungen &  Es muss eine Möglichkeit geben, solcherlei Einstellungen in P1.2 setzen zu können, weiterhin muss bei der Erstellung der GUI Möglichkeiten eingebaut werden diese Einstellungen zu verwalten. Die Modellierung der GUI Oberfläche hängt auch stark davon ab, da es das Aussehen der GUI definiert. \\\hline
+% P1.5
 \multicolumn{2}{|l|}{\textbf{P1.5: Hinzufügen, Löschen und Ändern von Planungsobjekten}}\\\hline
 Faktor & Planungsobjekte wie Personal, Stundeninhalte, Klassen, etc. müssen hinzugefügt, gelöscht und editiert werden können. \\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
@@ -375,16 +349,19 @@ Auswirkungen &  Dieser Faktor hat großen Einfluss auf die Geschäftslogik. Es m
 
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
+% P1.6
 \multicolumn{2}{|l|}{\textbf{P1.6: Dokumentengenerierung}}\\\hline
 Faktor & Die Pläne sollen als PDF, textuell (z.B. zur Weiterverarbeitung in Textverarbeitungssystemen) sowie strukturiert in CSV exportiert werden können. \\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
 Veränderlichkeit & Kann im Zuge von O4.1 jedoch ggf. wegfallen. oder angepasst werden.  Wahrscheinlichkeit nicht abschätzbar \\\hline
 Auswirkungen & Dieser Faktor hat einen mittleren Einfluss auf die Architektur, es ist lediglich eine Erweiterung, sollte es also entfernt werden hat es kein negativen Einfluss auf das System. \\\hline
+% P1.7
 \multicolumn{2}{|l|}{P1.7: Mehrere Personen in unterschiedlichen Zeitpunkten in einer Planungseinheit}\\\hline
 Faktor & Das Personal kann in einer Planungseinheit später dazustoßen, nachdem die Planungseinheit bereits begonnen hat, oder sie verlassen, bevor sie endet. \\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
 Veränderlichkeit & Kann im Zuge von O4.1 jedoch ggf. wegfallen. oder angepasst werden.  Wahrscheinlichkeit nicht abschätzbar \\\hline
 Auswirkungen & Dieser Faktor hat einen mittleren Einfluss auf die Architektur, dieser Faktor muss in der Geschäftslogik beachtet werden. \\\hline
+% P1.8
 \multicolumn{2}{|l|}{P1.8: Explizite individuelle Zeitwünsche des Personals}\\\hline
 Faktor & Explizite individuelle Zeitwünsche des Personals sollen erfasst, geändert und gelöscht werden können. Sie sollen bei der Planung als weiche Kriterien dienen - also Kriterien, die nach Möglichkeit eingehalten werden sollen, jedoch im Bedarfsfall auch ignoriert werden können. Eine entsprechende Diagnose und Nachricht an die Planerinnen ist zu realisieren. \\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
@@ -394,11 +371,12 @@ Auswirkungen & Dieser Faktor hat einen großen Einfluss auf die Architektur, die
 
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
+% P1.9
 \multicolumn{2}{|l|}{\textbf{P1.9: Zeiteinheiten des Personals}}\\\hline
 Faktor & Eine Stunde einer Lehrerin beträgt gegenwärtig 45 Minuten und die einer pädagogischen Kraft 60 Minuten. Diese Tatsache muss im Zeitkontingent des Personals berücksichtigt werden. Diese Zeiten sollen eingestellt werden können. Die Einstellungen wirken sich nur auf die laufende Planung aus, kann aber in neue Planungen übernommen werden. \\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
 Veränderlichkeit & Kann im Zuge von O4.1 jedoch ggf. wegfallen. oder angepasst werden.  Wahrscheinlichkeit nicht abschätzbar \\\hline
-Auswirkungen & Dieser Faktor hat einen großen Einfluss auf die Architektur, dieser Faktor muss in der Geschäftslogik beachtet, sowie Möglichkeit zum setzten an der GUI erstellt werden. Es ist auch sinnvoll es in der Persistenz aufzunehmen um diese Einstellung nicht immer verändern zu müssen.  \\\hline
+Auswirkungen & Dieser Faktor hat einen großen Einfluss auf die Architektur, dieser Faktor muss in der Geschäftslogik beachtet und es muss eine Möglichkeit zum Setzen an der GUI erstellt werden. \\\hline
 \multicolumn{2}{|l|}{\textbf{P2: Benutzerschnittstelle}}\\\hline
 \multicolumn{2}{|l|}{\textbf{P2.1: Erstellen und Bearbeiten der auszugebenden individuellen
  Pläne}}\\\hline
@@ -423,6 +401,7 @@ Auswirkungen & Beeinflusst die Architektur sehr, weil es das Aussehen und Benutz
 \subsection{Probleme und Strategien}
 \label{sec:strategien}
 
+\subsubsection{Problem 1: Enger Zeitplan}
 % Problem 1 %
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
@@ -446,6 +425,7 @@ Auswirkungen & Beeinflusst die Architektur sehr, weil es das Aussehen und Benutz
 \end{tabularx}
 \newpage
 
+\subsubsection{Problem 2: Inkonsistente Anforderungen}
 %Problem 2%
 \huge
 Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
@@ -469,7 +449,10 @@ Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
     & \\\hline
 
 \end{tabularx}
+\newpage
 
+
+\subsubsection{Problem 3: Technologische Anforderungen übersteigen logischen Aufwand}
 %Problem 3%
 %TODO: Überarbeiten
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
@@ -490,8 +473,10 @@ Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
     & \\\hline
 
 \end{tabularx}
+\newpage
 
 
+\subsubsection{Problem 4: Notwendigkeit einer Datenbankanbindung}
 
 %Problem 4%
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
@@ -518,29 +503,31 @@ Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
  \textbf{S6 JPA}   & Für die Lösung dieses Problems wurde die Strategie 6 JPA ausgewählt. JPA erleichtert den Umgang mit der Datenbank gegenüber JDBC deutlich, da es beispielsweise nicht notwendig ist SQL-Queries zu schreiben, welche die Tabellen erzeugen. Außerdem werden SELECT-Abfragen durch die JPQL deutlich erleichtert und es ist nicht notwendig, Objekte selbst aus erhaltenen Parametern einer SQL-Query zu erstellen. Stattdessen liefern die JPA-Queries direkt die gefragten Objekte zurück. Als konkrete JPA-Implementierung wurde Eclipselink verwendet.\\\hline
 \end{tabularx}
 
+
+\subsubsection{Problem 5: Verwaltung von Planungsobjekten}
 %Problem 5%
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
  \textbf{Problem} & 5\\\hline
  \textbf{Name} & Verwaltung von Planungsobjekten\\\hline 
- \textbf{Beschreibung} & Planungsobjekte wie Mitarbeiter, Standtorte, Aktivitäten, etc. müssen verwaltet werden. Es geht also um das Erstellen, Editieren und Löschen von diesen Objekten. Alle Aktionen müssen mehrstufig rückgängig gemacht werden können.\\\hline
+ \textbf{Beschreibung} & Planungsobjekte wie Mitarbeiter, Standtorte, Aktivitäten, etc. müssen verwaltet werden. Es geht also um das Erstellen, Editieren und Löschen von diesen Objekten. Alle Aktionen müssen mehrstufig rückgängig gemacht werden können. Der Vorgang darf keine beliebig hohe Komplexität besitzen (T1.1).\\\hline
  \textbf{Einflussfaktoren} &
  \begin{itemize}
 \item[O1.1] Zeitplan vs. Funktionsumfang
+\item[T1.1] Hardwarelandschaft des Kunden ist zu berücksichtigen
 \item[T4.1] Leichtgewichtiges eingebettetes relationales Datenbanksystem
 \item[P1.1] Mehrstufiges Rückgängigmachen von Aktionen
 \item[P1.5] Hinzufügen, Löschen und Ändern von Planungsobjekten
  \end{itemize}\\\hline
 \multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
 
-\textbf{S7 Command- mit Composite-Pattern} & Für das Erstellen, Editieren und Löschen von Objekten kann das Command-Enfwursmuster verwendet werden, um -- mit Voraussetzung einer gewissen Generik der Objekte -- den minimalsten Aufwand  bei der Verwaltung zu erreichen. Das mehrstufige Rückgängigmachen wird durch eine Erweiterung der Commands um eine undo- / redo-Methode erreicht. Zusätzlich wird das Composite-Pattern verwendet, um MacroCommands zu ermöglichen. Dies kann für das Löschen von Objekten Relevanz besitzen, da dort Referenzen aufzulösen sind. Das Löschen besteht also aus einer Abfolge von Aktionen.\\
-
-\textbf{S8 Datenkapselung} & Damit die UpdateCommands für das Rückgängigmachen des Editierens nach dem Information Hiding Principle keine Informationen über das enthaltene Objekt und veränderte Parameter besitzen, bietet sich die Verwendung des Memento-Patterns an. UpdateCommands kennen dann nur die Memento-Objekte, aber nicht deren internen Zustand.\\\hline
+\textbf{S7 Command- mit Composite-Pattern} & Für das Erstellen, Editieren und Löschen von Objekten kann das Command-Enfwursmuster verwendet werden, um -- mit Voraussetzung einer gewissen Generik der Objekte -- den minimalsten Aufwand  bei der Verwaltung zu erreichen. Das mehrstufige Rückgängigmachen wird durch eine Erweiterung der Commands um eine undo- / redo-Methode erreicht. Zusätzlich wird das Composite-Pattern verwendet, um MacroCommands zu ermöglichen. Dies kann für das Löschen von Objekten Relevanz besitzen, da dort Referenzen aufzulösen sind. Das Löschen besteht also aus einer Abfolge von Aktionen.\\\hline
 
 \end{tabularx}
 
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
 \hline
+\textbf{S8 Datenkapselung} & Damit die UpdateCommands für das Rückgängigmachen des Editierens nach dem Information Hiding Principle keine Informationen über das enthaltene Objekt und veränderte Parameter besitzen, bietet sich die Verwendung des Memento-Patterns an. UpdateCommands kennen dann nur die Memento-Objekte, aber nicht deren internen Zustand.\\
 \textbf{S9 CommandHandler} & Diese Strategie ist nur in Kombination mit Strategie S7 möglich. Für die Realisierung eines mehrstufigen Undos bzw. Redos, kann ein CommandHandler verwendet werden. Dieser besitzt dieselben Methoden wie die Commands selbst und übernimmt für alle anderen Klassen die Aufrufe dieser Methoden. Die ausgeführten Commands werden bis zu einer gewissen Anzahl im CommandHandler gespeichert, so dass das Rückgängigmachen oder Wiederholen der vorher ausgeführten Operationen möglich ist.\\\hline
  
 \multicolumn{2}{|l|}{\textbf{Verwendete Strategie(n)}} \\\hline
@@ -551,24 +538,80 @@ Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
 \textbf{S9 CommandHandler}   & Es wurden aller der aufgeführte Strategien gewählt. Die Verwendung von Strategie S7 und S9 in Kombination kann sich positiv auf Faktor O1.1 auswirken, da kein eigener Entwurf für eine Undo- / Redo-Funktionalität erstellt werden muss. S8 ermöglicht es, eine gewisse Generik aufrecht zu erhalten.\\\hline
 \end{tabularx}
 
+\subsubsection{Problem 6: Auflösung aller Referenzen beim Löschen eines Objektes}
 %Problem 6%
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
  \textbf{Problem} & 6\\\hline
  \textbf{Name} & Auflösung aller Referenzen beim Löschen eins Objektes\\\hline 
  \textbf{Beschreibung} & 
-Beim Löschen von Planungsobjekten müssen zunächst alle Referenzen des Objektes bei anderen Objekten aufgelöst werden, bevor es aus der Datenbank gelöscht werden kann. Es ist dementsprechend enorm wichtig, dass dabei auf die korrekte Reihenfolge der benötigten Aktionen geachtet wird. \\\hline
+Beim Löschen von Planungsobjekten müssen zunächst alle Referenzen des Objektes bei anderen Objekten aufgelöst werden, bevor es aus der Datenbank gelöscht werden kann. Es ist dementsprechend enorm wichtig, dass dabei auf die korrekte Reihenfolge der benötigten Aktionen geachtet wird. Der Vorgang darf keine beliebig hohe Komplexität besitzen (T1.1).\\\hline
  \textbf{Einflussfaktoren} &
  \begin{itemize}
+\item[T1.1] Hardwarelandschaft des Kunden ist zu berücksichtigen
 \item[P1.1] Mehrstufiges Rückgängigmachen von Aktionen
 \item[P1.5] Hinzufügen, Löschen und Ändern von Planungsobjekten
  \end{itemize}\\\hline
 \multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
 \textbf{S10 Verwendung des Factory-Patterns zur Erstellung von Macro-DeleteCommands} & Zur Lösung dieses Problems kann eine Klasse nach dem Factory-Pattern entworfen werden, welche eine Methode besitzt, für ein übergebenes Datenobjekt -- je nach dessen Zustand -- ein MacroCommand zum Löschen dieses Objekte zurückgibt. Dabei wird auf die korrekte Reihenfolge bei der Auflösung der Referenzen geachtet. Dies setzt voraus, dass S7 gewählt wurde. \\\hline
 \multicolumn{2}{|l|}{\textbf{Verwendete Strategie(n)}} \\\hline
- \textbf{S9 Verwendung des Factory-Patterns zur Erstellung von Macro-DeleteCommands}   & Zur Lösung dieses Problems wird die einzige vorhandene Strategie S9 verwendet. Dadurch muss nicht an allen Stellen, wo ein Objekt vom Benutzer gelöscht werden kann, selbst ein solches MacroCommand erstellt werden, sondern die Aufgabe wird an die dafür nach dem Factory-Pattern entwickelte Klasse delegiert. \\\hline
+ \textbf{S10 Verwendung des Factory-Patterns zur Erstellung von Macro-DeleteCommands}   & Zur Lösung dieses Problems wird die einzige vorhandene Strategie S9 verwendet. Dadurch muss nicht an allen Stellen, wo ein Objekt vom Benutzer gelöscht werden kann, selbst ein solches MacroCommand erstellt werden, sondern die Aufgabe wird an die dafür nach dem Factory-Pattern entwickelte Klasse delegiert. \\\hline
 \end{tabularx}
+\newpage
 
+\subsubsection{Problem 7: Dokumentengenerierung}
+
+Aufgrund der Reduzierung der Mindestanforderungen ist dieses Problem nicht mehr präsent.\\
+
+%Problem 7%
+\begin{tabularx}{\textwidth}{|p{6cm}|X|}
+ \hline
+ \textbf{Problem} & 7\\\hline
+ \textbf{Name} & Dokumentengenerierung\\\hline 
+ \textbf{Beschreibung} & 
+Die Pläne sollen als PDF, textuell (z.B. zur Weiterverarbeitung in Textverarbeitungssystemen) sowie strukturiert in CSV exportiert werden können. \\\hline
+ \textbf{Einflussfaktoren} &
+ \begin{itemize}
+\item[P1.6] Dokumentengenerierung
+ \end{itemize}\\\hline
+\multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
+\textbf{S11 Verwendung eines Frameworks} & Zur Lösung dieses Problems kann das vorhandene Framework Flying Saucer benutzt und gegebenenfalls erweitert werden. \\\hline
+\textbf{S12 Entwicklung einer eigenständigen Lösung} & Es ist möglich eine eigenständige Lösung für die Generierung der Dokumente zu entwickeln. \\\hline
+\multicolumn{2}{|l|}{\textbf{Verwendete Strategie(n)}} \\\hline
+ \textbf{S11 Verwendung eines Frameworks}   & In Anbetracht des Aufwands und der vorhanden Lösung von Flying Saucer, wäre es vorteilhafter vorhandene Funktionalitäten zu benutzen und diese gegebenenfalls anzupassen. \\\hline
+\end{tabularx}
+\newpage
+
+\subsubsection{Problem 8: Verwaltung und Speicherung von Systemeinstellungen}
+%Problem 8%
+\begin{tabularx}{\textwidth}{|p{6cm}|X|}
+ \hline
+ \textbf{Problem} & 8\\\hline
+ \textbf{Name} & Verwaltung und Speicherung von Systemeinstellungen\\\hline 
+ \textbf{Beschreibung} & 
+Es soll den Benutzern möglich sein, verschiedene Systemeinstellungen zu ändern. Diese Änderungen müssen über das Beenden der Software hinaus gespeichert werden. Die Speicherung der Einstellungen muss betriebssystemunabhängig sein (T2.1). Bei Verwendung eines Frameworks ist Faktor T2.2 zu beachten. Die Lösung muss außerdem mit den in T2.3 vorgegebenen Implementierungssprachen umsetzbar sein. Faktor P2.2 ist geeignet zu berücksichtigen, so dass nicht etwa Einstellungen manuell in einer Textdatei geändert werden müssen. \\\hline
+ \textbf{Einflussfaktoren} &
+ \begin{itemize}
+\item[T2.1] Betriebssystem
+\item[T2.2] Ausschließliche Verwendung von freien Frameworks
+\item[T2.3] Implementierungssprachen
+\item[P1.2] Systemeinstellungen
+\item[P1.4] Festlegen des Zeitrasters für die Planung
+\item[P1.9] Zeiteinheiten des Personals
+\item[P2.2] Vorwissen des Benutzers
+ \end{itemize}\\\hline
+\multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
+\textbf{S11 Verwendung eines Frameworks} & Es kann ein vorhandenes Framework, für Java beispielsweise die Apache Commons Configuration, für die Lösung dieses Problems gewählt werden. Damit können Systemeinstellungen automatisch in eine Textdatei geschrieben und daraus geladen werden.\\
+\textbf{S13 Verwendung einer vorhanden Klasse} & Unter der Voraussetzung, dass die Implementierungssprache Java bleibt, kann die Java-Properties-Klasse für die Umsetzung dieser Funktionalität gewählt werden. \\\hline
+\end{tabularx}
+\newpage
+
+\begin{tabularx}{\textwidth}{|p{6cm}|X|}
+\hline
+\multicolumn{2}{|l|}{\textbf{Verwendete Strategie(n)}} \\\hline
+\textbf{S11 Verwendung eines Framesworks} & Zur Lösung dieses Problems wurde Strategie S11 gewählt. Es wird die Apache Commons Configuration verwendet. Diese bietet im Gegensatz zur Java-Properties-Klasse einige zusätzliche Funktionen und ist relativ einfach in das Projekt einzubinden. Zudem ist kein großer Lernaufwand vorhanden.\\\hline
+\end{tabularx}
+\newpage
 
 
 \section{Konzeptionelle Sicht}
