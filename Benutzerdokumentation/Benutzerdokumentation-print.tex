@@ -128,7 +128,7 @@ So lange die Software in der Konsole läuft, können Sie die Startseite unter \u
 Sollte ein Start mittels der \textit{start.bat} nicht funktionieren, müssen Sie ggf. Ihre Java PATH-Systemvariable setzen.
 
 \subsection{Linux- / Mac-Betriebssysteme}
-%TODO
+Für Linux- oder Mac-Betriebssysteme liegt das Skript \textit{startstop.sh} bei. Dieses kann über das Terminal mit den Parametern \textit{start}, \textit{stop}, \textit{restart} bzw. \textit{reload} oder \textit{status} ausgeführt werden um die Software zu starten, stoppen, neu zu starten oder den Status abzufragen. Die Software wird durch Schließen der Konsole nicht automatisch beendet.
 
 \section{Bedienung der Software}
 
@@ -275,7 +275,11 @@ Um den Dialog für das Hinzufügen einer Aktivität zu öffnen, stehen Ihnen zwe
 	\begin{minipage}[t]{\linewidth}
             \includegraphics[width=.8\linewidth]{images/addActivity2.png}
     \end{minipage} 
-    \medskip
+    \medskip\\
+    Die Endzeit im Hinzufügen-Dialog für Unterricht und Personalsitzungen wird entsprechend der typischen Dauer des ausgewählten Unterrichtsinhaltes / Sitzungstyps automatisch gesetzt. \\
+    Bei Personalsitzungen wird außerdem automatisch der für den ausgewählten Sitzungstyp angegeben Raum gewählt. \\
+    Beim Unterricht wird der Raum des Unterrichtsinhalts nur dann gewählt, wenn es sich um einen Raum handelt, der nicht die Funktion "`Standardraum"' besitzt. Ansonsten wird er Klassenraum der Klasse gesetzt.\\
+    Alle diese automatisch gesetzten Werte können natürlich nachträglich noch verändert werden.
 \item Klicken Sie anschließend auf Hinzufügen. Wenn das Hinzufügen erfolgreich ist, wird der Dialog geschlossen.
 \end{enumerate}
 
@@ -325,6 +329,8 @@ Datenbankfehler & Dieser Fehler tritt auf, wenn es ein internes Problem mit der 
 Fehler beim Laden der Einstellungen & Dieser Fehler tritt auf, wenn die Datei \textit{timetable.properties} ungültige Einträge besitzt. Falls Sie manuell Änderungen an der Datei vorgenommen haben, machen Sie diese rückgängig. Ansonsten können Sie die Datei auch löschen, beim nächsten Systemstart werden dann die Standardeinstellungen wiederhergestellt. Beachten Sie dabei, dass dann Aktivitäten außerhalb der standardmäßigen Start- und Endzeiten eines Wochentags liegen könnten und lediglich nicht angezeigt werden. Die Aktivitäten werde nicht automatisch gelöscht.\\\hline
 System nicht vollständig wiederhergestellt & Dieser Fehler tritt bei der Wiederherstellung auf, wenn die Datei \textit{timetable.properties} aus dem Backup nicht in das Arbeitsverzeichnis kopiert werden konnte. Kopieren Sie die Datei manuell in das Arbeitverzeichnis.\\\hline
 Ungültige Datei & Dieser Fehler tritt beim Wiederherstellen eines Backups auf, wenn eine ZIP-Datei zur Wiederherstellung gewählt wurde, welche kein Backup repräsentiert.\\\hline
-\end{tabularx}
+\end{tabularx}\\
+
+Neben den oben aufgeführten Fehlermeldungen existieren einige weitere Fehlermeldungen im System, bei diesen ist der Grund für den Fehler und damit die Behandlung des Fehlers jedoch offensichtlich.
 
 \end{document}
