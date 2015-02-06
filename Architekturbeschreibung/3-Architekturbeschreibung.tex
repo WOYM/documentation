@@ -754,8 +754,24 @@ Ein übersichtlicheres Datenmodell befindet sich in Kapitel \ref{sec:datensicht}
 
 Im Paket \textit{org.woym.controller} befinden sich die Backing Beans für die verschiedenen JSF-Seiten. \\
 Die Klasse \texttt{GUIController} stellt den Aufruf der Undo- und Redo-Funktionalität aus dem \texttt{CommandHandler} (s. Kapitel \ref{subsec:logic}) für alle JSF-Seiten bereit und befindet sich daher im übergeordneten Paket.\\
-Im Paket \textit{org.woym.controller.manage} befinden sich die Backing Beans für die JSF-Seiten der Systemeinrichtung und im Paket \textit{org.woym.controller.planning} die Backing Beans für die JSF-Seiten der Planung. In der Systemeinrichtung besitzt jede JSF-Seite einen eigenen Controller. Auf der Planungsseite ist der \texttt{PlanningController} für die Darstellung und Funktionalität der Seite vorhanden. Lediglich die Operationen für die Dialoge zum Hinzufüge von Aktivitäten wurden in einzelne Controller ausgelagert.\\
-Der Zusammenhang zwischen den JSF-Seiten und den Controllern ist hier nicht darstellbar.
+
+\subsubsection{Planning}
+Im Paket \textit{org.woym.controller.planning} befinden sich die Backing Beans für die JSF-Seiten der Planung.\\ 
+Der \texttt{PlanningController} ist dafür zuständig die Hauptplanungseinheit, in der der Nutzer interaktiv Aktivitäten anlegen und bearbeiten kann zu stützen.\\
+Er enthält ein Objekt der Klasse \texttt{ScheduleModelHolder}, welches in einer einzelnen Instanz im System bekannt ist und von verschiedenen Stellen im System aus verwendet wird, um mit dem im Stundenplan selbst dargestellten Aktivitäts-Modell interagieren zu können. Die Umwandlung der systemeigenen Objekten in eine von dem verwendeten JSF-Framework \texttt{PrimeFaces} darstellbare Abbildung ermöglicht hier die Klasse \texttt{ActivityParser}, die ebenfalls zum Rendern der alternativen Darstellungen wie der Tagesansicht verwendet wird.\\
+Die einzelnen Controller des Paketes \textit{org.woym.controller.manage} dienen dazu, den allgemeinen Aktivitätsdialog programmiertechnisch übersichtlich zu gestalten, da die einzelnen Aktivitäten, die in der Anwendung erzeugt werden können (\textit{Unterricht, Bandunterricht, Teamsitzung, Pause}) in der Realisierung wenig äquivalente Parameter aufweisen.\\
+Hierzu wird im \texttt{PlanningController} in einem ebenfalls per Instanz verwendeten Objekt der Klasse \texttt{ActivityTOHolder} eine Abbildung einer minimalen Aktivität (\texttt{ActivityTO}) an die einzelnen Controller weiter gereicht, die lediglich den späteren Typen der Aktivität sowie ihre Start- und Endzeit kennt. Dieses Objekt wird über die im \texttt{PlanningController} positionierten Event-Handler für die Darstellung des Stundenplans in der Nutzeroberfläche erzeugt und im Holder abgelegt. Danach wird dem Nutzer der Dialog präsentiert und durch Auswahl eines Aktivitätstypen (standardmäßig wird hier der Aktivitätstyp \textit{Unterricht} ausgwählt) der Dialog entsprechend erweitert.\\
+Die einzelnen Controller werden dann für die Konfiguration der Aktivität sowie ihres Hinzufügens per Kommando verwendet.\\
+Der \texttt{PlanningController} ist außerdem für die Darstellung der alternativen Ansichten zuständig. Des Weiteren wird hier die Validierung und Durchführung der Drag\&Drop- sowie Resize-Events gehandhabt.\\
+
+\subsubsection{Manage}
+
+Im Paket \textit{org.woym.controller.manage} befinden sich die Backing Beans für die JSF-Seiten der Systemeinrichtung. In der Systemeinrichtung besitzt jede JSF-Seite einen eigenen Controller.\\
+Aufgrund der vielen verschiedenen Parameter an den Objekten ist es aus programmiertechnischer Sicht auch hier sinnvoll, einzelne Backing Beans für die verschiedenen Abbildungen zu implementieren.\\
+Die Controller kennen jeweils eine Instanz der Klasse \texttt{CommandHandler} und sind dafür zuständig, die Interaktion mit dem Nutzer zu ermöglichen, sowie die verschiedenen Kommandos für das Hinzufügen der Objekte auszuführen. Außerdem wird in den Backing Beans \textit{leichte} Logik für die Umwandlung der systemeigenen Objekte in von den verwendeten Frameworks darstellbare Abbildungen angewandt.\\
+
+\textit{\textbf{Anmerkung:} Der Zusammenhang zwischen den JSF-Seiten und den Controllern ist hier nicht darstellbar, da diese sehr eng miteinander verknüpft sind.\\}
+
 
 \includepdf[landscape]{controller.pdf}
 
@@ -764,7 +780,23 @@ Der Zusammenhang zwischen den JSF-Seiten und den Controllern ist hier nicht dars
 \subsection{UI}
 \label{subsec:UI}
 
-Im Paket \textit{org.woym.ui.converters} befinden sich die JSF-Converter und im Paket \textit{org.woym.ui.validators} die JSF-Validatoren. Das Paket \textit{org.woym.ui.util} enthält Hilfsklassen für die Backing Beans der Planungsseite. Diese Hilfsklassen dienen im Wesentlichen der Unterstützung zur korrekten Darstellung der Elemente auf dieser Seite.\clearpage
+\subsubsection{Converters}
+
+Im Paket \textit{org.woym.ui.converters} befinden sich die JSF-Converter.\\
+Diese dienen dazu, die im System verwendeten Objekte in eine einfache \textit{String}-Repräsentierung umzuwandeln und auch eine entsprechende Möglichkeit zur Rückwandlung in ein Objekt zu bieten, damit diese von den clientseitigen \texttt{PrimeFaces}-Funktionalitäten ensprechend für die Schnittstelle von Nutzeroberfläche und Java-Logik verwendet werden können.\\
+Zumeist wird hier eine Umwandlung des Objektes in seine ID und umgekehrtes Erfragen des Objektes anhand seiner ID aus der Persistenz angewandt.\\
+
+\subsubsection{Validators}
+
+Im Paket \textit{org.woym.ui.validators} die JSF-Validatoren.\\
+Diese werden verwendet, um die Eingaben des Nutzers auf der Nutzeroberfläche serverseitig zu validieren.\\
+An dieser Stelle wird zum Beispiel die Korrektheit zweier Zeitslots oder ein Kürzel auf seine Einzigartigkeit in der Datenbank geprüft.\\
+
+\subsubsection{Util}
+
+Im Paket \textit{org.woym.ui.util} befinden Hilfsklassen für die Backing Beans der Planungsseite.\\ Diese Hilfsklassen dienen unter anderem der Unterstützung der alternativen Anzeigen (Wochentagsansicht, Lehrkraftauslastungsplan).\\
+Um eine Darstellung der Pläne durch eine Iteration in der Nutzeroberfläche erzielen zu können, werden hier Abbildungen erzeugt, an denen die im Iterationsschritt benötigten Parameter verfügbar sind.\\
+Des Weiteren befinden sich in diesem Paket die Klassen \texttt{ActivityTOHolder}, \texttt{ScheduleModelHolder} und \texttt{EntityHelper}, die zur Kommunikation zwischen \texttt{PlanningController} und den Controllern des Paketes \textit{org.woym.controller.manage} verwendet werden, sowie die Klasse \texttt{ActivityParser}, die für das Rendern des Aktivitätsmodells zuständig ist.  \clearpage
 
 \includepdf{ui.pdf}
 
