@@ -205,6 +205,8 @@ Schließlich wird Kapitel \ref{sec:evolution} erläutert, welche Änderungen bei
 \subsection{Einflussfaktoren}
 \label{sec:einflussfaktoren}
 
+Im Folgenden werden alle die Architektur beeinflussenden Faktoren aufgelistet. Faktoren, welche aufgrund der reduzierten Mindestanforderungen weggefallen sind, werden mit einem * nach dem Namen markiert. Teilweise wurden diese noch in der Architektur -- insbesondere beim Datenmodell -- berücksichtigt.
+
 \subsubsection{Organisatorische Faktoren}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
@@ -350,19 +352,19 @@ Auswirkungen &  Dieser Faktor hat großen Einfluss auf die Geschäftslogik. Es m
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
 % P1.6
-\multicolumn{2}{|l|}{\textbf{P1.6: Dokumentengenerierung}}\\\hline
+\multicolumn{2}{|l|}{\textbf{P1.6: Dokumentengenerierung*}}\\\hline
 Faktor & Die Pläne sollen als PDF, textuell (z.B. zur Weiterverarbeitung in Textverarbeitungssystemen) sowie strukturiert in CSV exportiert werden können. \\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
 Veränderlichkeit & Kann im Zuge von O4.1 jedoch ggf. wegfallen. oder angepasst werden.  Wahrscheinlichkeit nicht abschätzbar \\\hline
 Auswirkungen & Dieser Faktor hat einen mittleren Einfluss auf die Architektur, es ist lediglich eine Erweiterung, sollte es also entfernt werden hat es kein negativen Einfluss auf das System. \\\hline
 % P1.7
-\multicolumn{2}{|p{\dimexpr\textwidth-2\tabcolsep\relax}|}{\textbf{P1.7: Mehrere Personen in unterschiedlichen Zeitpunkten in einer Planungseinheit}}\\\hline
+\multicolumn{2}{|p{\dimexpr\textwidth-2\tabcolsep\relax}|}{\textbf{P1.7: Mehrere Personen in unterschiedlichen Zeitpunkten in einer Planungseinheit*}}\\\hline
 Faktor & Das Personal kann in einer Planungseinheit später dazustoßen, nachdem die Planungseinheit bereits begonnen hat, oder sie verlassen, bevor sie endet. \\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
 Veränderlichkeit & Kann im Zuge von O4.1 jedoch ggf. wegfallen. oder angepasst werden.  Wahrscheinlichkeit nicht abschätzbar \\\hline
 Auswirkungen & Dieser Faktor hat einen mittleren Einfluss auf die Architektur, dieser Faktor muss in der Geschäftslogik beachtet werden. \\\hline
 % P1.8
-\multicolumn{2}{|l|}{\textbf{P1.8: Explizite individuelle Zeitwünsche des Personals}}\\\hline
+\multicolumn{2}{|l|}{\textbf{P1.8: Explizite individuelle Zeitwünsche des Personals*}}\\\hline
 Faktor & Explizite individuelle Zeitwünsche des Personals sollen erfasst, geändert und gelöscht werden können. Sie sollen bei der Planung als weiche Kriterien dienen - also Kriterien, die nach Möglichkeit eingehalten werden sollen, jedoch im Bedarfsfall auch ignoriert werden können. Eine entsprechende Diagnose und Nachricht an die Planerinnen ist zu realisieren. \\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel. \\\hline
 Veränderlichkeit & Kann im Zuge von O4.1 jedoch ggf. wegfallen. oder angepasst werden.  Wahrscheinlichkeit nicht abschätzbar \\\hline
@@ -383,11 +385,13 @@ Faktor & Unterricht findet an zwei voneinander getrennten Standorten statt. Es i
 Flexibilität & Dieser Faktor ist nicht flexibel.\\\hline
 Veränderlichkeit & Dieser Faktor kann im Zuge von O4.1 ggf. wegfallen oder angepasst werden. Die Wahrscheinlichkeit dafür ist nicht abschätzbar.\\\hline
 Auswirkungen & Dieser Faktor ist im Datenmodell, in der Geschäftslogik und der GUI zu berücksichtigen.\\\hline
+% P1.11
 \multicolumn{2}{|l|}{\textbf{P1.11: Verwaltung von Lehrern und päd. Mitarbeitern}}\\\hline
 Faktor & Es sind nicht nur einfach Mitarbeiter zu verwalten, sondern es ist zwischen Lehrern und päd. Mitarbeitern zu trennen. \\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel.\\\hline
 Veränderlichkeit & Dieser Faktor kann im Zuge von O4.1 ggf. wegfallen oder angepasst werden. Die Wahrscheinlichkeit dafür ist jedoch sehr gering.\\\hline
 Auswirkungen & Dieser Faktor ist im Datenmodell, in der Geschäftslogik und der GUI zu berücksichtigen.\\\hline
+% P1.12
 \multicolumn{2}{|l|}{\textbf{P1.12: Bandunterricht}}\\\hline
 Faktor & Es soll möglich sein eine Aktivität "`Bandunterricht"' (s. \ref{subsec:definitionen}) zu verwalten.\\\hline
 Flexibilität & Dieser Faktor ist nicht flexibel.\\\hline
@@ -427,8 +431,6 @@ Auswirkungen & Beeinflusst die Architektur sehr, weil es das Aussehen und Benutz
 % Problem 1 %
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
- \textbf{Problem} & 1 \\\hline
- \textbf{Name} & Enger Zeitplan \\\hline 
  \textbf{Beschreibung} & Der Abgabetermin ist fix und die Anzahl der Entwickler ist auf sechs beschränkt. Gegebenenfalls ist es nicht möglich, alle Produktfunktionen zu realisieren.\\\hline
  \textbf{Einflussfaktoren} &
  \begin{itemize}
@@ -454,8 +456,6 @@ Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
 \normalsize
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
- \textbf{Problem} & 2 \\\hline
- \textbf{Name} & Inkonsistente Anforderungen\\\hline 
  \textbf{Beschreibung} & Eventuell werden Anforderungen missverstanden oder falsch kommuniziert.\\\hline
  \textbf{Einflussfaktoren} &
  \begin{itemize}
@@ -482,8 +482,6 @@ Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
 %TODO: Überarbeiten
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
- \textbf{Problem} & 3 \\\hline
- \textbf{Name} & Technologische Anforderungen übersteigen logischen Aufwand\\\hline 
  \textbf{Beschreibung} & Der Aufwand, das Projekt auf technologischer Basis zu realisieren wird deutlich größer, als die logischen Ansprüche an das System umzusetzen\\\hline
  \textbf{Einflussfaktoren} &
  \begin{itemize}
@@ -506,8 +504,6 @@ Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
 %Problem 4%
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
- \textbf{Problem} & 4\\\hline
- \textbf{Name} & Notwendigkeit einer Datenbankanbindung\\\hline 
  \textbf{Beschreibung} & Da die Verwendung einer leichtgewichtigen relationalen Datenbank vorgeschrieben ist, besteht auch die Notwendigkeit eine Anbindung an diese herzustellen, um Objekte zu persistieren oder allgemeine Datenbankanfragen auszuführen. Dazu können vorhanden Frameworks unter Berücksichtigung von Faktor T2.2 verwendet werden.\\\hline
  \textbf{Einflussfaktoren} &
  \begin{itemize}
@@ -533,8 +529,6 @@ Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
 %Problem 5%
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
- \textbf{Problem} & 5\\\hline
- \textbf{Name} & Verwaltung von Planungsobjekten\\\hline 
  \textbf{Beschreibung} & Planungsobjekte wie Mitarbeiter, Standtorte, Aktivitäten, etc. müssen verwaltet werden. Es geht also um das Erstellen, Editieren und Löschen von diesen Objekten. Alle Aktionen müssen mehrstufig rückgängig gemacht werden können. Der Vorgang darf keine beliebig hohe Komplexität besitzen (T1.1).\\\hline
  \textbf{Einflussfaktoren} &
  \begin{itemize}
@@ -569,8 +563,6 @@ Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
 %Problem 6%
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
- \textbf{Problem} & 6\\\hline
- \textbf{Name} & Auflösung aller Referenzen beim Löschen eins Objektes\\\hline 
  \textbf{Beschreibung} & 
 Beim Löschen von Planungsobjekten müssen zunächst alle Referenzen des Objektes bei anderen Objekten aufgelöst werden, bevor es aus der Datenbank gelöscht werden kann. Es ist dementsprechend enorm wichtig, dass dabei auf die korrekte Reihenfolge der benötigten Aktionen geachtet wird. Der Vorgang darf keine beliebig hohe Komplexität besitzen (T1.1).\\\hline
  \textbf{Einflussfaktoren} &
@@ -593,13 +585,11 @@ Aufgrund der Reduzierung der Mindestanforderungen ist dieses Problem nicht mehr 
 %Problem 7%
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
- \textbf{Problem} & 7\\\hline
- \textbf{Name} & Dokumentengenerierung\\\hline 
  \textbf{Beschreibung} & 
 Die Pläne sollen als PDF, textuell (z.B. zur Weiterverarbeitung in Textverarbeitungssystemen) sowie strukturiert in CSV exportiert werden können. \\\hline
  \textbf{Einflussfaktoren} &
  \begin{itemize}
-\item[P1.6] Dokumentengenerierung
+\item[P1.6] Dokumentengenerierung*
  \end{itemize}\\\hline
 \multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
 \textbf{S11 Verwendung eines Frameworks} & Zur Lösung dieses Problems kann das vorhandene Framework Flying Saucer benutzt und gegebenenfalls erweitert werden. \\\hline
@@ -614,8 +604,6 @@ Die Pläne sollen als PDF, textuell (z.B. zur Weiterverarbeitung in Textverarbei
 %Problem 8%
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
- \textbf{Problem} & 8\\\hline
- \textbf{Name} & Verwaltung und Speicherung von Systemeinstellungen\\\hline 
  \textbf{Beschreibung} & 
 Es soll den Benutzern möglich sein, verschiedene Systemeinstellungen zu ändern. Diese Änderungen müssen über das Beenden der Software hinaus gespeichert werden. Die Speicherung der Einstellungen muss betriebssystemunabhängig sein (T2.1). Bei Verwendung eines Frameworks ist Faktor T2.2 zu beachten. Die Lösung muss außerdem mit den in T2.3 vorgegebenen Implementierungssprachen umsetzbar sein. Faktor P2.2 ist geeignet zu berücksichtigen, so dass nicht etwa Einstellungen manuell in einer Textdatei geändert werden müssen. \\\hline
  \textbf{Einflussfaktoren} &
@@ -633,34 +621,39 @@ Es soll den Benutzern möglich sein, verschiedene Systemeinstellungen zu ändern
 \end{tabularx}
 \newpage
 
-\subsubsection{Problem 9: Umsetzung der Anzeige}
-%Problem 8%
+\subsubsection{Problem 9: Umsetzung der GUI}
+%Problem 9%
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
- \textbf{Problem} & 8\\\hline
- \textbf{Name} & Verwaltung und Speicherung von Systemeinstellungen\\\hline 
  \textbf{Beschreibung} & 
-Es muss eine Benutzerschnittstelle geschaffen werden die ein ungeübter Benutzer in der Informatik bedienen kann. Es werden Schnittstellen zur Geschäftslogik sowie zur Persistenz benötigt. \\\hline
+Es muss eine Benutzerschnittstelle geschaffen werden, die ein ungeübter Benutzer ohne Informatikkenntnisse bedienen kann. Es werden Schnittstellen zur Geschäftslogik sowie zur Persistenz benötigt. \\\hline
  \textbf{Einflussfaktoren} &
- \begin{itemize}
+ \begin{itemize}[topsep = 0pt]
+\item[T1.1] Hardwarelandschaft des Kunden ist zu berücksichtigen
 \item[T2.1] Betriebssystem
 \item[T2.2] Ausschließliche Verwendung von freien Frameworks
 \item[T2.3] Implementierungssprachen
 \item[P1.2] Systemeinstellungen
+\item[P1.3] Erstellung und Wiederherstellung von Backups
 \item[P1.4] Festlegen des Zeitrasters für die Planung
-\item[P1.7] Mehrere Personen in unterschiedlichen Zeitpunkten in einer Planungseinheit
-\item[P1.8] Explizite individuelle Zeitwünsche des Personals
+\item[P1.5] Hinzufügen, Löschen und Ändern von Planungsobjekten
+\item[P1.7] Mehrere Personen in unterschiedlichen Zeitpunkten in einer Planungseinheit*
+\item[P1.8] Explizite individuelle Zeitwünsche des Personals*
 \item[P1.9] Zeiteinheiten des Personals
+\item[P1.10] Mehrere Standorte
+\item[P1.11] Verwaltung von Lehrern und päd. Mitarbeitern
+\item[P1.12] Bandunterricht
 \item[P2.1] Erstellen und Bearbeiten der auszugebenden individuellen Pläne
 \item[P2.2] Vorwissen des Benutzers
  \end{itemize}\\\hline
-\multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
-\textbf{S11 Verwendung eines Frameworks} & Es kann ein vorhandenes Framework, für Java beispielsweise die JavaServer Faces bzw. Primefaces, für die Lösung dieses Problems gewählt werden. Damit können viele Probleme der Anzeige gelöst werden.\\\hline
 \end{tabularx}
+
 \newpage
 
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
 \hline
+\multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
+\textbf{S11 Verwendung eines Frameworks} & Es kann ein vorhandenes Framework, für Java beispielsweise die JavaServer Faces bzw. Primefaces, für die Lösung dieses Problems gewählt werden. Damit können viele Probleme der Anzeige gelöst werden.\\\hline
 \textbf{S12 Entwicklung einer eigenständigen Lösung} & Es wäre möglich, eine eigenständige Lösung zu entwickeln, mit welcher man beispielsweise Einträge in einer Textdatei speichert und sie daraus wieder lädt. \\
 \textbf{S13 Verwendung einer vorhanden Klasse} & Unter der Voraussetzung, dass die Implementierungssprache Java bleibt, kann die Java-Properties-Klasse für die Umsetzung dieser Funktionalität gewählt werden. \\\hline
 \multicolumn{2}{|l|}{\textbf{Verwendete Strategie(n)}} \\\hline
