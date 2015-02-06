@@ -580,6 +580,7 @@ Die Pläne sollen als PDF, textuell (z.B. zur Weiterverarbeitung in Textverarbei
 \multicolumn{2}{|l|}{\textbf{Verwendete Strategie(n)}} \\\hline
  \textbf{S11 Verwendung eines Frameworks}   & In Anbetracht des Aufwands und der vorhanden Lösung von Flying Saucer, wäre es vorteilhafter vorhandene Funktionalitäten zu benutzen und diese gegebenenfalls anzupassen. \\\hline
 \end{tabularx}
+
 \newpage
 
 \subsubsection{Problem 8: Verwaltung und Speicherung von Systemeinstellungen}
@@ -601,15 +602,16 @@ Es soll den Benutzern möglich sein, verschiedene Systemeinstellungen zu ändern
 \item[P2.2] Vorwissen des Benutzers
  \end{itemize}\\\hline
 \multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
-\textbf{S11 Verwendung eines Frameworks} & Es kann ein vorhandenes Framework, für Java beispielsweise die Apache Commons Configuration, für die Lösung dieses Problems gewählt werden. Damit können Systemeinstellungen automatisch in eine Textdatei geschrieben und daraus geladen werden.\\
-\textbf{S13 Verwendung einer vorhanden Klasse} & Unter der Voraussetzung, dass die Implementierungssprache Java bleibt, kann die Java-Properties-Klasse für die Umsetzung dieser Funktionalität gewählt werden. \\\hline
+\textbf{S11 Verwendung eines Frameworks} & Es kann ein vorhandenes Framework, für Java beispielsweise die Apache Commons Configuration, für die Lösung dieses Problems gewählt werden. Damit können Systemeinstellungen automatisch in eine Textdatei geschrieben und daraus geladen werden.\\\hline
 \end{tabularx}
 \newpage
 
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
 \hline
+\textbf{S12 Entwicklung einer eigenständigen Lösung} & Es wäre möglich, eine eigenständige Lösung zu entwickeln, mit welcher man beispielsweise Einträge in einer Textdatei speichert und sie daraus wieder lädt. \\
+\textbf{S13 Verwendung einer vorhanden Klasse} & Unter der Voraussetzung, dass die Implementierungssprache Java bleibt, kann die Java-Properties-Klasse für die Umsetzung dieser Funktionalität gewählt werden. \\\hline
 \multicolumn{2}{|l|}{\textbf{Verwendete Strategie(n)}} \\\hline
-\textbf{S11 Verwendung eines Framesworks} & Zur Lösung dieses Problems wurde Strategie S11 gewählt. Es wird die Apache Commons Configuration verwendet. Diese bietet im Gegensatz zur Java-Properties-Klasse einige zusätzliche Funktionen und ist relativ einfach in das Projekt einzubinden. Zudem ist kein großer Lernaufwand vorhanden.\\\hline
+\textbf{S11 Verwendung eines Framesworks} & Zur Lösung dieses Problems wurde Strategie S11 gewählt. Es wird die Apache Commons Configuration verwendet. Diese bietet im Gegensatz zur Java-Properties-Klasse einige zusätzliche Funktionen und ist relativ einfach in das Projekt einzubinden. Zudem ist kein großer Lernaufwand vorhanden. Die Verwendung dieser Strategie bietet einen deutlichen Vorteil gegenüber Strategie S12, da bereits alle nötigen Funktionen abrufbar vorhanden sind.\\\hline
 \end{tabularx}
 \newpage
 
