@@ -988,6 +988,31 @@ Da sich die interaktive Planungsansicht des Systems nur auf eine Woche bezieht, 
 \item Früheres Gehen oder späteres Kommen einer Lehrkraft innerhalb einer Aktivität.\\
 Diese Funktionalität wurde auf technischer Seite bereits zu einem großen Teil beachtet. Die Aktivitäten die in der Planungsansicht dargestellt werden, sind Abbildungen, in denen die teilnehmenden Personen jeweils einen Slot von Anfang bis Ende der Aktivität zugeordnet bekommen. Dies kann mit moderatem Aufwand entsprechend erweitert werden, um es dem Nutzer zu ermöglichen verschiedene Zeitfenster für das Personal festzulegen.\\
 
+\item Bedarf an Stundeninhalten für Jahrgänge und Klassen.\\
+Auch diese Funktionalität müsste in dem für die Validierung von Aktivitäten zuständigen Modul implementiert werden. Außerdem müsste ein entsprechender Parameter an den Klassen-Objekten gepflegt werden. Da die Jahrgänge nur für die Zuordnung der Klassen verwendet werden, würde der Parameter an der Schulklasse und logisch zum Beispiel für jede Klasse des Jahrganges gepflegt.\\
+\end{itemize}
+
+Darüber hinaus gibt es einige Merkmale, deren Implementierung oder Abänderung eine hohe Wahrscheinlichkeit aufweist.
+
+\begin{itemize}
+\item Neue Objekte sollen in der Planungseinheit zur Verfügung stehen.\\
+Durch die Umsetzung der Systemeinrichtungsseite mit einzelnen Backing Beans für jeden Objekttypen kann hier ähnlich eines Baukastensystems mit geringem Aufwand ein neues Objekt eingepflegt werden. Hier ist lediglich vor der Umsetzung zu beachten, dass dies aus datentechnischer Sicht nicht empfehlenswert ist, da so Integritäten innerhalb der Datenbank verletzt und die Daten so unbrauchbar werden können.\\
+
+\item Weitere alternative Ansichten sollen implementiert werden.\\
+Die Mechanismen zum Parsen der Aktivitäten und Rendern der Anzeige funktionieren eigenständig, sodass hier mit wenig Aufwand neue Anzeigen umgesetzt werden können. Bei weiterem Ausbau der Anzeigefunktionalitäten kann über die Implementierung einer eigenen JSF-Komponente nachgedacht werden, um die Interaktivität der Hauptplanungsseite in die anderen Seiten integrieren zu können.\\
+
+\item Mehrnutzerkompatibilität.\\
+Aufgrund der Verwedung eines Frameworks wie \texttt{JavaServer Faces} liegt die Annahme nah, dass die Verwendung der Software im Netzwerk als einfache und schnelle Funktion implementiert werden kann.\\
+Während des Projektverlaufes wurde keine besondere Aufmerksamkeit der Software auf Offenheit im Bezug auf den Mehrbenutzerausbau gelegt, sodass es im System Komponenten gibt, die zum Beispiel für das Rendern der Anzeige zuständig, jedoch per Instanz bekannt sind und so nicht mehreren Benutzern zugeordnet werden könnten; jedenfalls nicht, ohne aufwändige technische Änderungen vorzunehmen.\\
+Auch an der Persistenz müssten signifikante Änderungen vorgenommen werden.\\
+Die Darstellung eines Stunden- oder eventuellen Vertretungsplanes auf einem Bildschirm in der Schule wäre im Gegensatz sehr einfach zu implementieren, solange es keinen schreibenden Zugriff auf dem System gibt.\\
+
+\item Automatische Planung.\\
+Sollte eine automatische Planung gewünscht werden, so muss hierfür ein vollständig neues Modul entworfen werden. Durch Verwendung des CommandHandlers kann dieses sehr leicht Anschluss an das bereits bestehende System finden. Es gibt derzeit keine Mechanismen im System, die eine automatische Planung explizit und bewusst unterstützen.\\
+Das Modul für die automatische Planung würde somit das Modul für die interaktive Planung als umfangreichstes Modul ablösen.\\
+
+\item Darstellung von blockierten Zeiteinheiten.\\
+Sollte es nachträglich gewünscht werden, bestimmte Zeiteinheiten nicht darzustellen, beziehungsweise der interaktiven Planung Objekte hinzuzufügen, die nicht vom Nutzer direkt in der Planung verändert werden können, so ist hier eine Anpassung des Moduls für die Aktivitätsdarstellung notwendig, um die Interaktivität an dieser Stelle zu unterdrücken.\\
 \end{itemize}
 
 \end{document} 
