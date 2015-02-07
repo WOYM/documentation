@@ -993,18 +993,24 @@ Schließlich wird die vorher erhaltene \texttt{FacesMessage} dem \texttt{FacesCo
 \includepdf[landscape]{addTeacherSequence.pdf}
 
 \section{Evolution}
-\nurlangversion
-
 \label{sec:evolution}
 
-{\it
-  Beschreibt in diesem Abschnitt, welche Änderungen Ihr
-  vornehmen müsst, wenn sich Anforderungen oder Rahmenbedingungen
-  ändern. Insbesondere sollten hierbei die in der
-  Anforderungsspezifikation unter "`Ausblick"' bereits genannten
-  Punkte behandelt werden.}
+Da das Projekt in einer Dreiergruppe umgesetzt wurde, was in verringerten Anforderungen an die Software resultierte, existiert eine hohe Wahrscheinlichkeit, dass die noch nicht umgesetzten Anforderungen in der Zukunft nachgepflegt werden sollen.
 
-\dots
+\begin{itemize}
+\item Die Dokumentengenerierung soll nachträglich umgesetzt werden. \\
+Sollte die Dokumentengenerierung nachträglich umgesetzt werden sollen, so kann durch das serverseitige Rendern eines HTML-Dokumentes und dessen Einbettung in ein PDF der Aufwand erheblich reduziert werden. Die Dokumentengenerierung müsste als neues, eigenständiges Modul im System integriert werden, da es derzeit keine Klassen außer der Klasse \texttt{ActivityParser} gibt, mit denen eine Stundenplandarstellung erzeugt werden kann und somit keine Datenabbildung existiert, die direkt und ohne weitere  Bearbeitung zur Generierung von Dokumenten verwendet werden kann.\\
 
+\item Individuelle Zeitwünsche des Personals sollen berücksichtigt werden.\\
+Da in der Planung alle Aktivitäten mit Hilfe einer zentralen Klasse validiert werden, die schrittweise vorgeht, kann hier ohne Änderungen an anderen Stellen ein weiterer Schritt implementiert werden, in dem eine Aktivität im Bezug auf die Zeitwünsche validiert wird.\\
+Vorraussetzung wäre das Nachpflegen eines entsprechenden Parameters an den Personal-Objekten.\\
+
+\item Anrechenbare Ersatzleistungen des Personals umsetzen.\\
+Da sich die interaktive Planungsansicht des Systems nur auf eine Woche bezieht, würden die anzurechnenden Ersatzleistungen sinnvollerweise in einem wöchentlichen Wert o.ä. angegeben werden, wodurch dies nur als Parameter an der Personal-Objekten nachgepflegt und von der Gesamtstundenzahl einer Lehrkraft aus programmiertechnischer Sicht abgezogen werden müsste.\\
+
+\item Früheres Gehen oder späteres Kommen einer Lehrkraft innerhalb einer Aktivität.\\
+Diese Funktionalität wurde auf technischer Seite bereits zu einem großen Teil beachtet. Die Aktivitäten die in der Planungsansicht dargestellt werden, sind Abbildungen, in denen die teilnehmenden Personen jeweils einen Slot von Anfang bis Ende der Aktivität zugeordnet bekommen. Dies kann mit moderatem Aufwand entsprechend erweitert werden, um es dem Nutzer zu ermöglichen verschiedene Zeitfenster für das Personal festzulegen.\\
+
+\end{itemize}
 
 \end{document} 
