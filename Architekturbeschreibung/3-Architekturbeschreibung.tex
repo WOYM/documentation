@@ -131,7 +131,7 @@
   \\ ~
   \vspace{2cm}
   \\
-  \it Version 1.4\\ ~
+  \it Version 1.0\\ ~
   \end{center}
   \end{minipage}
 
@@ -161,12 +161,13 @@
 \begin{tabularx}{\textwidth}{ccX}
 Version & Datum & Änderungen \\
 \hline
-1.0 & 29.10.2014 & Dokumentvorlage als initiale Fassung kopiert  \\
-1.1 & 22.11.2014 & Erste vollständige Fassung der konzeptionellen und Datensicht\\
-1.2 & 17.01.2015 & Paketdiagramm hinzugefügt. Datenmodell aktualisiert \\
-1.3 & 01.02.2015 & Kapitel 7 hinzugefügt\\
-1.4 & 06.02.2015 & Einflussfaktoren und Problemkarten, Modulsicht, und Sequenzdiagramme erweitert\\
-1.5 & 07.02.2015 & Informationen zur Evolution angefügt.
+0.1 & 29.10.2014 & Dokumentvorlage als initiale Fassung kopiert  \\
+0.2 & 22.11.2014 & Erste vollständige Fassung der konzeptionellen und Datensicht\\
+0.3 & 17.01.2015 & Paketdiagramm hinzugefügt. Datenmodell aktualisiert \\
+0.4 & 01.02.2015 & Kapitel 7 hinzugefügt\\
+0.5 & 06.02.2015 & Einflussfaktoren und Problemkarten, Modulsicht, und Sequenzdiagramme erweitert\\
+0.6 & 07.02.2015 & Informationen zur Evolution angefügt\\
+1.0 & 07.02.2015 & Erste vollständige Version der Architekturbeschreibung\\
 \end{tabularx}
 
 
@@ -188,6 +189,8 @@ Dieses Dokument gibt die Software-Architektur des finalen Produktes wieder.
 \renewcommand{\arraystretch}{2}
 \begin{tabularx}{\textwidth}{Xp{1cm}p{9.5cm}}
 \textbf{Bandunterricht} 	&  	& 	Ein Bandunterricht ist eine Aktivität, welche mehrere Personen des Personals, mehrere Schulklassen, mehrere Räume (alle am selben Standort) und ggf. mehrere Unterrichtsfächer umfasst. Der Bandunterricht stellt eine Art Förderunterricht dar. \\ 
+\textbf{Servlet / Servlet-Container} &   &   Als Servlets bezeichnet man Java-Klassen, deren Instanzen innerhalb eines Webservers Anfragen von Clients entgegennehmen und beantworten. Der Inhalt der Antworten kann dabei dynamisch, also im Moment der Anfrage, erstellt werden und muss nicht bereits statisch (etwa in Form einer HTML-Seite) für den Webserver verfügbar sein. Servlets stellen somit das Java-Pendant zu CGI-Skripten oder anderen Konzepten dar, mit denen dynamisch Web-Inhalte erstellt werden können (PHP, Ruby on Rails, Active Server Pages etc.).\\
+\textbf{PrimeFaces	}				&	& PrimeFaces bezeichnet ein JSF-Framework, dass dazu verwendet wird, die Oberflächenkomponenten sowie die Interaktion mit dem Nutzer zu vereinfachen, beziehungsweise zu erweitern.
 \end{tabularx} 
 \renewcommand{\arraystretch}{1.4}
 
@@ -889,7 +892,7 @@ Diese Abbildung stellt eine andere Sichtweise auf das vorher gezeigte Klassendia
 \subsection{Abbildung auf die Datenbank}
 Die Abbildung auf die Datenbank erfolgt mithilfe des JPA-Frameworks Eclipselink. Damit muss lediglich darauf geachtet werden, die Attribute in den Klassen korrekt mit den One-To-Many- und Many-To-Many-Beziehungen gemäß des Datenmodells zu annotieren.\\
 
-Folgende Klassen erhalten die \textit{Entity}-Annotation: 
+Folgende Klassen erhalten die \textit{Entity}-Annotation und damit eine eigene Tabelle: 
 \begin{itemize}
 \item AcademicYear
 \item Activity (und erbende Klassen)
@@ -903,7 +906,7 @@ Folgende Klassen erhalten die \textit{Entity}-Annotation:
 \item TravelTimeList
 \end{itemize}
 
-Folgende Klassen erhalten die \textit{Embeddable}-Annotation:
+Folgende Klassen erhalten die \textit{Embeddable}-Annotation und werden damit in die Tabelle der jeweiligen Entität eingebettet:
 \begin{itemize}
 \item ChargeableCompensation
 \item Edge
