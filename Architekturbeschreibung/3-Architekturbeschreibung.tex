@@ -171,6 +171,7 @@ Version & Datum & Änderungen \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Einführung}
+\textbf{Autor: Adrian}
 
 \subsection{Zweck}
   
@@ -189,6 +190,7 @@ Dieses Dokument gibt die Software-Architektur des finalen Produktes wieder.
 \end{tabularx} 
 \renewcommand{\arraystretch}{1.4}
 
+\newpage
 \subsection{Referenzen}
 Die folgenden Kapitel stützen sich im Wesentlichen auf die Vorlesungsfolien "`Software-Architektur 1"' der Veranstaltung "`Software-Projekt 1"' im Sommersemester 2014 an der Universität Bremen von Prof. Dr. Rainer Koschke.
 
@@ -200,10 +202,13 @@ In Kapitel \ref{sec:konzeptionell} wird der grundsätzliche Aufbau der Software 
 In Kapitel \ref{sec:anwendungsfaelle} werden zwei Anwendungsfälle als Sequendzdiagramme dargestellt und beschrieben, um die Zusammenhänge zwischen der vorher beschriebenen Architektur und diesen Anwendungsfällen darzustellen.\\
 Schließlich wird Kapitel \ref{sec:evolution} erläutert, welche Änderungen bei Änderung der Anforderungen vorgenommen werden müssten.
 
+\newpage
+
 \section{Globale Analyse}
 \label{sec:globale_analyse}
 
 \subsection{Einflussfaktoren}
+\textbf{Autoren: Adrian, Jurij, Tim}\\
 \label{sec:einflussfaktoren}
 
 Im Folgenden werden alle die Architektur beeinflussenden Faktoren aufgelistet. Faktoren, welche aufgrund der reduzierten Mindestanforderungen weggefallen sind, werden mit einem * nach dem Namen markiert. Teilweise wurden diese noch in der Architektur -- insbesondere beim Datenmodell -- berücksichtigt.
@@ -426,6 +431,7 @@ Auswirkungen & Beeinflusst die Architektur sehr, weil es das Aussehen und Benutz
 
 \newpage
 \subsection{Probleme und Strategien}
+\textbf{Autoren: Adrian, Jurij, Tim}\\
 \label{sec:strategien}
 
 \subsubsection{Problem 1: Enger Zeitplan}
@@ -440,69 +446,16 @@ Auswirkungen & Beeinflusst die Architektur sehr, weil es das Aussehen und Benutz
  \item[O5.1] Anzahl der Entwickler
  \end{itemize}\\\hline
 \multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
-\textbf{S1 Schrittweiser Aufbau} & Das System wird nach Prioritäten aufgebaut. Die für die Grundfunktionalität wichtigsten Funktionen werden am Anfang die weniger wichtigen gegen Ende oder gar nicht implementiert. So ist es zwar ggf. der Fall, dass nicht alle zu Beginn des Projektes geplanten Funktionen umgesetzt werden, aber die wesentlichen und relevanten Funktionalitäten sind vorhanden. \\
+\textbf{S1 Modularisierung} & Das System muss geeignet modularisiert werden, so dass eine Erweiterung des Kerns, welcher die Mindestanforderungen erfüllt, einfach möglich ist. \\\hline
 
-\textbf{S2 Regelmäßige Reevaluierung} & In wöchentliche Treffen werden die verschiedenen Aufgaben und ihre Prioritäten besprochen und gepflegt, um einen evolutionären Prozess gemäß der momentanen Gewichtungen einhalten zu können. \\\hline
- 
 \multicolumn{2}{|l|}{\textbf{Verwendete Strategie(n)}} \\\hline
- \textbf{ S1 Schrittweiser Aufbau} \newline
- 
-  \textbf{S2 Regelmäßige Reevaluierung}
-    & Es werden beide aufgelistete Strategien gewählt, um die Mindestanforderungen möglichst schnell und gut zu erfüllen. \\\hline
+ \textbf{S1 Modularisierung}
+    & Es wird die einzige aufgelistete Strategie gewählt. Generell ist bei der Softwareentwicklung auf eine Modularisierung des System zu achten. Bei dem genannten Vorgehen muss dies aber noch etwas genauer geplant und berücksichtigt werden. \\\hline
 \end{tabularx}
+
 \newpage
 
-\subsubsection{Problem 2: Inkonsistente Anforderungen}
-%Problem 2%
-\huge
-Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
-\normalsize
-\begin{tabularx}{\textwidth}{|p{6cm}|X|}
- \hline
- \textbf{Beschreibung} & Eventuell werden Anforderungen missverstanden oder falsch kommuniziert.\\\hline
- \textbf{Einflussfaktoren} &
- \begin{itemize}
- \item[O2.1] Erstes größeres, selbständig auszuführendes Projekt
- \item[O4.1] Auslieferung der Produktfunktionen
- \end{itemize}\\\hline
-\multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
-
-\textbf{S2 Regelmäßige Reevaluierung} & Vorlage des aktuellen Prototypen zur Überprüfung durch Auftraggeber. \\
-\textbf{S3 Kommunikation} & Problemstellungen frühzeitig mit dem Kunden kommunizieren. \\\hline
- 
-\multicolumn{2}{|l|}{\textbf{Verwendete Strategie(n)}} \\\hline
-    & \\\hline
-
-\end{tabularx}
-\newpage
-
-
-\subsubsection{Problem 3: Technologische Anforderungen übersteigen logischen Aufwand}
-\huge
-Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
-\normalsize
-%Problem 3%
-%TODO: Überarbeiten
-\begin{tabularx}{\textwidth}{|p{6cm}|X|}
- \hline
- \textbf{Beschreibung} & Der Aufwand, das Projekt auf technologischer Basis zu realisieren wird deutlich größer, als die logischen Ansprüche an das System umzusetzen\\\hline
- \textbf{Einflussfaktoren} &
- \begin{itemize}
- \item[O2.1] Erstes größeres, selbständig auszuführendes Projekt
- \item[O2.2] Unerfahrenheit mit Technologie
- \end{itemize}\\\hline
-\multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
-
-\textbf{S2 Regelmäßige Reevaluierung} & Vorlage des aktuellen Prototypen zur Überprüfung durch Auftraggeber. \\
-\textbf{S4 Vorbereitung} & Die Entwickler müssen sich bereits vor dem Projektstart mit der Thematik befassen. \\\hline
-\multicolumn{2}{|l|}{\textbf{Verwendete Strategie(n)}} \\\hline
-    & \\\hline
-
-\end{tabularx}
-\newpage
-
-
-\subsubsection{Problem 4: Notwendigkeit einer Datenbankanbindung}
+\subsubsection{Problem 2: Notwendigkeit einer Datenbankanbindung}
 
 %Problem 4%
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
@@ -516,19 +469,21 @@ Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
 \item[P1.5] Hinzufügen, Löschen und Ändern von Planungsobjekten
  \end{itemize}\\\hline
 \multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
-\textbf{S5 JDBC-API} & Für die Anbindung an die Datenbank kann die JDBC-API verwendet werden. Damit müssen alle Tabellen selbst erstellt und SQL-Queries direkt an die Datenbank gestellt werden. \\
+\textbf{S2 JDBC-API} & Für die Anbindung an die Datenbank kann die JDBC-API verwendet werden. Damit müssen alle Tabellen selbst erstellt und SQL-Queries direkt an die Datenbank gestellt werden. \\
 
-\textbf{S6 JPA} & Für die Anbindung an die Datenbank kann die Java Persistence API (JPA) benutzt werden. Diese ist eine Object Relational Mapping (ORM) Standard, mit welchem der Java-Code der Datenobjekte direkt auf Datenbanktabellen abgebildet werden kann. Mit JPA müssen damit entsprechend keine Tabellen selbst erstellt werden und es ist nicht notwendig direkte SQL-Anfragen zu stellen. Stattdessen kann die Java Persistence Query Language (JPQL) oder die JPA Criteria API verwendet werden. \\\hline
+\textbf{S3 JPA} & Für die Anbindung an die Datenbank kann die Java Persistence API (JPA) benutzt werden. Diese ist eine Object Relational Mapping (ORM) Standard, mit welchem der Java-Code der Datenobjekte direkt auf Datenbanktabellen abgebildet werden kann. Mit JPA müssen damit entsprechend keine Tabellen selbst erstellt werden und es ist nicht notwendig direkte SQL-Anfragen zu stellen. Stattdessen kann die Java Persistence Query Language (JPQL) oder die JPA Criteria API verwendet werden. \\\hline
 \end{tabularx}\\
+
+\newpage
 
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
 \multicolumn{2}{|l|}{\textbf{Verwendete Strategie(n)}} \\\hline
- \textbf{S6 JPA}   & Für die Lösung dieses Problems wurde die Strategie 6 JPA ausgewählt. JPA erleichtert den Umgang mit der Datenbank gegenüber JDBC deutlich, da es beispielsweise nicht notwendig ist SQL-Queries zu schreiben, welche die Tabellen erzeugen. Außerdem werden SELECT-Abfragen durch die JPQL deutlich erleichtert und es ist nicht notwendig, Objekte selbst aus erhaltenen Parametern einer SQL-Query zu erstellen. Stattdessen liefern die JPA-Queries direkt die gefragten Objekte zurück. Als konkrete JPA-Implementierung wurde Eclipselink verwendet.\\\hline
+ \textbf{S3 JPA}   & Für die Lösung dieses Problems wurde die Strategie S3 JPA ausgewählt. JPA erleichtert den Umgang mit der Datenbank gegenüber JDBC deutlich, da es beispielsweise nicht notwendig ist SQL-Queries zu schreiben, welche die Tabellen erzeugen. Außerdem werden SELECT-Abfragen durch die JPQL deutlich erleichtert und es ist nicht notwendig, Objekte selbst aus erhaltenen Parametern einer SQL-Query zu erstellen. Stattdessen liefern die JPA-Queries direkt die gefragten Objekte zurück. Als konkrete JPA-Implementierung wurde Eclipselink verwendet.\\\hline
 \end{tabularx}
 
 
-\subsubsection{Problem 5: Verwaltung von Planungsobjekten}
+\subsubsection{Problem 3: Verwaltung von Planungsobjekten}
 %Problem 5%
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
@@ -552,19 +507,22 @@ Dies ist ggf. eher dem Projektmanagament zuzuordnen und wird daher noch entfernt
 \hline
 \multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
 
-\textbf{S7 Command- mit Composite-Pattern} & Für das Erstellen, Editieren und Löschen von Objekten kann das Command-Enfwursmuster verwendet werden, um -- mit Voraussetzung einer gewissen Generik der Objekte -- den minimalsten Aufwand  bei der Verwaltung zu erreichen. Das mehrstufige Rückgängigmachen wird durch eine Erweiterung der Commands um eine undo- / redo-Methode erreicht. Zusätzlich wird das Composite-Pattern verwendet, um MacroCommands zu ermöglichen. Dies kann für das Löschen von Objekten Relevanz besitzen, da dort Referenzen aufzulösen sind. Das Löschen besteht also aus einer Abfolge von Aktionen.\\\hline
-\textbf{S8 Datenkapselung} & Damit die UpdateCommands für das Rückgängigmachen des Editierens nach dem Information Hiding Principle keine Informationen über das enthaltene Objekt und veränderte Parameter besitzen, bietet sich die Verwendung des Memento-Patterns an. UpdateCommands kennen dann nur die Memento-Objekte, aber nicht deren internen Zustand.\\
-\textbf{S9 CommandHandler} & Diese Strategie ist nur in Kombination mit Strategie S7 möglich. Für die Realisierung eines mehrstufigen Undos bzw. Redos, kann ein CommandHandler verwendet werden. Dieser besitzt dieselben Methoden wie die Commands selbst und übernimmt für alle anderen Klassen die Aufrufe dieser Methoden. Die ausgeführten Commands werden bis zu einer gewissen Anzahl im CommandHandler gespeichert, so dass das Rückgängigmachen oder Wiederholen der vorher ausgeführten Operationen möglich ist.\\\hline
- 
+\textbf{S4 Command- mit Composite-Pattern} & Für das Erstellen, Editieren und Löschen von Objekten kann das Command-Enfwursmuster verwendet werden, um -- mit Voraussetzung einer gewissen Generik der Objekte -- den minimalsten Aufwand  bei der Verwaltung zu erreichen. Das mehrstufige Rückgängigmachen wird durch eine Erweiterung der Commands um eine undo- / redo-Methode erreicht. Zusätzlich wird das Composite-Pattern verwendet, um MacroCommands zu ermöglichen. Dies kann für das Löschen von Objekten Relevanz besitzen, da dort Referenzen aufzulösen sind. Das Löschen besteht also aus einer Abfolge von Aktionen.\\
+\textbf{S5 Datenkapselung} & Damit die UpdateCommands für das Rückgängigmachen des Editierens nach dem Information Hiding Principle keine Informationen über das enthaltene Objekt und veränderte Parameter besitzen, bietet sich die Verwendung des Memento-Patterns an. UpdateCommands kennen dann nur die Memento-Objekte, aber nicht deren internen Zustand.\\
+\textbf{S6 CommandHandler} & Diese Strategie ist nur in Kombination mit Strategie S7 möglich. Für die Realisierung eines mehrstufigen Undos bzw. Redos, kann ein CommandHandler verwendet werden. Dieser besitzt dieselben Methoden wie die Commands selbst und übernimmt für alle anderen Klassen die Aufrufe dieser Methoden. Die ausgeführten Commands werden bis zu einer gewissen Anzahl im CommandHandler gespeichert, so dass das Rückgängigmachen oder Wiederholen der vorher ausgeführten Operationen möglich ist.\\\hline
+
+\multicolumn{2}{|l|}{\textbf{Verwandte Strategien}} \\\hline
+\multicolumn{2}{|l|}{S1 Modularisierung} \\\hline
+   
 \multicolumn{2}{|l|}{\textbf{Verwendete Strategie(n)}} \\\hline
-\textbf{S7 Command- mit Composite-Pattern}\newline
+\textbf{S4 Command- mit Composite-Pattern}\newline
 
-\textbf{S8 Datenkapselung}\newline
+\textbf{S5 Datenkapselung}\newline
 
-\textbf{S9 CommandHandler}   & Es wurden aller der aufgeführte Strategien gewählt. Die Verwendung von Strategie S7 und S9 in Kombination kann sich positiv auf Faktor O1.1 auswirken, da kein eigener Entwurf für eine Undo- / Redo-Funktionalität erstellt werden muss. S8 ermöglicht es, eine gewisse Generik aufrecht zu erhalten.\\\hline
+\textbf{S6 CommandHandler}   & Es wurden aller der aufgeführte Strategien gewählt. Die Verwendung von Strategie S4 und S6 in Kombination kann sich positiv auf Faktor O1.1 auswirken, da kein eigener Entwurf für eine Undo- / Redo-Funktionalität erstellt werden muss. S5 ermöglicht es, eine gewisse Generik aufrecht zu erhalten.\\\hline
 \end{tabularx}
 
-\subsubsection{Problem 6: Auflösung aller Referenzen beim Löschen eines Objektes}
+\subsubsection{Problem 4: Auflösung aller Referenzen beim Löschen eines Objektes}
 %Problem 6%
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
@@ -577,13 +535,15 @@ Beim Löschen von Planungsobjekten müssen zunächst alle Referenzen des Objekte
 \item[P1.5] Hinzufügen, Löschen und Ändern von Planungsobjekten
  \end{itemize}\\\hline
 \multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
-\textbf{S10 Verwendung des Factory-Patterns zur Erstellung von Macro-DeleteCommands} & Zur Lösung dieses Problems kann eine Klasse nach dem Factory-Pattern entworfen werden, welche eine Methode besitzt, für ein übergebenes Datenobjekt -- je nach dessen Zustand -- ein MacroCommand zum Löschen dieses Objekte zurückgibt. Dabei wird auf die korrekte Reihenfolge bei der Auflösung der Referenzen geachtet. Dies setzt voraus, dass S7 gewählt wurde. \\\hline
+\textbf{S7 Verwendung des Factory-Patterns zur Erstellung von Macro-DeleteCommands} & Zur Lösung dieses Problems kann eine Klasse nach dem Factory-Pattern entworfen werden, welche eine Methode besitzt, für ein übergebenes Datenobjekt -- je nach dessen Zustand -- ein MacroCommand zum Löschen dieses Objekte zurückgibt. Dabei wird auf die korrekte Reihenfolge bei der Auflösung der Referenzen geachtet. Dies setzt voraus, dass S7 gewählt wurde. \\\hline
+ \multicolumn{2}{|l|}{\textbf{Verwandte Strategien}} \\\hline
+  \multicolumn{2}{|l|}{S1 Modularisierung} \\\hline
 \multicolumn{2}{|l|}{\textbf{Verwendete Strategie(n)}} \\\hline
- \textbf{S10 Verwendung des Factory-Patterns zur Erstellung von Macro-DeleteCommands}   & Zur Lösung dieses Problems wird die einzige vorhandene Strategie S9 verwendet. Dadurch muss nicht an allen Stellen, wo ein Objekt vom Benutzer gelöscht werden kann, selbst ein solches MacroCommand erstellt werden, sondern die Aufgabe wird an die dafür nach dem Factory-Pattern entwickelte Klasse delegiert. \\\hline
+ \textbf{S7 Verwendung des Factory-Patterns zur Erstellung von Macro-DeleteCommands}   & Zur Lösung dieses Problems wird die einzige vorhandene Strategie S7 verwendet. Dadurch muss nicht an allen Stellen, wo ein Objekt vom Benutzer gelöscht werden kann, selbst ein solches MacroCommand erstellt werden, sondern die Aufgabe wird an die dafür nach dem Factory-Pattern entwickelte Klasse delegiert. \\\hline
 \end{tabularx}
 \newpage
 
-\subsubsection{Problem 7: Dokumentengenerierung}
+\subsubsection{Problem 5: Dokumentengenerierung}
 
 Aufgrund der Reduzierung der Mindestanforderungen ist dieses Problem nicht mehr präsent.\\
 
@@ -597,15 +557,17 @@ Die Pläne sollen als PDF, textuell (z.B. zur Weiterverarbeitung in Textverarbei
 \item[P1.6] Dokumentengenerierung*
  \end{itemize}\\\hline
 \multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
-\textbf{S11 Verwendung eines Frameworks} & Zur Lösung dieses Problems kann das vorhandene Framework Flying Saucer benutzt und gegebenenfalls erweitert werden. \\\hline
-\textbf{S12 Entwicklung einer eigenständigen Lösung} & Es ist möglich eine eigenständige Lösung für die Generierung der Dokumente zu entwickeln. \\\hline
+\textbf{S8 Verwendung eines Frameworks} & Zur Lösung dieses Problems kann das vorhandene Framework Flying Saucer benutzt und gegebenenfalls erweitert werden. \\\hline
+\textbf{S9 Entwicklung einer eigenständigen Lösung} & Es ist möglich eine eigenständige Lösung für die Generierung der Dokumente zu entwickeln. \\\hline
+ \multicolumn{2}{|l|}{\textbf{Verwandte Strategien}} \\\hline
+  \multicolumn{2}{|l|}{S1 Modularisierung} \\\hline
 \multicolumn{2}{|l|}{\textbf{Verwendete Strategie(n)}} \\\hline
- \textbf{S11 Verwendung eines Frameworks}   & In Anbetracht des Aufwands und der vorhanden Lösung von Flying Saucer, wäre es vorteilhafter vorhandene Funktionalitäten zu benutzen und diese gegebenenfalls anzupassen. \\\hline
+ \textbf{S8 Verwendung eines Frameworks}   & In Anbetracht des Aufwands und der vorhanden Lösung von Flying Saucer, wäre es vorteilhafter vorhandene Funktionalitäten zu benutzen und diese gegebenenfalls anzupassen. \\\hline
 \end{tabularx}
 
 \newpage
 
-\subsubsection{Problem 8: Verwaltung und Speicherung von Systemeinstellungen}
+\subsubsection{Problem 6: Verwaltung und Speicherung von Systemeinstellungen}
 %Problem 8%
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
@@ -622,20 +584,22 @@ Es soll den Benutzern möglich sein, verschiedene Systemeinstellungen zu ändern
 \item[P2.2] Vorwissen des Benutzers
  \end{itemize}\\\hline
 \multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
-\textbf{S11 Verwendung eines Frameworks} & Es kann ein vorhandenes Framework, für Java beispielsweise die Apache Commons Configuration, für die Lösung dieses Problems gewählt werden. Damit können Systemeinstellungen automatisch in eine Textdatei geschrieben und daraus geladen werden.\\\hline
+\textbf{S8 Verwendung eines Frameworks} & Es kann ein vorhandenes Framework, für Java beispielsweise die Apache Commons Configuration, für die Lösung dieses Problems gewählt werden. Damit können Systemeinstellungen automatisch in eine Textdatei geschrieben und daraus geladen werden.\\\hline
 \end{tabularx}
 \newpage
 
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
 \hline
 \multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
-\textbf{S12 Entwicklung einer eigenständigen Lösung} & Es wäre möglich, eine eigenständige Lösung zu entwickeln, mit welcher man beispielsweise Einträge in einer Textdatei speichert und sie daraus wieder lädt. \\
-\textbf{S13 Verwendung einer vorhanden Klasse} & Unter der Voraussetzung, dass die Implementierungssprache Java bleibt, kann die Java-Properties-Klasse für die Umsetzung dieser Funktionalität gewählt werden. \\\hline
+\textbf{S9 Entwicklung einer eigenständigen Lösung} & Es wäre möglich, eine eigenständige Lösung zu entwickeln, mit welcher man beispielsweise Einträge in einer Textdatei speichert und sie daraus wieder lädt. \\
+\textbf{S10 Verwendung einer vorhanden Klasse} & Unter der Voraussetzung, dass die Implementierungssprache Java bleibt, kann die Java-Properties-Klasse für die Umsetzung dieser Funktionalität gewählt werden. \\\hline
+ \multicolumn{2}{|l|}{\textbf{Verwandte Strategien}} \\\hline
+  \multicolumn{2}{|l|}{S1 Modularisierung} \\\hline
 \multicolumn{2}{|l|}{\textbf{Verwendete Strategie(n)}} \\\hline
-\textbf{S11 Verwendung eines Framesworks} & Zur Lösung dieses Problems wurde Strategie S11 gewählt. Es wird die Apache Commons Configuration verwendet. Diese bietet im Gegensatz zur Java-Properties-Klasse einige zusätzliche Funktionen und ist relativ einfach in das Projekt einzubinden. Zudem ist kein großer Lernaufwand vorhanden. Die Verwendung dieser Strategie bietet einen deutlichen Vorteil gegenüber Strategie S12, da bereits alle nötigen Funktionen abrufbar vorhanden sind.\\\hline
+\textbf{S8 Verwendung eines Framesworks} & Zur Lösung dieses Problems wurde Strategie S8 gewählt. Es wird die Apache Commons Configuration verwendet. Diese bietet im Gegensatz zur Java-Properties-Klasse einige zusätzliche Funktionen und ist relativ einfach in das Projekt einzubinden. Zudem ist kein großer Lernaufwand vorhanden. Die Verwendung dieser Strategie bietet einen deutlichen Vorteil gegenüber Strategie S9, da bereits alle nötigen Funktionen abrufbar vorhanden sind.\\\hline
 \end{tabularx}
 
-\subsubsection{Problem 9: Umsetzung der GUI}
+\subsubsection{Problem 7: Umsetzung der GUI}
 %Problem 9%
 \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
@@ -665,9 +629,11 @@ Es muss eine Benutzerschnittstelle geschaffen werden, die ein ungeübter Benutze
  \begin{tabularx}{\textwidth}{|p{6cm}|X|}
  \hline
  \multicolumn{2}{|l|}{\textbf{Lösungen}} \\\hline
-\textbf{S11 Verwendung eines Frameworks} & Es kann ein vorhandenes Framework, für Java beispielsweise die JavaServer Faces (bzw. Primefaces), Swing, JavaFX für die Lösung dieses Problems gewählt werden. Damit können viele Probleme der Anzeige gelöst werden.\\\hline
+\textbf{S8 Verwendung eines Frameworks} & Es kann ein vorhandenes Framework, für Java beispielsweise die JavaServer Faces (bzw. Primefaces), Swing, JavaFX für die Lösung dieses Problems gewählt werden. Damit können viele Probleme der Anzeige gelöst werden.\\\hline
+ \multicolumn{2}{|l|}{\textbf{Verwandte Strategien}} \\\hline
+  \multicolumn{2}{|l|}{S1 Modularisierung} \\\hline
 \multicolumn{2}{|l|}{\textbf{Verwendete Strategie(n)}} \\\hline
-\textbf{S11 Verwendung eines Frameworks} & Für die Lösung dieses Problems wäre JavaServer Faces die geeignete Wahl. Das bereits bestehende Vorwissen sowie mögliche Ansprechpartner machen den umgang mit JavaServer Faces einfach als mit Swing oder JavaFX. Interne Schulungen können so besser umsetzbar. \\\hline
+\textbf{S8 Verwendung eines Frameworks} & Für die Lösung dieses Problems wäre JavaServer Faces die geeignete Wahl. Das bereits bestehende Vorwissen sowie mögliche Ansprechpartner machen den Umgang mit JavaServer Faces einfacher als mit Swing oder JavaFX. Interne Schulungen sind so besser umsetzbar. \\\hline
 \end{tabularx}
 
 \newpage
@@ -675,7 +641,7 @@ Es muss eine Benutzerschnittstelle geschaffen werden, die ein ungeübter Benutze
 
 \section{Konzeptionelle Sicht}
 \label{sec:konzeptionell}
-
+\textbf{Autor: Adrian}\\
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.45\textwidth]{konzeptsicht.pdf}
@@ -698,6 +664,8 @@ Jede höhere Ebene greift nur auf niedriger liegende Ebenen zu. Die GUI-Schicht 
 \label{sec:modulsicht}
 
 \subsection{Paketdiagramm}
+\textbf{Autor: Adrian}\\
+
 Die Software ist aufgeteilt in fünf große Pakete, die jeweils noch Unterpakte besitzen. Die View-Komponente wurde im nachfolgenden Diagramm nur als Paket aufgeführt, um die Abhängigkeiten aufzeigen zu können. Dies entspricht nicht der tatsächlichen Organisationsstruktur. Um das Diagramm übersichtlicher zu halten, wurden fast ausschließlich die Abhängigkeiten zwischen den großen Pakten aufgeführt. Lediglich für das Paket \textit{org.woym.ui} wurde eine etwas detaillierte Darstellung gewählt.
 
 \begin{figure}[H]
@@ -717,6 +685,7 @@ Die Software ist aufgeteilt in fünf große Pakete, die jeweils noch Unterpakte 
 
 \subsection{Persistence}
 \label{subsec:persistence}
+\textbf{Autor: Adrian}\\
 
 Die Persistenzschicht ist für ein Single-User-System konzipiert und besteht aus drei Klassen. Die Singleton-Klasse \texttt{DataBase} stellt die unterste Ebene dar. Dort wird der EntityManager erzeugt, der für alle Datenbankanfragen von \texttt{DataAccess} verwendet wird. Außerdem bietet sie Methoden an, die ein Backup der Datenbank erzeugen bzw. ein Backup wiederherstellen. \texttt{DataBase} erweitert die Java-Klasse \texttt{Observable}, da es für die Wiederherstellung eines Backups notwendig ist, die Datenbank einmal komplett herunterzufahren und danach dementsprechend ein neuer EntityManager verwendet wird. Dies muss den beobachtenden Klassen mitgeteilt werden.\\
 Die Singleton-Klasse \texttt{DataAccess} implementiert das Java-Interface \texttt{Observer} und wird bei Erzeugung bei \texttt{DataBase} als Observer registriert. Zudem implementiert sie das Interface \texttt{IDataAccess}, welches alle DAO-Interfaces implementiert und damit die notwendigen Datenzugriffsmethoden beschreibt. Die Klasse \texttt{DataAccess} stellt also für alle Klassen auf einer oberen Ebene die Schnittstelle zur Datenbank dar.\\
@@ -731,6 +700,8 @@ Die Methoden des Interfaces \texttt{IDataAccess} dürfen in beliebiger Reihenfol
 
 \subsection{Common}
 \label{subsec:Common}
+\textbf{Autor: Adrian}\\
+
 Im Paket \textit{org.woym.common} befinden sich -- wie vorher bereits angemerkt -- Klassen, welche von Klassen aus fast allen anderen Paketen verwendet werden.\\
 Das Paket \textit{org.woym.common.config} beinhaltet das \texttt{DefaultConfigEnum}, welches alle Einstellungsoptionen der Software mit ihren Standardwerten enthält. Die Klasse \texttt{Config} erzeugt eine Properties-Datei und gewährt anderen Klassen Zugriff auf dort eingetragene Werte. Bevor die anderen Methoden der Klasse aufgerufen werden können, muss mindestens einmal die Methode \textit{init()} aufgerufen werden. 
 \\
@@ -762,6 +733,7 @@ Ein übersichtlicheres Datenmodell befindet sich in Kapitel \ref{sec:datensicht}
 
 \subsection{Controller}
 \label{subsec:Controller}
+\textbf{Autoren: Adrian, Tim}\\
 
 Im Paket \textit{org.woym.controller} befinden sich die Backing Beans für die verschiedenen JSF-Seiten. \\
 Die Klasse \texttt{GUIController} stellt den Aufruf der Undo- und Redo-Funktionalität aus dem \texttt{CommandHandler} (s. Kapitel \ref{subsec:logic}) für alle JSF-Seiten bereit und befindet sich daher im übergeordneten Paket.\\
@@ -814,6 +786,8 @@ Des Weiteren befinden sich in diesem Paket die Klassen \texttt{ActivityTOHolder}
 
 \subsection{Logic}
 \label{subsec:logic}
+\textbf{Autor: Adrian}\\
+
 Auf der Logikebene wurde das Command-Pattern verwendet, um ein Undo und Redo für alle Aktionen anbieten zu können. Die entsprechenden Klassen befinden sich im Paket \textit{org.woym.logic.command}. \\
 Das Interface \texttt{ICommand} spezifiziert die Methoden eines konkreten Commands. Implementiert wird das Interface von den Klassen \texttt{AddCommand}, \texttt{UpdateCommand}, \texttt{DeleteCommand} und \texttt{MacroCommand}. Wobei ein \texttt{MacroCommand} zusätzlich eine Liste von \texttt{ICommand}-Objekten enthält. Für die Methoden gibt es eine klare Ausführungsreihenfolge. Nach Erzeugung eines ICommand-Objektes muss zunächst \textit{execute()} aufgerufen werden, danach dürfen alternierend \textit{undo()} und \textit{redo()} beliebig oft aufgerufen werden. \\
 
@@ -835,6 +809,7 @@ Die Klasse \texttt{ActivityParser} überführt in den Methoden \textit{getActivi
 
 \section{Datensicht}
 \label{sec:datensicht}
+\textbf{Autor: Adrian}\\
   
 \subsection{Datenmodell}
 Auf der folgenden Seite ist das Datenmodell dargestellt. Danach folgt eine Beschreibung der einzelnen Assoziationen. Das Datenmodel beinhaltet keine implementierungsspezifischen Details. Diese sind im Klassendiagramm zu Kapitel \ref{subsubsec:Objects} zu erkennen.
@@ -939,6 +914,7 @@ Folgende Klassen erhalten die \textit{Embeddable}-Annotation:
 
 \section{Ausführungssicht}
 \label{sec:ausfuehrung}
+\textbf{Autor: Adrian}\\
 
 \begin{figure}[H]
 \centering
@@ -952,6 +928,7 @@ Aus der Controller-Komponente sind während der Ausführung jeweils nur die Cont
 \section[Zusammenhänge zwischen Anwendungsfällen und Architektur]{Zusammenhänge zwischen Anwendungsfällen und Architektur\sectionmark{Zusammenhänge AF u. Architektur}}
 \sectionmark{Zusammenhänge AF u. Architektur}
 \label{sec:anwendungsfaelle}
+\textbf{Autor: Adrian}\\
 
 \subsection{Erfolgreiches Hinzufügen einer Aktivität (Unterrichtsstunde)}
 \label{subsec:addActivitySuccess}
