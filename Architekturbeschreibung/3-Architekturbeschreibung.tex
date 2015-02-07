@@ -166,6 +166,7 @@ Version & Datum & Änderungen \\
 1.2 & 17.01.2015 & Paketdiagramm hinzugefügt. Datenmodell aktualisiert \\
 1.3 & 01.02.2015 & Kapitel 7 hinzugefügt\\
 1.4 & 06.02.2015 & Einflussfaktoren und Problemkarten, Modulsicht, und Sequenzdiagramme erweitert\\
+1.5 & 07.02.2015 & Informationen zur Evolution angefügt.
 \end{tabularx}
 
 
@@ -970,6 +971,7 @@ Schließlich wird die vorher erhaltene \texttt{FacesMessage} dem \texttt{FacesCo
 \includepdf[landscape]{addTeacherSequence.pdf}
 
 \section{Evolution}
+\textbf{Autor: Tim}\\ 
 \label{sec:evolution}
 
 Da das Projekt in einer Dreiergruppe umgesetzt wurde, was in verringerten Anforderungen an die Software resultierte, existiert eine hohe Wahrscheinlichkeit, dass die noch nicht umgesetzten Anforderungen in der Zukunft nachgepflegt werden sollen.
@@ -980,16 +982,16 @@ Sollte die Dokumentengenerierung nachträglich umgesetzt werden sollen, so kann 
 
 \item Individuelle Zeitwünsche des Personals sollen berücksichtigt werden.\\
 Da in der Planung alle Aktivitäten mit Hilfe einer zentralen Klasse validiert werden, die schrittweise vorgeht, kann hier ohne Änderungen an anderen Stellen ein weiterer Schritt implementiert werden, in dem eine Aktivität im Bezug auf die Zeitwünsche validiert wird.\\
-Vorraussetzung wäre das Nachpflegen eines entsprechenden Parameters an den Personal-Objekten.\\
+Ein entsprechendes Attribut ist am Objekt bereits vorhanden, findet aber bisher im System logisch keine Verwendung.\\
 
 \item Anrechenbare Ersatzleistungen des Personals umsetzen.\\
-Da sich die interaktive Planungsansicht des Systems nur auf eine Woche bezieht, würden die anzurechnenden Ersatzleistungen sinnvollerweise in einem wöchentlichen Wert o.ä. angegeben werden, wodurch dies nur als Parameter an der Personal-Objekten nachgepflegt und von der Gesamtstundenzahl einer Lehrkraft aus programmiertechnischer Sicht abgezogen werden müsste.\\
+Ein Parameter an der Abbildung des Personals im System zur Darstellung von anrechenbaren Ersatzleistungen existiert bereits, wird jedoch zur Laufzeit weder befüllt noch in der Planung beachtet. Hier müssten entsprechende Überprüfungen in den Schritten der Validierung implementiert werden.\\
 
 \item Früheres Gehen oder späteres Kommen einer Lehrkraft innerhalb einer Aktivität.\\
 Diese Funktionalität wurde auf technischer Seite bereits zu einem großen Teil beachtet. Die Aktivitäten die in der Planungsansicht dargestellt werden, sind Abbildungen, in denen die teilnehmenden Personen jeweils einen Slot von Anfang bis Ende der Aktivität zugeordnet bekommen. Dies kann mit moderatem Aufwand entsprechend erweitert werden, um es dem Nutzer zu ermöglichen verschiedene Zeitfenster für das Personal festzulegen.\\
 
 \item Bedarf an Stundeninhalten für Jahrgänge und Klassen.\\
-Auch diese Funktionalität müsste in dem für die Validierung von Aktivitäten zuständigen Modul implementiert werden. Außerdem müsste ein entsprechender Parameter an den Klassen-Objekten gepflegt werden. Da die Jahrgänge nur für die Zuordnung der Klassen verwendet werden, würde der Parameter an der Schulklasse und logisch zum Beispiel für jede Klasse des Jahrganges gepflegt.\\
+Auch diese Funktionalität müsste in dem für die Validierung von Aktivitäten zuständigen Modul implementiert werden. Außerdem müsste das Attribut an den Klassen-Objekten gepflegt werden. Da die Jahrgänge nur für die Zuordnung der Klassen verwendet werden, würde der Parameter an der Schulklasse und logisch zum Beispiel für jede Klasse des Jahrganges gepflegt.\\
 \end{itemize}
 
 Darüber hinaus gibt es einige Merkmale, deren Implementierung oder Abänderung eine hohe Wahrscheinlichkeit aufweist.
