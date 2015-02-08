@@ -141,11 +141,13 @@
 
 \begin{tabular}{ll}
 \textbf{Tester:} & Adrian Lück\\
-\textbf{Datum:} & 07.02.2015\\
+\textbf{Datum:} & 08.02.2015\\
 \textbf{Testfälle:} & 362 
 \end{tabular}
 
-Es wurden alle Unit- und Integrationstests ausgeführt, die in den jeweiligen XML-Dateien (\textit{unitTests.xml} bzw. \textit{integrationTests.xml}) aufgelistet sind. Alle Testfälle verliefen fehlerfrei. Es wurde eine Zweigabdeckung von 44,9 \% mithilfe des Eclipse-Plugins \textit{EclEmma} ermittelt.\\
+Es wurden alle (nicht auskommentierten) Unit- und Integrationstests ausgeführt, die sich in den jeweiligen Testklassen, welche in den XML-Dateien \textit{unitTests.xml} bzw. \textit{integrationTests.xml} aufgelistet sind, befinden. Die Integrationstests sind Bottom-Up-Integrationstests. Sie beginnen also bei der Persistenzschicht. Zunächst werden dort immer mehr Datenobjekte hinzugenommen. Wenn alle Datenbankanfragen getestet sind, werden die Commands und der \texttt{CommandCreator} zum Test hinzugezogen und schließlich der \texttt{PlanningController} aus der obersten zu testenden Ebene. \\
+Alle Testfälle verliefen fehlerfrei. Es wurde eine Zweigabdeckung von 45,6 \% mithilfe des Eclipse-Plugins \textit{EclEmma} ermittelt.\\
+\newpage
 
 Folgende Zweigabdeckungen wurden für die einzelnen Pakete ermittelt:
 
@@ -156,21 +158,21 @@ Folgende Zweigabdeckungen wurden für die einzelnen Pakete ermittelt:
 \texttt{org.woym.common.config} & 88,4 \% & \\\hline
 \texttt{org.woym.common.exceptions} & 100,0 \% & \\\hline
 \texttt{org.woym.common.messages} & 81,0 \% & \\\hline
-\texttt{org.woym.common.objects} & 73,8 \% &  \\\hline
+\texttt{org.woym.common.objects} & 74,0 \% &  \\\hline
 \texttt{org.woym.controller} & 0,0 \% & Lediglich Aufrufe von bereits getesteten Methoden, wobei noch ggf. Exceptions gefangen werden. Daher keine Testfälle.\\\hline
 \texttt{org.woym.controller.manage} & 0,0 \% & Viele getter- und setter-Methoden. Nicht vollständig triviale, aber doch einfache Operationen. Daher keine Testfälle. \\\hline
 \texttt{org.woym.controller.planning} & 17,4 \% & Nur Abdeckung von umfangreicheren Methoden der Klasse \texttt{PlanningController}. Abdeckung von 36,4 \% für diese Klasse.\\\hline
-\texttt{org.woym.logic} & 25,3 \% & Die geringe Abdeckung resultiert im Wesentlichen daraus, dass keine Testfälle für die Klasse \texttt{BackupRestoreHandler} existieren, da diese schwer umzusetzen wären. Der in dem Paket befindliche \texttt{CommandHandler} ist jedoch zu 95,3 \% abgedeckt.\\\hline
+\texttt{org.woym.logic} & 26,1 \% & Die geringe Abdeckung resultiert im Wesentlichen daraus, dass keine Testfälle für die Klasse \texttt{BackupRestoreHandler} existieren, da diese schwer umzusetzen wären. Der in dem Paket befindliche \texttt{CommandHandler} ist jedoch zu 95,3 \% abgedeckt.\\\hline
 \texttt{org.woym.logic.command} & 100,0 \% & \\\hline
 \end{tabularx}
 
 \begin{tabularx}{\textwidth}{|X|p{2cm}|X|}
 \hline
 \texttt{org.woym.logic.spec} & 100,0 \% & \\\hline
-\texttt{org.woym.logic.util} & 58,5 \% & Die sehr wichtige enthaltene Klasse \texttt{ActivityValidator} ist zu 100,0 \% abgedeckt.\\\hline
-\texttt{org.woym.persistence} & 47,4 \% & Die Funktionalität aller Datenbankanfragen wird getestet. Die niedrige Testabdeckung entsteht, da null Prüfungen und das Fangen von Exceptions nicht getestet wurden. \\\hline
+\texttt{org.woym.logic.util} & 63,6 \% & Die sehr wichtige enthaltene Klasse \texttt{ActivityValidator} ist zu 100,0 \% abgedeckt.\\\hline
+\texttt{org.woym.persistence} & 47,0 \% & Die Funktionalität aller Datenbankanfragen wird getestet. Die niedrige Testabdeckung entsteht, da \texttt{null-}Prüfungen und das Fangen von Exceptions nicht getestet wurden. \\\hline
 \texttt{org.woym.ui.converters} & 52,7 \% & \\\hline
-\texttt{org.woym.ui.util} & 34,7 \% & Die wichtige Klasse \texttt{ActivityParser} ist zu 100,0 \% abgedeckt.\\\hline
+\texttt{org.woym.ui.util} & 39,9 \% & Die wichtige Klasse \texttt{ActivityParser} ist zu 100,0 \% abgedeckt.\\\hline
 \texttt{org.woym.ui.validators} & 20,1 \% & \\\hline
 \end{tabularx}
 
