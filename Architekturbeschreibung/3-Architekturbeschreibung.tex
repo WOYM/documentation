@@ -173,7 +173,7 @@ Version & Datum & Änderungen \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Einführung}
-\textbf{Autor: Adrian}
+\textbf{Autor: A. Lück}
 
 \subsection{Zweck}
   
@@ -212,7 +212,7 @@ Schließlich wird Kapitel \ref{sec:evolution} erläutert, welche Änderungen bei
 \label{sec:globale_analyse}
 
 \subsection{Einflussfaktoren}
-\textbf{Autoren: Adrian, Jurij, Tim}\\
+\textbf{Autoren: T. Hansen, A. Lück, J. Schmidt}\\
 \label{sec:einflussfaktoren}
 
 Im Folgenden werden alle die Architektur beeinflussenden Faktoren aufgelistet. Faktoren, welche aufgrund der reduzierten Mindestanforderungen weggefallen sind, werden mit einem * nach dem Namen markiert. Teilweise wurden diese noch in der Architektur -- insbesondere beim Datenmodell -- berücksichtigt.
@@ -645,7 +645,7 @@ Es muss eine Benutzerschnittstelle geschaffen werden, die ein ungeübter Benutze
 
 \section{Konzeptionelle Sicht}
 \label{sec:konzeptionell}
-\textbf{Autor: Adrian}\\
+\textbf{Autor: A. Lück}\\
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.45\textwidth]{konzeptsicht.pdf}
@@ -668,7 +668,7 @@ Jede höhere Ebene greift nur auf niedriger liegende Ebenen zu. Die GUI-Schicht 
 \label{sec:modulsicht}
 
 \subsection{Paketdiagramm}
-\textbf{Autor: Adrian}\\
+\textbf{Autor: A. Lück}\\
 
 Die Software ist aufgeteilt in fünf große Pakete, die jeweils noch Unterpakte besitzen. Die View-Komponente wurde im nachfolgenden Diagramm nur als Paket aufgeführt, um die Abhängigkeiten aufzeigen zu können. Dies entspricht nicht der tatsächlichen Organisationsstruktur. Um das Diagramm übersichtlicher zu halten, wurden fast ausschließlich die Abhängigkeiten zwischen den großen Pakten aufgeführt. Lediglich für das Paket \textit{org.woym.ui} wurde eine etwas detaillierte Darstellung gewählt.
 
@@ -689,7 +689,7 @@ Die Software ist aufgeteilt in fünf große Pakete, die jeweils noch Unterpakte 
 
 \subsection{Persistence}
 \label{subsec:persistence}
-\textbf{Autor: Adrian}\\
+\textbf{Autor: A. Lück}\\
 
 Die Persistenzschicht ist für ein Single-User-System konzipiert und besteht aus drei Klassen. Die Singleton-Klasse \texttt{DataBase} stellt die unterste Ebene dar. Dort wird der EntityManager erzeugt, der für alle Datenbankanfragen von \texttt{DataAccess} verwendet wird. Außerdem bietet sie Methoden an, die ein Backup der Datenbank erzeugen bzw. ein Backup wiederherstellen. \texttt{DataBase} erweitert die Java-Klasse \texttt{Observable}, da es für die Wiederherstellung eines Backups notwendig ist, die Datenbank einmal komplett herunterzufahren und danach dementsprechend ein neuer EntityManager verwendet wird. Dies muss den beobachtenden Klassen mitgeteilt werden.\\
 Die Singleton-Klasse \texttt{DataAccess} implementiert das Java-Interface \texttt{Observer} und wird bei Erzeugung bei \texttt{DataBase} als Observer registriert. Zudem implementiert sie das Interface \texttt{IDataAccess}, welches alle DAO-Interfaces implementiert und damit die notwendigen Datenzugriffsmethoden beschreibt. Die Klasse \texttt{DataAccess} stellt also für alle Klassen auf einer oberen Ebene die Schnittstelle zur Datenbank dar.\\
@@ -704,7 +704,7 @@ Die Methoden des Interfaces \texttt{IDataAccess} dürfen in beliebiger Reihenfol
 
 \subsection{Common}
 \label{subsec:Common}
-\textbf{Autor: Adrian}\\
+\textbf{Autor: A. Lück}\\
 
 Im Paket \textit{org.woym.common} befinden sich -- wie vorher bereits angemerkt -- Klassen, welche von Klassen aus fast allen anderen Paketen verwendet werden.\\
 Das Paket \textit{org.woym.common.config} beinhaltet das \texttt{DefaultConfigEnum}, welches alle Einstellungsoptionen der Software mit ihren Standardwerten enthält. Die Klasse \texttt{Config} erzeugt eine Properties-Datei und gewährt anderen Klassen Zugriff auf dort eingetragene Werte. Bevor die anderen Methoden der Klasse aufgerufen werden können, muss mindestens einmal die Methode \textit{init()} aufgerufen werden. 
@@ -737,7 +737,7 @@ Ein übersichtlicheres Datenmodell befindet sich in Kapitel \ref{sec:datensicht}
 
 \subsection{Controller}
 \label{subsec:Controller}
-\textbf{Autoren: Adrian, Tim}\\
+\textbf{Autoren: T. Hansen, A. Lück}\\
 
 Im Paket \textit{org.woym.controller} befinden sich die Backing Beans für die verschiedenen JSF-Seiten. \\
 Die Klasse \texttt{GUIController} stellt den Aufruf der Undo- und Redo-Funktionalität aus dem \texttt{CommandHandler} (s. Kapitel \ref{subsec:logic}) für alle JSF-Seiten bereit und befindet sich daher im übergeordneten Paket.\\
@@ -766,6 +766,7 @@ Die Controller kennen jeweils eine Instanz der Klasse \texttt{CommandHandler} un
 
 \subsection{UI}
 \label{subsec:UI}
+\textbf{Autoren: T. Hansen, A. Lück}\\
 
 \subsubsection{Converters}
 
@@ -790,7 +791,7 @@ Des Weiteren befinden sich in diesem Paket die Klassen \texttt{ActivityTOHolder}
 
 \subsection{Logic}
 \label{subsec:logic}
-\textbf{Autor: Adrian}\\
+\textbf{Autor: A. Lück}\\
 
 Auf der Logikebene wurde das Command-Pattern verwendet, um ein Undo und Redo für alle Aktionen anbieten zu können. Die entsprechenden Klassen befinden sich im Paket \textit{org.woym.logic.command}. \\
 Das Interface \texttt{ICommand} spezifiziert die Methoden eines konkreten Commands. Implementiert wird das Interface von den Klassen \texttt{AddCommand}, \texttt{UpdateCommand}, \texttt{DeleteCommand} und \texttt{MacroCommand}. Wobei ein \texttt{MacroCommand} zusätzlich eine Liste von \texttt{ICommand}-Objekten enthält. Für die Methoden gibt es eine klare Ausführungsreihenfolge. Nach Erzeugung eines ICommand-Objektes muss zunächst \textit{execute()} aufgerufen werden, danach dürfen alternierend \textit{undo()} und \textit{redo()} beliebig oft aufgerufen werden. \\
@@ -813,7 +814,7 @@ Die Klasse \texttt{ActivityParser} überführt in den Methoden \textit{getActivi
 
 \section{Datensicht}
 \label{sec:datensicht}
-\textbf{Autor: Adrian}\\
+\textbf{Autor: A. Lück}\\
   
 \subsection{Datenmodell}
 Auf der folgenden Seite ist das Datenmodell dargestellt. Danach folgt eine Beschreibung der einzelnen Assoziationen. Das Datenmodel beinhaltet keine implementierungsspezifischen Details. Diese sind im Klassendiagramm zu Kapitel \ref{subsubsec:Objects} zu erkennen.
@@ -918,7 +919,7 @@ Folgende Klassen erhalten die \textit{Embeddable}-Annotation und werden damit in
 
 \section{Ausführungssicht}
 \label{sec:ausfuehrung}
-\textbf{Autor: Adrian}\\
+\textbf{Autor: A. Lück}\\
 
 \begin{figure}[H]
 \centering
@@ -932,7 +933,7 @@ Aus der Controller-Komponente sind während der Ausführung jeweils nur die Cont
 \section[Zusammenhänge zwischen Anwendungsfällen und Architektur]{Zusammenhänge zwischen Anwendungsfällen und Architektur\sectionmark{Zusammenhänge AF u. Architektur}}
 \sectionmark{Zusammenhänge AF u. Architektur}
 \label{sec:anwendungsfaelle}
-\textbf{Autor: Adrian}\\
+\textbf{Autor: A. Lück}\\
 
 \subsection{Erfolgreiches Hinzufügen einer Aktivität (Unterrichtsstunde)}
 \label{subsec:addActivitySuccess}
@@ -974,7 +975,7 @@ Schließlich wird die vorher erhaltene \texttt{FacesMessage} dem \texttt{FacesCo
 \includepdf[landscape]{addTeacherSequence.pdf}
 
 \section{Evolution}
-\textbf{Autor: Tim}\\ 
+\textbf{Autor: T. Hansen}\\ 
 \label{sec:evolution}
 
 Da das Projekt in einer Dreiergruppe umgesetzt wurde, was in verringerten Anforderungen an die Software resultierte, existiert eine hohe Wahrscheinlichkeit, dass die noch nicht umgesetzten Anforderungen in der Zukunft nachgepflegt werden sollen.
