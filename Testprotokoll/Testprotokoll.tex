@@ -129,6 +129,16 @@
   \fancyfoot{}
   \renewcommand{\headrulewidth}{0.4pt}
 
+\section{Definitionen, Akronyme und Abkürzungen}
+\renewcommand{\arraystretch}{2}
+\begin{tabularx}{\textwidth}{Xp{1cm}p{9.5cm}}
+\textbf{Repository} & & In diesem Zusammenhang beschreibt der Begriff \textit{Repository} ein Datenverzeichnis, das allen Entwicklern zur Verfügung steht und Hilfsmittel zur Beherrschung der verschiedenen Versionen, sowie Unterstützung bei der Einhaltung des Arbeitsprozesses bietet.\\
+\textbf{Continuous Integration} (CI) & & Hiermit werden Dienste beschrieben, die die Aufgabe übernehmen, ein Softwareprojekt regelmäßig automatisiert zu installieren und alle dort definierten Schritte zur Qualitätssicherung (wie zum Beispiel das Ausführen der Testfälle) zu übernehmen. \\
+\textbf{Build} & & Unter einem \textit{Build} versteht man den Kompilier- und Installationsvorgang einer Software. Während dieses Vorgangs wird aus dem rohen Programmcode eine ausführbare Version erzeugt. \\
+\end{tabularx}
+
+\section{Testprotokoll}
+
 \begin{tabular}{ll}
 \textbf{Tester:} & Adrian Lück\\
 \textbf{Datum:} & 07.02.2015\\
@@ -163,5 +173,17 @@ Folgende Zweigabdeckungen wurden für die einzelnen Pakete ermittelt:
 \texttt{org.woym.ui.util} & 34,7 \% & Die wichtige Klasse \texttt{ActivityParser} ist zu 100,0 \% abgedeckt.\\\hline
 \texttt{org.woym.ui.validators} & 20,1 \% & \\\hline
 \end{tabularx}
+
+\newpage
+
+\section{Continuous Integration}
+
+Während des Projektes wurde der Quellcode mit jeder angenommenen Änderung mit Hilfe eines CI-Tools aus dem Projektrepository heruntergeladen und in einer virtuellen Linux-Maschine unter Java 7 und Java 8 gebaut, wobei auch sämtliche im Projekt definierten Testfälle durchlaufen werden.\\
+Als Nachweis dient hier ein Bildschirmfoto einer Menge von Build-Prozessen.\\
+Der gesamte Prozess kann jederzeit online unter \url{https://travis-ci.org/WOYM/timetable/} eingesehen werden.\\
+
+\textit{\textbf{Stand:} 08.02.2015 12:00Uhr}
+
+\includegraphics[width=\textwidth]{screenshot_CI.png}
 
 \end{document} 
